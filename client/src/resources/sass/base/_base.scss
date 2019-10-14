@@ -1,0 +1,36 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body,
+html {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-size: 62.5% !important;
+	color: var(--primary-color) !important;
+	background-color: var(--base-color) !important;
+	-webkit-font-smoothing: antialiased;
+}
+
+button {
+	background: none;
+	outline: none !important;
+	border: none;
+}
+
+
+p, h1, h2,h3,h4,h5,h6{
+	margin: 0;
+}
+
+input[type="number"] {
+	-webkit-appearance: textfield;
+	   -moz-appearance: textfield;
+			appearance: textfield;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+-webkit-appearance: none;
+}

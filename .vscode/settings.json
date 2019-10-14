@@ -1,0 +1,29 @@
+{
+    "liveSassCompile.settings.formats":[
+        // This is Default.
+        {
+            "format": "expanded",
+            "extensionName": ".css",
+            "savePath": "~/../css/"
+        },
+        // More Complex
+        {
+            "format": "compressed",
+            "extensionName": ".min.css",
+            "savePath": "~/../css/"
+        }
+    ],
+
+    "liveSassCompile.settings.excludeList": [ 
+        "**/node_modules/**",
+        ".vscode/**" 
+    ],
+
+    "emmet.syntaxProfiles": {
+        "javascript": "jsx"
+    },
+
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    }
+}
