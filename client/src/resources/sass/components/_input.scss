@@ -1,0 +1,32 @@
+.inp {
+    outline: none;
+    border: none;
+    &--search {
+        position: relative;
+        display: flex;
+        height: 100%;
+        width: 100%;
+        input {
+            font-size: 1.4rem;
+            width: inherit;
+            padding: 1.8rem;
+            background-color: #f3f3f3;
+        }
+        button {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+
+            svg {
+                height: 2.2rem;
+            }
+        }
+
+        &:focus-within {
+            input {
+                // background: #000;
+            }
+        }
+    }
+}

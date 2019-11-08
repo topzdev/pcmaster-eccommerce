@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500,700|Roboto:300,300i,400&display=swap');
+
 * {
 	padding: 0;
 	margin: 0;
@@ -20,8 +22,14 @@ button {
 	border: none;
 }
 
+p{
+	font-weight: 400;
+	margin: 0;
+}
 
-p, h1, h2,h3,h4,h5,h6{
+h1, h2,h3,h4,h5,h6{
+	font-family: 'Montserrat';
+	font-weight: 600;
 	margin: 0;
 }
 
