@@ -1,0 +1,25 @@
+.card {
+  &--large {
+  }
+  &--small {
+    position: relative;
+    height: 9rem;
+    width: 20rem;
+    border-radius: 10px;
+    overflow: hidden;
+    img {
+      width: 100%;
+    }
+    a {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      font-weight: 700 !important;
+      color: #fff !important;
+      padding: 1rem;
+    }
+  }
+}

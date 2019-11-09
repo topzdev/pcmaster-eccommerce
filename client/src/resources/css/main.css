@@ -4,14 +4,14 @@
   --base-col: #fff;
   --prim-col: #0d0d0d;
   --prim-col-light: #fff;
-  --sec-col: #e4a000;
+  --sec-col: #f8b007;
   --sec-col-dark: #fff;
   --white-col: #fff;
   --red-col: #dd3d3d;
 }
 
 .navbar {
-  height: 7rem;
+  height: 8rem;
   background-color: var(--white-col);
   color: #fff;
 }
@@ -26,7 +26,7 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 2rem 0;
+  padding: 1rem 3rem;
 }
 
 .navbar__brand {
@@ -41,6 +41,103 @@
 .navbar__search {
   display: block;
   width: 60rem;
+}
+
+.card--small {
+  position: relative;
+  height: 9rem;
+  width: 20rem;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card--small img {
+  width: 100%;
+}
+
+.card--small a {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  font-weight: 700 !important;
+  color: #fff !important;
+  padding: 1rem;
+}
+
+.menu {
+  display: block;
+  width: 100%;
+  background-color: var(--sec-col);
+}
+
+.menu__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  padding: 0 5rem;
+  list-style: none;
+}
+
+.menu__item {
+  display: inline;
+  position: relative;
+  color: var(--prim-col);
+}
+
+.menu__item:not(:last-child) {
+  margin-right: 3rem;
+}
+
+.menu__item:hover {
+  background-color: var(--prim-col);
+}
+
+.menu__item:hover .menu__link {
+  color: var(--sec-col);
+}
+
+.menu__link {
+  display: block;
+  font-weight: 600;
+  font-size: 1.6rem;
+  text-decoration: none;
+  color: var(--prim-col);
+  padding: 1.5rem;
+}
+
+.menu__result {
+  padding: 0 2rem;
+}
+
+.menu__dropdown {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  width: auto;
+  font-size: 1.6rem;
+  padding: 2rem 0;
+  width: 80rem;
+}
+
+.menu__dropdown ul {
+  list-style: none;
+  width: 20rem;
+}
+
+.menu__dropdown li {
+  width: 100%;
+}
+
+.menu__dropdown a {
+  display: block;
+  text-decoration: none;
+  padding: 1.1rem 2.5rem;
+  font-weight: 600;
+  color: var(--prim-col);
 }
 
 * {
@@ -91,6 +188,29 @@ input[type=number]::-webkit-outer-spin-button {
 .btn--icon svg {
   height: 3rem;
   width: 3rem;
+}
+
+.banner {
+  width: 100%;
+  overflow: hidden;
+}
+
+.banner__list {
+  display: block;
+  float: left;
+  list-style: none;
+  overflow: hidden;
+  width: 100%;
+}
+
+.banner__item {
+  width: 100%;
+  overflow: hidden;
+}
+
+.banner__item img {
+  width: 100%;
+  height: auto;
 }
 
 .inp {
