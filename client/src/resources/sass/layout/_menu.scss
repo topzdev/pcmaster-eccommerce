@@ -1,66 +1,71 @@
 .menu {
-  display: block;
-  width: 100%;
-  background-color: var(--sec-col);
-
-  &__list {
-    display: flex;
-    width: 100%;
-    padding: 0 5rem;
-    list-style: none;
-  }
-
-  &__item {
-    display: inline;
-    position: relative;
-    color: var(--prim-col);
-    &:not(:last-child) {
-      margin-right: 3rem;
-    }
-    &:hover {
-      background-color: var(--prim-col);
-
-      .menu__link {
-        color: var(--sec-col);
-      }
-    }
-  }
-
-  &__link {
     display: block;
-    font-weight: 600;
-    font-size: 1.6rem;
-    text-decoration: none;
-    color: var(--prim-col);
-    padding: 1.5rem;
-  }
+    width: 100%;
+    background-color: var(--sec-col);
 
-  &__result {
-    padding: 0 2rem;
-  }
-
-  &__dropdown {
-    display: none;
-    position: absolute;
-    background-color: #fff;
-    width: auto;
-    font-size: 1.6rem;
-    padding: 2rem 0;
-    width: 80rem;
-    ul {
-      list-style: none;
-      width: 20rem;
-    }
-    li {
-      width: 100%;
+    &__list {
+        display: flex;
+        width: 100%;
+        padding: 0 5rem;
+        list-style: none;
     }
 
-    a {
-      display: block;
-      text-decoration: none;
-      padding: 1.1rem 2.5rem;
-      font-weight: 600;
-      color: var(--prim-col);
+    &__item {
+        display: inline;
+        position: relative;
+        color: var(--prim-col);
+        &:not(:last-child) {
+            // margin-right: 3rem;
+        }
+        &:hover {
+            background-color: var(--prim-col);
+
+            .menu__link {
+                color: var(--sec-col);
+            }
+        }
     }
-  }
+
+    &__link {
+        display: block;
+        font-weight: 600;
+        font-size: 1.6rem;
+        text-decoration: none;
+        color: var(--prim-col);
+        padding: 1.5rem;
+    }
+
+    &__result {
+        padding: 0 2rem;
+    }
+
+    &__dropdown {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        width: auto;
+        font-size: 1.6rem;
+        padding: 2rem 0;
+        width: 80rem;
+        ul {
+            list-style: none;
+            width: 20rem;
+        }
+        li {
+            width: 100%;
+        }
+
+        a {
+            display: block;
+            text-decoration: none;
+            padding: 1.1rem 2.5rem 1.1rem 4rem;
+            font-weight: 600;
+            color: var(--prim-col);
+
+            span {
+                display: block;
+                margin-left: 1rem;
+            }
+        }
+    }
 }

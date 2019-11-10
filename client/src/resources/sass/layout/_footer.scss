@@ -1,0 +1,67 @@
+.footer {
+    padding: 0 0 5rem 0;
+    background-color: var(--prim-col);
+    color: #fff;
+
+    &__subscribe {
+        background-color: #1d1d1d;
+        padding: 3rem 0;
+        h1 {
+            font-size: 3rem;
+            color: var(--sec-col);
+        }
+        p {
+            font-family: "roboto";
+            font-size: 1.6rem;
+            font-weight: 300;
+        }
+    }
+
+    &__main {
+        font-size: 1.8rem;
+        font-family: "roboto";
+        padding: 5rem 0;
+
+        ul {
+            list-style: none;
+
+            & > *:not(:last-child) {
+                margin-bottom: 1rem;
+            }
+        }
+
+        h3 {
+            margin-bottom: 1rem;
+        }
+    }
+    &__info {
+        li {
+            display: flex;
+
+            span {
+                width: 4rem;
+                color: var(--sec-col);
+            }
+
+            p {
+                font-weight: 300;
+                font-size: 1.7rem;
+                width: 80%;
+                color: #d3d3d3;
+            }
+        }
+    }
+    &__list {
+        li {
+            a {
+                color: #d3d3d3;
+                text-decoration: none;
+                font-size: 1.8rem;
+                @include transition;
+                &:hover {
+                    color: var(--sec-col);
+                }
+            }
+        }
+    }
+}

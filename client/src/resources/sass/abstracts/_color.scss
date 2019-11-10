@@ -1,13 +1,16 @@
 :root {
-  --base-col: #fff;
+    --base-col: #fff;
 
-  --prim-col: #0d0d0d;
-  --prim-col-light: #fff;
+    --prim-col: rgb(13, 13, 13);
+    --prim-col-light: rgb(255, 255, 255);
 
-  --sec-col: #f8b007;
-  --sec-col-dark: #fff;
+    --sec-col: rgb(249, 176, 6);
+    --sec-col-dark: rgb(255, 255, 255);
 
-  --white-col: #fff;
+    --prim-text-col: rgb(13, 13, 13);
+    --sec-text-col: rgb(31, 31, 31);
 
-  --red-col: #dd3d3d;
+    --white-col: #fff;
+
+    --red-col: #dd3d3d;
 }

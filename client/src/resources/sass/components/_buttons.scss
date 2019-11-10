@@ -1,8 +1,29 @@
 .btn {
+    font: inherit;
     &--icon {
         svg {
             height: 3rem;
             width: 3rem;
+        }
+    }
+
+    &--subcribe {
+        position: relative;
+        top: -1px;
+        color: var(--prim-col);
+        font-weight: 700;
+        padding: 1rem 2rem;
+        background-color: var(--sec-col);
+        box-shadow: 0 4px 0 var(--sec-col);
+        height: 4.5rem;
+        @include transition;
+        border-radius: 5px;
+        margin-left: -6px;
+        font-size: 1.8rem;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgb(207, 145, 0);
         }
     }
 }

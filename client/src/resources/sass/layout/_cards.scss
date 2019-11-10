@@ -1,25 +1,151 @@
 .card {
-  &--large {
-  }
-  &--small {
-    position: relative;
-    height: 9rem;
-    width: 20rem;
+    width: 25rem;
+    height: 35rem;
+    // background-color: rgb(207, 247, 247);
     border-radius: 10px;
-    overflow: hidden;
-    img {
-      width: 100%;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid #d4d4d4;
+    &__main {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        height: 25rem;
+        width: 100%;
     }
-    a {
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      font-weight: 700 !important;
-      color: #fff !important;
-      padding: 1rem;
+
+    &__img {
+        position: absolute;
+        // left: 50%;
+        // transform: translateX(-50%);
+        left: 50%;
+        top: 0;
+        transform: scale(1) translateX(-50%);
+        height: inherit;
+        @include transition;
     }
-  }
+
+    &__b-img {
+        position: absolute;
+        // right: -200%;
+        left: 50%;
+        top: 0;
+        transform: scale(0) translateX(150%);
+        height: inherit;
+        @include transition;
+    }
+    &__body {
+        position: relative;
+        z-index: 10;
+        padding: 1.4rem;
+        border-radius: 10px;
+        margin-top: -2rem;
+        background-color: var(--white-col);
+        overflow: hidden;
+        @include transition;
+    }
+
+    &__title {
+        display: block;
+        color: var(--prim-col);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
+        @include transition;
+    }
+
+    &__price {
+        font-family: "roboto";
+        color: var(--sec-text-col);
+        font-size: 1.6rem;
+    }
+
+    &__description {
+        font-size: 1.4rem;
+        color: var(--sec-text-col);
+        margin-top: 1rem;
+        height: 0;
+        opacity: 0;
+        @include transition;
+    }
+
+    &__cover {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        position: absolute;
+        text-decoration: none;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        padding-bottom: 2rem;
+        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        @include transition;
+    }
+
+    &__btn {
+        position: relative;
+        display: flex;
+        margin-top: 1rem;
+        height: 0;
+        bottom: -8rem;
+        @include transition;
+    }
+
+    &__link {
+        display: block;
+        // width: 100%;
+        text-align: center;
+        padding: 0.8rem 1rem;
+        color: var(--prim-col);
+        border: 2px solid var(--prim-col);
+        border-radius: 4px;
+        cursor: pointer;
+        @include transition;
+        &:not(:last-child) {
+            margin-right: 1rem;
+        }
+        p {
+            font-weight: 500;
+            display: inline;
+            margin-left: 0.5rem;
+        }
+
+        &:hover {
+            background-color: var(--sec-col);
+            border: 2px solid var(--sec-col);
+            color: rgb(0, 0, 0);
+        }
+    }
+
+    &:hover {
+        .card__cover {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .card__title {
+            color: rgb(0, 0, 0);
+            text-shadow: 0 5px 0px rgba(255, 179, 0, 1);
+        }
+
+        .card__btn {
+            height: auto;
+            bottom: 0;
+        }
+
+        .card__body {
+            margin-top: -5rem;
+        }
+
+        .card__img {
+            transform: scale(0) translateX(-150%);
+        }
+        .card__b-img {
+            transform: scale(1) translateX(-50%);
+        }
+    }
 }

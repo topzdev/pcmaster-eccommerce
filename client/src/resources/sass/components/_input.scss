@@ -1,4 +1,5 @@
 .inp {
+    font: inherit;
     outline: none;
     border: none;
     &--search {
@@ -28,5 +29,15 @@
                 // background: #000;
             }
         }
+    }
+
+    &--subcribe {
+        padding: 1rem 2rem;
+        font-size: 2rem;
+        width: 50rem;
+        border-radius: 5px;
+        box-shadow: 0 4px 0 var(--sec-col);
+        height: 4.5rem;
+        @include transition;
     }
 }

@@ -6,19 +6,20 @@ import "./resources/css/main.min.css";
 
 // Components
 import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
 import Menu from "./components/layout/Menu/Menu";
-import Banner from "./components/include/Banner";
-
+import Home from "./components/pages/Home";
 const App = () => {
-  return (
-    <Router>
-      <Navbar />
-      <Menu />
-      <Switch>
-        <Banner />
-      </Switch>
-    </Router>
-  );
+    return (
+        <Router>
+            <Navbar />
+            <Menu />
+            <Switch>
+                <Home />
+            </Switch>
+            <Footer />
+        </Router>
+    );
 };
 
 export default App;
