@@ -1,0 +1,105 @@
+.details {
+  display: flex;
+  &__img-viewer {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    width: 50%;
+  }
+  &__img-item {
+    display: flex;
+    align-items: flex-start;
+    list-style: none;
+  }
+
+  &__img-list {
+    overflow: hidden;
+    height: 10rem;
+    width: 100%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    @include transition;
+    &:hover {
+      border: 2px solid var(--sec-col);
+      img {
+        transform: translateX(-50%) scale(1.1);
+      }
+    }
+  }
+
+  &__img-main {
+    height: 45rem;
+    width: auto;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+
+  &__description {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding-top: 4rem;
+    padding-left: 3rem;
+  }
+
+  &__title {
+    font-size: 3.8rem;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 3.3rem;
+    font-family: "montserrat";
+    color: #df9e08;
+    margin-bottom: 2rem;
+  }
+
+  &__overview {
+    font-weight: 400;
+    width: 80%;
+    line-height: 1.4;
+    font-size: 1.5rem;
+    padding: 2rem 0;
+    &::after,
+    &::before {
+      position: relative;
+      display: block;
+      content: "";
+      height: 1px;
+      width: 10rem;
+      background-color: #7a7a7a;
+    }
+
+    &::after {
+      top: 1rem;
+    }
+    &::before {
+      bottom: 1rem;
+    }
+  }
+
+  .inp--quantity {
+    height: 5rem;
+    button {
+      height: 100%;
+      border: 1px solid #7a7a7a;
+      border-color: var(--prim-col);
+    }
+    input {
+      color: var(--prim-text-col);
+      font-size: 2.5rem;
+      border-radius: 0;
+      border-color: var(--prim-col);
+      height: 100%;
+    }
+  }
+}
+
+.image {
+  height: 100%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  @include transition;
+}

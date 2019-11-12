@@ -1,12 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from "./node_modules/react";
+import { Link } from "./node_modules/react-router-dom";
 
 //Child components
-import MenuDropdown from "./MenuDropdown";
+// import MenuDropdown from "./MenuDropdown";
 const Menu = () => {
     return (
         <div className='menu'>
-            <ul className='menu__list'>
+            {/* <ul className='menu__list'>
                 <li className='menu__item'>
                     <Link to='/' className='menu__link'>
                         Components &nbsp;
@@ -14,7 +14,7 @@ const Menu = () => {
                             <i className='fas fa-angle-down'></i>
                         </span>
                     </Link>
-                    <MenuDropdown />
+                     <MenuDropdown /> 
                 </li>
                 <li className='menu__item'>
                     <Link to='/' className='menu__link'>
@@ -56,7 +56,7 @@ const Menu = () => {
                         </span>
                     </Link>
                 </li>
-            </ul>
+            </ul> */}
         </div>
     );
 };

@@ -40,4 +40,28 @@
         height: 4.5rem;
         @include transition;
     }
+
+    &--quantity {
+        display: flex;
+        align-items: center;
+        input {
+            font: inherit;
+            font-weight: 600;
+            font-size: 1.6rem;
+            text-align: center;
+            padding: 1rem;
+            width: 7rem;
+            border-radius: 3px;
+            border: 1px solid #7a7a7a;
+        }
+
+        button {
+            font: inherit;
+            font-size: 2rem;
+            font-weight: 700;
+            padding: 1rem;
+            cursor: pointer;
+            color: var(--sec-text-col);
+        }
+    }
 }

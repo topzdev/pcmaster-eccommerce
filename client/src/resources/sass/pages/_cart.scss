@@ -1,0 +1,126 @@
+.cart {
+    display: flex;
+    padding: 5rem 0;
+
+    &__main {
+        flex: 1;
+    }
+
+    &__count {
+        font-size: 1.8rem;
+        color: var(--sec-text-col);
+    }
+
+    &__list {
+        display: flex;
+        flex: 1;
+        padding-top: 2rem;
+        padding-right: 4rem;
+        margin-bottom: 2rem;
+    }
+
+    &__item {
+        position: relative;
+        display: flex;
+        padding: 1.5rem 2rem;
+        align-items: center;
+        height: 10rem;
+        width: 100%;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+
+        &:not(:last-child) {
+            margin-bottom: 2rem;
+        }
+
+        &:hover {
+            .cart__remove {
+                @include transition;
+                transform: scale(1);
+            }
+        }
+    }
+
+    &__img {
+        position: relative;
+        height: 100%;
+        width: 8rem;
+        overflow: hidden;
+        user-select: none;
+        margin-right: 1.5rem;
+
+        img {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 100%;
+            width: auto;
+        }
+    }
+
+    &__title {
+        display: block;
+        font-family: "montserrat";
+        font-size: 1.8rem;
+        text-decoration: none;
+        color: var(--prim-text-col);
+        font-weight: 700;
+        width: 30rem;
+    }
+
+    &__price {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #8b8b8b;
+    }
+
+    &__remove {
+        position: absolute;
+        height: 3rem;
+        width: 3rem;
+        border-radius: 100%;
+        font-size: 1.8rem;
+        top: -1rem;
+        right: -1rem;
+        background-color: #c41515;
+        transform: scale(0);
+        cursor: pointer;
+        color: #fff;
+        @include transition;
+
+        &:hover {
+            background-color: red;
+        }
+    }
+
+    &__total {
+        font-family: "montserrat";
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-left: 4rem;
+
+        span {
+            position: relative;
+            top: -0.8rem;
+            font-size: 1.4rem;
+        }
+    }
+
+    &__summarry {
+        width: 38rem;
+        padding: 3rem 2rem;
+        background-color: #1d1d1d;
+        color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
+        & .cart__title {
+            font-size: 1.4rem;
+            color: #a8a8a8;
+        }
+
+        & .cart__total {
+            // font-size: 2rem !important;
+        }
+    }
+}

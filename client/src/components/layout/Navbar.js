@@ -31,7 +31,7 @@ const Navbar = () => {
                 </div>
 
                 <li className='navbar__list'>
-                    <Link className='btn btn--icon' to='/purchase'>
+                    <Link className='btn btn--icon' to='/cart'>
                         <svg
                             xmlns='http://www.w3.org/2000/svg'
                             viewBox='0 0 20 20'

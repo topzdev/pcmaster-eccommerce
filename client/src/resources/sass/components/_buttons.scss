@@ -1,29 +1,85 @@
 .btn {
-    font: inherit;
-    &--icon {
-        svg {
-            height: 3rem;
-            width: 3rem;
-        }
+  font: inherit;
+
+  &--primary {
+    padding: 1.2rem 5rem;
+    font-weight: 700;
+    font-size: 2.2rem;
+    background: #df9e08;
+    // background-color: var(--prim-col);
+    // color: #df9e08;
+    color: #000;
+    cursor: pointer;
+    @include transition;
+    border-radius: 2px;
+
+    span {
+      margin-right: 1rem;
     }
 
-    &--subcribe {
-        position: relative;
-        top: -1px;
-        color: var(--prim-col);
-        font-weight: 700;
-        padding: 1rem 2rem;
-        background-color: var(--sec-col);
-        box-shadow: 0 4px 0 var(--sec-col);
-        height: 4.5rem;
-        @include transition;
-        border-radius: 5px;
-        margin-left: -6px;
-        font-size: 1.8rem;
-        cursor: pointer;
-
-        &:hover {
-            background-color: rgb(207, 145, 0);
-        }
+    &:hover {
+      background-color: var(--prim-col);
+      color: #df9e08;
     }
+  }
+  &--icon {
+    svg {
+      height: 3rem;
+      width: 3rem;
+    }
+  }
+
+  &--subcribe {
+    position: relative;
+    top: -1px;
+    color: var(--prim-col);
+    font-weight: 700;
+    padding: 1rem 2rem;
+    background-color: var(--sec-col);
+    box-shadow: 0 4px 0 var(--sec-col);
+    height: 4.5rem;
+    @include transition;
+    border-radius: 5px;
+    margin-left: -6px;
+    font-size: 1.8rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgb(207, 145, 0);
+    }
+  }
+
+  &--summarry {
+    font-weight: 700;
+    font-size: 1.6rem;
+    background-color: var(--sec-col);
+    padding: 1.3rem 2rem;
+    border-radius: 100px;
+    width: 100%;
+    cursor: pointer;
+    @include transition;
+
+    &:hover {
+      background-color: rgb(255, 189, 35);
+    }
+  }
+
+  &--more {
+    font-family: "montserrat";
+    font-size: 2rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: #2d7aed;
+    @include transition;
+
+    span {
+      @include transition;
+    }
+
+    &:hover {
+      span {
+        margin-left: -1rem;
+      }
+    }
+  }
 }
