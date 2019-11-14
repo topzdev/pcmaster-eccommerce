@@ -2,10 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ImageListView from "../layout/ImageListView";
 import ProductTab from "../layout/productView/ProductTab";
-
+import NumericField from "../layout/input/NumericField";
 //Tabs
 
 const ProductDetails = () => {
+  const quantityValue = value => {
+    console.log(value);
+  };
   return (
     <div className="container">
       <div className="details">
@@ -22,18 +25,7 @@ const ProductDetails = () => {
           </p>
 
           <div className="details__main-btn">
-            <div className="inp--quantity mb-2">
-              <button>&mdash;</button>
-              <input
-                className="inp"
-                type="number"
-                name=""
-                id=""
-                min="1"
-                max="100"
-              />
-              <button>+</button>
-            </div>
+            <NumericField initValue={1} quantityValue={quantityValue} />
           </div>
           <button className="btn btn--primary mt-2">
             <span>

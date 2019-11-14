@@ -21,9 +21,10 @@ const Sorter = () => {
   let viewMode = true;
 
   const [view, setView] = useState(true);
+  const [sort, setSort] = useState(sortBy);
 
   useEffect(() => {
-    alert("Hello");
+    // alert("Hello");
   }, [view]);
 
   return (
@@ -31,7 +32,7 @@ const Sorter = () => {
       <div className="form-control">
         <label htmlFor="">Sort by</label>
         <div className="form-select">
-          <Select option={sortBy} />
+          <Select option={sort} />
         </div>
       </div>
       <div className="form-control">

@@ -1351,5 +1351,6 @@ input[type=number]::-webkit-outer-spin-button {
 
 .view-active {
   background-color: var(--sec-col);
+  border-color: var(--sec-col);
 }
 /*# sourceMappingURL=main.css.map */
