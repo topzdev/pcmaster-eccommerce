@@ -5,11 +5,14 @@
   "dependencies": {
     "@material-ui/core": "^4.6.0",
     "react": "^16.10.2",
+    "react-accessible-accordion": "^3.0.0",
     "react-dom": "^16.10.2",
     "react-image-magnify": "^2.7.4",
     "react-owl-carousel": "^2.3.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0"
+    "react-scripts": "3.2.0",
+    "react-star-rating-component": "^1.4.1",
+    "react-tabs": "^3.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

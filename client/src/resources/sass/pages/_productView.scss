@@ -1,11 +1,12 @@
 .details {
   display: flex;
+  padding-top: 3rem;
   &__img-viewer {
     display: flex;
     align-items: flex-start;
     flex-direction: column;
     margin-bottom: 2rem;
-    width: 50%;
+    padding-right: 2rem;
   }
   &__img-item {
     display: flex;
@@ -38,6 +39,7 @@
   &__description {
     display: flex;
     align-items: flex-start;
+    justify-content: flex-start;
     flex-direction: column;
     padding-top: 4rem;
     padding-left: 3rem;
@@ -80,11 +82,27 @@
   }
 
   .inp--quantity {
-    height: 5rem;
+    height: 100%;
+    & > * {
+      &:first-child {
+        right: -1px;
+      }
+
+      &:last-child {
+        left: -1px;
+      }
+    }
     button {
+      position: relative;
+      z-index: 2;
       height: 100%;
       border: 1px solid #7a7a7a;
       border-color: var(--prim-col);
+      width: 4rem;
+      @include transition;
+      &:hover {
+        background-color: var(--sec-col);
+      }
     }
     input {
       color: var(--prim-text-col);
@@ -93,6 +111,199 @@
       border-color: var(--prim-col);
       height: 100%;
     }
+  }
+  &__btn {
+    margin-top: 3rem;
+    border-top: 1px solid var(--border-col);
+    padding-top: 2rem;
+    width: auto;
+  }
+
+  &__others {
+    list-style: none;
+    margin-top: 3rem;
+    li {
+      font-size: 1.6rem;
+      &:not(:last-child) {
+        margin-bottom: 1.5rem;
+      }
+    }
+    a {
+      text-decoration: none;
+      font-weight: 400;
+      color: var(--prim-text-col);
+      @include transition;
+      color: var(--gray-col);
+
+      &:hover {
+        color: var(--prim-text-col);
+      }
+    }
+
+    span {
+      font-size: 2rem;
+    }
+  }
+
+  &__main-btn {
+    display: flex;
+    flex-direction: row;
+    height: 5rem;
+
+    & > * {
+      &:first-child {
+        margin-right: 2rem;
+      }
+    }
+  }
+  &__tab {
+    &--description {
+      h3 {
+        font-size: 1.6rem;
+      }
+      p {
+        text-overflow: clip;
+        color: #7a7a7a;
+        width: 100%;
+        font-size: 1.5rem;
+      }
+      .row {
+        &:not(:first-child) {
+          padding: 1rem 0;
+        }
+      }
+    }
+  }
+}
+
+.rating {
+  &__overall {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+
+    h1 {
+      display: block;
+      margin: 1rem 0;
+    }
+  }
+  &__stars {
+    display: block;
+    margin: 1rem 0;
+  }
+  &__breakdown {
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    padding: 2rem;
+    border-radius: 5px;
+  }
+
+  &__group {
+    list-style: none;
+  }
+  &__list {
+    font-size: 1.6rem;
+    display: flex;
+
+    p {
+      font-weight: 600;
+    }
+    &:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+    span {
+      color: rgb(255, 180, 0);
+    }
+  }
+
+  &__percent {
+    display: block;
+    background-color: #f4f4f4;
+    flex: 1 1;
+    margin: 0 1rem;
+    border-radius: 100px;
+  }
+
+  &__count {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--gray-col);
+  }
+  &__helpful {
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: 100%;
+  }
+}
+.react-tabs {
+  font-size: 1.8rem;
+  padding-bottom: 5rem;
+  &__tab-list {
+  }
+  &__tab {
+    font-weight: 700;
+    padding: 2rem !important;
+    user-select: none;
+    border: none !important;
+    border-bottom: 3px solid transparent !important;
+    @include transition;
+
+    &:focus {
+      box-shadow: none !important;
+      border-color: none !important;
+      border-bottom: 3px solid var(--sec-col) !important;
+    }
+  }
+
+  &__tab--selected {
+    position: relative;
+    z-index: 2;
+    border-radius: 0;
+    border-bottom: 3px solid var(--sec-col) !important;
+  }
+
+  &__tab-panel {
+    padding: 1rem;
+  }
+}
+
+.accordion {
+  border: none !important;
+  border-radius: 0 !important;
+  &__heading {
+  }
+
+  &__button {
+    border-radius: 0;
+    border: none !important;
+    color: var(--prim-col) !important;
+    font-weight: 700;
+    outline: none;
+    background: transparent !important;
+    background-color: transparent !important;
+    @include transition;
+    &:hover {
+      background-color: #f4f4f4 !important;
+    }
+    &::before {
+      @include transition;
+      background-color: var(--sec-col);
+    }
+
+    border-bottom: 1px solid var(--sec-col) !important;
+  }
+  &__item {
+  }
+
+  &__panel {
+    color: var(--gray-col);
+    font-weight: 300 !important;
   }
 }
 

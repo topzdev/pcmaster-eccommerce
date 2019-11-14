@@ -4,10 +4,12 @@
   &--primary {
     padding: 1.2rem 5rem;
     font-weight: 700;
-    font-size: 2.2rem;
+    font-size: 2rem;
     background: #df9e08;
     // background-color: var(--prim-col);
     // color: #df9e08;
+    height: 100%;
+    max-height: 5rem;
     color: #000;
     cursor: pointer;
     @include transition;
@@ -26,6 +28,24 @@
     svg {
       height: 3rem;
       width: 3rem;
+    }
+  }
+
+  &--wishlist {
+    border: 1px solid var(--prim-col);
+    font-size: 1.5rem;
+    padding: 0.8rem 1.8rem;
+    cursor: pointer;
+    @include transition;
+    span {
+      margin-right: 1rem;
+    }
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+    &:hover {
+      border-color: #2d7aed;
+      color: #2d7aed;
     }
   }
 

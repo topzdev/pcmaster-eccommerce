@@ -1,18 +1,22 @@
 :root {
-    --base-col: #fff;
+  --base-col: #fff;
 
-    --prim-col: rgb(13, 13, 13);
-    --prim-col-light: rgb(255, 255, 255);
+  --prim-col: rgb(13, 13, 13);
+  --prim-col-light: rgb(255, 255, 255);
 
-    --sec-col: rgb(249, 176, 6);
-    --sec-col-dark: rgb(255, 255, 255);
+  --sec-col: rgb(249, 176, 6);
+  --sec-col-dark: rgb(255, 255, 255);
 
-    --prim-text-col: rgb(13, 13, 13);
-    --sec-text-col: rgb(31, 31, 31);
-    --ter-text-col: #fff;
+  --ter-col: blue;
 
-    --white-col: #fff;
-    --gray-col: #414141;
+  --prim-text-col: rgb(13, 13, 13);
+  --sec-text-col: rgb(31, 31, 31);
+  --ter-text-col: #fff;
 
-    --red-col: #dd3d3d;
+  --white-col: #fff;
+  --gray-col: #414141;
+
+  --red-col: #dd3d3d;
+
+  --border-col: #aaa;
 }
