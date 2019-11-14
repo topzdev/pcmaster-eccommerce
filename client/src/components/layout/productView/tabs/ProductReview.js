@@ -1,7 +1,7 @@
 import React from "react";
 import StarRatingComponent from "react-star-rating-component";
 
-import Comment from "../../../layout/card/Comment";
+import Comment from "../../card/Comment";
 const ProductReview = () => {
   return (
     <div className="container">

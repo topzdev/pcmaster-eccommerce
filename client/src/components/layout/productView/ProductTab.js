@@ -2,12 +2,12 @@ import React from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
-import ProductReview from "./Tabs/ProductReview";
-import ProductDescription from "./Tabs/ProductDescription";
-import ProductFAQs from "./Tabs/ProductFAQs";
+import ProductReview from "./tabs/ProductReview";
+import ProductDescription from "./tabs/ProductDescription";
+import ProductFAQs from "./tabs/ProductFAQs";
 const ProductTab = () => {
   return (
-    <Tabs selectedIndex={2}>
+    <Tabs>
       <TabList>
         <Tab>Description</Tab>
         <Tab>FAQ & Disclamers</Tab>

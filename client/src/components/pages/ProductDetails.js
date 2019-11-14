@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ImageListView from "../../layout/ImageListView";
-import ProductTab from "./ProductTab";
+import ImageListView from "../layout/ImageListView";
+import ProductTab from "../layout/productView/ProductTab";
 
 //Tabs
 

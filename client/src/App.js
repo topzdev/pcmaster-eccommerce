@@ -10,7 +10,8 @@ import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Home from "./components/pages/Home";
 import Cart from "./components/pages/Cart";
-import ProductDetails from "./components/pages/ProductView/ProductDetails";
+import ProductDetails from "./components/pages/ProductDetails";
+import Search from "./components/pages/Search";
 const App = () => {
   return (
     <Router>
@@ -20,7 +21,8 @@ const App = () => {
         <Route exact path="/" component={Home} />
 
         <Route exact path="/cart" component={Cart} />
-        <Route exact path="/productDetails" component={ProductDetails} />
+        <Route exact path="/overview" component={ProductDetails} />
+        <Route exact path="/search" component={Search} />
       </Switch>
       <Footer />
     </Router>
