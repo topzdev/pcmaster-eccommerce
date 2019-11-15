@@ -19,7 +19,8 @@ const ProductDetails = () => {
           <p className="details__overview mb-2">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus,
             iste magni. Nesciunt libero ab hic dicta dignissimos iusto animi
-            ullam totam repellat sunt, quas facere molestias nobis officiis
+            ullam totam repellat sunt, quas
+             facere molestias nobis officiis
             pariatur. Facere odio voluptates incidunt ullam quasi praesentium
             cum blanditiis voluptatibus nobis.
           </p>
