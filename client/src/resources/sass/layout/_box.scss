@@ -1,8 +1,11 @@
-.badge {
-  font-weight: 700;
-  font-size: 1.8rem;
-  background-color: rgb(66, 66, 66);
-  padding: 0.8rem 1.5rem;
-  border-radius: 10px;
-  color: aqua;
+.showcase {
+	padding: 2rem 0 0 0;
+	a {
+		text-decoration: none;
+		color: var(--prim-col);
+	}
+
+	&:last-child {
+		// margin-bottom: 4rem;
+	}
 }

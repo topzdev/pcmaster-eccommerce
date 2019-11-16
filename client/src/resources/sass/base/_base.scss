@@ -12,7 +12,7 @@ html {
 	font-weight: 300;
 	font-size: 62.5% !important;
 	color: var(--primary-color) !important;
-	background-color: var(--base-color) !important;
+	background-color: #f3f3f3 !important;
 	-webkit-font-smoothing: antialiased;
 }
 
@@ -22,23 +22,28 @@ button {
 	border: none;
 }
 
-p{
+p {
 	font-weight: 400;
 	margin: 0;
 }
 
-h1, h2,h3,h4,h5,h6{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	font-family: 'Montserrat';
 	font-weight: 600;
 	margin: 0;
 }
 
-input[type="number"] {
+input[type='number'] {
 	-webkit-appearance: textfield;
-	   -moz-appearance: textfield;
-			appearance: textfield;
+	-moz-appearance: textfield;
+	appearance: textfield;
 }
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
--webkit-appearance: none;
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+	-webkit-appearance: none;
 }

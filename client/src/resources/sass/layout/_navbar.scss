@@ -1,31 +1,35 @@
 .navbar {
-  height: 8rem;
-  background-color: var(--white-col);
-  color: #fff;
+	height: 8rem;
+	background-color: var(--white-col);
+	color: #fff;
 
-  &__nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 3rem;
-  }
-  &__brand {
-    display: block;
-    height: 5rem;
-  }
-  &__logo {
-    height: 100%;
-  }
-  &__title {
-  }
-  &__list {
-  }
-  &__link {
-  }
-  &__search {
-    display: block;
-    width: 60rem;
-  }
-  &__list {
-  }
+	&__nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 1rem 3rem;
+	}
+	&__brand {
+		display: block;
+		height: 5rem;
+	}
+	&__logo {
+		height: 100%;
+	}
+	&__title {
+	}
+	&__list {
+	}
+	&__link {
+	}
+	&__search {
+		display: block;
+		width: 60rem;
+	}
+	&__list {
+	}
+}
+
+.navbar-fixed {
+	margin-top: -8rem;
 }

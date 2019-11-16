@@ -1,45 +1,46 @@
 //Abstract
-@import "abstracts/color";
-@import "abstracts/function";
-@import "abstracts/mixins";
-@import "abstracts/placeholder";
-@import "abstracts/variables";
+@import 'abstracts/color';
+@import 'abstracts/function';
+@import 'abstracts/mixins';
+@import 'abstracts/placeholder';
+@import 'abstracts/variables';
 
 //Layout
-@import "layout/footer";
-@import "layout/forms";
-@import "layout/grid";
-@import "layout/header";
-@import "layout/navbar";
-@import "layout/sidebar";
-@import "layout/cards";
-@import "layout/search";
-@import "layout/box";
-@import "layout/menu";
-@import "layout/section";
+@import 'layout/footer';
+@import 'layout/forms';
+@import 'layout/grid';
+@import 'layout/header';
+@import 'layout/navbar';
+@import 'layout/sidebar';
+@import 'layout/cards';
+@import 'layout/search';
+@import 'layout/box';
+@import 'layout/menu';
+@import 'layout/section';
 
 //Themes
 
 //Base
-@import "base/animation";
-@import "base/base";
-@import "base/typography";
-@import "base/utilities";
-@import "base/font";
+@import 'base/animation';
+@import 'base/base';
+@import 'base/typography';
+@import 'base/utilities';
+@import 'base/font';
 
 //Components
-@import "components/badges";
-@import "components/buttons";
-@import "components/slider";
-@import "components/cover";
-@import "components/input";
-@import "components/logo";
-@import "components/icons";
+@import 'components/badges';
+@import 'components/buttons';
+@import 'components/carousel';
+@import 'components/cover';
+@import 'components/input';
+@import 'components/logo';
+@import 'components/icons';
 
 //Base
-@import "base/base";
+@import 'base/base';
 
 //Pages
-@import "pages/cart";
-@import "pages/productView";
-@import "pages/search";
+@import 'pages/cart';
+@import 'pages/productView';
+@import 'pages/search';
+@import 'pages/wishlist';
