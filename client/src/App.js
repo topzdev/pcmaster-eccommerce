@@ -1,5 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './store';
 // Stylesheet
 
 // import Navbar from './components/layout/Navbar';
@@ -21,14 +23,15 @@ const App = () => {
 		setAdmin(window.location.pathname.includes('/admin'));
 	}, [admin]);
 	return (
-		<Router>
-			{admin ? (
-				<Fragment>
-					<Admin />
-				</Fragment>
-			) : (
-				<Fragment>
-					{/* <Navbar />
+		<Provider store={store}>
+			<Router>
+				{admin ? (
+					<Fragment>
+						<Admin />
+					</Fragment>
+				) : (
+					<Fragment>
+						{/* <Navbar />
 					<Switch>
 						<Route exact path='/' component={Home} />
 						<Route exact path='/cart' component={Cart} />
@@ -39,9 +42,10 @@ const App = () => {
 					</Switch>
 					<ScrollUpButton />
 					<Footer /> */}
-				</Fragment>
-			)}
-		</Router>
+					</Fragment>
+				)}
+			</Router>
+		</Provider>
 	);
 };
 

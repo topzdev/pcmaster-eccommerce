@@ -9,18 +9,37 @@ import {
 } from '../actions/types';
 
 const initialState = {
-	product: null,
+	products: null,
 	current: null,
 	loading: false,
-	error: null
+	error: null,
+	success: null
 };
 
 export default (state = initialState, action) => {
 	switch (action.type) {
-		case GET_PRODUCTS:
+		case SET_LOADING:
 			return {
 				...state,
 				loading: true
+			};
+		case GET_PRODUCTS:
+			return {
+				...state,
+				loading: false,
+				products: action.payload
+			};
+
+		case ADD_PRODUCT:
+			return {
+				...state,
+				loading: false,
+				success: action.payload
+			};
+		case PRODUCT_ERROR:
+			return {
+				...state,
+				error: action.payload
 			};
 		default:
 			return state;

@@ -1,4 +1,5 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { DropzoneDialog } from 'material-ui-dropzone';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
@@ -13,10 +14,12 @@ import Chip from '@material-ui/core/Chip';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-
 import { Save, Delete } from '@material-ui/icons';
 
 import Description from './ProductAdd/Description';
+
+import { getProducts, addProduct } from '../../../actions/productActions';
+
 const useStyles = makeStyles(theme => ({
 	root: {
 		flexGrow: 1
@@ -57,7 +60,11 @@ const MenuProps = {
 		}
 	}
 };
-const AddProduct = () => {
+
+const AddProduct = ({
+	product: { products, loading, error, success },
+	getProducts
+}) => {
 	const classes = useStyles();
 	const value = {
 		brand: '',
@@ -68,9 +75,14 @@ const AddProduct = () => {
 		price: 0,
 		quantity: 1,
 		overview: '',
-		tags: '',
-		category: []
+		tags: [],
+		category: '',
+		description: []
 	};
+
+	useEffect(() => {
+		getProducts();
+	}, []);
 
 	const [data, setData] = React.useState(value);
 	const [image, setImage] = useState({ open: false, files: [] });
@@ -83,7 +95,8 @@ const AddProduct = () => {
 		tags,
 		price,
 		overview,
-		quantity
+		quantity,
+		description
 	} = data;
 	const { open, files } = image;
 	const handleClose = () => {
@@ -109,6 +122,7 @@ const AddProduct = () => {
 		setData({ ...data, [event.target.name]: event.target.value });
 	return (
 		<Box className={classes.root}>
+			{console.log(products)}
 			<Container>
 				<h1>Add Product</h1>
 				<Grid container spacing={3}>
@@ -167,23 +181,10 @@ const AddProduct = () => {
 							<InputLabel id='category'>Category</InputLabel>
 							<Select
 								labelId='category'
-								multiple
 								value={category}
 								name='category'
 								onChange={onChange}
-								input={<Input id='select-multiple-chip' />}
-								renderValue={selected => (
-									<div className={classes.chips}>
-										{selected.map(value => (
-											<Chip
-												key={value}
-												label={value}
-												className={classes.chip}
-											/>
-										))}
-									</div>
-								)}
-								MenuProps={MenuProps}
+								autoWidth
 							>
 								{names.map(name => (
 									<MenuItem key={name} value={name}>
@@ -215,10 +216,23 @@ const AddProduct = () => {
 							<InputLabel id='tags'>Tags</InputLabel>
 							<Select
 								labelId='tags'
+								multiple
 								value={tags}
 								name='tags'
 								onChange={onChange}
-								autoWidth
+								input={<Input id='select-multiple-chip' />}
+								renderValue={selected => (
+									<div className={classes.chips}>
+										{selected.map(value => (
+											<Chip
+												key={value}
+												label={value}
+												className={classes.chip}
+											/>
+										))}
+									</div>
+								)}
+								MenuProps={MenuProps}
 							>
 								{names.map(name => (
 									<MenuItem key={name} value={name}>
@@ -261,7 +275,7 @@ const AddProduct = () => {
 					<Grid item xs={12}>
 						<h1>Description</h1>
 						<p>Add fields for description of the product.</p>
-						<Description />
+						<Description value={setData} />
 					</Grid>
 					<DropzoneDialog
 						name='img'
@@ -287,6 +301,7 @@ const AddProduct = () => {
 							size='large'
 							className={classes.button}
 							startIcon={<Save />}
+							onClick={() => addProduct(data)}
 						>
 							Save
 						</Button>
@@ -308,5 +323,7 @@ const AddProduct = () => {
 		</Box>
 	);
 };
-
-export default AddProduct;
+const mapStateToProps = state => ({
+	product: state.product
+});
+export default connect(mapStateToProps, { getProducts })(AddProduct);

@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import DescriptionItem from './DescriptionItem';
 import Add from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
-const Description = () => {
+const Description = ({ value }) => {
 	const desc = {
 		title: '',
 		content: ''
