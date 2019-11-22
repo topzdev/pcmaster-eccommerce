@@ -1,0 +1,13 @@
+export const GET_PRODUCTS = 'GET_PRODUCTS';
+export const ADD_PRODUCT = 'ADD_PRODUCT';
+export const DELETE_PRODUCT = 'DELETE_PRODUCT';
+export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
+export const SEARCH_PRODUCT = 'UPDATE_PRODUCT';
+export const PRODUCT_ERROR = 'PRODUCT_ERROR';
+export const ADD_CATEGORY = 'ADD_CATEGORY';
+export const DELETE_CATEGORY = 'DELETE_CATEGORY';
+export const PRODUCT_CATEGORY = 'PRODUCT_CATEGORY';
+export const ADD_TAG = 'ADD_TAG';
+export const DELETE_TAG = 'DELETE_TAG';
+export const PRODUCT_TAG = 'PRODUCT_TAG';
+export const SET_LOADING = 'SET_LOADING';

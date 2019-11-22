@@ -6,20 +6,17 @@
 	box-sizing: border-box;
 }
 
-body,
-html {
-	font-family: 'Roboto', sans-serif;
-	font-weight: 300;
-	font-size: 62.5% !important;
-	color: var(--primary-color) !important;
-	background-color: #f3f3f3 !important;
-	-webkit-font-smoothing: antialiased;
-}
-
 button {
 	background: none;
 	outline: none !important;
 	border: none;
+}
+body {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	color: var(--primary-color) !important;
+	background-color: #f3f3f3 !important;
+	-webkit-font-smoothing: antialiased;
 }
 
 p {
