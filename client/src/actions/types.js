@@ -9,5 +9,5 @@ export const DELETE_CATEGORY = 'DELETE_CATEGORY';
 export const PRODUCT_CATEGORY = 'PRODUCT_CATEGORY';
 export const ADD_TAG = 'ADD_TAG';
 export const DELETE_TAG = 'DELETE_TAG';
-export const PRODUCT_TAG = 'PRODUCT_TAG';
+export const OPTION_ERROR = 'OPTION_ERROR';
 export const SET_LOADING = 'SET_LOADING';

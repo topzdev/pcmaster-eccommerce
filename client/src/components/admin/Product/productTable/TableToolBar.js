@@ -45,8 +45,4 @@ const EnhancedTableToolbar = props => {
 	);
 };
 
-EnhancedTableToolbar.propTypes = {
-	numSelected: PropTypes.number.isRequired
-};
-
 export default EnhancedTableToolbar;

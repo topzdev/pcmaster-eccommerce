@@ -81,7 +81,7 @@ const AddProduct = ({
 	};
 
 	useEffect(() => {
-		getProducts();
+		// getProducts();
 	}, []);
 
 	const [data, setData] = React.useState(value);
