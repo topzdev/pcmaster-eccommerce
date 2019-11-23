@@ -5,13 +5,18 @@ import {
 	ListItemSecondaryAction,
 	ListItemText
 } from '@material-ui/core';
+
 import { Delete } from '@material-ui/icons';
-const ModalListItem = ({ data }) => {
+const ModalListItem = ({ data, deleteItem }) => {
 	return (
 		<ListItem>
-			<ListItemText primary='ASUS' secondary='Secondary text' />
+			<ListItemText primary={data.title} />
 			<ListItemSecondaryAction>
-				<IconButton edge='end' aria-label='delete'>
+				<IconButton
+					edge='end'
+					aria-label='delete'
+					onClick={e => deleteItem(data._id)}
+				>
 					<Delete />
 				</IconButton>
 			</ListItemSecondaryAction>

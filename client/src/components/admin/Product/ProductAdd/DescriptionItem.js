@@ -26,7 +26,6 @@ const DescriptionItem = ({ value, idx, set, remove }) => {
 					label='Title'
 					name='title'
 					className={classes.textField}
-					margin='normal'
 					value={title}
 					onChange={onChange}
 				/>
@@ -39,7 +38,6 @@ const DescriptionItem = ({ value, idx, set, remove }) => {
 					name='content'
 					multiline={true}
 					className={classes.textField}
-					margin='normal'
 					value={content}
 					onChange={onChange}
 				/>

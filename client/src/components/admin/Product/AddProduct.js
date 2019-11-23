@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
@@ -13,12 +14,17 @@ import Select from '@material-ui/core/Select';
 import Chip from '@material-ui/core/Chip';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
 import { Save, Delete } from '@material-ui/icons';
 
 import Description from './ProductAdd/Description';
 
 import { getProducts, addProduct } from '../../../actions/productActions';
+
+import {
+	getCategory,
+	getBrand,
+	getTags
+} from '../../../actions/optionsActions';
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -37,19 +43,6 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const names = [
-	'Oliver Hansen',
-	'Van Henry',
-	'April Tucker',
-	'Ralph Hubbard',
-	'Omar Alexander',
-	'Carlos Abbott',
-	'Miriam Wagner',
-	'Bradley Wilkerson',
-	'Virginia Andrews',
-	'Kelly Snyder'
-];
-
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -63,7 +56,11 @@ const MenuProps = {
 
 const AddProduct = ({
 	product: { products, loading, error, success },
-	getProducts
+	options: { categories, brands, tags },
+	getProducts,
+	getCategory,
+	getBrand,
+	getTags
 }) => {
 	const classes = useStyles();
 	const value = {
@@ -75,13 +72,16 @@ const AddProduct = ({
 		price: 0,
 		quantity: 1,
 		overview: '',
-		tags: [],
+		tag: [],
 		category: '',
 		description: []
 	};
 
 	useEffect(() => {
-		// getProducts();
+		getProducts();
+		getBrand();
+		getCategory();
+		getTags();
 	}, []);
 
 	const [data, setData] = React.useState(value);
@@ -92,7 +92,7 @@ const AddProduct = ({
 		barcode,
 		name,
 		sku,
-		tags,
+		tag,
 		price,
 		overview,
 		quantity,
@@ -122,9 +122,8 @@ const AddProduct = ({
 		setData({ ...data, [event.target.name]: event.target.value });
 	return (
 		<Box className={classes.root}>
-			{console.log(products)}
 			<Container>
-				<h1>Add Product</h1>
+				<h1 style={{ marginTop: '30px' }}>Add Product</h1>
 				<Grid container spacing={3}>
 					<Grid item xs={6}>
 						<TextField
@@ -133,7 +132,6 @@ const AddProduct = ({
 							label='Product Name'
 							name='name'
 							className={classes.textField}
-							margin='normal'
 							value={name}
 							onChange={onChange}
 						/>
@@ -145,8 +143,18 @@ const AddProduct = ({
 							label='Barcode'
 							name='barcode'
 							className={classes.textField}
-							margin='normal'
 							value={barcode}
+							onChange={onChange}
+						/>
+					</Grid>
+					<Grid item xs={3}>
+						<TextField
+							required
+							fullWidth
+							label='Stock keeping unit label'
+							name='ski'
+							className={classes.textField}
+							value={sku}
 							onChange={onChange}
 						/>
 					</Grid>
@@ -157,12 +165,12 @@ const AddProduct = ({
 							label='Price'
 							name='price'
 							className={classes.textField}
-							margin='normal'
 							value={price}
 							onChange={onChange}
 							type='number'
 						/>
 					</Grid>
+
 					<Grid item xs={3}>
 						<TextField
 							required
@@ -170,7 +178,6 @@ const AddProduct = ({
 							label='Quantity'
 							name='quantity'
 							className={classes.textField}
-							margin='normal'
 							value={quantity}
 							onChange={onChange}
 							type='number'
@@ -186,11 +193,12 @@ const AddProduct = ({
 								onChange={onChange}
 								autoWidth
 							>
-								{names.map(name => (
-									<MenuItem key={name} value={name}>
-										{name}
-									</MenuItem>
-								))}
+								{categories != null &&
+									categories.map(category => (
+										<MenuItem key={category._id} value={category.title}>
+											{category.title}
+										</MenuItem>
+									))}
 							</Select>
 						</FormControl>
 					</Grid>
@@ -204,47 +212,43 @@ const AddProduct = ({
 								onChange={onChange}
 								autoWidth
 							>
-								<MenuItem value=''>Select Brand</MenuItem>
-								<MenuItem value='msi'>MSI</MenuItem>
-								<MenuItem value='asus'>Asus</MenuItem>
-								<MenuItem value='zotac'>Zotac</MenuItem>
+								{brands != null &&
+									brands.map(brand => (
+										<MenuItem key={brand._id} value={brand.title}>
+											{brand.title}
+										</MenuItem>
+									))}
 							</Select>
 						</FormControl>
 					</Grid>
 					<Grid item xs={3}>
 						<FormControl className={classes.formControl}>
-							<InputLabel id='tags'>Tags</InputLabel>
+							<InputLabel id='tag'>Tags</InputLabel>
 							<Select
-								labelId='tags'
+								labelId='tag'
 								multiple
-								value={tags}
-								name='tags'
+								value={tag}
+								name='tag'
 								onChange={onChange}
 								input={<Input id='select-multiple-chip' />}
 								renderValue={selected => (
 									<div className={classes.chips}>
-										{selected.map(value => (
-											<Chip
-												key={value}
-												label={value}
-												className={classes.chip}
-											/>
+										{selected.map(tag => (
+											<Chip key={tag} label={tag} className={classes.chip} />
 										))}
 									</div>
 								)}
 								MenuProps={MenuProps}
 							>
-								{names.map(name => (
-									<MenuItem key={name} value={name}>
-										{name}
-									</MenuItem>
-								))}
+								{tags != null &&
+									tags.map(tag => (
+										<MenuItem key={tag._id} value={tag.title}>
+											{tag.title}
+										</MenuItem>
+									))}
 							</Select>
 						</FormControl>
 					</Grid>
-				</Grid>
-
-				<Grid container spacing={3}>
 					<Grid item xs={6}>
 						{' '}
 						<TextField
@@ -254,27 +258,29 @@ const AddProduct = ({
 							label='Overview'
 							name='overview'
 							className={classes.textField}
-							margin='normal'
 							value={overview}
 							onChange={onChange}
 							type='number'
 						/>
 					</Grid>
+				</Grid>
 
+				<Grid container spacing={3}>
 					<Grid item xs={6}>
 						<FormControl className={classes.formControl}>
 							<Button
 								variant='contained'
 								className={classes.button}
 								onClick={handleOpen}
+								margin='normal'
 							>
 								Upload Images
 							</Button>
 						</FormControl>
 					</Grid>
 					<Grid item xs={12}>
-						<h1>Description</h1>
-						<p>Add fields for description of the product.</p>
+						<h3>Description</h3>
+						<p className='mb-3'>Add fields for description of the product.</p>
 						<Description value={setData} />
 					</Grid>
 					<DropzoneDialog
@@ -324,6 +330,12 @@ const AddProduct = ({
 	);
 };
 const mapStateToProps = state => ({
-	product: state.product
+	product: state.product,
+	options: state.options
 });
-export default connect(mapStateToProps, { getProducts })(AddProduct);
+export default connect(mapStateToProps, {
+	getProducts,
+	getCategory,
+	getBrand,
+	getTags
+})(AddProduct);

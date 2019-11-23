@@ -14,7 +14,7 @@ const Category = require('../model/Category');
 router.get('/category', async (req, res) => {
 	try {
 		let category = await Category.find({});
-		res.status(400).json(category);
+		res.status(200).json(category);
 	} catch (err) {
 		console.error(err.message);
 		return res.status(500).send('Server Error');
@@ -65,7 +65,7 @@ router.post(
 //@route    DELETE api/options/category
 //@desc     delete category
 //@access   public
-router.use('/category/:id', async (req, res) => {
+router.delete('/category/:id', async (req, res) => {
 	const { id } = req.params;
 	try {
 		let category = await Category.findById(id);
@@ -94,7 +94,7 @@ const Tags = require('../model/Tags');
 router.get('/tags', async (req, res) => {
 	try {
 		let tags = await Tags.find({});
-		res.status(400).json(tags);
+		res.status(200).json(tags);
 	} catch (err) {
 		console.error(err.message);
 		return res.status(500).send('Server Error');
@@ -141,7 +141,7 @@ router.post(
 //@route    DELETE api/options/tags
 //@desc     delete tags
 //@access   public
-router.use('/tags/:id', async (req, res) => {
+router.delete('/tags/:id', async (req, res) => {
 	const { id } = req.params;
 	try {
 		let tags = await Tags.findById(id);
@@ -166,7 +166,7 @@ const Brand = require('../model/Brand');
 router.get('/brand', async (req, res) => {
 	try {
 		let brand = await Brand.find({});
-		res.status(400).json(brand);
+		res.status(200).json(brand);
 	} catch (err) {
 		console.error(err.message);
 		return res.status(500).send('Server Error');
@@ -215,7 +215,7 @@ router.post(
 //@route    DELETE api/options/brand
 //@desc     delete brand
 //@access   public
-router.use('/brand/:id', async (req, res) => {
+router.delete('/brand/:id', async (req, res) => {
 	const { id } = req.params;
 	try {
 		let brand = await Brand.findById(id);

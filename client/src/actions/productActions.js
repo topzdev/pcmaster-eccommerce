@@ -48,38 +48,39 @@ export const addProduct = data => async dispatch => {
 		});
 	}
 };
-// export const deleteProduct = id => async dispatch => {
-// 	try {
-// 		setLoading();
-// 		const res = await axios.delete(`/api/product/${id}`);
-// 		dispatch({
-// 			type: DELETE_PRODUCT,
-// 			payload: res.data
-// 		});
-// 	} catch (err) {
-// 		console.log(err.response.data);
-// 		dispatch({
-// 			type: PRODUCT_ERROR,
-// 			payload: err.response.data
-// 		});
-// 	}
-// };
-// export const updateProduct = data => async dispatch => {
-// 	try {
-// 		setLoading();
-// 		const res = await axios.put(`/api/product/${id}`, data);
-// 		dispatch({
-// 			type: UPDATE_PRODUCT,
-// 			payload: res.data
-// 		});
-// 	} catch (err) {
-// 		console.log(err.response.data);
-// 		dispatch({
-// 			type: PRODUCT_ERROR,
-// 			payload: err.response.data
-// 		});
-// 	}
-// };
+export const deleteProduct = id => async dispatch => {
+	try {
+		setLoading();
+		const res = await axios.delete(`/api/product/${id}`);
+		dispatch({
+			type: DELETE_PRODUCT,
+			payload: res.data
+		});
+	} catch (err) {
+		console.log(err.response.data);
+		dispatch({
+			type: PRODUCT_ERROR,
+			payload: err.response.data
+		});
+	}
+};
+export const updateProduct = data => async dispatch => {
+	const { _id } = data;
+	try {
+		setLoading();
+		const res = await axios.put(`/api/product/${_id}`, data);
+		dispatch({
+			type: UPDATE_PRODUCT,
+			payload: res.data
+		});
+	} catch (err) {
+		console.log(err.response.data);
+		dispatch({
+			type: PRODUCT_ERROR,
+			payload: err.response.data
+		});
+	}
+};
 export const searchProduct = () => async dispatch => {};
 
 export const setLoading = () => {

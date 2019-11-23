@@ -1,4 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import {
+	getCategory,
+	addCategory,
+	deleteCategory
+} from '../../../../actions/optionsActions';
 import {
 	makeStyles,
 	Dialog,
@@ -11,7 +17,7 @@ import {
 	Fab,
 	Grid
 } from '@material-ui/core';
-import { CategoryOutlined, Add as AddIcon } from '@material-ui/icons';
+import { Add as AddIcon } from '@material-ui/icons';
 import ModalList from './modalList/ModalList';
 
 const useStyles = makeStyles(theme => ({
@@ -23,10 +29,33 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const CategoryModal = ({ show, set }) => {
+const CategoryModal = ({
+	show,
+	set,
+	options: { categories },
+	getCategory,
+	addCategory,
+	deleteCategory
+}) => {
 	const classes = useStyles();
+	const [title, setTitle] = useState('');
+	useEffect(() => {
+		if (categories == null && show === true) {
+			getCategory();
+			console.log('fetch');
+		}
+	}, []);
+
+	const onChange = e => setTitle(e.target.value);
+
+	const onAddCategory = () => {
+		addCategory(title);
+		setTitle('');
+	};
+
 	return (
 		<div>
+			{console.log(categories)}
 			<Dialog
 				open={show}
 				onClose={() => set(false)}
@@ -45,9 +74,11 @@ const CategoryModal = ({ show, set }) => {
 										<TextField
 											autoFocus
 											margin='dense'
-											id='name'
+											name='title'
+											valuue={title}
 											label='Add Category'
 											fullWidth
+											onChange={onChange}
 										/>
 									</div>
 									<div style={{ flex: 0 }}>
@@ -56,6 +87,7 @@ const CategoryModal = ({ show, set }) => {
 											aria-label='add'
 											mt={2}
 											style={{ marginLeft: 'auto' }}
+											onClick={onAddCategory}
 										>
 											<AddIcon />
 										</Fab>
@@ -64,7 +96,7 @@ const CategoryModal = ({ show, set }) => {
 							</div>
 						</Grid>
 						<Grid item xs={12}>
-							<ModalList />
+							<ModalList data={categories} deleteItem={deleteCategory} />
 						</Grid>
 					</Grid>
 				</DialogContent>
@@ -78,4 +110,12 @@ const CategoryModal = ({ show, set }) => {
 	);
 };
 
-export default CategoryModal;
+const mapStateToProps = state => ({
+	options: state.options
+});
+
+export default connect(mapStateToProps, {
+	getCategory,
+	addCategory,
+	deleteCategory
+})(CategoryModal);
