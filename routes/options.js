@@ -42,19 +42,19 @@ router.post(
 
 		const { title } = req.body;
 		try {
-			console.log(title);
 			let category = await Category.find({ title });
-			console.log(category);
 			if (!_.isEmpty(category))
 				return res
 					.status(400)
 					.json({ type: 'error', msg: 'Category is already exist' });
 
 			category = new Category({ title });
-			await category.save();
-			res
-				.status(200)
-				.json({ type: 'success', msg: 'Category Successfully Added' });
+			category = await category.save();
+			res.status(200).json({
+				type: 'success',
+				msg: 'Category Successfully Added',
+				data: category
+			});
 		} catch (error) {
 			console.error(error.message);
 			return res.status(500).send('Server Error');
@@ -129,8 +129,10 @@ router.post(
 					.json({ type: 'error', msg: 'Tag is already exist' });
 
 			tags = new Tags({ title });
-			await tags.save();
-			res.status(200).json({ type: 'success', msg: 'Tag Successfully Added' });
+			tags = await tags.save();
+			res
+				.status(200)
+				.json({ type: 'success', msg: 'Tag Successfully Added', data: tags });
 		} catch (error) {
 			console.error(error.message);
 			return res.status(500).send('Server Error');
@@ -201,10 +203,14 @@ router.post(
 					.json({ type: 'error', msg: 'Brand is already exist' });
 
 			brand = new Brand({ title });
-			await brand.save();
+			brand = await brand.save();
 			res
 				.status(200)
-				.json({ type: 'success', msg: 'Brand Successfully Added' });
+				.json({
+					type: 'success',
+					msg: 'Brand Successfully Added',
+					data: brand
+				});
 		} catch (error) {
 			console.error(error.message);
 			return res.status(500).send('Server Error');

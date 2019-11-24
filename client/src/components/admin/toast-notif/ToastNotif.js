@@ -1,20 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import { useToast } from 'react-toast-notifications';
+import React, { useEffect, useState, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { useSnackbar } from 'notistack';
 const ToastNotif = ({ options, product }) => {
-	const { addToast } = useToast();
-	const toastVal = {
-		content: '',
-		type: ''
-	};
-	const [toast, setToast] = useState(toastVal);
-	useEffect(() => {}, [
-		options.error,
-		product.error,
-		product.success,
-		options.success
-	]);
-	return <div>{addToast(toast.content, { appearance: toast.type })}</div>;
+	const { enqueueSnackbar } = useSnackbar();
+
+	useEffect(() => {
+		let error = options.error;
+		console.log(error);
+		if (error != null) {
+			enqueueSnackbar(error.msg || error.msg.errors[0].msg, {
+				variant: error.type
+			});
+		}
+
+		let success = options.success;
+		console.log(success);
+		if (success != null)
+			enqueueSnackbar(success.msg, { variant: success.type });
+	}, [options.error, options.success]);
+	return <Fragment></Fragment>;
 };
 
 const mapStateToProps = state => ({

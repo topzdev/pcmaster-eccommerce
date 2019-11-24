@@ -6,8 +6,12 @@ const ModalList = ({ data, deleteItem }) => {
 		<List dense={true}>
 			<Divider />
 			{data != null &&
-				data.map(item => (
-					<ModalListItem key={item._id} data={item} deleteItem={deleteItem} />
+				data.map((item, idx) => (
+					<ModalListItem
+						key={item._id || idx}
+						data={item}
+						deleteItem={deleteItem}
+					/>
 				))}
 		</List>
 	);

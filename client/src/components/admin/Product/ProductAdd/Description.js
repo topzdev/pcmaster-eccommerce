@@ -19,13 +19,11 @@ const Description = ({ value }) => {
 	};
 
 	const changeValue = (idx, value) => {
-		console.log(idx, value);
 		description[idx] = value;
 		setDescription([...description]);
 	};
 	return (
 		<Grid container spacing={3} alignItems='flex-start'>
-			{console.log(description)}
 			{description.map((item, idx) => (
 				<DescriptionItem
 					key={idx}

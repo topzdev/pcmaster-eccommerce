@@ -4,15 +4,16 @@ import { makeStyles } from '@material-ui/core/styles';
 import SpeedDial from '@material-ui/lab/SpeedDial';
 import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
 import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
-import {
-	List as ListIcon,
-	ShoppingCart,
-	LoyaltyOutlined,
-	CategoryOutlined
-} from '@material-ui/icons';
+import Backdrop from '@material-ui/core/Backdrop';
+import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
+import CategoryOutlined from '@material-ui/icons/CategoryOutlined';
+import LoyaltyOutlined from '@material-ui/icons/LoyaltyOutlined';
+import ShoppingCart from '@material-ui/icons/ShoppingCart';
+import { List as ListIcon } from '@material-ui/icons';
 
 import CategoryModal from '../layout/modal/CategoryModal';
 import TagModal from '../layout/modal/TagModal';
+import BrandModal from '../layout/modal/BrandModal';
 const useStyles = makeStyles(theme => ({
 	root: {
 		height: 380,
@@ -26,17 +27,18 @@ const useStyles = makeStyles(theme => ({
 		zIndex: 2000
 	},
 	backdrop: {
-		zIndex: 4000
+		zIndex: 2000
 	}
 }));
 
-const SpeedDialButtons = (props, { setPage }) => {
+const SpeedDialButtons = () => {
 	const classes = useStyles();
 	const history = useHistory();
 	const [open, setOpen] = React.useState(false);
 	const [hidden, setHidden] = React.useState(false);
 	const [showCategory, setCategory] = React.useState(false);
 	const [showTag, setTag] = React.useState(false);
+	const [showBrand, setBrand] = React.useState(false);
 
 	const handleOpen = () => {
 		setOpen(true);
@@ -46,20 +48,19 @@ const SpeedDialButtons = (props, { setPage }) => {
 		setOpen(false);
 	};
 
-	const openCategoryModal = () => {
-		setCategory(true);
-		handleClose();
-	};
-
 	const changeUrl = path => {
 		history.push(path);
 	};
 
+	const showModal = modal => {
+		modal(true);
+		setHidden(true);
+	};
+
 	return (
 		<div>
-			{/* <Backdrop className={classes.backdrop} open={open} /> */}
 			<SpeedDial
-				ariaLabel='SpeedDial openIcon example'
+				ariaLabel='Product Speed Dial'
 				className={classes.speedDial}
 				hidden={hidden}
 				icon={<SpeedDialIcon />}
@@ -87,9 +88,14 @@ const SpeedDialButtons = (props, { setPage }) => {
 					tooltipTitle={'Add Tags'}
 					onClick={() => setTag(true)}
 				/>
-				{/* {console.log(showCategory)} */}
+				<SpeedDialAction
+					icon={<DescriptionOutlinedIcon />}
+					tooltipTitle={'Add Brand'}
+					onClick={() => setBrand(true)}
+				/>
 				<CategoryModal show={showCategory} set={setCategory} />
 				<TagModal show={showTag} set={setTag} />
+				<BrandModal show={showBrand} set={setBrand} />
 			</SpeedDial>
 		</div>
 	);

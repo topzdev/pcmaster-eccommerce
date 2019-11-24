@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import {
-	getTags,
-	addTags,
-	deleteTags
+	getBrand,
+	addBrand,
+	deleteBrand
 } from '../../../../actions/optionsActions';
-
 import { makeStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -30,26 +29,26 @@ const useStyles = makeStyles(theme => ({
 const BrandModal = ({
 	show,
 	set,
-	options: { tags },
-	getTags,
-	addTags,
-	deleteTags
+	options: { brands },
+	getBrand,
+	addBrand,
+	deleteBrand
 }) => {
 	const classes = useStyles();
 	const [title, setTitle] = useState('');
 	useEffect(() => {
-		if (tags === null) getTags();
+		if (brands === null) getBrand();
 	}, []);
 
 	const onChange = e => setTitle(e.target.value);
 
-	const onaddTags = () => {
-		addTags({ title });
+	const onaddBrand = () => {
+		addBrand({ title });
 		clearField();
 	};
 
 	const onDelCategory = _id => {
-		deleteTags(_id);
+		deleteBrand(_id);
 		clearField();
 	};
 
@@ -66,7 +65,7 @@ const BrandModal = ({
 				maxWidth={'sm'}
 				aria-labelledby='form-dialog-title'
 			>
-				<DialogTitle id='form-dialog-title'>Tags</DialogTitle>
+				<DialogTitle id='form-dialog-title'>Brand</DialogTitle>
 				<DialogContent>
 					<Grid container>
 						<Grid item xs={12}>
@@ -78,7 +77,7 @@ const BrandModal = ({
 											margin='dense'
 											name='title'
 											value={title}
-											label='Add Tag'
+											label='Add Brand'
 											fullWidth
 											onChange={onChange}
 										/>
@@ -89,7 +88,7 @@ const BrandModal = ({
 											aria-label='add'
 											mt={2}
 											style={{ marginLeft: 'auto' }}
-											onClick={onaddTags}
+											onClick={onaddBrand}
 										>
 											<AddIcon />
 										</Fab>
@@ -98,7 +97,7 @@ const BrandModal = ({
 							</div>
 						</Grid>
 						<Grid item xs={12}>
-							<ModalList data={tags} deleteItem={onDelCategory} />
+							<ModalList data={brands} deleteItem={onDelCategory} />
 						</Grid>
 					</Grid>
 				</DialogContent>
@@ -117,7 +116,7 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, {
-	getTags,
-	addTags,
-	deleteTags
+	getBrand,
+	addBrand,
+	deleteBrand
 })(BrandModal);

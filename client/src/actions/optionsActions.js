@@ -30,20 +30,15 @@ export const getCategory = () => async dispatch => {
 			type: GET_CATEGORY,
 			payload: res.data
 		});
-	} catch (err) {
-		console.error(err.response.data);
-		dispatch({
-			type: OPTION_ERROR,
-			payload: err.response.data
-		});
-	}
+	} catch (err) {}
 };
 
 //Add Category
 export const addCategory = category => async dispatch => {
 	try {
 		setLoading();
-		const res = await axios.post('/api/options/category', category);
+		const res = await axios.post('/api/options/category', category, config);
+		console.log(category, 'Hello');
 		dispatch({
 			type: ADD_CATEGORY,
 			payload: res.data
@@ -64,7 +59,10 @@ export const deleteCategory = id => async dispatch => {
 		const res = await axios.delete(`/api/options/category/${id}`);
 		dispatch({
 			type: DELETE_CATEGORY,
-			payload: res.data
+			payload: {
+				msg: res.data,
+				data: id
+			}
 		});
 	} catch (err) {
 		console.error(err.response.data);
@@ -121,7 +119,10 @@ export const deleteTags = id => async dispatch => {
 		const res = await axios.delete(`/api/options/tags/${id}`);
 		dispatch({
 			type: DELETE_TAG,
-			payload: res.data
+			payload: {
+				msg: res.data,
+				data: id
+			}
 		});
 	} catch (err) {
 		console.error(err.response.data);
@@ -178,7 +179,10 @@ export const deleteBrand = id => async dispatch => {
 		const res = await axios.delete(`/api/options/brand/${id}`);
 		dispatch({
 			type: DELETE_BRAND,
-			payload: res.data
+			payload: {
+				msg: res.data,
+				data: id
+			}
 		});
 	} catch (err) {
 		console.error(err.response.data);

@@ -1,24 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import { makeStyles } from '@material-ui/core/styles';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
+import Grid from '@material-ui/core/Grid';
+import { Add as AddIcon } from '@material-ui/icons';
+import ModalList from './modalList/ModalList';
 import {
 	getCategory,
 	addCategory,
 	deleteCategory
 } from '../../../../actions/optionsActions';
-import {
-	makeStyles,
-	Dialog,
-	DialogActions,
-	DialogContent,
-	DialogContentText,
-	DialogTitle,
-	TextField,
-	Button,
-	Fab,
-	Grid
-} from '@material-ui/core';
-import { Add as AddIcon } from '@material-ui/icons';
-import ModalList from './modalList/ModalList';
 
 const useStyles = makeStyles(theme => ({
 	grid: {
@@ -40,22 +37,27 @@ const CategoryModal = ({
 	const classes = useStyles();
 	const [title, setTitle] = useState('');
 	useEffect(() => {
-		if (categories == null && show === true) {
-			getCategory();
-			console.log('fetch');
-		}
+		if (categories === null) getCategory();
 	}, []);
 
 	const onChange = e => setTitle(e.target.value);
 
 	const onAddCategory = () => {
-		addCategory(title);
+		addCategory({ title });
+		clearField();
+	};
+
+	const onDelCategory = _id => {
+		deleteCategory(_id);
+		clearField();
+	};
+
+	const clearField = () => {
 		setTitle('');
 	};
 
 	return (
 		<div>
-			{console.log(categories)}
 			<Dialog
 				open={show}
 				onClose={() => set(false)}
@@ -65,7 +67,6 @@ const CategoryModal = ({
 			>
 				<DialogTitle id='form-dialog-title'>Category</DialogTitle>
 				<DialogContent>
-					<DialogContentText>Add and Delete Category</DialogContentText>
 					<Grid container>
 						<Grid item xs={12}>
 							<div>
@@ -75,7 +76,7 @@ const CategoryModal = ({
 											autoFocus
 											margin='dense'
 											name='title'
-											valuue={title}
+											value={title}
 											label='Add Category'
 											fullWidth
 											onChange={onChange}
@@ -96,7 +97,7 @@ const CategoryModal = ({
 							</div>
 						</Grid>
 						<Grid item xs={12}>
-							<ModalList data={categories} deleteItem={deleteCategory} />
+							<ModalList data={categories} deleteItem={onDelCategory} />
 						</Grid>
 					</Grid>
 				</DialogContent>
