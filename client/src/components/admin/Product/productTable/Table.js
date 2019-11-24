@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import Paper from '@material-ui/core/Paper';
@@ -6,55 +6,14 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
+import IconButton from '@material-ui/core/IconButton';
+import TableHead from '@material-ui/core/TableHead';
+import EditIcon from '@material-ui/icons/Edit';
 
 import EnhancedTableToolbar from './TableToolBar';
-import EnhancedTableHead from './TableHead';
+import { getProducts } from '../../../../actions/productActions';
 
-function desc(a, b, orderBy) {
-	if (b[orderBy] < a[orderBy]) {
-		return -1;
-	}
-	if (b[orderBy] > a[orderBy]) {
-		return 1;
-	}
-	return 0;
-}
-
-function stableSort(array, cmp) {
-	const stabilizedThis = array.map((el, index) => [el, index]);
-	stabilizedThis.sort((a, b) => {
-		const order = cmp(a[0], b[0]);
-		if (order !== 0) return order;
-		return a[1] - b[1];
-	});
-	return stabilizedThis.map(el => el[0]);
-}
-
-function getSorting(order, orderBy) {
-	return order === 'desc'
-		? (a, b) => desc(a, b, orderBy)
-		: (a, b) => -desc(a, b, orderBy);
-}
-
-function createData(name, calories, fat, carbs, protein) {
-	return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-	createData('Cupcake', 305, 3.7, 67, 4.3),
-	createData('Donut', 452, 25.0, 51, 4.9),
-	createData('Eclair', 262, 16.0, 24, 6.0),
-	createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-	createData('Gingerbread', 356, 16.0, 49, 3.9),
-	createData('Honeycomb', 408, 3.2, 87, 6.5),
-	createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-	createData('Jelly Bean', 375, 0.0, 94, 0.0),
-	createData('KitKat', 518, 26.0, 65, 7.0),
-	createData('Lollipop', 392, 0.2, 98, 0.0),
-	createData('Marshmallow', 318, 0, 81, 2.0),
-	createData('Nougat', 360, 19.0, 9, 37.0),
-	createData('Oreo', 437, 18.0, 63, 4.0)
-];
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -84,18 +43,16 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-export default function EnhancedTable() {
+const EnhancedTable = ({ product: { products }, getProducts }) => {
 	const classes = useStyles();
 	const [order, setOrder] = React.useState('asc');
 	const [orderBy, setOrderBy] = React.useState('calories');
 	const [page, setPage] = React.useState(0);
 	const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
-	const handleRequestSort = (event, property) => {
-		const isDesc = orderBy === property && order === 'desc';
-		setOrder(isDesc ? 'asc' : 'desc');
-		setOrderBy(property);
-	};
+	useEffect(() => {
+		if (products === null) getProducts();
+	}, []);
 
 	const handleChangePage = (event, newPage) => {
 		setPage(newPage);
@@ -106,11 +63,9 @@ export default function EnhancedTable() {
 		setPage(0);
 	};
 
-	const emptyRows =
-		rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
-
 	return (
 		<div className={classes.root}>
+			{console.log(products)}
 			<Paper className={classes.paper}>
 				<EnhancedTableToolbar />
 				<div className={classes.tableWrapper}>
@@ -120,54 +75,53 @@ export default function EnhancedTable() {
 						size='medium'
 						aria-label='enhanced table'
 					>
-						<EnhancedTableHead
-							classes={classes}
-							order={order}
-							orderBy={orderBy}
-							onRequestSort={handleRequestSort}
-							rowCount={rows.length}
-						/>
+						<TableHead>
+							<TableRow>
+								<TableCell
+									align={'left'}
+									padding={'default'}
+									component='th'
+									scope='row'
+								>
+									Name
+								</TableCell>
+								<TableCell align={'left'}>Barcode</TableCell>
+								<TableCell align={'left'}>Sku</TableCell>
+								<TableCell align={'left'}>Price</TableCell>
+								<TableCell align={'left'}>Quantity</TableCell>
+								<TableCell align={'left'}>Actions</TableCell>
+							</TableRow>
+						</TableHead>
 						<TableBody>
-							{stableSort(rows, getSorting(order, orderBy))
-								.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-								.map((row, index) => {
-									const labelId = `enhanced-table-checkbox-${index}`;
-
-									return (
-										<TableRow
-											hover
-											role='checkbox'
-											tabIndex={-1}
-											key={row.name}
+							{products != null &&
+								products.map(product => (
+									<TableRow key={product._id} hover>
+										<TableCell
+											align={'left'}
+											padding={'default'}
+											component='th'
+											scope='row'
 										>
-											<TableCell padding='checkbox'></TableCell>
-											<TableCell
-												component='th'
-												id={labelId}
-												scope='row'
-												padding='none'
-											>
-												{row.name}
-											</TableCell>
-											<TableCell align='right'>{row.calories}</TableCell>
-											<TableCell align='right'>{row.fat}</TableCell>
-											<TableCell align='right'>{row.carbs}</TableCell>
-											<TableCell align='right'>{row.protein}</TableCell>
-										</TableRow>
-									);
-								})}
-							{emptyRows > 0 && (
-								<TableRow style={{ height: 53 * emptyRows }}>
-									<TableCell colSpan={6} />
-								</TableRow>
-							)}
+											{product.name}
+										</TableCell>
+										<TableCell>{product.barcode}</TableCell>
+										<TableCell>{product.sku}</TableCell>
+										<TableCell>{product.price}</TableCell>
+										<TableCell>{product.quantity}</TableCell>
+										<TableCell padding={'none'}>
+											<IconButton aria-label='edit' margin={'none'}>
+												<EditIcon />
+											</IconButton>
+										</TableCell>
+									</TableRow>
+								))}
 						</TableBody>
 					</Table>
 				</div>
 				<TablePagination
 					rowsPerPageOptions={[5, 10, 25]}
 					component='div'
-					count={rows.length}
+					count={products != null ? products.length : 0}
 					rowsPerPage={rowsPerPage}
 					page={page}
 					backIconButtonProps={{
@@ -182,4 +136,8 @@ export default function EnhancedTable() {
 			</Paper>
 		</div>
 	);
-}
+};
+const mapStateToProps = state => ({
+	product: state.product
+});
+export default connect(mapStateToProps, { getProducts })(EnhancedTable);

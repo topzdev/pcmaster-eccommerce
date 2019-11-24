@@ -8,6 +8,7 @@ import {
 	UPDATE_PRODUCT,
 	PRODUCT_ERROR,
 	UPLOAD_IMAGE,
+	PRODUCT_LOADING,
 	SET_LOADING,
 	CLEAR_ERROR,
 	CLEAR_SUCCESS
@@ -19,10 +20,17 @@ const config = {
 	}
 };
 
+const setLoading = () => dispatch => {
+	dispatch({
+		type: PRODUCT_LOADING
+	});
+};
+
 export const getProducts = () => async dispatch => {
 	try {
 		setLoading();
 		const res = await axios.get('/api/product/', config);
+		console.log(res.data);
 		dispatch({
 			type: GET_PRODUCTS,
 			payload: res.data
@@ -36,9 +44,8 @@ export const getProducts = () => async dispatch => {
 	}
 };
 export const addProduct = (data, images) => async dispatch => {
+	setLoading();
 	try {
-		setLoading();
-
 		//Product Fields uploading to database first
 		const res = await axios.post('/api/product/', data, config);
 
@@ -56,7 +63,7 @@ export const addProduct = (data, images) => async dispatch => {
 		);
 
 		//Updating the img of uploaded data
-		const updateQuery = await axios.put(
+		await axios.put(
 			'/api/product/update-img',
 			{
 				_id: res.data.data._id,
@@ -111,12 +118,6 @@ export const updateProduct = data => async dispatch => {
 	}
 };
 export const searchProduct = () => async dispatch => {};
-
-export const setLoading = () => dispatch => {
-	dispatch({
-		type: SET_LOADING
-	});
-};
 
 export const clearError = () => dispatch => {
 	dispatch({

@@ -7,25 +7,20 @@ import {
 	PRODUCT_ERROR,
 	SET_LOADING,
 	CLEAR_ERROR,
-	CLEAR_SUCCESS
+	CLEAR_SUCCESS,
+	PRODUCT_LOADING
 } from '../actions/types';
 
 const initialState = {
 	products: null,
 	current: null,
-	loading: false,
+	loading: null,
 	error: null,
 	success: null
 };
 
 export default (state = initialState, action) => {
 	switch (action.type) {
-		case SET_LOADING:
-			return {
-				...state,
-				loading: true
-			};
-
 		case GET_PRODUCTS:
 			return {
 				...state,
@@ -36,8 +31,13 @@ export default (state = initialState, action) => {
 		case ADD_PRODUCT:
 			return {
 				...state,
-				loading: false,
 				success: action.payload
+			};
+
+		case PRODUCT_LOADING:
+			return {
+				...state,
+				loading: true
 			};
 
 		case PRODUCT_ERROR:

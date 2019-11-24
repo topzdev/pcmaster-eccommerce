@@ -8,7 +8,7 @@ import SpeedDialButtons from '../include/SpeedDialButtons';
 const useStyles = makeStyles(theme => ({
 	root: {
 		background: '#fff',
-		padding: theme.spacing(5, 0, 5, 0)
+		padding: theme.spacing(0, 0, 5, 0)
 	}
 }));
 

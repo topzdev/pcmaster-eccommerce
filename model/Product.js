@@ -17,8 +17,14 @@ const ProductSchema = Schema({
 		unique: true
 	},
 
+	quantity: {
+		type: Number,
+		required: true
+	},
+
 	brand: {
-		type: String
+		type: String,
+		required: true
 	},
 
 	overview: {

@@ -5,6 +5,8 @@ export const DELETE_PRODUCT = 'DELETE_PRODUCT';
 export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
 export const SEARCH_PRODUCT = 'UPDATE_PRODUCT';
 export const PRODUCT_ERROR = 'PRODUCT_ERROR';
+export const SET_LOADING = 'SET_LOADING';
+export const PRODUCT_LOADING = 'PRODUCT_LOADING';
 
 //################### OPTION TYPES ##########################
 export const ADD_CATEGORY = 'ADD_CATEGORY';
@@ -20,7 +22,6 @@ export const DELETE_BRAND = 'DELETE_BRAND';
 export const OPTION_ERROR = 'OPTION_ERROR';
 
 //################### UTILITY TYPES ##########################
-export const SET_LOADING = 'SET_LOADING';
 export const UPLOAD_IMAGE = 'UPLOAD_IMAGE';
 
 export const CLEAR_ERROR = 'CLEAR_ERROR';
