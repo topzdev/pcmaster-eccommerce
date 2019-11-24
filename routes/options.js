@@ -38,7 +38,7 @@ router.post(
 		const error = validationResult(req);
 
 		if (!error.isEmpty())
-			return res.status(400).json({ type: 'error', msg: error });
+			return res.status(400).json({ type: 'error', msg: error.errors });
 
 		const { title } = req.body;
 		try {
@@ -204,13 +204,11 @@ router.post(
 
 			brand = new Brand({ title });
 			brand = await brand.save();
-			res
-				.status(200)
-				.json({
-					type: 'success',
-					msg: 'Brand Successfully Added',
-					data: brand
-				});
+			res.status(200).json({
+				type: 'success',
+				msg: 'Brand Successfully Added',
+				data: brand
+			});
 		} catch (error) {
 			console.error(error.message);
 			return res.status(500).send('Server Error');

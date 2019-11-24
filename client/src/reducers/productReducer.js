@@ -5,7 +5,9 @@ import {
 	SEARCH_PRODUCT,
 	UPDATE_PRODUCT,
 	PRODUCT_ERROR,
-	SET_LOADING
+	SET_LOADING,
+	CLEAR_ERROR,
+	CLEAR_SUCCESS
 } from '../actions/types';
 
 const initialState = {
@@ -23,6 +25,7 @@ export default (state = initialState, action) => {
 				...state,
 				loading: true
 			};
+
 		case GET_PRODUCTS:
 			return {
 				...state,
@@ -36,11 +39,25 @@ export default (state = initialState, action) => {
 				loading: false,
 				success: action.payload
 			};
+
 		case PRODUCT_ERROR:
 			return {
 				...state,
 				error: action.payload
 			};
+
+		case CLEAR_ERROR:
+			return {
+				...state,
+				error: null
+			};
+
+		case CLEAR_SUCCESS:
+			return {
+				...state,
+				success: null
+			};
+
 		default:
 			return state;
 	}

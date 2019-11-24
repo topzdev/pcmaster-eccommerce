@@ -2,13 +2,13 @@ import React, { useState, Fragment, useEffect } from 'react';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
-import AddProduct from '../Product/AddProduct';
+import ProductForm from '../Product/ProductForm';
 import ProductDashboard from '../Product/ProductDashboard';
 import SpeedDialButtons from '../include/SpeedDialButtons';
 const useStyles = makeStyles(theme => ({
 	root: {
-		padding: theme.spacing(3, 2, 5, 2),
-		marginTop: '30px'
+		background: '#fff',
+		padding: theme.spacing(5, 0, 5, 0)
 	}
 }));
 
@@ -23,20 +23,17 @@ const Product = () => {
 			case '/admin/product':
 				return <ProductDashboard />;
 			case '/admin/product/add':
-				return <AddProduct />;
+				return <ProductForm />;
 			default:
 				return <ProductDashboard />;
-				break;
 		}
 	};
 
 	return (
-		<Fragment>
-			<Container>
-				<Paper className={classes.root}>{toRenderComponent(page)}</Paper>
-			</Container>
+		<div className={classes.root}>
+			{toRenderComponent(page)}
 			<SpeedDialButtons setPage={setPage} />
-		</Fragment>
+		</div>
 	);
 };
 

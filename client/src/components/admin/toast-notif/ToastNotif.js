@@ -4,20 +4,34 @@ import { useSnackbar } from 'notistack';
 const ToastNotif = ({ options, product }) => {
 	const { enqueueSnackbar } = useSnackbar();
 
+	//Alert toast for option
 	useEffect(() => {
-		let error = options.error;
-		console.log(error);
-		if (error != null) {
-			enqueueSnackbar(error.msg || error.msg.errors[0].msg, {
-				variant: error.type
-			});
-		}
-
-		let success = options.success;
-		console.log(success);
-		if (success != null)
-			enqueueSnackbar(success.msg, { variant: success.type });
+		alertToast(options.error, options.success);
 	}, [options.error, options.success]);
+
+	//Alert toast for product
+	useEffect(() => {
+		alertToast(product.error, product.success);
+	}, [product.error, product.success]);
+
+	const alertToast = (error, success) => {
+		if (error != null) {
+			if (Array.isArray(error.msg)) {
+				error = Array.from(error.msg);
+				error.map(err =>
+					enqueueSnackbar(err.msg, {
+						variant: 'error'
+					})
+				);
+			} else {
+				enqueueSnackbar(error.msg, {
+					variant: 'error'
+				});
+			}
+		}
+		if (success != null) enqueueSnackbar(success.msg, { variant: 'success' });
+	};
+
 	return <Fragment></Fragment>;
 };
 

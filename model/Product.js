@@ -1,14 +1,19 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const ProductSchema = mongoose.Schema({
+const ProductSchema = Schema({
 	name: {
 		type: String,
-		required: true
+		required: true,
+		unique: true
+	},
+
+	barcode: {
+		type: String,
+		unique: true
 	},
 
 	sku: {
 		type: String,
-		required: true,
 		unique: true
 	},
 
@@ -26,12 +31,7 @@ const ProductSchema = mongoose.Schema({
 		required: true
 	},
 
-	img: [
-		{
-			highReso: String,
-			lowReso: String
-		}
-	],
+	img: [],
 
 	description: [
 		{

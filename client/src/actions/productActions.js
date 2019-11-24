@@ -7,7 +7,10 @@ import {
 	SEARCH_PRODUCT,
 	UPDATE_PRODUCT,
 	PRODUCT_ERROR,
-	SET_LOADING
+	UPLOAD_IMAGE,
+	SET_LOADING,
+	CLEAR_ERROR,
+	CLEAR_SUCCESS
 } from './types';
 
 const config = {
@@ -32,10 +35,36 @@ export const getProducts = () => async dispatch => {
 		});
 	}
 };
-export const addProduct = data => async dispatch => {
+export const addProduct = (data, images) => async dispatch => {
 	try {
 		setLoading();
+
+		//Product Fields uploading to database first
 		const res = await axios.post('/api/product/', data, config);
+
+		const files = Array.from(images);
+		const formData = new FormData();
+
+		files.forEach((file, i) => {
+			formData.append(i, file);
+		});
+		//Uploading the images to Cloudinary and return the url and info of images
+		const resImage = await axios.post(
+			'/api/product/image-upload',
+			formData,
+			config
+		);
+
+		//Updating the img of uploaded data
+		const updateQuery = await axios.put(
+			'/api/product/update-img',
+			{
+				_id: res.data.data._id,
+				img: resImage.data.data
+			},
+			config
+		);
+
 		dispatch({
 			type: ADD_PRODUCT,
 			payload: res.data
@@ -83,8 +112,20 @@ export const updateProduct = data => async dispatch => {
 };
 export const searchProduct = () => async dispatch => {};
 
-export const setLoading = () => {
-	return {
+export const setLoading = () => dispatch => {
+	dispatch({
 		type: SET_LOADING
-	};
+	});
+};
+
+export const clearError = () => dispatch => {
+	dispatch({
+		type: CLEAR_ERROR
+	});
+};
+
+export const clearSuccess = () => dispatch => {
+	dispatch({
+		type: CLEAR_SUCCESS
+	});
 };

@@ -17,8 +17,13 @@ import TextField from '@material-ui/core/TextField';
 import { Save, Delete } from '@material-ui/icons';
 
 import Description from './ProductAdd/Description';
-
-import { getProducts, addProduct } from '../../../actions/productActions';
+import PreLoader from '../util/PreLoader';
+import {
+	getProducts,
+	addProduct,
+	clearError,
+	clearSuccess
+} from '../../../actions/productActions';
 
 import {
 	getCategory,
@@ -54,13 +59,16 @@ const MenuProps = {
 	}
 };
 
-const AddProduct = ({
-	product: { products, loading, error, success },
+const ProductForm = ({
+	product: { loading, error, success },
 	options: { categories, brands, tags },
 	getProducts,
 	getCategory,
 	getBrand,
-	getTags
+	getTags,
+	addProduct,
+	clearError,
+	clearSuccess
 }) => {
 	const classes = useStyles();
 	const value = {
@@ -69,12 +77,12 @@ const AddProduct = ({
 		name: '',
 		sku: '',
 		barcode: '',
-		price: 0,
+		price: 1,
 		quantity: 1,
 		overview: '',
-		tag: [],
+		tags: [],
 		category: '',
-		description: []
+		description: [{ title: '', content: '' }]
 	};
 
 	useEffect(() => {
@@ -84,111 +92,129 @@ const AddProduct = ({
 		getTags();
 	}, []);
 
-	const [data, setData] = React.useState(value);
-	const [image, setImage] = useState({ open: false, files: [] });
-	const {
-		brand,
-		category,
-		barcode,
-		name,
-		sku,
-		tag,
-		price,
-		overview,
-		quantity,
-		description
-	} = data;
-	const { open, files } = image;
-	const handleClose = () => {
-		setImage({
-			open: false
-		});
-	};
+	useEffect(() => {
+		if (error != null) errorFields();
+	}, [error]);
 
-	const handleOpen = () => {
-		setImage({
-			open: true
-		});
+	const [data, setData] = React.useState(value);
+	const [image, setImage] = useState([]);
+	const [open, setOpen] = useState(false);
+	const [validate, setValidate] = useState({});
+
+	const errorFields = () => {
+		const parseError = {};
+		console.log(error);
+		if (Array.isArray(error.msg)) {
+			error.msg.map(err => (parseError[err.param] = true));
+		} else {
+			parseError[error.param] = true;
+		}
+
+		setValidate(parseError);
 	};
 
 	const onSaveImage = files => {
-		setImage({
-			files,
-			open: false
-		});
+		console.log(files);
+		setOpen(false);
+		setImage(files);
 	};
 
+	const getDescription = value => {
+		setData({ ...data, ['description']: value });
+	};
+
+	const onAddProduct = () => {
+		addProduct(data, image);
+	};
+	useEffect(() => {
+		if (success) {
+			clearError();
+			clearSuccess();
+			setData(value);
+			setImage([]);
+		}
+	}, [success]);
 	const onChange = event =>
 		setData({ ...data, [event.target.name]: event.target.value });
+
 	return (
 		<Box className={classes.root}>
+			{console.log('im loading ' + loading)}
+			{loading && <PreLoader />}
 			<Container>
-				<h1 style={{ marginTop: '30px' }}>Add Product</h1>
+				<h1>Add Product</h1>
 				<Grid container spacing={3}>
 					<Grid item xs={6}>
 						<TextField
+							error={validate.name}
 							required
 							fullWidth
 							label='Product Name'
 							name='name'
 							className={classes.textField}
-							value={name}
+							value={data.name}
 							onChange={onChange}
 						/>
 					</Grid>
 					<Grid item xs={3}>
 						<TextField
+							error={validate.barcode}
 							required
 							fullWidth
 							label='Barcode'
 							name='barcode'
 							className={classes.textField}
-							value={barcode}
+							value={data.barcode}
 							onChange={onChange}
 						/>
 					</Grid>
 					<Grid item xs={3}>
 						<TextField
+							error={validate.sku}
 							required
 							fullWidth
 							label='Stock keeping unit label'
-							name='ski'
+							name='sku'
 							className={classes.textField}
-							value={sku}
+							value={data.sku}
 							onChange={onChange}
 						/>
 					</Grid>
 					<Grid item xs={3}>
 						<TextField
+							error={validate.price}
 							required
 							fullWidth
 							label='Price'
 							name='price'
 							className={classes.textField}
-							value={price}
+							value={data.price}
 							onChange={onChange}
 							type='number'
 						/>
 					</Grid>
-
 					<Grid item xs={3}>
 						<TextField
+							error={validate.price}
 							required
 							fullWidth
 							label='Quantity'
 							name='quantity'
 							className={classes.textField}
-							value={quantity}
+							value={data.quantity}
 							onChange={onChange}
 							type='number'
 						/>
 					</Grid>
 					<Grid item xs={3}>
-						<FormControl className={classes.formControl}>
+						<FormControl
+							className={classes.formControl}
+							error={validate.category}
+						>
 							<InputLabel id='category'>Category</InputLabel>
 							<Select
 								labelId='category'
-								value={category}
+								value={data.category}
 								name='category'
 								onChange={onChange}
 								autoWidth
@@ -203,11 +229,11 @@ const AddProduct = ({
 						</FormControl>
 					</Grid>
 					<Grid item xs={3}>
-						<FormControl className={classes.formControl}>
+						<FormControl className={classes.formControl} error={validate.brand}>
 							<InputLabel id='brand'>Brand</InputLabel>
 							<Select
 								labelId='brand'
-								value={brand}
+								value={data.brand}
 								name='brand'
 								onChange={onChange}
 								autoWidth
@@ -222,13 +248,13 @@ const AddProduct = ({
 						</FormControl>
 					</Grid>
 					<Grid item xs={3}>
-						<FormControl className={classes.formControl}>
-							<InputLabel id='tag'>Tags</InputLabel>
+						<FormControl className={classes.formControl} error={validate.tags}>
+							<InputLabel id='tags'>Tags</InputLabel>
 							<Select
-								labelId='tag'
+								labelId='tags'
 								multiple
-								value={tag}
-								name='tag'
+								value={data.tags}
+								name='tags'
 								onChange={onChange}
 								input={<Input id='select-multiple-chip' />}
 								renderValue={selected => (
@@ -252,15 +278,15 @@ const AddProduct = ({
 					<Grid item xs={6}>
 						{' '}
 						<TextField
+							error={validate.overview}
 							required
 							multiline={true}
 							fullWidth
 							label='Overview'
 							name='overview'
 							className={classes.textField}
-							value={overview}
+							value={data.overview}
 							onChange={onChange}
-							type='number'
 						/>
 					</Grid>
 				</Grid>
@@ -271,7 +297,7 @@ const AddProduct = ({
 							<Button
 								variant='contained'
 								className={classes.button}
-								onClick={handleOpen}
+								onClick={() => setOpen(true)}
 								margin='normal'
 							>
 								Upload Images
@@ -281,12 +307,15 @@ const AddProduct = ({
 					<Grid item xs={12}>
 						<h3>Description</h3>
 						<p className='mb-3'>Add fields for description of the product.</p>
-						<Description value={setData} />
+						<Description
+							setDescription={getDescription}
+							description={data.description}
+						/>
 					</Grid>
 					<DropzoneDialog
 						name='img'
 						open={open}
-						onClose={handleClose}
+						onClose={() => setOpen(false)}
 						onSave={onSaveImage}
 						maxFileSize={50000000}
 						acceptedFiles={['image/*', 'video/*', 'application/*']}
@@ -307,7 +336,7 @@ const AddProduct = ({
 							size='large'
 							className={classes.button}
 							startIcon={<Save />}
-							onClick={() => addProduct(data)}
+							onClick={onAddProduct}
 						>
 							Save
 						</Button>
@@ -337,5 +366,8 @@ export default connect(mapStateToProps, {
 	getProducts,
 	getCategory,
 	getBrand,
-	getTags
-})(AddProduct);
+	getTags,
+	addProduct,
+	clearError,
+	clearSuccess
+})(ProductForm);

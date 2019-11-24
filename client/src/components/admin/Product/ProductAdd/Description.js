@@ -3,12 +3,11 @@ import Grid from '@material-ui/core/Grid';
 import DescriptionItem from './DescriptionItem';
 import Add from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
-const Description = ({ value }) => {
+const Description = ({ description, setDescription }) => {
 	const desc = {
 		title: '',
 		content: ''
 	};
-	const [description, setDescription] = useState([{ title: '', content: '' }]);
 
 	const addField = () => {
 		setDescription([...description, desc]);

@@ -21,3 +21,7 @@ export const OPTION_ERROR = 'OPTION_ERROR';
 
 //################### UTILITY TYPES ##########################
 export const SET_LOADING = 'SET_LOADING';
+export const UPLOAD_IMAGE = 'UPLOAD_IMAGE';
+
+export const CLEAR_ERROR = 'CLEAR_ERROR';
+export const CLEAR_SUCCESS = 'CLEAR_SUCCESS';
