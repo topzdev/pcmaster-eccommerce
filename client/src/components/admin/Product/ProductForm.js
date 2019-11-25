@@ -16,13 +16,16 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import { Save, Delete } from '@material-ui/icons';
-import CssBaseline from '@material-ui/core/CssBaseline';
+
+import Scroll from 'react-scroll';
 
 import Description from './ProductAdd/Description';
 import PreLoader from '../util/PreLoader';
+import DeleteModal from '../layout/modal/DeleteModal';
 import {
 	getProducts,
 	addProduct,
+	deleteProduct,
 	clearError,
 	clearSuccess
 } from '../../../actions/productActions';
@@ -63,7 +66,8 @@ const MenuProps = {
 };
 
 const ProductForm = ({
-	product: { error, success },
+	match,
+	product: { error, success, current },
 	options: { categories, brands, tags },
 	getProducts,
 	getCategory,
@@ -71,7 +75,8 @@ const ProductForm = ({
 	getTags,
 	addProduct,
 	clearError,
-	clearSuccess
+	clearSuccess,
+	deleteProduct
 }) => {
 	const classes = useStyles();
 	const value = {
@@ -87,12 +92,15 @@ const ProductForm = ({
 		category: '',
 		description: [{ title: '', content: '' }]
 	};
-
+	const [data, setData] = React.useState(value);
 	useEffect(() => {
 		getProducts();
 		getBrand();
 		getCategory();
 		getTags();
+
+		//if the current is not null then load the content of the current
+		setData(current ? current : value);
 	}, []);
 
 	useEffect(() => {
@@ -102,7 +110,10 @@ const ProductForm = ({
 		}
 	}, [error]);
 
-	const [data, setData] = React.useState(value);
+	useEffect(() => {
+		console.log(match);
+	}, [match]);
+
 	const [image, setImage] = useState([]);
 	const [open, setOpen] = useState(false);
 	const [validate, setValidate] = useState({});
@@ -133,18 +144,23 @@ const ProductForm = ({
 	const onAddProduct = () => {
 		setLoading(true);
 		addProduct(data, image);
+		Scroll.animateScroll.scrollToTop();
 	};
+
 	useEffect(() => {
+		clearError();
 		if (success) {
-			clearError();
 			clearSuccess();
 			setData(value);
 			setImage([]);
 			setLoading(false);
 		}
 	}, [success]);
+
 	const onChange = event =>
 		setData({ ...data, [event.target.name]: event.target.value });
+
+	const [modal, setModal] = useState(false);
 
 	return (
 		<Fragment>
@@ -152,7 +168,7 @@ const ProductForm = ({
 			<Box className={classes.root}>
 				<Container>
 					<Grid container style={{ marginTop: '30px' }}>
-						<h1>Add Product</h1>
+						<h1>{current ? 'Edit' : 'Add'} Product</h1>
 					</Grid>
 					<Grid container spacing={3}>
 						<Grid item xs={6}>
@@ -341,35 +357,63 @@ const ProductForm = ({
 						/>
 					</Grid>
 
-					<Grid container style={{ marginTop: '20px' }}>
-						<Grid item>
-							<Button
-								variant='contained'
-								style={{
-									backgroundColor: '#2ecc71',
-									color: '#fff',
-									marginRight: '20px'
-								}}
-								size='large'
-								className={classes.button}
-								startIcon={<Save />}
-								onClick={onAddProduct}
-							>
-								Save
-							</Button>
-						</Grid>
-						<Grid item>
-							<Button
-								variant='contained'
-								color='secondary'
-								size='large'
-								className={classes.button}
-								startIcon={<Delete />}
-								style={{ marginRight: '20px' }}
-							>
-								Delete
-							</Button>
-						</Grid>
+					<Grid container style={{ marginTop: '30px' }}>
+						{!current ? (
+							<Grid item>
+								<Button
+									variant='contained'
+									style={{
+										backgroundColor: '#2ecc71',
+										color: '#fff',
+										marginRight: '20px'
+									}}
+									size='large'
+									className={classes.button}
+									startIcon={<Save />}
+									onClick={onAddProduct}
+								>
+									Save
+								</Button>
+							</Grid>
+						) : (
+							<Fragment>
+								<Grid item>
+									<Button
+										variant='contained'
+										color='secondary'
+										size='large'
+										className={classes.button}
+										startIcon={<Delete />}
+										style={{
+											backgroundColor: '#e67e22',
+											color: '#000',
+											marginRight: '20px'
+										}}
+									>
+										Update
+									</Button>
+								</Grid>
+								<Grid item>
+									<Button
+										variant='contained'
+										color='secondary'
+										size='large'
+										className={classes.button}
+										startIcon={<Delete />}
+										style={{ marginRight: '20px' }}
+										onClick={() => setModal(true)}
+									>
+										Delete
+									</Button>
+								</Grid>
+								<DeleteModal
+									open={modal}
+									setOpen={setModal}
+									execDelete={deleteProduct}
+									id={data._id}
+								/>
+							</Fragment>
+						)}
 					</Grid>
 				</Container>
 			</Box>
@@ -387,5 +431,6 @@ export default connect(mapStateToProps, {
 	getTags,
 	addProduct,
 	clearError,
-	clearSuccess
+	clearSuccess,
+	deleteProduct
 })(ProductForm);

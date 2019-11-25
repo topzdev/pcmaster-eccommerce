@@ -6,11 +6,10 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import IconButton from '@material-ui/core/IconButton';
-import TableHead from '@material-ui/core/TableHead';
-import EditIcon from '@material-ui/icons/Edit';
 
-import EnhancedTableToolbar from './TableToolBar';
+import TableToolbar from './TableToolBar';
+import TableItem from './TableItem';
+import TableHeader from './TableHeader';
 import { getProducts } from '../../../../actions/productActions';
 
 import { connect } from 'react-redux';
@@ -45,8 +44,6 @@ const useStyles = makeStyles(theme => ({
 
 const EnhancedTable = ({ product: { products }, getProducts }) => {
 	const classes = useStyles();
-	const [order, setOrder] = React.useState('asc');
-	const [orderBy, setOrderBy] = React.useState('calories');
 	const [page, setPage] = React.useState(0);
 	const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -67,7 +64,7 @@ const EnhancedTable = ({ product: { products }, getProducts }) => {
 		<div className={classes.root}>
 			{console.log(products)}
 			<Paper className={classes.paper}>
-				<EnhancedTableToolbar />
+				<TableToolbar />
 				<div className={classes.tableWrapper}>
 					<Table
 						className={classes.table}
@@ -75,46 +72,10 @@ const EnhancedTable = ({ product: { products }, getProducts }) => {
 						size='medium'
 						aria-label='enhanced table'
 					>
-						<TableHead>
-							<TableRow>
-								<TableCell
-									align={'left'}
-									padding={'default'}
-									component='th'
-									scope='row'
-								>
-									Name
-								</TableCell>
-								<TableCell align={'left'}>Barcode</TableCell>
-								<TableCell align={'left'}>Sku</TableCell>
-								<TableCell align={'left'}>Price</TableCell>
-								<TableCell align={'left'}>Quantity</TableCell>
-								<TableCell align={'left'}>Actions</TableCell>
-							</TableRow>
-						</TableHead>
+						<TableHeader />
 						<TableBody>
 							{products != null &&
-								products.map(product => (
-									<TableRow key={product._id} hover>
-										<TableCell
-											align={'left'}
-											padding={'default'}
-											component='th'
-											scope='row'
-										>
-											{product.name}
-										</TableCell>
-										<TableCell>{product.barcode}</TableCell>
-										<TableCell>{product.sku}</TableCell>
-										<TableCell>{product.price}</TableCell>
-										<TableCell>{product.quantity}</TableCell>
-										<TableCell padding={'none'}>
-											<IconButton aria-label='edit' margin={'none'}>
-												<EditIcon />
-											</IconButton>
-										</TableCell>
-									</TableRow>
-								))}
+								products.map(item => <TableItem key={item._id} data={item} />)}
 						</TableBody>
 					</Table>
 				</div>

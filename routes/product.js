@@ -26,9 +26,4 @@ router.use('/', require('./product/productUpdate'));
 //@access   private
 router.use('/', require('./product/productDelete'));
 
-//@route    POST api/product/image-upload
-//@desc     Upload product image
-//@access   private
-router.use('/', require('./product/uploadImage'));
-
 module.exports = router;

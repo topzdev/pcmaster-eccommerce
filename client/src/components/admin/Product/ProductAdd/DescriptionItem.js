@@ -14,7 +14,7 @@ const DescriptionItem = ({ value, idx, set, remove }) => {
 	const [item, setItem] = React.useState(value);
 	const onChange = e => {
 		setItem({ ...item, [e.target.name]: e.target.value });
-		set(idx, item);
+		set(idx, e.target.value);
 	};
 	const { title, content } = item;
 	return (

@@ -31,6 +31,14 @@ export default (state = initialState, action) => {
 		case ADD_PRODUCT:
 			return {
 				...state,
+				error: null,
+				success: action.payload
+			};
+
+		case DELETE_PRODUCT:
+			return {
+				...state,
+				error: null,
 				success: action.payload
 			};
 
@@ -56,6 +64,12 @@ export default (state = initialState, action) => {
 			return {
 				...state,
 				success: null
+			};
+
+		case SEARCH_PRODUCT:
+			return {
+				...state,
+				current: action.payload
 			};
 
 		default:

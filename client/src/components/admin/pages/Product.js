@@ -24,6 +24,8 @@ const Product = () => {
 				return <ProductDashboard />;
 			case '/admin/product/add':
 				return <ProductForm />;
+			case '/admin/product/edit':
+				return <ProductForm />;
 			default:
 				return <ProductDashboard />;
 		}

@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const cloudinary = require('cloudinary').v2;
 
 //model
 const Product = require('../../model/Product');
@@ -12,18 +13,33 @@ router.delete('/:id', async (req, res) => {
 
 	try {
 		console.log(id);
-		let product = await Product.findOne({ _id: id });
+		let product = await Product.findById(id);
 
 		if (!product)
 			return res.status(400).json({ param: 'exist', msg: 'Product not exist' });
 
+		const public_ids = product.img.map(id => id.public_id);
+
+		await deleteImage(public_ids);
+
 		await Product.findByIdAndDelete(id);
 
-		res.send('Product Deleted');
+		res.status(200).json({
+			type: 'success',
+			msg: 'Product Successfully Deleted',
+			data: product
+		});
 	} catch (err) {
 		console.error(err.message);
 		return res.status(500).send('Server Error');
 	}
 });
+
+const deleteImage = public_ids => {
+	cloudinary.uploader.delete_resources(public_ids, (error, result) => {
+		if (error)
+			return res.status(400).json({ param: 'exist', msg: 'Product not exist' });
+	});
+};
 
 module.exports = router;

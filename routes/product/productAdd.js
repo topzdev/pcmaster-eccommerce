@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
+const cloudinary = require('cloudinary').v2;
+
 //Model
 const Product = require('../../model/Product');
 
@@ -55,26 +57,38 @@ router.post(
 	async (req, res) => {
 		const error = validationResult(req);
 
+		if (req.files === null)
+			error.errors.push({
+				param: 'files',
+				msg: 'Images cannot be empty, Please try again...'
+			});
+
 		if (!error.isEmpty())
 			return res.status(400).json({ type: 'error', msg: error.errors });
 
+		let data = req.body;
 		const { name, sku, barcode } = req.body;
 
 		try {
 			let product = await Product.findOne({ name });
 			let skuDup = await Product.findOne({ sku });
-			let barDup = await Product.findOne({ barcode });
-			if (product || skuDup || barDup)
+			let barcodeDup = await Product.findOne({ barcode });
+			if (product || skuDup || barcodeDup)
 				return res.status(400).json({
 					type: 'error',
 					param: 'exist',
 					msg: 'Product is already exist'
 				});
 
-			product = new Product({ ...req.body });
+			const imageFiles = Object.values(req.files);
+			data.img = await uploadImage(imageFiles);
+
+			data.tags = JSON.parse(data.tags);
+			data.description = JSON.parse(data.description);
+
+			product = new Product({ ...data });
 
 			product = await product.save();
-
 			res.status(200).json({
 				type: 'success',
 				msg: 'Product Successfully Added',
@@ -87,34 +101,23 @@ router.post(
 	}
 );
 
-router.put(
-	'/update-img',
-	[
-		check('img')
-			.not()
-			.isEmpty()
-			.withMessage('Fields for image is empty')
-	],
-	async (req, res) => {
-		const error = validationResult(req);
+const uploadImage = images => {
+	const promises = images.map(image =>
+		cloudinary.uploader.upload(image.tempFilePath)
+	);
 
-		if (!error.isEmpty())
-			return res.status(400).json({ type: 'error', msg: error.errors });
-
-		const { _id, img } = req.body;
-		console.log('my id ' + _id, img);
-		try {
-			await Product.findByIdAndUpdate(_id, { $set: { img: img } });
-
-			res.status(200).json({
-				type: 'success',
-				msg: 'Image Successfully Uploaded'
+	return Promise.all(promises)
+		.then(results => {
+			console.log('henlloo', results);
+			return results;
+		})
+		.catch(() => {
+			return res.status(400).json({
+				type: 'error',
+				msg: 'Error on uploading image, Try to upload again',
+				param: 'img'
 			});
-		} catch (err) {
-			console.error(err.message);
-			return res.status(500).send('Server Error');
-		}
-	}
-);
+		});
+};
 
 module.exports = router;

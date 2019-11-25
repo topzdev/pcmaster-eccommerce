@@ -39,12 +39,7 @@ const ProductSchema = Schema({
 
 	img: [],
 
-	description: [
-		{
-			title: String,
-			content: String
-		}
-	],
+	description: [],
 
 	category: [],
 

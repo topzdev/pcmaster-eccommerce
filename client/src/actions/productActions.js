@@ -30,7 +30,6 @@ export const getProducts = () => async dispatch => {
 	try {
 		setLoading();
 		const res = await axios.get('/api/product/', config);
-		console.log(res.data);
 		dispatch({
 			type: GET_PRODUCTS,
 			payload: res.data
@@ -46,38 +45,39 @@ export const getProducts = () => async dispatch => {
 export const addProduct = (data, images) => async dispatch => {
 	setLoading();
 	try {
-		//Product Fields uploading to database first
-		const res = await axios.post('/api/product/', data, config);
-
 		const files = Array.from(images);
 		const formData = new FormData();
+
+		formData.append('brand', data.brand);
+		formData.append('components', data.components);
+		formData.append('name', data.name);
+		formData.append('sku', data.sku);
+		formData.append('barcode', data.barcode);
+		formData.append('price', data.price);
+		formData.append('quantity', data.quantity);
+		formData.append('overview', data.overview);
+		formData.append('tags', JSON.stringify(data.tags));
+		formData.append('category', data.category);
+		formData.append('description', JSON.stringify(data.description));
 
 		files.forEach((file, i) => {
 			formData.append(i, file);
 		});
-		//Uploading the images to Cloudinary and return the url and info of images
-		const resImage = await axios.post(
-			'/api/product/image-upload',
-			formData,
-			config
-		);
 
-		//Updating the img of uploaded data
-		await axios.put(
-			'/api/product/update-img',
-			{
-				_id: res.data.data._id,
-				img: resImage.data.data
-			},
-			config
-		);
+		console.log(formData);
+
+		const res = await axios.post('/api/product/', formData, {
+			headers: {
+				'Content-type': 'multipart/form-data'
+			}
+		});
 
 		dispatch({
 			type: ADD_PRODUCT,
 			payload: res.data
 		});
 	} catch (err) {
-		console.log(err.response.data);
+		console.error(err.response.data);
 		dispatch({
 			type: PRODUCT_ERROR,
 			payload: err.response.data
@@ -110,14 +110,28 @@ export const updateProduct = data => async dispatch => {
 			payload: res.data
 		});
 	} catch (err) {
-		console.log(err.response.data);
 		dispatch({
 			type: PRODUCT_ERROR,
 			payload: err.response.data
 		});
 	}
 };
-export const searchProduct = () => async dispatch => {};
+export const searchProduct = id => async dispatch => {
+	try {
+		const res = await axios.get(`/api/product/${id}`, config);
+		console.log(res);
+		dispatch({
+			type: SEARCH_PRODUCT,
+			payload: res.data
+		});
+	} catch (err) {
+		console.log(err.response);
+		dispatch({
+			type: PRODUCT_ERROR,
+			payload: err.response.data
+		});
+	}
+};
 
 export const clearError = () => dispatch => {
 	dispatch({
