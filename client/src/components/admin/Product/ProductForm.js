@@ -154,6 +154,7 @@ const ProductForm = ({
 			setData(value);
 			setImage([]);
 			setLoading(false);
+			setValidate({})
 		}
 	}, [success]);
 
@@ -172,7 +173,7 @@ const ProductForm = ({
 					</Grid>
 					<Grid container spacing={3}>
 						<Grid item xs={6}>
-							<TextField
+							<TextField autoComplete="off"
 								error={validate.name}
 								required
 								fullWidth
@@ -184,7 +185,7 @@ const ProductForm = ({
 							/>
 						</Grid>
 						<Grid item xs={3}>
-							<TextField
+							<TextField autoComplete="off"
 								error={validate.barcode}
 								required
 								fullWidth
@@ -196,7 +197,7 @@ const ProductForm = ({
 							/>
 						</Grid>
 						<Grid item xs={3}>
-							<TextField
+							<TextField autoComplete="off"
 								error={validate.sku}
 								required
 								fullWidth
@@ -208,7 +209,7 @@ const ProductForm = ({
 							/>
 						</Grid>
 						<Grid item xs={3}>
-							<TextField
+							<TextField autoComplete="off"
 								error={validate.price}
 								required
 								fullWidth
@@ -221,7 +222,7 @@ const ProductForm = ({
 							/>
 						</Grid>
 						<Grid item xs={3}>
-							<TextField
+							<TextField autoComplete="off"
 								error={validate.price}
 								required
 								fullWidth
@@ -310,7 +311,7 @@ const ProductForm = ({
 						</Grid>
 						<Grid item xs={6}>
 							{' '}
-							<TextField
+							<TextField autoComplete="off"
 								error={validate.overview}
 								required
 								multiline={true}
@@ -350,7 +351,7 @@ const ProductForm = ({
 							open={open}
 							onClose={() => setOpen(false)}
 							onSave={onSaveImage}
-							maxFileSize={200000}
+							maxFileSize={20000000}
 							acceptedFiles={['image/*', 'video/*', 'application/*']}
 							filesLimit={5}
 							showPreviews={true}
