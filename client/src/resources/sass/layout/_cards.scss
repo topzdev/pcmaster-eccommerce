@@ -1,455 +1,455 @@
 .card {
-	&--primary {
-		width: 100%;
-		height: 35rem;
-		max-width: 30rem;
-		background-color: #fff;
-		border-radius: 10px;
-		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-		border: 1px solid #d4d4d4;
-		&__main {
-			position: relative;
-			overflow: hidden;
-			border-radius: 10px;
-			height: 25rem;
-			width: 100%;
-		}
+    &--primary {
+        width: 100%;
+        height: 350px;
+        max-width: 300px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        border: 1px solid #d4d4d4;
+        &__main {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+            width: 100%;
+        }
 
-		&__img {
-			position: absolute;
-			left: 50%;
-			top: 0;
-			transform: scale(1) translateX(-50%);
-			height: inherit;
-			opacity: 1;
-			@include transition;
-		}
+        &__img {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: scale(1) translateX(-50%);
+            height: inherit;
+            opacity: 1;
+            @include transition;
+        }
 
-		&__b-img {
-			position: absolute;
-			left: 50%;
-			top: 0;
-			transform: scale(0) translateX(150%);
-			height: inherit;
-			opacity: 0;
-			@include transition;
-		}
-		&__body {
-			position: relative;
-			z-index: 10;
-			padding: 1.4rem;
-			border-radius: 10px;
-			margin-top: -2rem;
-			background-color: var(--white-col);
-			overflow: hidden;
-			@include transition;
-		}
+        &__b-img {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: scale(0) translateX(150%);
+            height: inherit;
+            opacity: 0;
+            @include transition;
+        }
+        &__body {
+            position: relative;
+            z-index: 10;
+            padding: 14px;
+            border-radius: 10px;
+            margin-top: -20px;
+            background-color: var(--white-col);
+            overflow: hidden;
+            @include transition;
+        }
 
-		&__title {
-			display: block;
-			color: var(--prim-col);
-			text-decoration: none;
-			font-weight: 700;
-			font-size: 1.8rem;
-			margin-bottom: 0.8rem;
-			@include transition;
-		}
+        &__title {
+            display: block;
+            color: var(--prim-col);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 8px;
+            @include transition;
+        }
 
-		&__price {
-			font-family: 'roboto';
-			color: var(--sec-text-col);
-			font-size: 1.6rem;
-		}
+        &__price {
+            font-family: "roboto";
+            color: var(--sec-text-col);
+            font-size: 16px;
+        }
 
-		&__description {
-			font-size: 1.5rem;
-			color: var(--sec-text-col);
-			margin-top: 1rem;
-			height: 0;
-			opacity: 0;
-			@include transition;
-		}
+        &__description {
+            font-size: 15px;
+            color: var(--sec-text-col);
+            margin-top: 10px;
+            height: 0;
+            opacity: 0;
+            @include transition;
+        }
 
-		&__cover {
-			display: flex;
-			justify-content: center;
-			align-items: flex-end;
-			position: absolute;
-			text-decoration: none;
-			top: 0;
-			left: 0;
-			height: 100%;
-			width: 100%;
-			padding-bottom: 2rem;
-			background-color: rgba(0, 0, 0, 0.5);
-			opacity: 0;
-			visibility: hidden;
-			@include transition;
-		}
+        &__cover {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            position: absolute;
+            text-decoration: none;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            padding-bottom: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            @include transition;
+        }
 
-		&__btn {
-			position: relative;
-			display: flex;
-			margin-top: 1rem;
-			height: 0;
-			bottom: -8rem;
-			@include transition;
-		}
+        &__btn {
+            position: relative;
+            display: flex;
+            margin-top: 10px;
+            height: 0;
+            bottom: -80px;
+            @include transition;
+        }
 
-		&__link {
-			display: block;
-			// width: 100%;
-			text-align: center;
-			padding: 0.8rem 1rem;
-			color: var(--prim-col);
-			border: 2px solid var(--prim-col);
-			border-radius: 4px;
-			cursor: pointer;
-			@include transition;
-			&:not(:last-child) {
-				margin-right: 1rem;
-			}
-			p {
-				font-weight: 500;
-				display: inline;
-				margin-left: 0.5rem;
-			}
+        &__link {
+            display: block;
+            // width: 100%;
+            text-align: center;
+            padding: 8px 10px;
+            color: var(--prim-col);
+            border: 2px solid var(--prim-col);
+            border-radius: 4px;
+            cursor: pointer;
+            @include transition;
+            &:not(:last-child) {
+                margin-right: 10px;
+            }
+            p {
+                font-weight: 500;
+                display: inline;
+                margin-left: 5px;
+            }
 
-			&:hover {
-				background-color: var(--sec-col);
-				border: 2px solid var(--sec-col);
-				color: rgb(0, 0, 0);
-			}
-		}
+            &:hover {
+                background-color: var(--sec-col);
+                border: 2px solid var(--sec-col);
+                color: rgb(0, 0, 0);
+            }
+        }
 
-		&:hover {
-			.card--primary__cover {
-				opacity: 1;
-				visibility: visible;
-			}
+        &:hover {
+            .card--primary__cover {
+                opacity: 1;
+                visibility: visible;
+            }
 
-			.card--primary__title {
-				color: rgb(0, 0, 0);
-				text-shadow: 0 5px 0px rgba(255, 179, 0, 1);
-			}
+            .card--primary__title {
+                color: rgb(0, 0, 0);
+                text-shadow: 0 5px 0px rgba(255, 179, 0, 1);
+            }
 
-			.card--primary__btn {
-				height: auto;
-				bottom: 0;
-			}
+            .card--primary__btn {
+                height: auto;
+                bottom: 0;
+            }
 
-			.card--primary__body {
-				margin-top: -5rem;
-			}
+            .card--primary__body {
+                margin-top: -50px;
+            }
 
-			.card--primary__img {
-				transform: scale(0) translateX(-150%);
-				opacity: 0;
-			}
-			.card--primary__b-img {
-				transform: scale(1) translateX(-50%);
-				opacity: 1;
-			}
-		}
-	}
+            .card--primary__img {
+                transform: scale(0) translateX(-150%);
+                opacity: 0;
+            }
+            .card--primary__b-img {
+                transform: scale(1) translateX(-50%);
+                opacity: 1;
+            }
+        }
+    }
 
-	&--comment {
-		display: flex;
-		flex-direction: column;
-		padding: 2rem;
-		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-		border-radius: 5px;
+    &--comment {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
 
-		&:not(:last-child) {
-			margin-bottom: 2rem;
-		}
-		&__main {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-		}
-		&__profile {
-			display: flex;
-			align-items: center;
-			padding: 1rem 0;
-		}
-		&__icon {
-			display: block;
-			height: 5rem;
-			width: 5rem;
-			border-radius: 100%;
-			overflow: hidden;
-		}
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+        &__main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        &__profile {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+        }
+        &__icon {
+            display: block;
+            height: 50px;
+            width: 50px;
+            border-radius: 100%;
+            overflow: hidden;
+        }
 
-		&__name {
-			color: var(--prim-col);
-			font-weight: 700;
-			text-decoration: none;
-			margin-left: 1rem;
+        &__name {
+            color: var(--prim-col);
+            font-weight: 700;
+            text-decoration: none;
+            margin-left: 10px;
 
-			span {
-				display: block;
-				font-size: 1.2rem;
-				font-weight: 400;
-			}
-		}
+            span {
+                display: block;
+                font-size: 1.2px;
+                font-weight: 400;
+            }
+        }
 
-		&__rate {
-		}
+        &__rate {
+        }
 
-		&__content {
-			margin-top: 1rem;
-			h1 {
-				font-size: 1.6rem;
-				margin-bottom: 1rem;
-			}
-			p {
-				font-size: 1.4rem;
-			}
-		}
-	}
+        &__content {
+            margin-top: 10px;
+            h1 {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            p {
+                font-size: 14px;
+            }
+        }
+    }
 
-	&--cart {
-		position: relative;
-		display: flex;
-		padding: 1.5rem 2rem;
-		align-items: center;
-		height: 10rem;
-		width: 100%;
-		box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-		border-radius: 10px;
+    &--cart {
+        position: relative;
+        display: flex;
+        padding: 15px 20px;
+        align-items: center;
+        height: 10px;
+        width: 100%;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
 
-		&:not(:last-child) {
-			margin-bottom: 2rem;
-		}
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
 
-		&:hover {
-			.card--cart__remove {
-				@include transition;
-				transform: scale(1);
-			}
-		}
+        &:hover {
+            .card--cart__remove {
+                @include transition;
+                transform: scale(1);
+            }
+        }
 
-		&__img {
-			position: relative;
-			height: 100%;
-			width: 8rem;
-			overflow: hidden;
-			user-select: none;
-			margin-right: 1.5rem;
+        &__img {
+            position: relative;
+            height: 100%;
+            width: 80px;
+            overflow: hidden;
+            user-select: none;
+            margin-right: 15px;
 
-			img {
-				position: absolute;
-				left: 50%;
-				transform: translateX(-50%);
-				height: 100%;
-				width: auto;
-			}
-		}
+            img {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                height: 100%;
+                width: auto;
+            }
+        }
 
-		&__title {
-			display: block;
-			font-family: 'montserrat';
-			font-size: 1.8rem;
-			text-decoration: none;
-			color: var(--prim-text-col);
-			font-weight: 700;
-			width: 30rem;
-		}
+        &__title {
+            display: block;
+            font-family: "montserrat";
+            font-size: 18px;
+            text-decoration: none;
+            color: var(--prim-text-col);
+            font-weight: 700;
+            width: 30px;
+        }
 
-		&__price {
-			font-size: 1.2rem;
-			font-weight: 600;
-			color: #8b8b8b;
-		}
+        &__price {
+            font-size: 1.2px;
+            font-weight: 600;
+            color: #8b8b8b;
+        }
 
-		&__remove {
-			position: absolute;
-			height: 3rem;
-			width: 3rem;
-			border-radius: 100%;
-			font-size: 1.8rem;
-			top: -1rem;
-			right: -1rem;
-			background-color: #c41515;
-			transform: scale(0);
-			cursor: pointer;
-			color: #fff;
-			@include transition;
+        &__remove {
+            position: absolute;
+            height: 30px;
+            width: 30px;
+            border-radius: 100%;
+            font-size: 18px;
+            top: -10px;
+            right: -10px;
+            background-color: #c41515;
+            transform: scale(0);
+            cursor: pointer;
+            color: #fff;
+            @include transition;
 
-			&:hover {
-				background-color: red;
-			}
-		}
+            &:hover {
+                background-color: red;
+            }
+        }
 
-		&__total {
-			font-family: 'montserrat';
-			font-size: 2.5rem;
-			font-weight: 700;
-			margin-left: 4rem;
+        &__total {
+            font-family: "montserrat";
+            font-size: 2.5px;
+            font-weight: 700;
+            margin-left: 40px;
 
-			span {
-				position: relative;
-				top: -0.8rem;
-				font-size: 1.4rem;
-			}
-		}
-	}
+            span {
+                position: relative;
+                top: -8px;
+                font-size: 14px;
+            }
+        }
+    }
 
-	&--wishlist {
-		position: relative;
-		display: flex;
-		padding: 1.5rem 2rem;
-		align-items: center;
-		height: 10rem;
-		width: 100%;
-		box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-		border-radius: 10px;
+    &--wishlist {
+        position: relative;
+        display: flex;
+        padding: 15px 20px;
+        align-items: center;
+        height: 10px;
+        width: 100%;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
 
-		&:not(:last-child) {
-			margin-bottom: 2rem;
-		}
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
 
-		&:hover {
-			.card--wishlist__remove {
-				@include transition;
-				transform: scale(1);
-			}
-		}
+        &:hover {
+            .card--wishlist__remove {
+                @include transition;
+                transform: scale(1);
+            }
+        }
 
-		&__img {
-			position: relative;
-			height: 100%;
-			width: 8rem;
-			overflow: hidden;
-			user-select: none;
-			margin-right: 1.5rem;
+        &__img {
+            position: relative;
+            height: 100%;
+            width: 80px;
+            overflow: hidden;
+            user-select: none;
+            margin-right: 15px;
 
-			img {
-				position: absolute;
-				left: 50%;
-				transform: translateX(-50%);
-				height: 100%;
-				width: auto;
-			}
-		}
+            img {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                height: 100%;
+                width: auto;
+            }
+        }
 
-		&__title {
-			display: block;
-			font-family: 'montserrat';
-			font-size: 1.8rem;
-			text-decoration: none;
-			color: var(--prim-text-col);
-			font-weight: 700;
-			flex: 1 1 50%;
-		}
+        &__title {
+            display: block;
+            font-family: "montserrat";
+            font-size: 18px;
+            text-decoration: none;
+            color: var(--prim-text-col);
+            font-weight: 700;
+            flex: 1 1 50%;
+        }
 
-		&__price {
-			font-size: 1.2rem;
-			font-weight: 600;
-			color: #8b8b8b;
-		}
+        &__price {
+            font-size: 1.2px;
+            font-weight: 600;
+            color: #8b8b8b;
+        }
 
-		&__remove {
-			position: absolute;
-			height: 3rem;
-			width: 3rem;
-			border-radius: 100%;
-			font-size: 1.8rem;
-			top: -1rem;
-			right: -1rem;
-			background-color: #c41515;
-			transform: scale(0);
-			cursor: pointer;
-			color: #fff;
-			@include transition;
+        &__remove {
+            position: absolute;
+            height: 30px;
+            width: 30px;
+            border-radius: 100%;
+            font-size: 18px;
+            top: -10px;
+            right: -10px;
+            background-color: #c41515;
+            transform: scale(0);
+            cursor: pointer;
+            color: #fff;
+            @include transition;
 
-			&:hover {
-				background-color: red;
-			}
-		}
+            &:hover {
+                background-color: red;
+            }
+        }
 
-		&__total {
-			font-family: 'montserrat';
-			font-size: 2.5rem;
-			font-weight: 700;
-			margin-left: 4rem;
+        &__total {
+            font-family: "montserrat";
+            font-size: 2.5px;
+            font-weight: 700;
+            margin-left: 40px;
 
-			span {
-				position: relative;
-				top: -0.8rem;
-				font-size: 1.4rem;
-			}
-		}
-	}
+            span {
+                position: relative;
+                top: -8px;
+                font-size: 14px;
+            }
+        }
+    }
 
-	&--big__cart {
-		display: flex;
-		width: 100%;
-		max-width: 100%;
-		flex-direction: row;
-		align-items: center;
-		height: 18rem;
-		padding-left: 1rem;
+    &--big__cart {
+        display: flex;
+        width: 100%;
+        max-width: 100%;
+        flex-direction: row;
+        align-items: center;
+        height: 180px;
+        padding-left: 10px;
 
-		.card--primary__main {
-			height: 90%;
-			width: 25rem;
-		}
+        .card--primary__main {
+            height: 90%;
+            width: 250px;
+        }
 
-		.card--primary__body {
-			margin-top: 0;
-			padding: 2rem 3rem;
-			height: 100%;
-		}
+        .card--primary__body {
+            margin-top: 0;
+            padding: 20px 30px;
+            height: 100%;
+        }
 
-		.card--primary__title {
-			font-size: 2.5rem;
-		}
+        .card--primary__title {
+            font-size: 2.5px;
+        }
 
-		.card--primary__price {
-		}
+        .card--primary__price {
+        }
 
-		.card--primary__description {
-			height: auto;
-			opacity: 1;
-		}
+        .card--primary__description {
+            height: auto;
+            opacity: 1;
+        }
 
-		.card--primary__cover {
-			background: transparent;
-		}
+        .card--primary__cover {
+            background: transparent;
+        }
 
-		.card--primary__btn {
-			position: absolute;
-			right: 2rem;
-			top: 1rem;
-			// bottom: 0;
-			height: 4rem;
-			transition: none;
-		}
+        .card--primary__btn {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            // bottom: 0;
+            height: 40px;
+            transition: none;
+        }
 
-		.card--primary__link {
-			p {
-			}
+        .card--primary__link {
+            p {
+            }
 
-			&:hover {
-			}
-		}
+            &:hover {
+            }
+        }
 
-		&:hover {
-			.card--primary__cover {
-			}
+        &:hover {
+            .card--primary__cover {
+            }
 
-			.card--primary__title {
-			}
+            .card--primary__title {
+            }
 
-			.card--primary__btn {
-				height: 4rem;
-			}
+            .card--primary__btn {
+                height: 40px;
+            }
 
-			.card--primary__body {
-				margin-top: 0;
-			}
-		}
-	}
+            .card--primary__body {
+                margin-top: 0;
+            }
+        }
+    }
 }

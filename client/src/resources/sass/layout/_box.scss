@@ -1,11 +1,11 @@
 .showcase {
-	padding: 2rem 0 0 0;
-	a {
-		text-decoration: none;
-		color: var(--prim-col);
-	}
+    padding: 20px 0 0 0;
+    a {
+        text-decoration: none;
+        color: var(--prim-col);
+    }
 
-	&:last-child {
-		// margin-bottom: 4rem;
-	}
+    &:last-child {
+        // margin-bottom: 4rem;
+    }
 }

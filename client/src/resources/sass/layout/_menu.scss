@@ -2,7 +2,7 @@
     display: block;
     width: 100%;
     background-color: var(--sec-col);
-    padding: 0 5rem;
+    padding: 0 50px;
     &__list {
         display: flex;
         width: 100%;
@@ -39,14 +39,14 @@
     &__link {
         display: block;
         font-weight: 600;
-        font-size: 1.6rem;
+        font-size: 16px;
         text-decoration: none;
         color: var(--prim-col);
-        padding: 1.5rem;
+        padding: 15px;
     }
 
     &__result {
-        padding: 0 2rem;
+        padding: 0 20px;
     }
 
     &__dropdown {
@@ -54,8 +54,8 @@
         position: absolute;
         background-color: #fff;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        font-size: 1.6rem;
-        padding: 2rem 2rem;
+        font-size: 16px;
+        padding: 20px 20px;
         z-index: 100;
         opacity: 0;
 
@@ -76,7 +76,7 @@
     &__drp-group {
         display: flex;
         flex-wrap: wrap;
-        padding: 3rem 1rem 0 1rem;
+        padding: 30px 10px 0 10px;
         list-style: none;
     }
 

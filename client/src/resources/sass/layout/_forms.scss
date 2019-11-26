@@ -1,18 +1,18 @@
 .form-control {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 
-  label {
-    margin-right: 1rem;
-  }
+    label {
+        margin-right: 10px;
+    }
 
-  &:not(:last-child) {
-    margin-right: 2rem;
-  }
+    &:not(:last-child) {
+        margin-right: 20px;
+    }
 }
 .form-select {
-  width: 25rem;
+    width: 250px;
 }
 .form-row {
 }
