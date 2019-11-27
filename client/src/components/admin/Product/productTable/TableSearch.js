@@ -1,60 +1,140 @@
-import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import IconButton from "@material-ui/core/IconButton";
-import TextField from "@material-ui/core/TextField";
-import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
-import SearchIcon from "@material-ui/icons/Search";
-import _ from "lodash";
+import React, { useState, useEffect } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import InputLabel from '@material-ui/core/InputLabel';
+import SearchIcon from '@material-ui/icons/Search';
+import _ from 'lodash';
+import { connect } from 'react-redux';
+
+import CategoryDropdown from '../dropdowns/CategoryDropdown';
+import BrandDropdown from '../dropdowns/BrandDropdown';
+import TagDropdown from '../dropdowns/TagDropdown';
+import { getProducts } from '../../../../actions/productActions';
 
 const useStyles = makeStyles(theme => ({
-    root: {
-        display: "flex",
-        alignItems: "center",
-        marginLeft: "auto"
-    },
-    input: {
-        flex: 1,
-        width: "300px",
-        marginLeft: "auto"
-    },
-    select: {
-        width: "200px"
-    }
+	root: {
+		display: 'flex',
+		alignItems: 'flex-end',
+		marginLeft: 'auto'
+	},
+	input: {
+		display: 'flex',
+		flex: 1,
+		width: '300px',
+		marginRight: '5px'
+	},
+	select: {
+		width: '200px'
+	}
 }));
 
-export default function CustomizedInputBase() {
-    const classes = useStyles();
+const TableSearch = ({ getProducts }) => {
+	const classes = useStyles();
+	const [query, setQuery] = useState({});
+	const [select, setSelect] = useState('name');
+	const [options, setOptions] = useState({
+		tags: [],
+		category: '',
+		brand: '',
+		name: '',
+		sku: '',
+		barcode: ''
+	});
 
-    const [category, setCategory] = useState("name");
+	const onSelect = e => {
+		setSelect(e.target.value);
+		setQuery({ [e.target.value]: options[e.target.value] });
+	};
 
-    const onSelect = e => {
-        setCategory(e.target.value);
-    };
+	const onChange = e => {
+		let name = e.target.name;
+		setOptions({ ...options, [name]: e.target.value });
+		setQuery({ [name]: e.target.value });
+	};
 
-    return (
-        <div className={classes.root}>
-            <TextField
-                id="standard-required"
-                label={`Search Product ${_.capitalize(category)}`}
-                className={classes.input}
-            />
-            <IconButton aria-label="delete" className={classes.margin}>
-                <SearchIcon />
-            </IconButton>
+	useEffect(() => {
+		getProducts(!_.isEmpty(query[select]) ? query : {});
+	}, [query]);
 
-            <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={category}
-                label="Search Filters"
-                onChange={onSelect}
-                className={classes.select}
-            >
-                <MenuItem value={"name"}>Product Name</MenuItem>
-                <MenuItem value={"barcode"}>Barcode</MenuItem>
-                <MenuItem value={"sku"}>SKU</MenuItem>
-            </Select>
-        </div>
-    );
-}
+	const onClick = fields => {};
+
+	const renderSelectedFields = selected => {
+		switch (selected) {
+			case 'category':
+				return (
+					<CategoryDropdown value={options.category} onChange={onChange} />
+				);
+			case 'brand':
+				return <BrandDropdown value={options.brand} onChange={onChange} />;
+			case 'tags':
+				return <TagDropdown value={options.tags} onChange={onChange} />;
+			default:
+				return (
+					<div className={classes.input}>
+						<TextField
+							fullWidth
+							name={select}
+							value={options[select]}
+							label={`Search Product by ${_.capitalize(select)}`}
+							className={classes.input}
+							onChange={onChange}
+							InputProps={{
+								endAdornment: (
+									<InputAdornment position='end'>
+										<IconButton
+											onClick={() => onClick(options[select])}
+											aria-label='delete'
+											className={classes.iconButton}
+										>
+											<SearchIcon />
+										</IconButton>
+									</InputAdornment>
+								)
+							}}
+						/>
+					</div>
+				);
+				break;
+		}
+	};
+
+	return (
+		<div className={classes.root}>
+			<FormControl className={classes.input}>
+				{renderSelectedFields(select)}
+			</FormControl>
+			<FormControl>
+				<InputLabel
+					style={{ width: '100%' }}
+					id='filter'
+				>{`Search Product ${_.capitalize(select)}`}</InputLabel>
+				<Select
+					labelId='filter'
+					id='filter'
+					value={select}
+					label='Search Filters'
+					onChange={onSelect}
+					className={classes.select}
+				>
+					<MenuItem value={'name'}>Product Name</MenuItem>
+					<MenuItem value={'barcode'}>Barcode</MenuItem>
+					<MenuItem value={'sku'}>SKU</MenuItem>
+					<MenuItem value={'category'}>Category</MenuItem>
+					<MenuItem value={'brand'}>Brand</MenuItem>
+					<MenuItem value={'tags'}>Tags</MenuItem>
+				</Select>
+			</FormControl>
+		</div>
+	);
+};
+
+const mapStateToProps = state => ({
+	product: state.product
+});
+
+export default connect(mapStateToProps, { getProducts })(TableSearch);

@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react';
-// import { SearchBar as SearchBarComp } from 'material-ui-search-bar';
+import React from 'react';
+
 const SearchBar = () => {
-	return <Fragment>{/* <SearchBarComp></SearchBarComp> */}</Fragment>;
+	return <div></div>;
 };
 
 export default SearchBar;

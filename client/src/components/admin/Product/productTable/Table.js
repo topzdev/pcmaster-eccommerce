@@ -3,10 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import Paper from '@material-ui/core/Paper';
 import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
 import TablePagination from '@material-ui/core/TablePagination';
-import TableRow from '@material-ui/core/TableRow';
-
+import Grid from '@material-ui/core/Grid';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import TableToolbar from './TableToolBar';
 import TableItem from './TableItem';
 import TableHeader from './TableHeader';
@@ -42,7 +41,7 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const EnhancedTable = ({ product: { products }, getProducts }) => {
+const ProductTable = ({ product: { products, loading }, getProducts }) => {
 	const classes = useStyles();
 	const [page, setPage] = React.useState(0);
 	const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -62,7 +61,6 @@ const EnhancedTable = ({ product: { products }, getProducts }) => {
 
 	return (
 		<div className={classes.root}>
-			{console.log(products)}
 			<Paper className={classes.paper}>
 				<TableToolbar />
 				<div className={classes.tableWrapper}>
@@ -73,6 +71,12 @@ const EnhancedTable = ({ product: { products }, getProducts }) => {
 						aria-label='enhanced table'
 					>
 						<TableHeader />
+						{loading && (
+							<Grid align={'center'} xs={12}>
+								{' '}
+								<CircularProgress />
+							</Grid>
+						)}
 						<TableBody>
 							{products != null &&
 								products.map(item => <TableItem key={item._id} data={item} />)}
@@ -101,4 +105,4 @@ const EnhancedTable = ({ product: { products }, getProducts }) => {
 const mapStateToProps = state => ({
 	product: state.product
 });
-export default connect(mapStateToProps, { getProducts })(EnhancedTable);
+export default connect(mapStateToProps, { getProducts })(ProductTable);

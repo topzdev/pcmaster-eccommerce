@@ -9,9 +9,9 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 import TableSearch from './TableSearch';
 const TableToolbar = props => {
 	return (
-		<Toolbar>
+		<Toolbar style={{ padding: '20px' }}>
 			<Typography variant='h6' id='tableTitle'>
-				Products
+				Products Table
 			</Typography>
 
 			<Tooltip title='Filter list'>

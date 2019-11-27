@@ -234,7 +234,6 @@ export default function PersistentDrawerLeft() {
 					</ListItem>
 				</List>
 			</Drawer>
-			<Backdrop open={open} />
 
 			{renderMenu}
 		</div>

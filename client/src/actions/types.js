@@ -26,3 +26,4 @@ export const UPLOAD_IMAGE = 'UPLOAD_IMAGE';
 
 export const CLEAR_ERROR = 'CLEAR_ERROR';
 export const CLEAR_SUCCESS = 'CLEAR_SUCCESS';
+export const SET_REDIRECT = 'SET_REDIRECT';

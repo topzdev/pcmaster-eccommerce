@@ -22,6 +22,10 @@ import Scroll from 'react-scroll';
 import Description from './ProductAdd/Description';
 import PreLoader from '../util/PreLoader';
 import DeleteModal from '../layout/modal/DeleteModal';
+
+import CategoryDropdown from './dropdowns/CategoryDropdown';
+import BrandDropdown from './dropdowns/BrandDropdown';
+import TagDropdown from './dropdowns/TagDropdown';
 import {
 	getProducts,
 	addProduct,
@@ -30,11 +34,7 @@ import {
 	clearSuccess
 } from '../../../actions/productActions';
 
-import {
-	getCategory,
-	getBrand,
-	getTags
-} from '../../../actions/optionsActions';
+import { setRedirect } from '../../../actions/utilityActions';
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -54,32 +54,17 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-	PaperProps: {
-		style: {
-			maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-			width: 250
-		}
-	}
-};
-
 const ProductForm = ({
-	match,
 	product: { error, success, current },
-	options: { categories, brands, tags },
 	getProducts,
-	getCategory,
-	getBrand,
-	getTags,
 	addProduct,
 	clearError,
 	clearSuccess,
-	deleteProduct
+	deleteProduct,
+	setRedirect
 }) => {
 	const classes = useStyles();
-	const value = {
+	const initialState = {
 		brand: '',
 		components: '',
 		name: '',
@@ -87,20 +72,24 @@ const ProductForm = ({
 		barcode: '',
 		price: 1,
 		quantity: 1,
+
 		overview: '',
 		tags: [],
 		category: '',
 		description: [{ title: '', content: '' }]
 	};
-	const [data, setData] = React.useState(value);
+
+	const [data, setData] = React.useState(initialState);
+	const [image, setImage] = useState([]);
+	const [open, setOpen] = useState(false);
+	const [validate, setValidate] = useState({});
+	const [loading, setLoading] = useState(false);
+	const [modal, setModal] = useState(false);
+
 	useEffect(() => {
 		getProducts();
-		getBrand();
-		getCategory();
-		getTags();
-
-		//if the current is not null then load the content of the current
-		setData(current ? current : value);
+		if (window.location.pathname.includes('edit'))
+			setData(current ? current : initialState);
 	}, []);
 
 	useEffect(() => {
@@ -111,17 +100,20 @@ const ProductForm = ({
 	}, [error]);
 
 	useEffect(() => {
-		console.log(match);
-	}, [match]);
-
-	const [image, setImage] = useState([]);
-	const [open, setOpen] = useState(false);
-	const [validate, setValidate] = useState({});
-	const [loading, setLoading] = useState(false);
+		clearError();
+		if (success) {
+			clearSuccess();
+			setData(initialState);
+			setImage([]);
+			setLoading(false);
+			setValidate({});
+			setRedirect({ open: true, url: '/admin/product/' });
+		}
+	}, [success]);
 
 	const errorFields = () => {
 		const parseError = {};
-		console.log(error);
+
 		if (Array.isArray(error.msg)) {
 			error.msg.map(err => (parseError[err.param] = true));
 		} else {
@@ -132,7 +124,6 @@ const ProductForm = ({
 	};
 
 	const onSaveImage = files => {
-		console.log(files);
 		setOpen(false);
 		setImage(files);
 	};
@@ -147,33 +138,21 @@ const ProductForm = ({
 		Scroll.animateScroll.scrollToTop();
 	};
 
-	useEffect(() => {
-		clearError();
-		if (success) {
-			clearSuccess();
-			setData(value);
-			setImage([]);
-			setLoading(false);
-			setValidate({})
-		}
-	}, [success]);
-
 	const onChange = event =>
 		setData({ ...data, [event.target.name]: event.target.value });
-
-	const [modal, setModal] = useState(false);
 
 	return (
 		<Fragment>
 			{loading && <PreLoader />}
 			<Box className={classes.root}>
 				<Container>
-					<Grid container style={{ marginTop: '30px' }}>
+					<Grid container style={{ marginBottom: '30px' }}>
 						<h1>{current ? 'Edit' : 'Add'} Product</h1>
 					</Grid>
 					<Grid container spacing={3}>
 						<Grid item xs={6}>
-							<TextField autoComplete="off"
+							<TextField
+								autoComplete='off'
 								error={validate.name}
 								required
 								fullWidth
@@ -185,7 +164,8 @@ const ProductForm = ({
 							/>
 						</Grid>
 						<Grid item xs={3}>
-							<TextField autoComplete="off"
+							<TextField
+								autoComplete='off'
 								error={validate.barcode}
 								required
 								fullWidth
@@ -197,7 +177,8 @@ const ProductForm = ({
 							/>
 						</Grid>
 						<Grid item xs={3}>
-							<TextField autoComplete="off"
+							<TextField
+								autoComplete='off'
 								error={validate.sku}
 								required
 								fullWidth
@@ -209,7 +190,8 @@ const ProductForm = ({
 							/>
 						</Grid>
 						<Grid item xs={3}>
-							<TextField autoComplete="off"
+							<TextField
+								autoComplete='off'
 								error={validate.price}
 								required
 								fullWidth
@@ -222,7 +204,8 @@ const ProductForm = ({
 							/>
 						</Grid>
 						<Grid item xs={3}>
-							<TextField autoComplete="off"
+							<TextField
+								autoComplete='off'
 								error={validate.price}
 								required
 								fullWidth
@@ -239,21 +222,7 @@ const ProductForm = ({
 								className={classes.formControl}
 								error={validate.category}
 							>
-								<InputLabel id='category'>Category</InputLabel>
-								<Select
-									labelId='category'
-									value={data.category}
-									name='category'
-									onChange={onChange}
-									autoWidth
-								>
-									{categories != null &&
-										categories.map(category => (
-											<MenuItem key={category._id} value={category.title}>
-												{category.title}
-											</MenuItem>
-										))}
-								</Select>
+								<CategoryDropdown value={data.category} onChange={onChange} />
 							</FormControl>
 						</Grid>
 						<Grid item xs={3}>
@@ -261,21 +230,7 @@ const ProductForm = ({
 								className={classes.formControl}
 								error={validate.brand}
 							>
-								<InputLabel id='brand'>Brand</InputLabel>
-								<Select
-									labelId='brand'
-									value={data.brand}
-									name='brand'
-									onChange={onChange}
-									autoWidth
-								>
-									{brands != null &&
-										brands.map(brand => (
-											<MenuItem key={brand._id} value={brand.title}>
-												{brand.title}
-											</MenuItem>
-										))}
-								</Select>
+								<BrandDropdown value={data.brand} onChange={onChange} />
 							</FormControl>
 						</Grid>
 						<Grid item xs={3}>
@@ -283,35 +238,13 @@ const ProductForm = ({
 								className={classes.formControl}
 								error={validate.tags}
 							>
-								<InputLabel id='tags'>Tags</InputLabel>
-								<Select
-									labelId='tags'
-									multiple
-									value={data.tags}
-									name='tags'
-									onChange={onChange}
-									input={<Input id='select-multiple-chip' />}
-									renderValue={selected => (
-										<div className={classes.chips}>
-											{selected.map(tag => (
-												<Chip key={tag} label={tag} className={classes.chip} />
-											))}
-										</div>
-									)}
-									MenuProps={MenuProps}
-								>
-									{tags != null &&
-										tags.map(tag => (
-											<MenuItem key={tag._id} value={tag.title}>
-												{tag.title}
-											</MenuItem>
-										))}
-								</Select>
+								<TagDropdown value={data.tags} onChange={onChange} />
 							</FormControl>
 						</Grid>
 						<Grid item xs={6}>
 							{' '}
-							<TextField autoComplete="off"
+							<TextField
+								autoComplete='off'
 								error={validate.overview}
 								required
 								multiline={true}
@@ -423,15 +356,14 @@ const ProductForm = ({
 };
 const mapStateToProps = state => ({
 	product: state.product,
-	options: state.options
+	options: state.options,
+	utility: state.utility
 });
 export default connect(mapStateToProps, {
 	getProducts,
-	getCategory,
-	getBrand,
-	getTags,
 	addProduct,
 	clearError,
 	clearSuccess,
-	deleteProduct
+	deleteProduct,
+	setRedirect
 })(ProductForm);

@@ -5,14 +5,17 @@ import { makeStyles } from '@material-ui/core/styles';
 import ProductForm from '../Product/ProductForm';
 import ProductDashboard from '../Product/ProductDashboard';
 import SpeedDialButtons from '../include/SpeedDialButtons';
+
 import { connect } from 'react-redux';
+
+import { setRedirect } from '../../../actions/utilityActions';
 const useStyles = makeStyles(theme => ({
 	root: {
 		padding: theme.spacing(0, 0, 5, 0)
 	}
 }));
 
-const Product = ({ product: { current } }) => {
+const Product = ({ product: { current }, setRedirect }) => {
 	const classes = useStyles();
 	const [page, setPage] = useState('');
 	useEffect(() => {
@@ -25,7 +28,9 @@ const Product = ({ product: { current } }) => {
 			case '/admin/product/add':
 				return <ProductForm />;
 			case '/admin/product/edit':
-				if (current != null) return <ProductForm />;
+				if (current != null) {
+					return <ProductForm />;
+				} else setRedirect({ open: true, url: '/admin/product' });
 			default:
 				return <ProductDashboard />;
 		}
@@ -43,4 +48,4 @@ const mapStateToProp = state => ({
 	product: state.product
 });
 
-export default connect(mapStateToProp)(Product);
+export default connect(mapStateToProp, { setRedirect })(Product);

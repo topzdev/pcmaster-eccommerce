@@ -7,14 +7,21 @@ const Product = require('../../model/Product');
 //@route    GET api/product
 //@desc     view all product
 //@access   public
-router.get('/', async (request, response) => {
-	const { name, category } = request.body;
-	try {
-		let products = await Product.find({
-			$or: [{ name: { $regex: name ? name : '', $options: 'i' } }]
-		});
+router.post('/', async (request, response) => {
+	const { name, category, brand, sku, tags, barcode } = request.body;
 
-		console.log(products);
+	let query = [];
+
+	if (name) query.push({ name: { $regex: name, $options: 'i' } });
+	if (category) query.push({ category });
+	if (sku) query.push({ sku });
+	if (brand) query.push({ brand });
+	if (barcode) query.push({ barcode: { $regex: barcode, $options: 'i' } });
+	if (tags) query.push({ tags: { $in: tags } });
+
+	try {
+		console.log(query, request.body);
+		let products = await Product.find(query.length > 0 ? { $or: query } : {});
 
 		if (!products)
 			return response
