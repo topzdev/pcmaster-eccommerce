@@ -1,26 +1,31 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 
 //model
-const Product = require("../../model/Product");
+const Product = require('../../model/Product');
 
 //@route    GET api/product
 //@desc     view all product
 //@access   public
-router.get("/", async (req, res) => {
-    try {
-        let products = await Product.find({});
+router.get('/', async (request, response) => {
+	const { name, category } = request.body;
+	try {
+		let products = await Product.find({
+			$or: [{ name: { $regex: name ? name : '', $options: 'i' } }]
+		});
 
-        if (!products)
-            return res
-                .status(400)
-                .json({ param: "exist", msg: "No product yet" });
+		console.log(products);
 
-        res.json(products);
-    } catch (err) {
-        console.error(err.message);
-        return res.status(500).send("Server Error");
-    }
+		if (!products)
+			return response
+				.status(400)
+				.json({ param: 'exist', msg: 'No product yet' });
+
+		response.json(products);
+	} catch (err) {
+		console.error(err.message);
+		return response.status(500).send('Server Error');
+	}
 });
 
 module.exports = router;

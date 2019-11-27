@@ -16,11 +16,14 @@ router.delete('/:id', async (req, res) => {
 		let product = await Product.findById(id);
 
 		if (!product)
-			return res.status(400).json({ param: 'exist', msg: 'Product not exist' });
+			return res.status(400).json({ param: 'img', msg: 'Product not exist' });
 
 		const public_ids = product.img.map(id => id.public_id);
 
-		await deleteImage(public_ids);
+		let cloud_res = await deleteImage(public_ids);
+
+		if (cloud_res != null && cloud_res.type === 'error')
+			return res.status(400).json({ param: 'img', msg: cloud_res.msg });
 
 		await Product.findByIdAndDelete(id);
 
@@ -36,9 +39,12 @@ router.delete('/:id', async (req, res) => {
 });
 
 const deleteImage = public_ids => {
-	cloudinary.uploader.delete_resources(public_ids, (error, result) => {
-		if (error)
-			return res.status(400).json({ param: 'exist', msg: 'Product not exist' });
+	console.log(public_ids);
+
+	cloudinary.api.delete_resources(public_ids, (error, result) => {
+		if (error) return { type: 'error', msg: 'Error on deleting images' };
+
+		if (result) return { type: 'success', msg: result };
 	});
 };
 
