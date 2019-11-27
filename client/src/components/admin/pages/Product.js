@@ -32,8 +32,8 @@ const Product = () => {
 
     return (
         <div className={classes.root}>
-            {toRenderComponent(page)}
             <SpeedDialButtons setPage={setPage} />
+            {toRenderComponent(page)}
         </div>
     );
 };

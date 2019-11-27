@@ -214,7 +214,7 @@
         display: flex;
         padding: 15px 20px;
         align-items: center;
-        height: 10px;
+        height: 100px;
         width: 100%;
         box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
         border-radius: 10px;
@@ -254,7 +254,7 @@
             text-decoration: none;
             color: var(--prim-text-col);
             font-weight: 700;
-            width: 30px;
+            width: 300px;
         }
 
         &__price {
@@ -284,7 +284,7 @@
 
         &__total {
             font-family: "montserrat";
-            font-size: 2.5px;
+            font-size: 25px;
             font-weight: 700;
             margin-left: 40px;
 
@@ -301,7 +301,7 @@
         display: flex;
         padding: 15px 20px;
         align-items: center;
-        height: 10px;
+        height: 120px;
         width: 100%;
         box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
         border-radius: 10px;
@@ -345,7 +345,7 @@
         }
 
         &__price {
-            font-size: 1.2px;
+            font-size: 12px;
             font-weight: 600;
             color: #8b8b8b;
         }
@@ -371,7 +371,7 @@
 
         &__total {
             font-family: "montserrat";
-            font-size: 2.5px;
+            font-size: 25px;
             font-weight: 700;
             margin-left: 40px;
 
@@ -404,7 +404,7 @@
         }
 
         .card--primary__title {
-            font-size: 2.5px;
+            font-size: 25px;
         }
 
         .card--primary__price {

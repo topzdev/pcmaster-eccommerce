@@ -415,7 +415,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 10px;
+  height: 100px;
   width: 100%;
   -webkit-box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
           box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
@@ -461,7 +461,7 @@
   text-decoration: none;
   color: var(--prim-text-col);
   font-weight: 700;
-  width: 30px;
+  width: 300px;
 }
 
 .card--cart__price {
@@ -493,7 +493,7 @@
 
 .card--cart__total {
   font-family: "montserrat";
-  font-size: 2.5px;
+  font-size: 25px;
   font-weight: 700;
   margin-left: 40px;
 }
@@ -513,7 +513,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 10px;
+  height: 120px;
   width: 100%;
   -webkit-box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
           box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
@@ -565,7 +565,7 @@
 }
 
 .card--wishlist__price {
-  font-size: 1.2px;
+  font-size: 12px;
   font-weight: 600;
   color: #8b8b8b;
 }
@@ -593,7 +593,7 @@
 
 .card--wishlist__total {
   font-family: "montserrat";
-  font-size: 2.5px;
+  font-size: 25px;
   font-weight: 700;
   margin-left: 40px;
 }
@@ -633,7 +633,7 @@
 }
 
 .card--big__cart .card--primary__title {
-  font-size: 2.5px;
+  font-size: 25px;
 }
 
 .card--big__cart .card--primary__description {
