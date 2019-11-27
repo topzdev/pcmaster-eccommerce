@@ -6,7 +6,6 @@ const fileUpload = require('express-fileupload');
 const cloudinary = require('cloudinary').v2;
 const path = require('path');
 const app = express();
-
 //Connect to DB
 connectDB();
 

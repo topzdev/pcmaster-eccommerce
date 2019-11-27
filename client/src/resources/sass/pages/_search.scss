@@ -1,38 +1,38 @@
 .search {
-  padding: 4rem 0;
-  &__filter {
-  }
-
-  &__result {
-  }
-
-  &__string {
-    // text-align: center;
-    font-weight: 700;
-    font-size: 3rem;
-    padding: 2rem 0;
-
-    span {
-      color: var(--sec-col);
-      font-size: 4rem;
-      font-family: "montserrat";
+    padding: 40px 0;
+    &__filter {
     }
 
-    p {
-      margin-top: 1rem;
-      font-size: 1.5rem;
-      color: var(--gray-col);
+    &__result {
     }
-  }
 
-  &__sorter {
-    font-size: 1.8rem;
-    display: flex;
-    padding: 1.5rem 0;
-  }
+    &__string {
+        // text-align: center;
+        font-weight: 700;
+        font-size: 30px;
+        padding: 20px 0;
+
+        span {
+            color: var(--sec-col);
+            font-size: 40px;
+            font-family: "montserrat";
+        }
+
+        p {
+            margin-top: 10px;
+            font-size: 15px;
+            color: var(--gray-col);
+        }
+    }
+
+    &__sorter {
+        font-size: 18px;
+        display: flex;
+        padding: 15px 0;
+    }
 }
 
 .view-active {
-  background-color: var(--sec-col);
-  border-color: var(--sec-col);
+    background-color: var(--sec-col);
+    border-color: var(--sec-col);
 }
