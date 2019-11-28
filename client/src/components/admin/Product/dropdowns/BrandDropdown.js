@@ -11,7 +11,7 @@ const BrandDropdown = ({ options: { brands }, value, onChange, getBrand }) => {
 	}, []);
 	return (
 		<Fragment>
-			<InputLabel id='brand'>Brand</InputLabel>
+			<InputLabel id='brand'>Select Brand</InputLabel>
 			<Select
 				labelId='brand'
 				value={value}

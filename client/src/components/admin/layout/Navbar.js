@@ -5,31 +5,23 @@ import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
+
 import Badge from '@material-ui/core/Badge';
-import Backdrop from '@material-ui/core/Backdrop';
-import { Link } from 'react-router-dom';
 
 import ChevronLeft from '@material-ui/icons/ChevronLeft';
 import ChevronRight from '@material-ui/icons/ChevronRight';
-import Inbox from '@material-ui/icons/Inbox';
 import Mail from '@material-ui/icons/Mail';
-import Dashboard from '@material-ui/icons/Dashboard';
-import Settings from '@material-ui/icons/Settings';
-import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import Notifications from '@material-ui/icons/Notifications';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import { Menu as MenuIcon } from '@material-ui/icons';
 
-const drawerWidth = 240;
+import NavbarItem from './navbarList/NavbarItem';
+import NavbarMenu from './navbarList/NavbarMenu';
+import Backdrop from '@material-ui/core/Backdrop';
+const drawerWidth = 300;
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -98,11 +90,8 @@ export default function PersistentDrawerLeft() {
 	const classes = useStyles();
 	const theme = useTheme();
 	const [open, setOpen] = useState(false);
+	const [menuOpen, setMenuOpen] = useState(false);
 	const [anchorEl, setAnchorEl] = React.useState(null);
-	const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
-	const isMenuOpen = Boolean(anchorEl);
-	const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
 	useEffect(() => {
 		document.body.style.overflowX = 'hidden';
@@ -120,38 +109,9 @@ export default function PersistentDrawerLeft() {
 		setAnchorEl(event.currentTarget);
 	};
 
-	const handleMobileMenuClose = () => {
-		setMobileMoreAnchorEl(null);
-	};
-
-	const handleMenuClose = () => {
-		setAnchorEl(null);
-		handleMobileMenuClose();
-	};
-
-	const handleMobileMenuOpen = event => {
-		setMobileMoreAnchorEl(event.currentTarget);
-	};
-
-	const menuId = 'primary-search-account-menu';
-	const renderMenu = (
-		<Menu
-			anchorEl={anchorEl}
-			anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-			id={menuId}
-			keepMounted
-			transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-			open={isMenuOpen}
-			onClose={handleMenuClose}
-		>
-			<MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-			<MenuItem onClick={handleMenuClose}>My account</MenuItem>
-			<MenuItem onClick={handleMenuClose}>Logout</MenuItem>
-		</Menu>
-	);
-
 	return (
 		<div className={classes.root}>
+			{console.log(open, anchorEl)}
 			<CssBaseline />
 			<AppBar
 				position='static'
@@ -187,7 +147,7 @@ export default function PersistentDrawerLeft() {
 						<IconButton
 							edge='end'
 							aria-label='account of current user'
-							aria-controls={menuId}
+							aria-controls='user-dropdown'
 							aria-haspopup='true'
 							onClick={handleProfileMenuOpen}
 							color='inherit'
@@ -199,7 +159,6 @@ export default function PersistentDrawerLeft() {
 			</AppBar>
 			<Drawer
 				className={classes.drawer}
-				variant='persistent'
 				anchor='left'
 				open={open}
 				classes={{
@@ -212,30 +171,15 @@ export default function PersistentDrawerLeft() {
 					</IconButton>
 				</div>
 				<Divider />
-
-				<List>
-					<ListItem button component={Link} to='/admin'>
-						<ListItemIcon>
-							<Dashboard />
-						</ListItemIcon>
-						<ListItemText primary={'Dashboard'} />
-					</ListItem>
-					<ListItem button component={Link} to='/admin/product'>
-						<ListItemIcon>
-							<ShoppingCart />
-						</ListItemIcon>
-						<ListItemText primary={'Product'} />
-					</ListItem>
-					<ListItem button component={Link} to='/admin/setting'>
-						<ListItemIcon>
-							<Settings />
-						</ListItemIcon>
-						<ListItemText primary={'Settings'} />
-					</ListItem>
-				</List>
+				<NavbarItem />
 			</Drawer>
 
-			{renderMenu}
+			<NavbarMenu
+				open={menuOpen}
+				setOpen={setMenuOpen}
+				setAnchorEl={setAnchorEl}
+				anchorEl={anchorEl}
+			/>
 		</div>
 	);
 }

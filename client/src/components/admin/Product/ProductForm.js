@@ -1,9 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { DropzoneDialog } from 'material-ui-dropzone';
-import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
@@ -11,15 +9,17 @@ import TextField from '@material-ui/core/TextField';
 import { Save, Delete } from '@material-ui/icons';
 
 import Scroll from 'react-scroll';
+import _ from 'lodash';
 
 import Description from './productComponents/Description';
 import PreLoader from '../util/PreLoader';
 import DeleteModal from '../layout/modal/DeleteModal';
 
 import CategoryDropdown from './dropdowns/CategoryDropdown';
-import SubCategoryDropdown from './dropdowns/CategoryDropdown';
+import SubCategoryDropdown from './dropdowns/SubCategoryDropdown';
 import BrandDropdown from './dropdowns/BrandDropdown';
 import TagDropdown from './dropdowns/TagDropdown';
+import VarietyDropdown from './dropdowns/VarietyDropdown';
 import {
 	getProducts,
 	addProduct,
@@ -41,6 +41,7 @@ const useStyles = makeStyles(theme => ({
 
 const ProductForm = ({
 	product: { error, success, current },
+	options: { varieties },
 	getProducts,
 	addProduct,
 	clearError,
@@ -57,7 +58,8 @@ const ProductForm = ({
 		barcode: '',
 		price: 1,
 		quantity: 1,
-
+		subcategory: '',
+		variety: '',
 		overview: '',
 		tags: [],
 		category: '',
@@ -128,12 +130,12 @@ const ProductForm = ({
 
 	return (
 		<Fragment>
-			<Grid container style={{ paddingTop: '30px' }}>
-				{loading && <PreLoader />}
+			{loading && <PreLoader />}
+			<Grid container style={{ paddingTop: '0', position: 'relative' }}>
 				<Grid container style={{ marginBottom: '30px' }}>
 					<h1>{current ? 'Edit' : 'Add'} Product</h1>
 				</Grid>
-				<Grid container spacing={3}>
+				<Grid container spacing={3} style={{ marginBottom: '30px' }}>
 					<Grid item xs={6}>
 						<TextField
 							autoComplete='off'
@@ -218,7 +220,7 @@ const ProductForm = ({
 						/>
 					</Grid>
 				</Grid>
-				<Grid container spacing={3}>
+				<Grid container spacing={3} style={{ marginBottom: '30px' }}>
 					<Grid item xs={3}>
 						<FormControl
 							className={classes.formControl}
@@ -228,10 +230,31 @@ const ProductForm = ({
 						</FormControl>
 					</Grid>
 					<Grid item xs={3}>
-						<FormControl className={classes.formControl} error={validate.tags}>
-							<SubCategoryDropdown value={data.tags} onChange={onChange} />
+						<FormControl
+							className={classes.formControl}
+							error={validate.subcategory}
+							disabled={_.isEmpty(data.category) ? true : false}
+						>
+							<SubCategoryDropdown
+								value={data.subcategory}
+								onChange={onChange}
+							/>
 						</FormControl>
 					</Grid>
+					<Grid item xs={3}>
+						<FormControl
+							className={classes.formControl}
+							error={validate.variety}
+							disabled={
+								_.isEmpty(data.subcategory) || _.isEmpty(varieties)
+									? true
+									: false
+							}
+						>
+							<VarietyDropdown value={data.variety} onChange={onChange} />
+						</FormControl>
+					</Grid>
+
 					<Grid item xs={3}>
 						<FormControl className={classes.formControl} error={validate.brand}>
 							<BrandDropdown value={data.brand} onChange={onChange} />

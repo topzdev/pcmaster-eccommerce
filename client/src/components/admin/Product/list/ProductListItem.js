@@ -11,7 +11,10 @@ const ModalListItem = ({ data, onDelete }) => {
 		<ListItem>
 			<ListItemText
 				primary={data.title}
-				secondary={data.category != null && data.category}
+				secondary={
+					(data.category != null && data.category) ||
+					(data.subcategory != null && data.subcategory)
+				}
 			/>
 			<ListItemSecondaryAction>
 				<IconButton

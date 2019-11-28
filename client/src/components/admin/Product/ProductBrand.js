@@ -10,9 +10,9 @@ import ProductList from './list/ProductList';
 import _ from 'lodash';
 
 import {
-	getCategory,
-	addCategory,
-	deleteCategory,
+	getBrand,
+	addBrand,
+	deleteBrand,
 	setError
 } from '../../../controller/optionController/optionsActions';
 
@@ -25,18 +25,17 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const ProductCategory = ({
-	options: { categories, success },
-	getCategory,
-	addCategory,
-	deleteCategory,
+const ProductBrand = ({
+	options: { brands, success },
+	getBrand,
+	addBrand,
+	deleteBrand,
 	setError
 }) => {
 	const classes = useStyles();
 	const [title, setTitle] = useState('');
-	const [edit, setEdit] = useState(null);
 	useEffect(() => {
-		if (categories === null) getCategory();
+		if (brands === null) getBrand();
 	}, []);
 
 	useEffect(() => {
@@ -48,13 +47,13 @@ const ProductCategory = ({
 
 	const onChange = e => setTitle(e.target.value);
 
-	const onAddCategory = () => {
-		addCategory({ title });
+	const onAddBrand = () => {
+		addBrand({ title });
 		clearField();
 	};
 
 	const onDelCategory = _id => {
-		deleteCategory(_id);
+		deleteBrand(_id);
 		clearField();
 	};
 
@@ -66,7 +65,7 @@ const ProductCategory = ({
 		<div>
 			<Grid container spacing={5}>
 				<Grid item xs={6}>
-					<h1>Product Category</h1>
+					<h1>Product Brand</h1>
 					<Grid item xs={12}>
 						<div>
 							<div className={classes.grid}>
@@ -75,7 +74,7 @@ const ProductCategory = ({
 										margin='dense'
 										name='title'
 										value={title}
-										label='Add Category'
+										label='Enter Brand title here'
 										fullWidth
 										onChange={onChange}
 									/>
@@ -86,9 +85,9 @@ const ProductCategory = ({
 										aria-label='add'
 										mt={2}
 										style={{ marginLeft: 'auto' }}
-										onClick={onAddCategory}
+										onClick={onAddBrand}
 									>
-										{edit ? <EditIcon /> : <AddIcon />}
+										<AddIcon />
 									</Fab>
 								</div>
 							</div>
@@ -96,11 +95,7 @@ const ProductCategory = ({
 					</Grid>
 				</Grid>
 				<Grid item xs={6}>
-					<ProductList
-						data={categories}
-						onDelete={onDelCategory}
-						title={'Category'}
-					/>
+					<ProductList data={brands} onDelete={onDelCategory} title={'Brand'} />
 				</Grid>
 			</Grid>
 		</div>
@@ -112,8 +107,8 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, {
-	getCategory,
-	addCategory,
-	deleteCategory,
+	getBrand,
+	addBrand,
+	deleteBrand,
 	setError
-})(ProductCategory);
+})(ProductBrand);

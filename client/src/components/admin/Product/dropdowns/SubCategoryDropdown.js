@@ -1,31 +1,41 @@
 import React, { useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { getCategory } from '../../../../controller/optionController/optionsActions';
+import {
+	getSubCategory,
+	getVariety
+} from '../../../../controller/optionController/optionsActions';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 
 const SubCategoryDropdown = ({
-	options: { categories },
+	options: { subcategory },
 	value,
 	onChange,
-	getCategory
+	getSubCategory,
+	getVariety
 }) => {
 	useEffect(() => {
-		if (categories == null) getCategory();
+		if (subcategory == null) getSubCategory();
 	}, []);
+
+	const onSelect = e => {
+		onChange(e);
+		getVariety({ subcategory: e.target.value });
+	};
+
 	return (
 		<Fragment>
-			<InputLabel id='subCategory'>Sub Category</InputLabel>
+			<InputLabel id='subcategory'>Select Sub Category</InputLabel>
 			<Select
-				labelId='subCategory'
+				labelId='subcategory'
 				value={value}
-				name='subCategory'
-				onChange={onChange}
+				name='subcategory'
+				onChange={onSelect}
 				autoWidth
 			>
-				{categories != null &&
-					categories.map(category => (
+				{subcategory != null &&
+					subcategory.map(category => (
 						<MenuItem key={category._id} value={category.title}>
 							{category.title}
 						</MenuItem>
@@ -39,4 +49,6 @@ const mapStateToProps = state => ({
 	options: state.options
 });
 
-export default connect(mapStateToProps, { getCategory })(SubCategoryDropdown);
+export default connect(mapStateToProps, { getSubCategory, getVariety })(
+	SubCategoryDropdown
+);

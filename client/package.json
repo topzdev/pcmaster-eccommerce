@@ -22,7 +22,8 @@
     "react-select": "^3.0.8",
     "react-star-rating-component": "^1.4.1",
     "react-tabs": "^3.0.0",
-    "react-toast-notifications": "^2.3.0"
+    "react-toast-notifications": "^2.3.0",
+    "react-window": "^1.8.5"
   },
   "scripts": {
     "start": "react-scripts start",

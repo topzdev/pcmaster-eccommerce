@@ -3,7 +3,7 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 const PreLoader = () => {
 	return (
 		<Fragment>
-			<LinearProgress />
+			<LinearProgress style={{ width: '100%', position: 'absolute', top: 0, left: 0 }} />
 		</Fragment>
 	);
 };

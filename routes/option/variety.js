@@ -3,16 +3,23 @@ const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const _ = require('lodash');
 
-//############################### BRAND ###############################
+//############################### Variety ###############################
 //Category Variety
 const Variety = require('../../model/Variety');
 
-// @route    GET api/options/subCategory
-// @desc     view all subCategory
+// @route    GET api/options/variety
+// @desc     view all variety
 // @access   public
-router.get('/variety', async (req, res) => {
+router.post('/variety/search', async (req, res) => {
+	const { title, subcategory } = req.body;
+	let query = [];
+
+	if (subcategory) query.push({ subcategory });
+	if (title) query.push({ title: { $regex: title, $options: 'i' } });
+
 	try {
-		let variety = await Variety.find({});
+		console.log(subcategory, query);
+		let variety = await Variety.find(query.length > 0 ? { $or: query } : {});
 		res.status(200).json(variety);
 	} catch (err) {
 		console.error(err.message);
@@ -21,7 +28,7 @@ router.get('/variety', async (req, res) => {
 });
 
 //@route    POST api/options/variety
-//@desc     add subCategory
+//@desc     add variety
 //@access   public
 router.post(
 	'/variety',
@@ -45,6 +52,7 @@ router.post(
 
 		const { title, subcategory } = req.body;
 		try {
+			console.log('Variety', req.body);
 			let variety = await Variety.find({ title, subcategory });
 			if (!_.isEmpty(variety))
 				return res
@@ -66,7 +74,7 @@ router.post(
 );
 
 //@route    DELETE api/options/variety
-//@desc     delete subCategory
+//@desc     delete variety
 //@access   public
 router.delete('/variety/:id', async (req, res) => {
 	const { id } = req.params;

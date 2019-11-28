@@ -10,9 +10,18 @@ const SubCategory = require('../../model/SubCategory');
 // @route    GET api/options/subCategory
 // @desc     view all subCategory
 // @access   public
-router.get('/sub-category', async (req, res) => {
+router.post('/sub-category/search/', async (req, res) => {
+	const { category, title } = req.body;
+	let query = [];
+
+	if (category) query.push({ category });
+	if (title) query.push({ title: { $regex: title, $options: 'i' } });
+
 	try {
-		let subCategory = await SubCategory.find({});
+		console.log(category, query);
+		let subCategory = await SubCategory.find(
+			query.length > 0 ? { $or: query } : {}
+		);
 		res.status(200).json(subCategory);
 	} catch (err) {
 		console.error(err.message);

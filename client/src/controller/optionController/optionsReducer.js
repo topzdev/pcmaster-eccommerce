@@ -5,6 +5,9 @@ import {
 	GET_SUBCATEGORY,
 	ADD_SUBCATEGORY,
 	DELETE_SUBCATEGORY,
+	GET_VARIETY,
+	ADD_VARIETY,
+	DELETE_VARIETY,
 	GET_TAG,
 	ADD_TAG,
 	DELETE_TAG,
@@ -21,6 +24,7 @@ const initialState = {
 	subcategory: null,
 	brands: null,
 	tags: null,
+	varieties: null,
 	loading: false,
 	error: null,
 	success: null
@@ -95,6 +99,32 @@ export default (state = initialState, action) => {
 				success: action.payload.msg,
 				subcategory: state.subcategory.filter(
 					sub => sub._id != action.payload.data
+				)
+			};
+		case ADD_VARIETY:
+			return {
+				...state,
+				error: null,
+				loading: false,
+				success: action.payload,
+				varieties: [...state.varieties, action.payload.data]
+			};
+
+		case GET_VARIETY:
+			return {
+				...state,
+				loading: false,
+				varieties: action.payload
+			};
+
+		case DELETE_VARIETY:
+			return {
+				...state,
+				error: null,
+				loading: false,
+				success: action.payload.msg,
+				varieties: state.varieties.filter(
+					vary => vary._id != action.payload.data
 				)
 			};
 

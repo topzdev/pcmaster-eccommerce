@@ -48,13 +48,14 @@ export const addProduct = (data, images) => async dispatch => {
 		const formData = new FormData();
 
 		formData.append('brand', data.brand);
-		formData.append('components', data.components);
 		formData.append('name', data.name);
 		formData.append('sku', data.sku);
 		formData.append('barcode', data.barcode);
 		formData.append('price', data.price);
 		formData.append('quantity', data.quantity);
 		formData.append('overview', data.overview);
+		formData.append('subcategory', data.subcategory);
+		formData.append('variety', data.variety);
 		formData.append('tags', JSON.stringify(data.tags));
 		formData.append('category', data.category);
 		formData.append('description', JSON.stringify(data.description));

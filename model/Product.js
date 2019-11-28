@@ -45,10 +45,13 @@ const ProductSchema = Schema({
 		type: String
 	},
 
-	subCategory: {
+	subcategory: {
 		type: String
 	},
 
+	variety: {
+		type: String
+	},
 	tags: [],
 
 	reviews: [

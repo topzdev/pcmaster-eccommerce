@@ -6,6 +6,9 @@ import {
 	GET_SUBCATEGORY,
 	ADD_SUBCATEGORY,
 	DELETE_SUBCATEGORY,
+	GET_VARIETY,
+	ADD_VARIETY,
+	DELETE_VARIETY,
 	GET_TAG,
 	ADD_TAG,
 	DELETE_TAG,
@@ -77,12 +80,17 @@ export const deleteCategory = id => async dispatch => {
 	}
 };
 
-//############################### CATEGORY ###############################
+//############################### SUBCATEGORY ###############################
 //Get the list of Category
-export const getSubCategory = () => async dispatch => {
+export const getSubCategory = category => async dispatch => {
 	try {
 		setLoading();
-		const res = await axios.get('/api/options/sub-category');
+		console.log(category);
+		const res = await axios.post(
+			'/api/options/sub-category/search/',
+			{ category },
+			config
+		);
 
 		dispatch({
 			type: GET_SUBCATEGORY,
@@ -91,12 +99,12 @@ export const getSubCategory = () => async dispatch => {
 	} catch (err) {}
 };
 
-//Add Category
+//Add SubCategory
 export const addSubCategory = subcategory => async dispatch => {
 	try {
 		setLoading();
 		const res = await axios.post(
-			'/api/options/sub-category',
+			'/api/options/sub-category/',
 			subcategory,
 			config
 		);
@@ -114,13 +122,71 @@ export const addSubCategory = subcategory => async dispatch => {
 	}
 };
 
-//Delete Category
+//Delete SubCategory
 export const deleteSubCategory = id => async dispatch => {
 	try {
 		setLoading();
 		const res = await axios.delete(`/api/options/sub-category/${id}`);
 		dispatch({
 			type: DELETE_SUBCATEGORY,
+			payload: {
+				msg: res.data,
+				data: id
+			}
+		});
+	} catch (err) {
+		console.error(err.response.data);
+		dispatch({
+			type: OPTION_ERROR,
+			payload: err.response.data
+		});
+	}
+};
+
+//############################### VARIETY ###############################
+//Get the list of Category
+export const getVariety = variety => async dispatch => {
+	try {
+		setLoading();
+		const res = await axios.post(
+			'/api/options/variety/search',
+			variety,
+			config
+		);
+
+		dispatch({
+			type: GET_VARIETY,
+			payload: res.data
+		});
+	} catch (err) {}
+};
+
+//Add Category
+export const addVariety = variety => async dispatch => {
+	try {
+		setLoading();
+		console.log('the', variety);
+		const res = await axios.post('/api/options/variety', variety, config);
+		dispatch({
+			type: ADD_VARIETY,
+			payload: res.data
+		});
+	} catch (err) {
+		console.error(err.response.data);
+		dispatch({
+			type: OPTION_ERROR,
+			payload: err.response.data
+		});
+	}
+};
+
+//Delete Category
+export const deleteVariety = id => async dispatch => {
+	try {
+		setLoading();
+		const res = await axios.delete(`/api/options/variety/${id}`);
+		dispatch({
+			type: DELETE_VARIETY,
 			payload: {
 				msg: res.data,
 				data: id

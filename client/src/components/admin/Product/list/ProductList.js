@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
@@ -17,11 +17,12 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const ModalList = ({ data, onDelete, title }) => {
+const ProductList = ({ data, onDelete, title }) => {
 	const classes = useStyles();
-	const onChange = e => {};
+	const [search, setSearch] = useState('');
+	const onChange = e => setSearch(e.target.value);
 	return (
-		<List dense={false}>
+		<List dense={false} height={800}>
 			<Grid container align={'center'} style={{ margin: '10px 0' }}>
 				<Grid item>
 					<h2>{title} List</h2>
@@ -31,7 +32,7 @@ const ModalList = ({ data, onDelete, title }) => {
 						<TextField
 							fullWidth
 							name={'category'}
-							value={'hello'}
+							value={search}
 							label={`Search ${title}`}
 							className={classes.input}
 							onChange={onChange}
@@ -50,12 +51,8 @@ const ModalList = ({ data, onDelete, title }) => {
 			</Grid>
 			{data != null &&
 				data.map((item, idx) => (
-					<Fragment>
-						<ProductListItem
-							key={item._id || idx}
-							data={item}
-							onDelete={onDelete}
-						/>
+					<Fragment key={item._id}>
+						<ProductListItem data={item} onDelete={onDelete} />
 						<Divider />
 					</Fragment>
 				))}
@@ -63,4 +60,4 @@ const ModalList = ({ data, onDelete, title }) => {
 	);
 };
 
-export default ModalList;
+export default ProductList;

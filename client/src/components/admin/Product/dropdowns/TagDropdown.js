@@ -11,7 +11,9 @@ import Input from '@material-ui/core/Input';
 import {
 	getTags,
 	getBrand,
-	getCategory
+	getCategory,
+	getVariety,
+	getSubCategory
 } from '../../../../controller/optionController/optionsActions';
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -35,7 +37,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const TagDropdown = ({
-	options: { tags, brands, categories },
+	options: { tags, brands, categories, subcategory, varieties },
 	value,
 	onChange,
 	getTags
@@ -46,11 +48,12 @@ const TagDropdown = ({
 		if (!tags) getTags();
 		if (!brands) getBrand();
 		if (!categories) getCategory();
+		if (!subcategory) getSubCategory();
+		if (!varieties) getVariety();
 	}, []);
 	return (
 		<Fragment>
-			{console.log(tags, value)}
-			<InputLabel id='tags'>Tag</InputLabel>
+			<InputLabel id='tags'>Select Tag</InputLabel>
 			<Select
 				labelId='tags'
 				multiple
@@ -85,6 +88,18 @@ const TagDropdown = ({
 					categories.map(category => (
 						<MenuItem key={category._id} value={category.title}>
 							{category.title}
+						</MenuItem>
+					))}
+				{subcategory != null &&
+					subcategory.map(sub => (
+						<MenuItem key={sub._id} value={sub.title}>
+							{sub.title}
+						</MenuItem>
+					))}
+				{varieties != null &&
+					varieties.map(vary => (
+						<MenuItem key={vary._id} value={vary.title}>
+							{vary.title}
 						</MenuItem>
 					))}
 			</Select>

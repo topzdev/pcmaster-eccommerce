@@ -9,11 +9,9 @@ import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 import CategoryOutlined from '@material-ui/icons/CategoryOutlined';
 import LoyaltyOutlined from '@material-ui/icons/LoyaltyOutlined';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
+import ClassIcon from '@material-ui/icons/Class';
+import BallotIcon from '@material-ui/icons/Ballot';
 import { List as ListIcon } from '@material-ui/icons';
-
-// import CategoryModal from '../layout/modal/CategoryModal';
-// import TagModal from '../layout/modal/TagModal';
-// import BrandModal from '../layout/modal/BrandModal';
 const useStyles = makeStyles(theme => ({
 	root: {
 		height: 380,
@@ -78,30 +76,34 @@ const SpeedDialButtons = () => {
 					tooltipTitle={'Add Product'}
 					onClick={() => changeUrl('/admin/product/add')}
 				/>
-				<SpeedDialAction
-					icon={<CategoryOutlined />}
-					tooltipTitle={'Add SubCategory'}
-					onClick={() => changeUrl('/admin/product/sub-category')}
-				/>
+
 				<SpeedDialAction
 					icon={<CategoryOutlined />}
 					tooltipTitle={'Add Category'}
 					onClick={() => changeUrl('/admin/product/category')}
 				/>
 				<SpeedDialAction
+					icon={<ClassIcon />}
+					tooltipTitle={'Add SubCategory'}
+					onClick={() => changeUrl('/admin/product/sub-category')}
+				/>
+				<SpeedDialAction
+					icon={<BallotIcon />}
+					tooltipTitle={'Add Variety'}
+					onClick={() => changeUrl('/admin/product/variety')}
+				/>
+				<SpeedDialAction
 					icon={<LoyaltyOutlined />}
 					tooltipTitle={'Add Tags'}
-					onClick={() => setTag(true)}
+					onClick={() => changeUrl('/admin/product/tag')}
 				/>
 				<SpeedDialAction
 					icon={<DescriptionOutlinedIcon />}
 					tooltipTitle={'Add Brand'}
-					onClick={() => setBrand(true)}
+					onClick={() => changeUrl('/admin/product/brand')}
 				/>
-				{/* <CategoryModal show={showCategory} set={setCategory} /> */}
-				{/* <TagModal show={showTag} set={setTag} /> */}
-				{/* <BrandModal show={showBrand} set={setBrand} /> */}
 			</SpeedDial>
+			<Backdrop open={open} style={{ zIndex: 1400 }} />
 		</div>
 	);
 };

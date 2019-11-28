@@ -6,16 +6,16 @@ import Fab from '@material-ui/core/Fab';
 import FormControl from '@material-ui/core/FormControl';
 import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
-
 import { connect } from 'react-redux';
 import ProductList from './list/ProductList';
+import SubCategoryDropdown from './dropdowns/SubCategoryDropdown';
 import CategoryDropdown from './dropdowns/CategoryDropdown';
 import _ from 'lodash';
 
 import {
-	getSubCategory,
-	addSubCategory,
-	deleteSubCategory,
+	getVariety,
+	addVariety,
+	deleteVariety,
 	setError
 } from '../../../controller/optionController/optionsActions';
 
@@ -28,22 +28,23 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const ProductSubCategory = ({
-	options: { subcategory, success, error },
-	getSubCategory,
-	addSubCategory,
-	deleteSubCategory,
+const ProductVariety = ({
+	options: { varieties, success, error },
+	getVariety,
+	addVariety,
+	deleteVariety,
 	setError
 }) => {
 	const initialState = {
 		title: '',
-		category: ''
+		category: '',
+		subcategory: ''
 	};
 	const classes = useStyles();
 	const [data, setData] = useState(initialState);
 
 	useEffect(() => {
-		if (subcategory === null) getSubCategory();
+		if (varieties === null) getVariety();
 	}, []);
 
 	useEffect(() => {
@@ -53,16 +54,14 @@ const ProductSubCategory = ({
 		}
 	}, [success]);
 
-	const onChange = e => {
-		setData({ ...data, [e.target.name]: e.target.value });
+	const onChange = e => setData({ ...data, [e.target.name]: e.target.value });
+
+	const onAddVariety = () => {
+		addVariety(data);
 	};
 
-	const onAddSubCategory = () => {
-		addSubCategory(data);
-	};
-
-	const onDelSubCategory = _id => {
-		deleteSubCategory(_id);
+	const onDelVariety = _id => {
+		deleteVariety(_id);
 	};
 
 	const clearField = () => {
@@ -73,10 +72,18 @@ const ProductSubCategory = ({
 		<div>
 			<Grid container spacing={5}>
 				<Grid item xs={6}>
-					<h1>Product SubCategory</h1>
+					<h1>{'Product Variety'}</h1>
 					<Grid item xs={12}>
 						<FormControl style={{ width: '100%', marginBottom: '5px' }}>
 							<CategoryDropdown value={data.category} onChange={onChange} />
+						</FormControl>
+					</Grid>
+					<Grid item xs={12}>
+						<FormControl style={{ width: '100%', marginBottom: '5px' }}>
+							<SubCategoryDropdown
+								value={data.subcategory}
+								onChange={onChange}
+							/>
 						</FormControl>
 					</Grid>
 					<Grid item xs={12}>
@@ -86,7 +93,7 @@ const ProductSubCategory = ({
 									margin='dense'
 									name='title'
 									value={data.title}
-									label={'Add Sub Category'}
+									label={'Variety Title'}
 									fullWidth
 									onChange={onChange}
 								/>
@@ -97,7 +104,7 @@ const ProductSubCategory = ({
 									aria-label='add'
 									mt={2}
 									style={{ marginLeft: 'auto' }}
-									onClick={onAddSubCategory}
+									onClick={onAddVariety}
 								>
 									<AddIcon />
 								</Fab>
@@ -107,9 +114,9 @@ const ProductSubCategory = ({
 				</Grid>
 				<Grid item xs={6}>
 					<ProductList
-						data={subcategory}
-						onDelete={onDelSubCategory}
-						title={'SubCategory'}
+						data={varieties}
+						onDelete={onDelVariety}
+						title={'Variety'}
 					/>
 				</Grid>
 			</Grid>
@@ -122,8 +129,8 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, {
-	getSubCategory,
-	addSubCategory,
-	deleteSubCategory,
+	getVariety,
+	addVariety,
+	deleteVariety,
 	setError
-})(ProductSubCategory);
+})(ProductVariety);

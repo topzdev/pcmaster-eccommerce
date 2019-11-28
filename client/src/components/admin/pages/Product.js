@@ -5,6 +5,9 @@ import ProductForm from '../product/ProductForm';
 import ProductDashboard from '../product/ProductDashboard';
 import ProductCategory from '../product/ProductCategory';
 import ProductSubCategory from '../product/ProductSubCategory';
+import ProductVariety from '../product/ProductVariety';
+import ProductTag from '../product/ProductTag';
+import ProductBrand from '../product/ProductBrand';
 import SpeedDialButtons from '../include/SpeedDialButtons';
 
 import { connect } from 'react-redux';
@@ -12,7 +15,8 @@ import { connect } from 'react-redux';
 import { setRedirect } from '../../../controller/utitlityController/utilityActions';
 const useStyles = makeStyles(theme => ({
 	root: {
-		padding: theme.spacing(5, 0, 5, 0)
+		padding: theme.spacing(5, 0, 5, 0),
+		position: 'relative'
 	},
 	container: {
 		background: '#fff',
@@ -40,6 +44,12 @@ const Product = ({ product: { current }, setRedirect }) => {
 				return <ProductCategory />;
 			case '/admin/product/sub-category':
 				return <ProductSubCategory />;
+			case '/admin/product/variety':
+				return <ProductVariety />;
+			case '/admin/product/tag':
+				return <ProductTag />;
+			case '/admin/product/brand':
+				return <ProductBrand />;
 			default:
 				return <ProductDashboard />;
 		}

@@ -1,6 +1,9 @@
 import React, { useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { getCategory } from '../../../../controller/optionController/optionsActions';
+import {
+	getCategory,
+	getSubCategory
+} from '../../../../controller/optionController/optionsActions';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
@@ -9,19 +12,27 @@ const CategoryDropdown = ({
 	options: { categories },
 	value,
 	onChange,
-	getCategory
+	getCategory,
+	getSubCategory
 }) => {
 	useEffect(() => {
 		if (categories == null) getCategory();
 	}, []);
+
+	const onSelect = e => {
+		onChange(e);
+		console.log(e.target.value);
+		getSubCategory(e.target.value);
+	};
+
 	return (
 		<Fragment>
-			<InputLabel id='category'>Category</InputLabel>
+			<InputLabel id='category'>Select Category</InputLabel>
 			<Select
 				labelId='category'
 				value={value}
 				name='category'
-				onChange={onChange}
+				onChange={onSelect}
 				autoWidth
 			>
 				{categories != null &&
@@ -39,4 +50,6 @@ const mapStateToProps = state => ({
 	options: state.options
 });
 
-export default connect(mapStateToProps, { getCategory })(CategoryDropdown);
+export default connect(mapStateToProps, { getCategory, getSubCategory })(
+	CategoryDropdown
+);
