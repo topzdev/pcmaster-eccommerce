@@ -10,7 +10,7 @@ const GadgetsDropdown = () => {
                 <li className="menu__drp-item">
                     <Link to="/" className="menu__drp-link">
                         <span>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </span>{" "}
                         <p>Digital Camera</p>
                     </Link>
@@ -18,7 +18,7 @@ const GadgetsDropdown = () => {
                 <li className="menu__drp-item">
                     <Link to="/" className="menu__drp-link">
                         <span>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </span>{" "}
                         <p>Media Player</p>
                     </Link>
@@ -26,7 +26,7 @@ const GadgetsDropdown = () => {
                 <li className="menu__drp-item">
                     <Link to="/" className="menu__drp-link">
                         <span>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </span>{" "}
                         <p>Mobile</p>
                     </Link>
@@ -34,7 +34,7 @@ const GadgetsDropdown = () => {
                 <li className="menu__drp-item">
                     <Link to="/" className="menu__drp-link">
                         <span>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </span>{" "}
                         <p>Mobile Accessories</p>
                     </Link>
@@ -42,7 +42,7 @@ const GadgetsDropdown = () => {
                 <li className="menu__drp-item">
                     <Link to="/" className="menu__drp-link">
                         <span>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </span>{" "}
                         <p>Mining</p>
                     </Link>
@@ -50,7 +50,7 @@ const GadgetsDropdown = () => {
                 <li className="menu__drp-item">
                     <Link to="/" className="menu__drp-link">
                         <span>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </span>{" "}
                         <p>Wellness</p>
                     </Link>

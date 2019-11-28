@@ -15,7 +15,7 @@ const Navbar = () => {
 						<div className='inp--search'>
 							<input className='inp' type='text' placeholder='Search product' />
 							<button>
-								<i class='fas fa-search'></i>
+								<i className='fas fa-search'></i>
 							</button>
 						</div>
 					</div>
@@ -23,11 +23,11 @@ const Navbar = () => {
 					<li className='navbar__list'>
 						<NavLink className='btn btn--icon mr-2' to='/wishlist'>
 							<span className='badge badge--primary'>1</span>
-							<i class='far fa-heart'></i>
+							<i className='far fa-heart'></i>
 						</NavLink>
 						<NavLink className='btn btn--icon' to='/cart'>
 							<span className='badge badge--primary'>1</span>
-							<i class='fas fa-shopping-cart'></i>
+							<i className='fas fa-shopping-cart'></i>
 						</NavLink>
 					</li>
 				</div>

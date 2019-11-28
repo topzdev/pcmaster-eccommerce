@@ -7,7 +7,7 @@ const ScrollUpButton = () => {
 			onClick={() => Scroll.animateScroll.scrollToTop()}
 		>
 			<span>
-				<i class='fas fa-chevron-up'></i>
+				<i className='fas fa-chevron-up'></i>
 			</span>
 		</button>
 	);

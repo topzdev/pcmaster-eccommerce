@@ -17,8 +17,8 @@ const ProductReview = () => {
               <StarRatingComponent
                 name="rate"
                 editing={false}
-                renderStarIcon={() => <i class="fas fa-star"></i>}
-                renderStarIconHalf={() => <i class="fas fa-star-half-alt"></i>}
+                renderStarIcon={() => <i className="fas fa-star"></i>}
+                renderStarIconHalf={() => <i className="fas fa-star-half-alt"></i>}
                 starCount={5}
                 value={4.5}
               />
@@ -35,7 +35,7 @@ const ProductReview = () => {
                   5{" "}
                   <span>
                     {" "}
-                    <i class="fas fa-star"></i>
+                    <i className="fas fa-star"></i>
                   </span>
                 </p>
                 <div className="rating__percent">
@@ -48,7 +48,7 @@ const ProductReview = () => {
                   4{" "}
                   <span>
                     {" "}
-                    <i class="fas fa-star"></i>
+                    <i className="fas fa-star"></i>
                   </span>
                 </p>
                 <div className="rating__percent">
@@ -61,7 +61,7 @@ const ProductReview = () => {
                   3{" "}
                   <span>
                     {" "}
-                    <i class="fas fa-star"></i>
+                    <i className="fas fa-star"></i>
                   </span>
                 </p>
                 <div className="rating__percent">
@@ -74,7 +74,7 @@ const ProductReview = () => {
                   2{" "}
                   <span>
                     {" "}
-                    <i class="fas fa-star"></i>
+                    <i className="fas fa-star"></i>
                   </span>
                 </p>
                 <div className="rating__percent">
@@ -87,7 +87,7 @@ const ProductReview = () => {
                   1{" "}
                   <span>
                     {" "}
-                    <i class="fas fa-star"></i>
+                    <i className="fas fa-star"></i>
                   </span>
                 </p>
                 <div className="rating__percent">

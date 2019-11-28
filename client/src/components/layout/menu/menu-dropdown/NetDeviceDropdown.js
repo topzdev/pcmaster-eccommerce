@@ -10,7 +10,7 @@ const NetDeviceComponent = () => {
                 <li className="menu__drp-item">
                     <Link to="/" className="menu__drp-link">
                         <span>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </span>{" "}
                         <p>Access Point/Range Extender</p>
                     </Link>
@@ -18,7 +18,7 @@ const NetDeviceComponent = () => {
                 <li className="menu__drp-item">
                     <Link to="/" className="menu__drp-link">
                         <span>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </span>{" "}
                         <p>Adaptor</p>
                     </Link>
@@ -26,7 +26,7 @@ const NetDeviceComponent = () => {
                 <li className="menu__drp-item">
                     <Link to="/" className="menu__drp-link">
                         <span>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </span>{" "}
                         <p>Router</p>
                     </Link>
@@ -34,7 +34,7 @@ const NetDeviceComponent = () => {
                 <li className="menu__drp-item">
                     <Link to="/" className="menu__drp-link">
                         <span>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </span>{" "}
                         <p>Switch</p>
                     </Link>
@@ -42,7 +42,7 @@ const NetDeviceComponent = () => {
                 <li className="menu__drp-item">
                     <Link to="/" className="menu__drp-link">
                         <span>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </span>{" "}
                         <p>UTP Cable</p>
                     </Link>
@@ -50,7 +50,7 @@ const NetDeviceComponent = () => {
                 <li className="menu__drp-item">
                     <Link to="/" className="menu__drp-link">
                         <span>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </span>{" "}
                         <p>Network Attached Storage</p>
                     </Link>

@@ -19,8 +19,8 @@ const Comment = () => {
           <StarRatingComponent
             name="comment-rate"
             editing={false}
-            renderStarIcon={() => <i class="fas fa-star"></i>}
-            renderStarIconHalf={() => <i class="fas fa-star-half-alt"></i>}
+            renderStarIcon={() => <i className="fas fa-star"></i>}
+            renderStarIconHalf={() => <i className="fas fa-star-half-alt"></i>}
             starCount={5}
             value={5}
           />

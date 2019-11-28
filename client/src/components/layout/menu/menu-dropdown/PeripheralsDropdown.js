@@ -10,7 +10,7 @@ const PeripheralsDropdown = () => {
                 <li className="menu__drp-item">
                     <Link to="/" className="menu__drp-link">
                         <span>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </span>{" "}
                         <p>Displays</p>
                     </Link>
@@ -18,7 +18,7 @@ const PeripheralsDropdown = () => {
                 <li className="menu__drp-item">
                     <Link to="/" className="menu__drp-link">
                         <span>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </span>{" "}
                         <p>Audio</p>
                     </Link>
@@ -26,7 +26,7 @@ const PeripheralsDropdown = () => {
                 <li className="menu__drp-item">
                     <Link to="/" className="menu__drp-link">
                         <span>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </span>{" "}
                         <p>Keyboard/Mouse</p>
                     </Link>
@@ -34,7 +34,7 @@ const PeripheralsDropdown = () => {
                 <li className="menu__drp-item">
                     <Link to="/" className="menu__drp-link">
                         <span>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </span>{" "}
                         <p>Office Furniture</p>
                     </Link>
@@ -42,7 +42,7 @@ const PeripheralsDropdown = () => {
                 <li className="menu__drp-item">
                     <Link to="/" className="menu__drp-link">
                         <span>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </span>{" "}
                         <p>Printer/Scanner/Inks</p>
                     </Link>
@@ -50,7 +50,7 @@ const PeripheralsDropdown = () => {
                 <li className="menu__drp-item">
                     <Link to="/" className="menu__drp-link">
                         <span>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </span>{" "}
                         <p>Surveillance/CCTV</p>
                     </Link>
@@ -58,7 +58,7 @@ const PeripheralsDropdown = () => {
                 <li className="menu__drp-item">
                     <Link to="/" className="menu__drp-link">
                         <span>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </span>{" "}
                         <p>UPS/AVR</p>
                     </Link>
@@ -66,7 +66,7 @@ const PeripheralsDropdown = () => {
                 <li className="menu__drp-item">
                     <Link to="/" className="menu__drp-link">
                         <span>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </span>{" "}
                         <p>Webcam</p>
                     </Link>

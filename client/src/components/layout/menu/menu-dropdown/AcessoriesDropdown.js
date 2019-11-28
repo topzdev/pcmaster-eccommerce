@@ -10,7 +10,7 @@ const AcessoriesDropdown = () => {
                 <li className="menu__drp-item">
                     <Link to="/" className="menu__drp-link">
                         <span>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </span>{" "}
                         <p>Batteris and Chargers</p>
                     </Link>
@@ -18,7 +18,7 @@ const AcessoriesDropdown = () => {
                 <li className="menu__drp-item">
                     <Link to="/" className="menu__drp-link">
                         <span>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </span>{" "}
                         <p>Cables</p>
                     </Link>
@@ -26,7 +26,7 @@ const AcessoriesDropdown = () => {
                 <li className="menu__drp-item">
                     <Link to="/" className="menu__drp-link">
                         <span>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </span>{" "}
                         <p>Cooling Solutions</p>
                     </Link>
@@ -34,7 +34,7 @@ const AcessoriesDropdown = () => {
                 <li className="menu__drp-item">
                     <Link to="/" className="menu__drp-link">
                         <span>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </span>{" "}
                         <p>Cleaning Solutions</p>
                     </Link>
@@ -42,7 +42,7 @@ const AcessoriesDropdown = () => {
                 <li className="menu__drp-item">
                     <Link to="/" className="menu__drp-link">
                         <span>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </span>{" "}
                         <p>HDD Dock / Enclosure / Caddy</p>
                     </Link>
@@ -50,7 +50,7 @@ const AcessoriesDropdown = () => {
                 <li className="menu__drp-item">
                     <Link to="/" className="menu__drp-link">
                         <span>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </span>{" "}
                         <p>Lightings</p>
                     </Link>
@@ -58,7 +58,7 @@ const AcessoriesDropdown = () => {
                 <li className="menu__drp-item">
                     <Link to="/" className="menu__drp-link">
                         <span>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </span>{" "}
                         <p>Memory Devices</p>
                     </Link>
@@ -66,7 +66,7 @@ const AcessoriesDropdown = () => {
                 <li className="menu__drp-item">
                     <Link to="/" className="menu__drp-link">
                         <span>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </span>{" "}
                         <p>Sleeves / Bags</p>
                     </Link>
@@ -74,7 +74,7 @@ const AcessoriesDropdown = () => {
                 <li className="menu__drp-item">
                     <Link to="/" className="menu__drp-link">
                         <span>
-                            <i class="fas fa-chevron-right"></i>
+                            <i className="fas fa-chevron-right"></i>
                         </span>{" "}
                         <p>USB Hub / Card Reader</p>
                     </Link>

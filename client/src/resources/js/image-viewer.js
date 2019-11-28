@@ -27,7 +27,7 @@ var loadtoList = function loadtoList() {
     show_list.innerHTML = "";
     var img_temp = "";
     images.forEach(function (img, i) {
-        img_temp += `<li class="overview__items" data-idx="${i}"><img src="${img}" alt=""></li>`
+        img_temp += `<li className="overview__items" data-idx="${i}"><img src="${img}" alt=""></li>`
     });
 
     show_list.innerHTML = img_temp;

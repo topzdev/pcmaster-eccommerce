@@ -13,7 +13,7 @@ const ProductShowCase = ({ title, items }) => {
 				<OwlCarousel
 					className='owl-theme'
 					nav
-					navClass={['nav-carousel nav-left', 'nav-carousel nav-right']}
+					navclassName={['nav-carousel nav-left', 'nav-carousel nav-right']}
 					items={4}
 					margin={20}
 				>

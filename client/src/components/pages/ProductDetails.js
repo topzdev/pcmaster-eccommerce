@@ -35,7 +35,7 @@ const ProductDetails = () => {
 					</div>
 					<button className='btn btn--primary mt-2'>
 						<span>
-							<i class='fas fa-shopping-cart'></i>
+							<i className='fas fa-shopping-cart'></i>
 						</span>
 						Add to Cart
 					</button>
@@ -43,13 +43,13 @@ const ProductDetails = () => {
 					<div className='details__btn'>
 						<button className='btn btn--wishlist'>
 							<span>
-								<i class='far fa-heart'></i>
+								<i className='far fa-heart'></i>
 							</span>
 							Add to Wishlist
 						</button>
 						<button className='btn btn--wishlist'>
 							<span>
-								<i class='fas fa-random'></i>
+								<i className='fas fa-random'></i>
 							</span>
 							Compare Product
 						</button>
@@ -69,17 +69,17 @@ const ProductDetails = () => {
 							<b>Share: </b>
 							<Link to='/'>
 								<span>
-									<i class='fab fa-facebook'></i>
+									<i className='fab fa-facebook'></i>
 								</span>
 							</Link>{' '}
 							<Link to='/'>
 								<span>
-									<i class='fab fa-twitter'></i>
+									<i className='fab fa-twitter'></i>
 								</span>
 							</Link>{' '}
 							<Link to='/'>
 								<span>
-									<i class='fab fa-pinterest'></i>
+									<i className='fab fa-pinterest'></i>
 								</span>
 							</Link>
 						</li>
