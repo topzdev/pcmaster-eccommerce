@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 import Fab from '@material-ui/core/Fab';
 import Grid from '@material-ui/core/Grid';
 import { Add as AddIcon } from '@material-ui/icons';
-import ModalList from './modalList/ModalList';
+import ModalList from '../../product/list/ModalList';
 import {
 	getCategory,
 	addCategory,

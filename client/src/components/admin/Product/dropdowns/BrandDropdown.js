@@ -7,7 +7,7 @@ import Select from '@material-ui/core/Select';
 
 const BrandDropdown = ({ options: { brands }, value, onChange, getBrand }) => {
 	useEffect(() => {
-		if (brands != null) getBrand();
+		if (brands == null) getBrand();
 	}, []);
 	return (
 		<Fragment>

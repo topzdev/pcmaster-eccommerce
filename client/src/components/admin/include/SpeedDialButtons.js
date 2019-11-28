@@ -11,9 +11,9 @@ import LoyaltyOutlined from '@material-ui/icons/LoyaltyOutlined';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import { List as ListIcon } from '@material-ui/icons';
 
-import CategoryModal from '../layout/modal/CategoryModal';
-import TagModal from '../layout/modal/TagModal';
-import BrandModal from '../layout/modal/BrandModal';
+// import CategoryModal from '../layout/modal/CategoryModal';
+// import TagModal from '../layout/modal/TagModal';
+// import BrandModal from '../layout/modal/BrandModal';
 const useStyles = makeStyles(theme => ({
 	root: {
 		height: 380,
@@ -80,8 +80,13 @@ const SpeedDialButtons = () => {
 				/>
 				<SpeedDialAction
 					icon={<CategoryOutlined />}
+					tooltipTitle={'Add SubCategory'}
+					onClick={() => changeUrl('/admin/product/sub-category')}
+				/>
+				<SpeedDialAction
+					icon={<CategoryOutlined />}
 					tooltipTitle={'Add Category'}
-					onClick={() => setCategory(true)}
+					onClick={() => changeUrl('/admin/product/category')}
 				/>
 				<SpeedDialAction
 					icon={<LoyaltyOutlined />}
@@ -93,9 +98,9 @@ const SpeedDialButtons = () => {
 					tooltipTitle={'Add Brand'}
 					onClick={() => setBrand(true)}
 				/>
-				<CategoryModal show={showCategory} set={setCategory} />
-				<TagModal show={showTag} set={setTag} />
-				<BrandModal show={showBrand} set={setBrand} />
+				{/* <CategoryModal show={showCategory} set={setCategory} /> */}
+				{/* <TagModal show={showTag} set={setTag} /> */}
+				{/* <BrandModal show={showBrand} set={setBrand} /> */}
 			</SpeedDial>
 		</div>
 	);

@@ -5,7 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 
-const CategoryDropdown = ({
+const SubCategoryDropdown = ({
 	options: { categories },
 	value,
 	onChange,
@@ -16,11 +16,11 @@ const CategoryDropdown = ({
 	}, []);
 	return (
 		<Fragment>
-			<InputLabel id='category'>Category</InputLabel>
+			<InputLabel id='subCategory'>Sub Category</InputLabel>
 			<Select
-				labelId='category'
+				labelId='subCategory'
 				value={value}
-				name='category'
+				name='subCategory'
 				onChange={onChange}
 				autoWidth
 			>
@@ -39,4 +39,4 @@ const mapStateToProps = state => ({
 	options: state.options
 });
 
-export default connect(mapStateToProps, { getCategory })(CategoryDropdown);
+export default connect(mapStateToProps, { getCategory })(SubCategoryDropdown);

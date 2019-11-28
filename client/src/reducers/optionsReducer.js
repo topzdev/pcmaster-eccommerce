@@ -2,6 +2,9 @@ import {
 	GET_CATEGORY,
 	ADD_CATEGORY,
 	DELETE_CATEGORY,
+	GET_SUBCATEGORY,
+	ADD_SUBCATEGORY,
+	DELETE_SUBCATEGORY,
 	GET_TAG,
 	ADD_TAG,
 	DELETE_TAG,
@@ -9,11 +12,13 @@ import {
 	ADD_BRAND,
 	DELETE_BRAND,
 	OPTION_ERROR,
-	SET_LOADING
+	SET_LOADING,
+	SET_ERROR
 } from '../actions/types';
 
 const initialState = {
 	categories: null,
+	subcategory: null,
 	brands: null,
 	tags: null,
 	loading: false,
@@ -28,6 +33,11 @@ export default (state = initialState, action) => {
 				...state,
 				loading: true
 			};
+		case SET_ERROR:
+			return {
+				...state,
+				error: action.payload
+			};
 		case OPTION_ERROR:
 			return {
 				...state,
@@ -37,6 +47,7 @@ export default (state = initialState, action) => {
 		case ADD_CATEGORY:
 			return {
 				...state,
+				error: null,
 				loading: false,
 				success: action.payload,
 				categories: [...state.categories, action.payload.data]
@@ -52,10 +63,38 @@ export default (state = initialState, action) => {
 		case DELETE_CATEGORY:
 			return {
 				...state,
+				error: null,
 				loading: false,
 				success: action.payload.msg,
 				categories: state.categories.filter(
 					category => category._id != action.payload.data
+				)
+			};
+
+		case ADD_SUBCATEGORY:
+			return {
+				...state,
+				error: null,
+				loading: false,
+				success: action.payload,
+				subcategory: [...state.subcategory, action.payload.data]
+			};
+
+		case GET_SUBCATEGORY:
+			return {
+				...state,
+				loading: false,
+				subcategory: action.payload
+			};
+
+		case DELETE_SUBCATEGORY:
+			return {
+				...state,
+				error: null,
+				loading: false,
+				success: action.payload.msg,
+				subcategory: state.subcategory.filter(
+					sub => sub._id != action.payload.data
 				)
 			};
 

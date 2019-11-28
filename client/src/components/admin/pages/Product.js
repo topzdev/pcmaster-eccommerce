@@ -1,9 +1,10 @@
 import React, { useState, Fragment, useEffect } from 'react';
-import Container from '@material-ui/core/Container';
-import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
-import ProductForm from '../Product/ProductForm';
-import ProductDashboard from '../Product/ProductDashboard';
+import Container from '@material-ui/core/Container';
+import ProductForm from '../product/ProductForm';
+import ProductDashboard from '../product/ProductDashboard';
+import ProductCategory from '../product/ProductCategory';
+import ProductSubCategory from '../product/ProductSubCategory';
 import SpeedDialButtons from '../include/SpeedDialButtons';
 
 import { connect } from 'react-redux';
@@ -11,7 +12,11 @@ import { connect } from 'react-redux';
 import { setRedirect } from '../../../actions/utilityActions';
 const useStyles = makeStyles(theme => ({
 	root: {
-		padding: theme.spacing(0, 0, 5, 0)
+		padding: theme.spacing(5, 0, 5, 0)
+	},
+	container: {
+		background: '#fff',
+		padding: theme.spacing(5, 5)
 	}
 }));
 
@@ -31,6 +36,10 @@ const Product = ({ product: { current }, setRedirect }) => {
 				if (current != null) {
 					return <ProductForm />;
 				} else setRedirect({ open: true, url: '/admin/product' });
+			case '/admin/product/category':
+				return <ProductCategory />;
+			case '/admin/product/sub-category':
+				return <ProductSubCategory />;
 			default:
 				return <ProductDashboard />;
 		}
@@ -39,7 +48,9 @@ const Product = ({ product: { current }, setRedirect }) => {
 	return (
 		<div className={classes.root}>
 			<SpeedDialButtons setPage={setPage} />
-			{toRenderComponent(page)}
+			<Container className={classes.container}>
+				{toRenderComponent(page)}
+			</Container>
 		</div>
 	);
 };
