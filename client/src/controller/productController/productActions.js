@@ -10,7 +10,7 @@ import {
 	SET_LOADING,
 	CLEAR_ERROR,
 	CLEAR_SUCCESS
-} from './types';
+} from '../types';
 
 const config = {
 	headers: {

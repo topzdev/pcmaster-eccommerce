@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import {
-	getBrand,
-	addBrand,
-	deleteBrand
-} from '../../../../actions/optionsActions';
 import { makeStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -16,6 +11,12 @@ import Fab from '@material-ui/core/Fab';
 import Grid from '@material-ui/core/Grid';
 import { Add as AddIcon } from '@material-ui/icons';
 import ModalList from '../../product/list/ModalList';
+
+import {
+	getBrand,
+	addBrand,
+	deleteBrand
+} from '../../../../controller/optionController/optionsActions';
 
 const useStyles = makeStyles(theme => ({
 	grid: {

@@ -1,4 +1,4 @@
-import { SET_REDIRECT } from './types';
+import { SET_REDIRECT } from '../types';
 
 export const setRedirect = action => dispatch => {
 	dispatch({

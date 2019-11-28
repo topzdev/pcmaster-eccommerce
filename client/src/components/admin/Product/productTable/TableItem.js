@@ -5,7 +5,7 @@ import TableRow from '@material-ui/core/TableRow';
 import IconButton from '@material-ui/core/IconButton';
 import EditIcon from '@material-ui/icons/Edit';
 import { connect } from 'react-redux';
-import { searchProduct } from '../../../../actions/productActions';
+import { searchProduct } from '../../../../controller/productController/productActions';
 const TableItem = ({ product: { current }, data, searchProduct }) => {
 	const [redirect, setRedirect] = useState(false);
 	const previewProduct = id => {

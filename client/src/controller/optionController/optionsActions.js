@@ -15,7 +15,7 @@ import {
 	OPTION_ERROR,
 	SET_LOADING,
 	SET_ERROR
-} from './types';
+} from '../types';
 
 const config = {
 	headers: {

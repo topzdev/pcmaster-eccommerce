@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
 import CategoryDropdown from '../dropdowns/CategoryDropdown';
 import BrandDropdown from '../dropdowns/BrandDropdown';
 import TagDropdown from '../dropdowns/TagDropdown';
-import { getProducts } from '../../../../actions/productActions';
+import { getProducts } from '../../../../controller/productController/productActions';
 
 const useStyles = makeStyles(theme => ({
 	root: {

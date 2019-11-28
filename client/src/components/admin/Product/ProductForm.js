@@ -26,9 +26,9 @@ import {
 	deleteProduct,
 	clearError,
 	clearSuccess
-} from '../../../actions/productActions';
+} from '../../../controller/productController/productActions';
 
-import { setRedirect } from '../../../actions/utilityActions';
+import { setRedirect } from '../../../controller/utitlityController/utilityActions';
 
 const useStyles = makeStyles(theme => ({
 	root: {

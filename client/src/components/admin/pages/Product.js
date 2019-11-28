@@ -9,7 +9,7 @@ import SpeedDialButtons from '../include/SpeedDialButtons';
 
 import { connect } from 'react-redux';
 
-import { setRedirect } from '../../../actions/utilityActions';
+import { setRedirect } from '../../../controller/utitlityController/utilityActions';
 const useStyles = makeStyles(theme => ({
 	root: {
 		padding: theme.spacing(5, 0, 5, 0)

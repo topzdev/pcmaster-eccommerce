@@ -16,7 +16,7 @@ import {
 	addSubCategory,
 	deleteSubCategory,
 	setError
-} from '../../../actions/optionsActions';
+} from '../../../controller/optionController/optionsActions';
 
 const useStyles = makeStyles(theme => ({
 	grid: {

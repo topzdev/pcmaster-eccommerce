@@ -1,10 +1,6 @@
 import React, { useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
-import {
-	getTags,
-	getBrand,
-	getCategory
-} from '../../../../actions/optionsActions';
+
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -12,6 +8,11 @@ import Select from '@material-ui/core/Select';
 import Chip from '@material-ui/core/Chip';
 import Input from '@material-ui/core/Input';
 
+import {
+	getTags,
+	getBrand,
+	getCategory
+} from '../../../../controller/optionController/optionsActions';
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {

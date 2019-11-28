@@ -1,4 +1,4 @@
-import { SET_REDIRECT } from '../actions/types';
+import { SET_REDIRECT } from '../types';
 
 const initialState = {
 	redirect: null

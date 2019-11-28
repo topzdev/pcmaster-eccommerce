@@ -4,7 +4,7 @@ import {
 	getTags,
 	addTags,
 	deleteTags
-} from '../../../../actions/optionsActions';
+} from '../../../../controller/optionController/optionsActions';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';

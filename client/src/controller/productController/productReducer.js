@@ -7,7 +7,7 @@ import {
 	PRODUCT_ERROR,
 	CLEAR_ERROR,
 	CLEAR_SUCCESS
-} from '../actions/types';
+} from '../types';
 
 const initialState = {
 	products: null,

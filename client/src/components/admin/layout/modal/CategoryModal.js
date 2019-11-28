@@ -15,7 +15,7 @@ import {
 	getCategory,
 	addCategory,
 	deleteCategory
-} from '../../../../actions/optionsActions';
+} from '../../../../controller/optionController/optionsActions';
 
 const useStyles = makeStyles(theme => ({
 	grid: {

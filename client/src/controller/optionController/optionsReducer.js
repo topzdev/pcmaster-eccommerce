@@ -14,7 +14,7 @@ import {
 	OPTION_ERROR,
 	SET_LOADING,
 	SET_ERROR
-} from '../actions/types';
+} from '../types';
 
 const initialState = {
 	categories: null,
