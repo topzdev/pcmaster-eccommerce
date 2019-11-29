@@ -39,9 +39,23 @@ export const ADD_BRAND = 'ADD_BRAND';
 export const DELETE_BRAND = 'DELETE_BRAND';
 export const OPTION_ERROR = 'OPTION_ERROR';
 
+//################### AUTHENTICATION TYPES #########################
+
+export const ADMIN_LOGIN = 'ADMIN_LOGIN';
+export const ADMIN_VERIFIED = 'ADMIN_VERIFIED';
+export const REGISTER_FAILED = 'REGISTER_FAILED';
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+export const LOGIN_FAILED = 'LOGIN_FAILED';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const ADMIN_REGISTER = 'ADMIN_REGISTER';
+export const ADMIN_DELETE = 'ADMIN_DELETE';
+export const ADMIN_UPDATE = 'ADMIN_UPDATE';
+export const ADMIN_ERROR = 'ADMIN_ERROR';
+export const ADMIN_ACCOUNTS = 'ADMIN_ACCOUNTS';
+
 //################### UTILITY TYPES ##########################
 export const UPLOAD_IMAGE = 'UPLOAD_IMAGE';
-
+export const SET_LOADING = 'SET_LOADING';
 export const CLEAR_ERROR = 'CLEAR_ERROR';
 export const CLEAR_SUCCESS = 'CLEAR_SUCCESS';
 export const SET_REDIRECT = 'SET_REDIRECT';

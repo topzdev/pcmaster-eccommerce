@@ -1,18 +1,14 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 
-//@route    GET api/user
+//@route    ROUTE api/user
 //@desc     login user
 //@access   private
-router.get("/", (req, res) => {
-  res.send("check user on database");
-});
+router.use('/', require('./auth/adminAuth'));
 
-//@route    POST api/user
+//@route    ROUTE api/user
 //@desc     auth user
 //@access   public
-router.post("/", (req, res) => {
-  res.send("User Login");
-});
+router.use('/', require('./auth/userAuth'));
 
 module.exports = router;
