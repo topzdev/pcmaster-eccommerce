@@ -1,17 +1,17 @@
-import React, { useEffect } from './node_modules/react';
-import { makeStyles } from './node_modules/@material-ui/core/styles';
-import Table from './node_modules/@material-ui/core/Table';
-import Paper from './node_modules/@material-ui/core/Paper';
-import TableBody from './node_modules/@material-ui/core/TableBody';
-import TablePagination from './node_modules/@material-ui/core/TablePagination';
-import Grid from './node_modules/@material-ui/core/Grid';
-import CircularProgress from './node_modules/@material-ui/core/CircularProgress';
+import React, { useEffect } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import Paper from '@material-ui/core/Paper';
+import TableBody from '@material-ui/core/TableBody';
+import TablePagination from '@material-ui/core/TablePagination';
+import Grid from '@material-ui/core/Grid';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import TableToolbar from './TableToolBar';
 import TableItem from './TableItem';
 import TableHeader from './TableHeader';
 import { getProducts } from '../../../../controller/productController/productActions';
 
-import { connect } from './node_modules/react-redux';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
 	root: {

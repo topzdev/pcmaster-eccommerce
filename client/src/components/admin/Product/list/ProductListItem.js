@@ -1,10 +1,10 @@
-import React from './node_modules/react';
-import ListItemSecondaryAction from './node_modules/@material-ui/core/ListItemSecondaryAction';
-import ListItem from './node_modules/@material-ui/core/ListItem';
-import ListItemText from './node_modules/@material-ui/core/ListItemText';
+import React from 'react';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
-import Delete from './node_modules/@material-ui/icons/Delete';
-import IconButton from './node_modules/@material-ui/core/IconButton';
+import Delete from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
 
 const ModalListItem = ({ data, onDelete }) => {
 	return (

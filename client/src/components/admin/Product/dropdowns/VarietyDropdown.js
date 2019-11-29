@@ -1,9 +1,9 @@
-import React, { useEffect, Fragment } from './node_modules/react';
-import { connect } from './node_modules/react-redux';
+import React, { useEffect, Fragment } from 'react';
+import { connect } from 'react-redux';
 import { getVariety } from '../../../../controller/optionController/optionsActions';
-import MenuItem from './node_modules/@material-ui/core/MenuItem';
-import InputLabel from './node_modules/@material-ui/core/InputLabel';
-import Select from './node_modules/@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
 
 const SubCategoryDropdown = ({
 	options: { varieties },

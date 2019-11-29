@@ -1,7 +1,7 @@
-import React, { Fragment } from './node_modules/react';
-import TableCell from './node_modules/@material-ui/core/TableCell';
-import TableRow from './node_modules/@material-ui/core/TableRow';
-import TableHead from './node_modules/@material-ui/core/TableHead';
+import React, { Fragment } from 'react';
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
+import TableHead from '@material-ui/core/TableHead';
 
 const TableHeader = () => {
 	return (
