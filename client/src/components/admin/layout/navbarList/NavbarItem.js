@@ -110,7 +110,7 @@ const NavbarItem = () => {
 					<ListItem
 						button
 						component={Link}
-						to='/admin/product/tags'
+						to='/admin/product/tag'
 						className={classes.nested}
 					>
 						<ListItemIcon>

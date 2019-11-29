@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import Grid from "@material-ui/core/Grid";
+import React, { useState } from "./node_modules/react";
+import Grid from "./node_modules/@material-ui/core/Grid";
 import DescriptionItem from "./DescriptionItem";
-import Add from "@material-ui/icons/Add";
-import Button from "@material-ui/core/Button";
+import Add from "./node_modules/@material-ui/icons/Add";
+import Button from "./node_modules/@material-ui/core/Button";
 const Description = ({ description, setDescription }) => {
     const desc = {
         title: "",

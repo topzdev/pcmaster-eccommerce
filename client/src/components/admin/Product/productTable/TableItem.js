@@ -1,10 +1,10 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import { Redirect } from 'react-router-dom';
-import TableCell from '@material-ui/core/TableCell';
-import TableRow from '@material-ui/core/TableRow';
-import IconButton from '@material-ui/core/IconButton';
-import EditIcon from '@material-ui/icons/Edit';
-import { connect } from 'react-redux';
+import React, { Fragment, useEffect, useState } from './node_modules/react';
+import { Redirect } from './node_modules/react-router-dom';
+import TableCell from './node_modules/@material-ui/core/TableCell';
+import TableRow from './node_modules/@material-ui/core/TableRow';
+import IconButton from './node_modules/@material-ui/core/IconButton';
+import EditIcon from './node_modules/@material-ui/icons/Edit';
+import { connect } from './node_modules/react-redux';
 import { searchProduct } from '../../../../controller/productController/productActions';
 const TableItem = ({ product: { current }, data, searchProduct }) => {
 	const [redirect, setRedirect] = useState(false);

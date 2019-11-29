@@ -1,5 +1,5 @@
-import React from 'react';
-import { Container } from '@material-ui/core';
+import React from './node_modules/react';
+import { Container } from './node_modules/@material-ui/core';
 import ProductTable from './productTable/Table';
 import SearchBar from './utils/SearchBar';
 export default function ProductDashboard() {

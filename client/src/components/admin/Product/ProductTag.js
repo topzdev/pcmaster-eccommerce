@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
-import EditIcon from '@material-ui/icons/Edit';
-import { connect } from 'react-redux';
+import React, { useEffect, useState } from './node_modules/react';
+import Grid from './node_modules/@material-ui/core/Grid';
+import { makeStyles } from './node_modules/@material-ui/core/styles';
+import TextField from './node_modules/@material-ui/core/TextField';
+import Fab from './node_modules/@material-ui/core/Fab';
+import AddIcon from './node_modules/@material-ui/icons/Add';
+import EditIcon from './node_modules/@material-ui/icons/Edit';
+import { connect } from './node_modules/react-redux';
 import ProductList from './list/ProductList';
-import _ from 'lodash';
+import _ from './node_modules/lodash';
 
 import {
 	getTags,

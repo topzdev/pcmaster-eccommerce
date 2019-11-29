@@ -1,12 +1,12 @@
-import React, { useEffect, Fragment } from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect, Fragment } from './node_modules/react';
+import { connect } from './node_modules/react-redux';
 
-import { makeStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select';
-import Chip from '@material-ui/core/Chip';
-import Input from '@material-ui/core/Input';
+import { makeStyles } from './node_modules/@material-ui/core/styles';
+import MenuItem from './node_modules/@material-ui/core/MenuItem';
+import InputLabel from './node_modules/@material-ui/core/InputLabel';
+import Select from './node_modules/@material-ui/core/Select';
+import Chip from './node_modules/@material-ui/core/Chip';
+import Input from './node_modules/@material-ui/core/Input';
 
 import {
 	getTags,

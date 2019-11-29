@@ -1,15 +1,15 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { DropzoneDialog } from 'material-ui-dropzone';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import FormControl from '@material-ui/core/FormControl';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import { Save, Delete } from '@material-ui/icons';
+import React, { Fragment, useState, useEffect } from './node_modules/react';
+import { connect } from './node_modules/react-redux';
+import { DropzoneDialog } from './node_modules/material-ui-dropzone';
+import { makeStyles } from './node_modules/@material-ui/core/styles';
+import Grid from './node_modules/@material-ui/core/Grid';
+import FormControl from './node_modules/@material-ui/core/FormControl';
+import Button from './node_modules/@material-ui/core/Button';
+import TextField from './node_modules/@material-ui/core/TextField';
+import { Save, Delete } from './node_modules/@material-ui/icons';
 
-import Scroll from 'react-scroll';
-import _ from 'lodash';
+import Scroll from './node_modules/react-scroll';
+import _ from './node_modules/lodash';
 
 import Description from './productComponents/Description';
 import PreLoader from '../util/PreLoader';

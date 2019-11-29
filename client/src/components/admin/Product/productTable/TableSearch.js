@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
-import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import InputLabel from '@material-ui/core/InputLabel';
-import SearchIcon from '@material-ui/icons/Search';
-import _ from 'lodash';
-import { connect } from 'react-redux';
+import React, { useState, useEffect } from './node_modules/react';
+import { makeStyles } from './node_modules/@material-ui/core/styles';
+import IconButton from './node_modules/@material-ui/core/IconButton';
+import TextField from './node_modules/@material-ui/core/TextField';
+import MenuItem from './node_modules/@material-ui/core/MenuItem';
+import FormControl from './node_modules/@material-ui/core/FormControl';
+import Select from './node_modules/@material-ui/core/Select';
+import InputAdornment from './node_modules/@material-ui/core/InputAdornment';
+import InputLabel from './node_modules/@material-ui/core/InputLabel';
+import SearchIcon from './node_modules/@material-ui/icons/Search';
+import _ from './node_modules/lodash';
+import { connect } from './node_modules/react-redux';
 
 import CategoryDropdown from '../dropdowns/CategoryDropdown';
 import BrandDropdown from '../dropdowns/BrandDropdown';
