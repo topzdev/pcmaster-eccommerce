@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const cloudinary = require('cloudinary').v2;
-
+const verified = require('../../middleware/verify');
 //model
 const Product = require('../../model/Product');
 
 //@route    DELETE api/product
 //@desc     delete single product
 //@access   private
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', verified, async (req, res) => {
 	const { id } = req.params;
 
 	try {

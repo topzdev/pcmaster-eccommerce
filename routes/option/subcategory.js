@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const _ = require('lodash');
+const verified = require('../../middleware/verify');
 //############################### SUBCATEGORY ###############################
 
 //Category Model
@@ -10,7 +11,7 @@ const SubCategory = require('../../model/SubCategory');
 // @route    GET api/options/subCategory
 // @desc     view all subCategory
 // @access   public
-router.post('/sub-category/search/', async (req, res) => {
+router.post('/sub-category/search/', verified, async (req, res) => {
 	const { category, title } = req.body;
 	let query = [];
 
@@ -35,6 +36,7 @@ router.post('/sub-category/search/', async (req, res) => {
 router.post(
 	'/sub-category',
 	[
+		verified,
 		[
 			check('category')
 				.not()
@@ -77,7 +79,7 @@ router.post(
 //@route    DELETE api/options/sub-category
 //@desc     delete subCategory
 //@access   public
-router.delete('/sub-category/:id', async (req, res) => {
+router.delete('/sub-category/:id', verified, async (req, res) => {
 	const { id } = req.params;
 	try {
 		let subCategory = await SubCategory.findById(id);

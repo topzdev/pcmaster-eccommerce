@@ -42,6 +42,7 @@ const useStyles = makeStyles(theme => ({
 const ProductForm = ({
 	product: { error, success, current },
 	options: { varieties },
+	adminAuth: { logged },
 	getProducts,
 	addProduct,
 	clearError,
@@ -63,7 +64,8 @@ const ProductForm = ({
 		overview: '',
 		tags: [],
 		category: '',
-		description: [{ title: '', content: '' }]
+		description: [{ title: '', content: '' }],
+		created_by: logged._id
 	};
 
 	const [data, setData] = React.useState(initialState);
@@ -363,7 +365,8 @@ const ProductForm = ({
 const mapStateToProps = state => ({
 	product: state.product,
 	options: state.options,
-	utility: state.utility
+	utility: state.utility,
+	adminAuth: state.adminAuth
 });
 export default connect(mapStateToProps, {
 	getProducts,

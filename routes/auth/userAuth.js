@@ -64,7 +64,7 @@ router.post(
 			);
 		} catch (err) {
 			console.log(err.message);
-			res.status(500).send('Server Error');
+			return res.status(500).send('Server Error');
 		}
 	}
 );
@@ -79,7 +79,7 @@ router.get('/user/', verified, async (req, res) => {
 		res.json(user);
 	} catch (err) {
 		console.log(err.message);
-		res.status(500).send('Server Error');
+		return res.status(500).send('Server Error');
 	}
 });
 
@@ -148,7 +148,7 @@ router.post(
 			);
 		} catch (err) {
 			console.log(err.message);
-			res.status(500).send('Server Error');
+			return res.status(500).send('Server Error');
 		}
 	}
 );
@@ -172,7 +172,7 @@ router.delete('/user/:id', verified, async (req, res) => {
 		res.json({ type: 'error', msg: 'User Deleted' });
 	} catch (err) {
 		console.log(err.message);
-		res.status(500).send('Server Error');
+		return res.status(500).send('Server Error');
 	}
 });
 
@@ -236,7 +236,7 @@ router.put(
 			});
 		} catch (err) {
 			console.log(err.message);
-			res.status(500).send('Server Error');
+			return res.status(500).send('Server Error');
 		}
 	}
 );

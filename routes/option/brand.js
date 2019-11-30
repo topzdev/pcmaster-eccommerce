@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const _ = require('lodash');
+const verified = require('../../middleware/verify');
 
 //############################### BRAND ###############################
 const Brand = require('../../model/Brand');
@@ -9,7 +10,7 @@ const Brand = require('../../model/Brand');
 //@route    GET api/options/brand
 //@desc     view all brandd
 //@access   public
-router.get('/brand', async (req, res) => {
+router.get('/brand', verified, async (req, res) => {
 	try {
 		let brand = await Brand.find({});
 		res.status(200).json(brand);
@@ -25,6 +26,7 @@ router.get('/brand', async (req, res) => {
 router.post(
 	'/brand',
 	[
+		verified,
 		[
 			check('title')
 				.not()
@@ -63,7 +65,7 @@ router.post(
 //@route    DELETE api/options/brand
 //@desc     delete brand
 //@access   public
-router.delete('/brand/:id', async (req, res) => {
+router.delete('/brand/:id', verified, async (req, res) => {
 	const { id } = req.params;
 	try {
 		let brand = await Brand.findById(id);

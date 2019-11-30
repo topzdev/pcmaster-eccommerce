@@ -2,13 +2,13 @@ const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const _ = require('lodash');
-
+const verified = require('../../middleware/verify');
 const Tags = require('../../model/Tags');
 
 //@route    GET api/options/tags
 //@desc     view all tags
 //@access   public
-router.get('/tags', async (req, res) => {
+router.get('/tags', verified, async (req, res) => {
 	try {
 		let tags = await Tags.find({});
 		res.status(200).json(tags);
@@ -24,6 +24,7 @@ router.get('/tags', async (req, res) => {
 router.post(
 	'/tags',
 	[
+		verified,
 		[
 			check('title')
 				.not()
@@ -60,7 +61,7 @@ router.post(
 //@route    DELETE api/options/tags
 //@desc     delete tags
 //@access   public
-router.delete('/tags/:id', async (req, res) => {
+router.delete('/tags/:id', verified, async (req, res) => {
 	const { id } = req.params;
 	try {
 		let tags = await Tags.findById(id);

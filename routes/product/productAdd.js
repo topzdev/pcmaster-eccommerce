@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const cloudinary = require('cloudinary').v2;
+const verified = require('../../middleware/verify');
 
 //Model
 const Product = require('../../model/Product');
@@ -12,42 +13,45 @@ const Product = require('../../model/Product');
 router.post(
 	'/',
 	[
-		check('overview')
-			.not()
-			.isEmpty()
-			.withMessage('Fields for Overview is empty'),
-		check('sku')
-			.not()
-			.isEmpty()
-			.withMessage('Fields for SKU is empty'),
-		check('name')
-			.not()
-			.isEmpty()
-			.withMessage('Fields for Product Name is empty'),
-		check('price')
-			.not()
-			.isEmpty()
-			.withMessage('Fields for Price is empty'),
-		check('barcode')
-			.not()
-			.isEmpty()
-			.withMessage('Fields for Barcode is empty'),
-		check('category')
-			.not()
-			.isEmpty()
-			.withMessage('Fields for Category is empty'),
-		check('brand')
-			.not()
-			.isEmpty()
-			.withMessage('Fields for Brand is empty'),
-		check('quantity')
-			.not()
-			.isEmpty()
-			.withMessage('Fields for Quantity is empty'),
-		check('price')
-			.not()
-			.isEmpty()
-			.withMessage('Fields for Price is empty')
+		verified,
+		[
+			check('overview')
+				.not()
+				.isEmpty()
+				.withMessage('Fields for Overview is empty'),
+			check('sku')
+				.not()
+				.isEmpty()
+				.withMessage('Fields for SKU is empty'),
+			check('name')
+				.not()
+				.isEmpty()
+				.withMessage('Fields for Product Name is empty'),
+			check('price')
+				.not()
+				.isEmpty()
+				.withMessage('Fields for Price is empty'),
+			check('barcode')
+				.not()
+				.isEmpty()
+				.withMessage('Fields for Barcode is empty'),
+			check('category')
+				.not()
+				.isEmpty()
+				.withMessage('Fields for Category is empty'),
+			check('brand')
+				.not()
+				.isEmpty()
+				.withMessage('Fields for Brand is empty'),
+			check('quantity')
+				.not()
+				.isEmpty()
+				.withMessage('Fields for Quantity is empty'),
+			check('price')
+				.not()
+				.isEmpty()
+				.withMessage('Fields for Price is empty')
+		]
 	],
 
 	async (req, res) => {
@@ -103,18 +107,10 @@ const uploadImage = images => {
 		cloudinary.uploader.upload(image.tempFilePath)
 	);
 
-	return Promise.all(promises)
-		.then(results => {
-			console.log('henlloo', results);
-			return results;
-		})
-		.catch(() => {
-			return res.status(400).json({
-				type: 'error',
-				msg: 'Error on uploading image, Try to upload again',
-				param: 'img'
-			});
-		});
+	return Promise.all(promises).then(results => {
+		console.log('henlloo', results);
+		return results;
+	});
 };
 
 module.exports = router;

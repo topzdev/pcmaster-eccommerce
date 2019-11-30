@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const _ = require('lodash');
-
+const verified = require('../../middleware/verify');
 //############################### Variety ###############################
 //Category Variety
 const Variety = require('../../model/Variety');
@@ -10,7 +10,7 @@ const Variety = require('../../model/Variety');
 // @route    GET api/options/variety
 // @desc     view all variety
 // @access   public
-router.post('/variety/search', async (req, res) => {
+router.post('/variety/search', verified, async (req, res) => {
 	const { title, subcategory } = req.body;
 	let query = [];
 
@@ -33,6 +33,7 @@ router.post('/variety/search', async (req, res) => {
 router.post(
 	'/variety',
 	[
+		verified,
 		[
 			check('subcategory')
 				.not()
@@ -76,7 +77,7 @@ router.post(
 //@route    DELETE api/options/variety
 //@desc     delete variety
 //@access   public
-router.delete('/variety/:id', async (req, res) => {
+router.delete('/variety/:id', verified, async (req, res) => {
 	const { id } = req.params;
 	try {
 		let variety = await Variety.findById(id);

@@ -30,19 +30,33 @@ router.post(
 			.withMessage('Please enter your password')
 	],
 	async (req, res) => {
+		const error = validationResult(req);
+
+		if (!error.isEmpty())
+			return res.status(400).json({
+				type: 'error',
+				msg: error.array()
+			});
+
 		const { email, password } = req.body;
 
 		try {
-			let adminUser = await AdminSchema.findOne({ email });
+			console.log(req.body);
+			let adminUser = await AdminSchema.findOne({ email: email });
+
+			console.log('user fetch ', adminUser);
+
 			if (!adminUser)
-				res.json({
-					type: 'error',
-					msg: 'No user found for this email, Please Contact the Administrator.'
-				});
+				return res
+					.status(400)
+					.json({ type: 'error', msg: 'No user found for this email.' });
+
 			let match = await bcrypt.compare(password, adminUser.password);
 
 			if (!match)
-				res.json({ type: 'error', msg: 'Invalid Password, Please try again' });
+				return res
+					.status(400)
+					.json({ type: 'error', msg: 'Invalid Password, Please try again' });
 
 			const payload = {
 				user: {
@@ -63,7 +77,7 @@ router.post(
 			);
 		} catch (err) {
 			console.log(err.message);
-			res.status(500).send('Server Error');
+			return res.status(500).send('Server Error');
 		}
 	}
 );
@@ -71,7 +85,7 @@ router.post(
 //@route    GET api/auth/admin/
 //@desc     get the credentials of the verified user
 //@access   private
-router.get('/admin/verified', verified, async (req, res) => {
+router.get('/admin/verified/', verified, async (req, res) => {
 	let user = req.user.id;
 	try {
 		user = await AdminSchema.findById(user, { password: 0 });
@@ -79,14 +93,12 @@ router.get('/admin/verified', verified, async (req, res) => {
 		if (!user)
 			return res
 				.status(401)
-				.json({ type: error, msg: '[Warning] Unauthorized User' });
+				.json({ type: 'error', msg: '[Warning] Unauthorized User' });
 
-		res
-			.status(200)
-			.json({ type: 'success', msg: 'Hello, Welcome to PC MASTER Dashboard' });
+		res.status(200).json(user);
 	} catch (err) {
 		console.log(err.message);
-		res.status(500).send('Server Error');
+		return res.status(500).send('Server Error');
 	}
 });
 
@@ -97,7 +109,7 @@ router.get('/admin/verified', verified, async (req, res) => {
 router.post(
 	'/admin/',
 	[
-		verified,
+		// verified,
 		[
 			check('email')
 				.not()
@@ -156,7 +168,7 @@ router.post(
 			});
 		} catch (err) {
 			console.log(err.message);
-			res.status(500).send('Server Error');
+			return res.status(500).send('Server Error');
 		}
 	}
 );
@@ -168,7 +180,7 @@ router.get('/admin/', async (req, res) => {
 		res.json(accounts);
 	} catch (err) {
 		console.log(err.message);
-		res.status(500).send('Server Error');
+		return res.status(500).send('Server Error');
 	}
 });
 
@@ -256,7 +268,7 @@ router.put(
 			});
 		} catch (err) {
 			console.log(err.message);
-			res.status(500).send('Server Error');
+			return res.status(500).send('Server Error');
 		}
 	}
 );

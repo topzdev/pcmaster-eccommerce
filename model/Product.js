@@ -74,7 +74,7 @@ const ProductSchema = Schema({
 		default: Date.now()
 	},
 
-	createdBy: {
+	created_by: {
 		type: String
 	}
 });

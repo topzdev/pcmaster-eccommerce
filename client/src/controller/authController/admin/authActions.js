@@ -1,7 +1,6 @@
 import axios from 'axios';
-
+import setAuthToken from '../../../utils/setAuthToken';
 import {
-	ADMIN_LOGIN,
 	ADMIN_REGISTER,
 	ADMIN_DELETE,
 	ADMIN_UPDATE,
@@ -9,6 +8,7 @@ import {
 	REGISTER_SUCCESS,
 	REGISTER_FAILED,
 	LOGIN_SUCCESS,
+	AUTH_ERROR,
 	LOGIN_FAILED,
 	SET_LOADING,
 	ADMIN_ERROR,
@@ -40,7 +40,8 @@ export const registerAdmin = user => async dispatch => {
 
 export const loginAdmin = credentials => async dispatch => {
 	try {
-		setLoading();
+		setLoading(dispatch);
+
 		const logged = await axios.post(
 			'/api/auth/admin/auth/',
 			credentials,
@@ -49,12 +50,37 @@ export const loginAdmin = credentials => async dispatch => {
 
 		dispatch({
 			type: LOGIN_SUCCESS,
-			payload: logged
+			payload: logged.data
 		});
+
+		loadAdmin(dispatch);
 	} catch (err) {
 		dispatch({
 			type: LOGIN_FAILED,
-			payload: err.response.data.msg
+			payload: err.response.data
+		});
+	}
+};
+
+export const checkAdmin = () => async dispatch => {
+	loadAdmin(dispatch);
+};
+
+const loadAdmin = async dispatch => {
+	const token = localStorage.getItem('pcmaster.com.admin.token');
+	if (token) setAuthToken(token);
+
+	try {
+		const logged = await axios.get('/api/auth/admin/verified/');
+
+		dispatch({
+			type: ADMIN_VERIFIED,
+			payload: logged.data
+		});
+	} catch (err) {
+		dispatch({
+			type: AUTH_ERROR,
+			payload: err.response.data
 		});
 	}
 };
@@ -109,7 +135,7 @@ export const updateAdmin = data => async dispatch => {
 	}
 };
 
-const setLoading = () => async dispatch => {
+const setLoading = async dispatch => {
 	dispatch({
 		type: SET_LOADING
 	});
