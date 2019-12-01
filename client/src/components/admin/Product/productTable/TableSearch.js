@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 import CategoryDropdown from '../dropdowns/CategoryDropdown';
 import BrandDropdown from '../dropdowns/BrandDropdown';
 import TagDropdown from '../dropdowns/TagDropdown';
+import SubCategoryDropdown from '../dropdowns/SubCategoryDropdown';
 import { getProducts } from '../../../../controller/productController/productActions';
 
 const useStyles = makeStyles(theme => ({
@@ -29,7 +30,7 @@ const useStyles = makeStyles(theme => ({
 		marginRight: '5px'
 	},
 	select: {
-		width: '200px'
+		width: '300px'
 	}
 }));
 
@@ -68,6 +69,10 @@ const TableSearch = ({ getProducts }) => {
 			case 'category':
 				return (
 					<CategoryDropdown value={options.category} onChange={onChange} />
+				);
+			case 'subcategory':
+				return (
+					<SubCategoryDropdown value={options.category} onChange={onChange} />
 				);
 			case 'brand':
 				return <BrandDropdown value={options.brand} onChange={onChange} />;
@@ -125,6 +130,7 @@ const TableSearch = ({ getProducts }) => {
 					<MenuItem value={'barcode'}>Barcode</MenuItem>
 					<MenuItem value={'sku'}>SKU</MenuItem>
 					<MenuItem value={'category'}>Category</MenuItem>
+					<MenuItem value={'subcategory'}>Subcategory</MenuItem>
 					<MenuItem value={'brand'}>Brand</MenuItem>
 					<MenuItem value={'tags'}>Tags</MenuItem>
 				</Select>

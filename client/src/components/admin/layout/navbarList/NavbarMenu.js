@@ -1,25 +1,31 @@
 import React from 'react';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-const NavbarMenu = ({ open, setOpen, anchorEl, setAnchorEl }) => {
-	const handleMenuClose = () => {
-		setOpen(false);
-		setAnchorEl(null);
+const NavbarMenu = ({
+	history,
+	anchorEl,
+	menuId,
+	isMenuOpen,
+	handleMenuClose,
+	logout
+}) => {
+	const onLogout = () => {
+		logout();
+		// history.push('/admin/sign-in/');
 	};
-
 	return (
 		<Menu
 			anchorEl={anchorEl}
 			anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-			id={'user-dropdown'}
+			id={menuId}
 			keepMounted
 			transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-			open={open}
+			open={isMenuOpen}
 			onClose={handleMenuClose}
 		>
 			<MenuItem onClick={handleMenuClose}>Profile</MenuItem>
 			<MenuItem onClick={handleMenuClose}>My account</MenuItem>
-			<MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+			<MenuItem onClick={onLogout}>Logout</MenuItem>
 		</Menu>
 	);
 };

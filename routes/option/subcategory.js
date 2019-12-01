@@ -52,7 +52,7 @@ router.post(
 		const error = validationResult(req);
 
 		if (!error.isEmpty())
-			return res.status(400).json({ type: 'error', msg: error.errors });
+			return res.status(400).json({ type: 'error', msg: error.array() });
 
 		const { title, category } = req.body;
 		try {

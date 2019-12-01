@@ -11,7 +11,8 @@ import {
 	ADMIN_ACCOUNTS,
 	LOGIN_SUCCESS,
 	LOGIN_FAILED,
-	ADMIN_ERROR
+	ADMIN_ERROR,
+	ADMIN_LOGOUT
 } from '../../types';
 
 const initialState = {
@@ -46,6 +47,7 @@ export default (state = initialState, action) => {
 
 		case LOGIN_FAILED:
 		case AUTH_ERROR:
+		case ADMIN_LOGOUT:
 			localStorage.removeItem('pcmaster.com.admin.token');
 			return {
 				...state,

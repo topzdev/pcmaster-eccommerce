@@ -53,6 +53,7 @@ export const ADMIN_DELETE = 'ADMIN_DELETE';
 export const ADMIN_UPDATE = 'ADMIN_UPDATE';
 export const ADMIN_ERROR = 'ADMIN_ERROR';
 export const ADMIN_ACCOUNTS = 'ADMIN_ACCOUNTS';
+export const ADMIN_LOGOUT = 'ADMIN_LOGOUT';
 
 //################### UTILITY TYPES ##########################
 export const UPLOAD_IMAGE = 'UPLOAD_IMAGE';

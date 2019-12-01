@@ -12,7 +12,8 @@ import {
 	LOGIN_FAILED,
 	SET_LOADING,
 	ADMIN_ERROR,
-	ADMIN_ACCOUNTS
+	ADMIN_ACCOUNTS,
+	ADMIN_LOGOUT
 } from '../../types';
 
 const config = {
@@ -133,6 +134,13 @@ export const updateAdmin = data => async dispatch => {
 			payload: err.response.data
 		});
 	}
+};
+
+export const adminLogout = () => async dispatch => {
+	dispatch({
+		type: ADMIN_LOGOUT,
+		payload: null
+	});
 };
 
 const setLoading = async dispatch => {

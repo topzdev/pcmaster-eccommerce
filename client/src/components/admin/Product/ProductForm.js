@@ -281,7 +281,7 @@ const ProductForm = ({
 							</Button>
 						</FormControl>
 					</Grid>
-					<Grid item xs={12}>
+					<Grid item xs={12} style={{ maxHeight: '400px', overflowY: 'auto' }}>
 						<h3>Description</h3>
 						<p className='mb-3'>Add fields for description of the product.</p>
 						<Description

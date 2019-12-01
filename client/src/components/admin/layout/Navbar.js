@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -20,9 +20,11 @@ import { Menu as MenuIcon } from '@material-ui/icons';
 
 import NavbarItem from './navbarList/NavbarItem';
 import NavbarMenu from './navbarList/NavbarMenu';
-import Backdrop from '@material-ui/core/Backdrop';
-const drawerWidth = 300;
 
+import { adminLogout } from '../../../controller/authController/admin/authActions';
+import { connect } from 'react-redux';
+
+const drawerWidth = 300;
 const useStyles = makeStyles(theme => ({
 	root: {
 		display: 'flex'
@@ -80,22 +82,36 @@ const useStyles = makeStyles(theme => ({
 	sectionDesktop: {
 		display: 'none',
 		marginLeft: 'auto',
+
 		[theme.breakpoints.up('md')]: {
-			display: 'flex'
+			display: 'flex',
+			alignItems: 'center'
 		}
 	}
 }));
 
-export default function PersistentDrawerLeft() {
+const Navbar = ({ adminAuth: { logged }, adminLogout }) => {
 	const classes = useStyles();
 	const theme = useTheme();
 	const [open, setOpen] = useState(false);
-	const [menuOpen, setMenuOpen] = useState(false);
 	const [anchorEl, setAnchorEl] = React.useState(null);
+	const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
-	useEffect(() => {
-		document.body.style.overflowX = 'hidden';
-	}, []);
+	const isMenuOpen = Boolean(anchorEl);
+	const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+	const handleProfileMenuOpen = event => {
+		setAnchorEl(event.currentTarget);
+	};
+
+	const handleMobileMenuClose = () => {
+		setMobileMoreAnchorEl(null);
+	};
+
+	const handleMenuClose = () => {
+		setAnchorEl(null);
+		handleMobileMenuClose();
+	};
 
 	const handleDrawerOpen = () => {
 		setOpen(true);
@@ -105,9 +121,11 @@ export default function PersistentDrawerLeft() {
 		setOpen(false);
 	};
 
-	const handleProfileMenuOpen = event => {
-		setAnchorEl(event.currentTarget);
+	const handleMobileMenuOpen = event => {
+		setMobileMoreAnchorEl(event.currentTarget);
 	};
+
+	const menuId = 'primary-search-account-menu';
 
 	return (
 		<div className={classes.root}>
@@ -144,16 +162,20 @@ export default function PersistentDrawerLeft() {
 								<Notifications />
 							</Badge>
 						</IconButton>
+
 						<IconButton
 							edge='end'
 							aria-label='account of current user'
-							aria-controls='user-dropdown'
+							aria-controls={menuId}
 							aria-haspopup='true'
 							onClick={handleProfileMenuOpen}
 							color='inherit'
 						>
 							<AccountCircle />
 						</IconButton>
+						<Typography component={'h1'} style={{ margin: '0 10px' }}>
+							{logged && logged.firstname + ' ' + logged.lastname}
+						</Typography>
 					</div>
 				</Toolbar>
 			</AppBar>
@@ -175,11 +197,16 @@ export default function PersistentDrawerLeft() {
 			</Drawer>
 
 			<NavbarMenu
-				open={menuOpen}
-				setOpen={setMenuOpen}
-				setAnchorEl={setAnchorEl}
 				anchorEl={anchorEl}
+				menuId={menuId}
+				isMenuOpen={isMenuOpen}
+				handleMenuClose={handleMenuClose}
+				logout={adminLogout}
 			/>
 		</div>
 	);
-}
+};
+const mapStateToProps = state => ({
+	adminAuth: state.adminAuth
+});
+export default connect(mapStateToProps, { adminLogout })(Navbar);

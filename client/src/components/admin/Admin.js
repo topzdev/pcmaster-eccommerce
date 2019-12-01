@@ -21,9 +21,9 @@ const Admin = ({ adminAuth: { isAuthenticated }, checkAdmin, history }) => {
 			{isAuthenticated && <Navbar />}
 			<SnackbarProvider>
 				<Switch>
-					{/* <PrivateRoute path='/admin/' component={Home} /> */}
-					<PrivateRoute path='/admin/product' component={Product} />
 					<Route path='/admin/sign-in' component={SignInPage} />
+					<PrivateRoute path='/admin/product' component={Product} />
+					<PrivateRoute path='/admin/' component={Home} />
 				</Switch>
 				<ToastNotif />
 			</SnackbarProvider>
