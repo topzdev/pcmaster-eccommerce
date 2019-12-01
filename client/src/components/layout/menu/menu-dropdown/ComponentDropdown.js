@@ -8,7 +8,7 @@ const ComponentDropdown = () => {
 			</div>
 			<ul className='menu__drp-group'>
 				<li className='menu__drp-item'>
-					<Link to='/' className='menu__drp-link'>
+					<Link to='/:category' className='menu__drp-link'>
 						<span>
 							<i className='fas fa-chevron-right'></i>
 						</span>{' '}

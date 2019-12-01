@@ -44,7 +44,8 @@ const TableSearch = ({ getProducts }) => {
 		brand: '',
 		name: '',
 		sku: '',
-		barcode: ''
+		barcode: '',
+		subcategory: ''
 	});
 
 	const onSelect = e => {
@@ -72,7 +73,10 @@ const TableSearch = ({ getProducts }) => {
 				);
 			case 'subcategory':
 				return (
-					<SubCategoryDropdown value={options.category} onChange={onChange} />
+					<SubCategoryDropdown
+						value={options.subcategory}
+						onChange={onChange}
+					/>
 				);
 			case 'brand':
 				return <BrandDropdown value={options.brand} onChange={onChange} />;

@@ -40,7 +40,7 @@ const App = () => {
 							<Route exact path='/overview' component={ProductDetails} />
 							<Route exact path='/search' component={Search} />
 							<Route exact path='/wishlist' component={Wishlist} />
-							<Route exact path='/collections' component={Collections} />
+							<Route exact path='/products' component={Collections} />
 						</Switch>
 						<ScrollUpButton />
 						<Footer />

@@ -8,12 +8,21 @@ const Product = require('../../model/Product');
 //@desc     view all product
 //@access   public
 router.post('/', async (request, response) => {
-	const { name, category, brand, sku, tags, barcode } = request.body;
+	const {
+		name,
+		category,
+		subcategory,
+		brand,
+		sku,
+		tags,
+		barcode
+	} = request.body;
 
 	let query = [];
 
 	if (name) query.push({ name: { $regex: name, $options: 'i' } });
 	if (category) query.push({ category });
+	if (subcategory) query.push({ subcategory });
 	if (sku) query.push({ sku });
 	if (brand) query.push({ brand });
 	if (barcode) query.push({ barcode: { $regex: barcode, $options: 'i' } });

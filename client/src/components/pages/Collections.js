@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 
 import Sort from '../layout/search/Sorter';
 import CardProduct from '../layout/card/CardProduct';
-const Collections = () => {
+const Collections = props => {
+	useEffect(() => {
+		console.log(props.history);
+	}, []);
 	const [view, setView] = useState(true);
 	return (
 		<div className='container pt-2 pb-5 mt-4'>
