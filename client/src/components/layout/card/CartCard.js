@@ -1,33 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import numeral from 'numeral';
-import sample from '../../../resources/images/test-2.jpg';
 import NumericField from '../input/NumericField';
-const CartCard = () => {
-	const cartValue = {
-		img: '../../../resources/images/test-2.jpg',
-		name: 'Philips SHB1801P Car kit Bluetooth Headset',
-		price: 1900.0,
-		quantity: 1,
-		total: 1900.0
+import { Image, Transformation } from 'cloudinary-react';
+import { connect } from 'react-redux';
+import truncate from 'cli-truncate';
+import {
+	updateCart,
+	removeCart
+} from '../../../controller/frontendController/frontendActions';
+
+const CartCard = ({ data, updateCart, removeCart }) => {
+	const { id, img, name, price } = data;
+	const [quantity, setQuantity] = useState(data.quantity);
+	const quantityValue = value => {
+		data.quantity = value;
+		updateCart(id, data);
 	};
 
-	const [cart, setCart] = useState(cartValue);
-
-	const { img, name, price, quantity, total } = cart;
-	const quantityValue = value => {
-		console.log(value);
-		setCart({ ...cart, quantity: value, total: price * value });
+	const onRemoveCart = () => {
+		removeCart(id);
 	};
 
 	return (
 		<div className='card--cart'>
 			<div className='card--cart__img'>
-				<img src={sample} alt='' draggable='false' />
+				<Image publicId={img[0].public_id}></Image>
 			</div>
 			<div className='card--cart__description'>
-				<Link to='/' className='card--cart__title'>
-					{name}
+				<Link to={`/overview/${name}`} className='card--cart__title'>
+					{truncate(name, 50, { position: 'end' })}
 				</Link>
 
 				<p className='card--cart__price'>₱{price}</p>
@@ -36,14 +38,18 @@ const CartCard = () => {
 			<NumericField quantityValue={quantityValue} initValue={quantity} />
 
 			<p className='card--cart__total'>
-				<span>₱</span> {numeral(total).format('0,0.00')}
+				<span>₱</span> {numeral(price * data.quantity).format('0,0.00')}
 			</p>
 
-			<button className='card--cart__remove'>
+			<button className='card--cart__remove' onClick={onRemoveCart}>
 				<i className='fas fa-times'></i>
 			</button>
 		</div>
 	);
 };
 
-export default CartCard;
+const mapStateToString = state => ({
+	frontend: state.frontend
+});
+
+export default connect(mapStateToString, { updateCart, removeCart })(CartCard);

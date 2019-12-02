@@ -1,24 +1,27 @@
-import React, { useState, useEffect } from "react";
-import ReactImageMagnify from "react-image-magnify";
-import sample from "../../resources/images/test-1.png";
+import React, { useState, useEffect, Fragment } from 'react';
+import ReactImageMagnify from 'react-image-magnify';
 
-const ImageListView = () => {
-  const curImg = {
-    path: "",
-    altImg: ""
-  };
-  const [curImage, setCurImage] = useState(curImg);
+const ImageListView = ({ img }) => {
+	const curImg = {
+		path: '',
+		altImg: ''
+	};
+	const [curImage, setCurImage] = useState(curImg);
 
-  useEffect(() => {
-    setCurImage({ path: sample, altImg: "Hello there" });
-  }, [sample]);
+	useEffect(() => {
+		console.log(img);
+	}, [img]);
 
-  const { path, altImg } = curImage;
-  return (
-    <div className="details__img-viewer">
-      <div className="details__img-main">
-        <img className="image" src={path} alt={altImg} />
-        {/* <ReactImageMagnify
+	const { path, altImg } = curImage;
+	return (
+		<div className='details__img-viewer'>
+			<div className='details__img-main'>
+				<img
+					className='image'
+					src={img ? img[0].url : ''}
+					alt={img ? img[0].public_id : ''}
+				/>
+				{/* <ReactImageMagnify
           className="image"
           {...{
             smallImage: {
@@ -33,17 +36,17 @@ const ImageListView = () => {
             }
           }}
         /> */}
-      </div>
-      <ul className="details__img-item">
-        <li className="details__img-list">
-          <img className="image" src={sample} alt="" draggable="false" />
-        </li>
-        <li className="details__img-list">
-          <img className="image" src={sample} alt="" draggable="false" />
-        </li>
-      </ul>
-    </div>
-  );
+			</div>
+			<ul className='details__img-item'>
+				{img &&
+					img.map(image => (
+						<li className='details__img-list' key={image.public_id}>
+							<img className='image' src={image.url} alt='' draggable='false' />
+						</li>
+					))}
+			</ul>
+		</div>
+	);
 };
 
 export default ImageListView;

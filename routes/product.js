@@ -11,7 +11,7 @@ router.use('/list/', require('./product/productList'));
 //@access   private
 router.use('/', require('./product/productAdd'));
 
-//@route    GET api/product
+//@route    POST api/product
 //@desc     view single product
 //@access   public
 router.use('/', require('./product/productView'));

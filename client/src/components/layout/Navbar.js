@@ -2,7 +2,9 @@ import React, { useEffect, useState, Fragment } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../resources/images/pc-master-logo.png';
 import MenuBar from './menu/MenuBar';
-const Navbar = () => {
+
+import { connect } from 'react-redux';
+const Navbar = ({ frontend: { cart } }) => {
 	return (
 		<Fragment>
 			<nav className={`navbar`}>
@@ -26,7 +28,9 @@ const Navbar = () => {
 							<i className='far fa-heart'></i>
 						</NavLink>
 						<NavLink className='btn btn--icon' to='/cart'>
-							<span className='badge badge--primary'>1</span>
+							<span className='badge badge--primary'>
+								{cart && cart.length}
+							</span>
 							<i className='fas fa-shopping-cart'></i>
 						</NavLink>
 					</li>
@@ -36,5 +40,7 @@ const Navbar = () => {
 		</Fragment>
 	);
 };
-
-export default Navbar;
+const mapStateToProps = state => ({
+	frontend: state.frontend
+});
+export default connect(mapStateToProps)(Navbar);

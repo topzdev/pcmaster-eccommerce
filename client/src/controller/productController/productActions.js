@@ -18,15 +18,15 @@ const config = {
 	}
 };
 
-export const setLoading = () => async dispatch => {
+const setLoading = async dispatch => {
 	dispatch({
 		type: SET_LOADING
 	});
 };
 
 export const getProducts = (query = {}) => async dispatch => {
-	setLoading();
 	try {
+		setLoading(dispatch);
 		console.log('Query passed', query);
 		const res = await axios.post('/api/product/list/', query, config);
 		dispatch({
@@ -42,8 +42,8 @@ export const getProducts = (query = {}) => async dispatch => {
 	}
 };
 export const addProduct = (data, images) => async dispatch => {
-	setLoading();
 	try {
+		setLoading(dispatch);
 		const files = Array.from(images);
 		const formData = new FormData();
 
@@ -58,6 +58,7 @@ export const addProduct = (data, images) => async dispatch => {
 		formData.append('variety', data.variety);
 		formData.append('tags', JSON.stringify(data.tags));
 		formData.append('category', data.category);
+		formData.append('created_by', data.created_by);
 		formData.append('description', JSON.stringify(data.description));
 
 		files.forEach((file, i) => {
@@ -86,7 +87,7 @@ export const addProduct = (data, images) => async dispatch => {
 };
 export const deleteProduct = id => async dispatch => {
 	try {
-		setLoading();
+		setLoading(dispatch);
 		const res = await axios.delete(`/api/product/${id}`);
 		dispatch({
 			type: DELETE_PRODUCT,
@@ -106,7 +107,7 @@ export const deleteProduct = id => async dispatch => {
 export const updateProduct = data => async dispatch => {
 	const { _id } = data;
 	try {
-		setLoading();
+		setLoading(dispatch);
 		const res = await axios.put(`/api/product/${_id}`, data);
 		dispatch({
 			type: UPDATE_PRODUCT,
@@ -119,9 +120,11 @@ export const updateProduct = data => async dispatch => {
 		});
 	}
 };
-export const searchProduct = id => async dispatch => {
+export const searchProduct = query => async dispatch => {
+	if (typeof query != 'object') query = { query };
 	try {
-		const res = await axios.get(`/api/product/${id}`, config);
+		setLoading(dispatch);
+		const res = await axios.post('/api/product/single/', query, config);
 		console.log(res);
 		dispatch({
 			type: SEARCH_PRODUCT,

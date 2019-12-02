@@ -1,77 +1,77 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 //Dropdowns
 
-import ComponentDropdown from "./menu-dropdown/ComponentDropdown";
-import PeripheralsDropdown from "./menu-dropdown/PeripheralsDropdown";
-import NetDeviceDropdown from "./menu-dropdown/NetDeviceDropdown";
-import AcessoriesDropdown from "./menu-dropdown/AcessoriesDropdown";
-import GadgetsDropdown from "./menu-dropdown/GadgetsDropdown";
-import ComputerDropdown from "./menu-dropdown/ComputerDropdown";
+import ComponentDropdown from './menu-dropdown/ComponentDropdown';
+import PeripheralsDropdown from './menu-dropdown/PeripheralsDropdown';
+import NetDeviceDropdown from './menu-dropdown/NetDeviceDropdown';
+import AcessoriesDropdown from './menu-dropdown/AcessoriesDropdown';
+import GadgetsDropdown from './menu-dropdown/GadgetsDropdown';
+import ComputerDropdown from './menu-dropdown/ComputerDropdown';
 
 const MenuBar = () => {
-    return (
-        <div className="menu">
-            <ul className="menu__list">
-                <li className="menu__item">
-                    <Link to="/" className="menu__link">
-                        Computers &nbsp;
-                        <span>
-                            <i className="fas fa-angle-down"></i>
-                        </span>
-                    </Link>
-                    <ComputerDropdown />
-                </li>
-                <li className="menu__item">
-                    <Link to="/" className="menu__link">
-                        Components &nbsp;
-                        <span>
-                            <i className="fas fa-angle-down"></i>
-                        </span>
-                    </Link>
-                    <ComponentDropdown />
-                </li>
+	return (
+		<div className='menu'>
+			<ul className='menu__list'>
+				<li className='menu__item'>
+					<Link to='/computers' className='menu__link'>
+						Computers &nbsp;
+						<span>
+							<i className='fas fa-angle-down'></i>
+						</span>
+					</Link>
+					<ComputerDropdown />
+				</li>
+				<li className='menu__item'>
+					<Link to='/component' className='menu__link'>
+						Components &nbsp;
+						<span>
+							<i className='fas fa-angle-down'></i>
+						</span>
+					</Link>
+					<ComponentDropdown />
+				</li>
 
-                <li className="menu__item">
-                    <Link to="/" className="menu__link">
-                        Peripherals &nbsp;
-                        <span>
-                            <i className="fas fa-angle-down"></i>
-                        </span>
-                    </Link>
-                    <PeripheralsDropdown />
-                </li>
-                <li className="menu__item">
-                    <Link to="/" className="menu__link">
-                        Net Devices &nbsp;
-                        <span>
-                            <i className="fas fa-angle-down"></i>
-                        </span>
-                    </Link>
-                    <NetDeviceDropdown />
-                </li>
-                <li className="menu__item">
-                    <Link to="/" className="menu__link">
-                        Accessories &nbsp;
-                        <span>
-                            <i className="fas fa-angle-down"></i>
-                        </span>
-                    </Link>
-                    <AcessoriesDropdown />
-                </li>
-                <li className="menu__item">
-                    <Link to="/" className="menu__link">
-                        Gadgets &nbsp;
-                        <span>
-                            <i className="fas fa-angle-down"></i>
-                        </span>
-                    </Link>
-                    <GadgetsDropdown />
-                </li>
-            </ul>
-        </div>
-    );
+				<li className='menu__item'>
+					<Link to='/peripheral' className='menu__link'>
+						Peripherals &nbsp;
+						<span>
+							<i className='fas fa-angle-down'></i>
+						</span>
+					</Link>
+					<PeripheralsDropdown />
+				</li>
+				<li className='menu__item'>
+					<Link to='/' className='menu__link'>
+						Net Devices &nbsp;
+						<span>
+							<i className='fas fa-angle-down'></i>
+						</span>
+					</Link>
+					<NetDeviceDropdown />
+				</li>
+				<li className='menu__item'>
+					<Link to='/' className='menu__link'>
+						Accessories &nbsp;
+						<span>
+							<i className='fas fa-angle-down'></i>
+						</span>
+					</Link>
+					<AcessoriesDropdown />
+				</li>
+				<li className='menu__item'>
+					<Link to='/' className='menu__link'>
+						Gadgets &nbsp;
+						<span>
+							<i className='fas fa-angle-down'></i>
+						</span>
+					</Link>
+					<GadgetsDropdown />
+				</li>
+			</ul>
+		</div>
+	);
 };
 
 export default MenuBar;

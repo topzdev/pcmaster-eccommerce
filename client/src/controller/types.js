@@ -61,3 +61,11 @@ export const CLEAR_ERROR = 'CLEAR_ERROR';
 export const CLEAR_SUCCESS = 'CLEAR_SUCCESS';
 export const SET_REDIRECT = 'SET_REDIRECT';
 export const SET_ERROR = 'SET_ERROR';
+
+//#################### FRONT END TYPES ########################
+export const ADD_CART = 'ADD_CART';
+export const REMOVE_CART = 'REMOVE_CART';
+export const UPDATE_CART = 'UPDATE_CART';
+export const ADD_WISHLIST = 'ADD_WISHLIST';
+export const REMOVE_WISHLIST = 'REMOVE_WISHLIST';
+export const UPDATE_WISHLIST = 'UPDATE_WISHLIST';

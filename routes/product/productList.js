@@ -21,10 +21,11 @@ router.post('/', async (request, response) => {
 	let query = [];
 
 	if (name) query.push({ name: { $regex: name, $options: 'i' } });
-	if (category) query.push({ category });
-	if (subcategory) query.push({ subcategory });
-	if (sku) query.push({ sku });
-	if (brand) query.push({ brand });
+	if (category) query.push({ category: { $regex: category, $options: 'i' } });
+	if (subcategory)
+		query.push({ subcategory: { $regex: subcategory, $options: 'i' } });
+	if (sku) query.push({ sku: { $regex: sku, $options: 'i' } });
+	if (brand) query.push({ brand: { $regex: brand, $options: 'i' } });
 	if (barcode) query.push({ barcode: { $regex: barcode, $options: 'i' } });
 	if (tags) query.push({ tags: { $in: tags } });
 

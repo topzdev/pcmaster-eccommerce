@@ -163,7 +163,7 @@
   border-radius: 10px;
   -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
           box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  border: 1px solid #d4d4d4;
+  border: 1px solid #ebebeb;
 }
 
 .card--primary__main {
@@ -171,6 +171,7 @@
   overflow: hidden;
   border-radius: 10px;
   height: 250px;
+  padding: 20px;
   width: 100%;
 }
 
@@ -184,6 +185,11 @@
   opacity: 1;
   -webkit-transition: all ease 300ms;
   transition: all ease 300ms;
+}
+
+.card--primary__disable-transition {
+  -webkit-transition: none;
+  transition: none;
 }
 
 .card--primary__b-img {
@@ -222,7 +228,7 @@
 }
 
 .card--primary__price {
-  font-family: "roboto";
+  font-family: 'roboto';
   color: var(--sec-text-col);
   font-size: 16px;
 }
@@ -389,7 +395,7 @@
 
 .card--comment__name span {
   display: block;
-  font-size: 1.2px;
+  font-size: 12px;
   font-weight: 400;
 }
 
@@ -456,7 +462,7 @@
 
 .card--cart__title {
   display: block;
-  font-family: "montserrat";
+  font-family: 'montserrat';
   font-size: 18px;
   text-decoration: none;
   color: var(--prim-text-col);
@@ -492,7 +498,7 @@
 }
 
 .card--cart__total {
-  font-family: "montserrat";
+  font-family: 'montserrat';
   font-size: 25px;
   font-weight: 700;
   margin-left: 40px;
@@ -554,7 +560,7 @@
 
 .card--wishlist__title {
   display: block;
-  font-family: "montserrat";
+  font-family: 'montserrat';
   font-size: 18px;
   text-decoration: none;
   color: var(--prim-text-col);
@@ -592,7 +598,7 @@
 }
 
 .card--wishlist__total {
-  font-family: "montserrat";
+  font-family: 'montserrat';
   font-size: 25px;
   font-weight: 700;
   margin-left: 40px;
@@ -622,11 +628,15 @@
 }
 
 .card--big__cart .card--primary__main {
-  height: 90%;
-  width: 250px;
+  height: 85%;
+  width: 200px;
+  min-width: 200px;
 }
 
 .card--big__cart .card--primary__body {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%;
   margin-top: 0;
   padding: 20px 30px;
   height: 100%;
@@ -837,7 +847,7 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   color: var(--primary-color) !important;
-  background-color: #f3f3f3 !important;
+  background-color: #fff !important;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -1227,7 +1237,7 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   color: var(--primary-color) !important;
-  background-color: #f3f3f3 !important;
+  background-color: #fff !important;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -1263,6 +1273,9 @@ input[type='number']::-webkit-outer-spin-button {
   display: -ms-flexbox;
   display: flex;
   padding: 50px 0;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .cart__main {
@@ -1283,9 +1296,17 @@ input[type='number']::-webkit-outer-spin-button {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   padding-top: 20px;
   padding-right: 40px;
   margin-bottom: 20px;
+}
+
+.cart__list:not(:last-child) {
+  margin-bottom: 15px;
 }
 
 .cart__summarry {
@@ -1303,8 +1324,14 @@ input[type='number']::-webkit-outer-spin-button {
   color: #a8a8a8;
 }
 
+.cart__summarry .cart__total {
+  text-align: right;
+  margin-left: 0 !important;
+  margin-right: 20px !important;
+}
+
 .cart__total {
-  font-family: "montserrat";
+  font-family: 'montserrat';
   font-size: 25px;
   font-weight: 700;
   margin-left: 40px;
@@ -1327,6 +1354,8 @@ input[type='number']::-webkit-outer-spin-button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 50%;
+  min-width: 50%;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
@@ -1372,6 +1401,7 @@ input[type='number']::-webkit-outer-spin-button {
   width: auto;
   overflow: hidden;
   margin-bottom: 10px;
+  padding: 35px;
 }
 
 .details__description {
@@ -1399,7 +1429,7 @@ input[type='number']::-webkit-outer-spin-button {
 .details__price {
   font-weight: 700;
   font-size: 33px;
-  font-family: "montserrat";
+  font-family: 'montserrat';
   color: #df9e08;
   margin-bottom: 20px;
 }
@@ -1415,7 +1445,7 @@ input[type='number']::-webkit-outer-spin-button {
 .details__overview::after, .details__overview::before {
   position: relative;
   display: block;
-  content: "";
+  content: '';
   height: 1px;
   width: 100px;
   background-color: #7a7a7a;
@@ -1495,6 +1525,15 @@ input[type='number']::-webkit-outer-spin-button {
 
 .details__others a:hover {
   color: var(--prim-text-col);
+}
+
+.details__others a:not(:last-child) {
+  margin-right: 1px;
+}
+
+.details__others a:not(:last-child)::after {
+  display: inline;
+  content: ',';
 }
 
 .details__others span {

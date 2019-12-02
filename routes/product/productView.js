@@ -7,11 +7,18 @@ const Product = require('../../model/Product');
 //@route    GET api/product
 //@desc     view single product
 //@access   public
-router.get('/:id', async (req, res) => {
-	console.log(req.params.id);
-	try {
-		const product = await Product.findById(req.params.id);
+router.post('/single/', async (req, res) => {
+	const { id, name, barcode, sku } = req.body;
 
+	let query = {};
+	if (id) query._id = id;
+	if (name) query.name = name;
+	if (barcode) query.barcode = barcode;
+	if (sku) query.sku = sku;
+	try {
+		console.log(query);
+		const product = await Product.findOne(query);
+		console.log(product);
 		if (!product) {
 			return res.status(400).json({
 				type: 'error',
