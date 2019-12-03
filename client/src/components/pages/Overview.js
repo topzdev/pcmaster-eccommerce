@@ -5,30 +5,28 @@ import ProductTab from '../layout/productView/ProductTab';
 import NumericField from '../layout/input/NumericField';
 import Scroll from 'react-scroll';
 import numeral from 'numeral';
+import _ from 'lodash';
 import { connect } from 'react-redux';
+import validateDuplicate from '../../utils/validators';
 import { searchProduct } from '../../controller/productController/productActions';
+import ImagesLoader from '../utils/loader/ImagesLoader';
+import DescriptionLoader from '../utils/loader/DescriptionLoader';
 import {
 	addToCart,
 	addWishlist
 } from '../../controller/frontendController/frontendActions';
-import _ from 'lodash';
-//Tabs
 
 const ProductDetails = ({
-	product: { current },
+	product: { current, loading },
+	frontend: { cart, wishlist },
 	searchProduct,
 	addToCart,
 	addWishlist
 }) => {
 	const { name } = useParams();
 	const [quantity, setQuantity] = useState(1);
-	const quantityValue = value => {};
-
-	useEffect(() => {
-		searchProduct({ name });
-		Scroll.animateScroll.scrollToTop();
-	}, []);
-
+	const [loader, setLoader] = useState(true);
+	const [exist, setExist] = useState({ cart: false, wishlist: false });
 	const [data, setData] = useState({
 		_id: '',
 		overview: '',
@@ -45,101 +43,146 @@ const ProductDetails = ({
 	});
 
 	useEffect(() => {
+		if (!loading) setLoader(loading);
+	}, [loading]);
+
+	useEffect(() => {
+		searchProduct({ name });
+		Scroll.animateScroll.scrollToTop();
+	}, []);
+
+	useEffect(() => {
 		if (current) setData(current);
-		console.log(current);
 	}, [current]);
+
+	useEffect(() => {
+		if (current)
+			setExist({ ...exist, ['cart']: validateDuplicate(current._id, cart) });
+	}, [cart, current]);
 
 	return (
 		<div className='container'>
 			<div className='details'>
-				<ImageListView img={!_.isEmpty(data.img) && data.img} />
-				<div className='divdetails__description'>
-					<h1 className='details__title'>{name && name}</h1>
-					<p className='details__price'>
-						₱{data.price && numeral(data.price).format('0,0.00')}
-					</p>
-					<p className='details__overview mb-2'>
-						{data.overview && data.overview}
-					</p>
-					<div className='details__main-btn'>
-						<NumericField initValue={quantity} quantityValue={setQuantity} />
-					</div>
-					<button
-						className='btn btn--primary mt-2'
-						onClick={() => addToCart(data, quantity)}
-					>
-						<span>
-							<i className='fas fa-shopping-cart'></i>
-						</span>
-						Add to Cart
-					</button>
+				<ImageListView
+					img={!_.isEmpty(data.img) && data.img}
+					loading={loader}
+				/>
 
-					<div className='details__btn'>
-						<button className='btn btn--wishlist'>
-							<span>
-								<i className='far fa-heart'></i>
-							</span>
-							Add to Wishlist
-						</button>
-						<button className='btn btn--wishlist'>
-							<span>
-								<i className='fas fa-random'></i>
-							</span>
-							Compare Product
-						</button>
+				{loader ? (
+					<div className='details__description' style={{ width: '100%' }}>
+						<DescriptionLoader />
 					</div>
+				) : (
+					<div className='details__description'>
+						<h1 className='details__title'>{name && name}</h1>
+						<p className='details__price'>
+							₱{data.price && numeral(data.price).format('0,0.00')}
+						</p>
+						<p className='details__overview mb-2'>
+							{data.overview && data.overview}
+						</p>
+						<div className='details__main-btn'>
+							<NumericField initValue={quantity} quantityValue={setQuantity} />
+						</div>
+						{exist.cart ? (
+							<Link
+								to='/cart'
+								className='btn btn--primary btn--primary__added mt-2'
+							>
+								<span>
+									<i class='fas fa-cart-arrow-down'></i>
+								</span>
+								Cart Added
+							</Link>
+						) : (
+							<button
+								className='btn btn--primary mt-2'
+								onClick={() => addToCart(data, quantity)}
+							>
+								<span>
+									<i className='fas fa-shopping-cart'></i>
+								</span>
+								Add to Cart
+							</button>
+						)}
 
-					<ul className='details__others'>
-						<li>
-							<b>SKU: </b>
-							<Link to='/'>{data.sku && data.sku}</Link>
-						</li>
-						<li>
-							<b>Category: </b>
-							<Link to='/'>{data.category && _.capitalize(data.category)}</Link>
-							<Link to='/'>
-								{data.subcategory && _.capitalize(data.subcategory)}
-							</Link>
-						</li>
-						<li>
-							<b>Tags: </b>
-							{data.tags &&
-								data.tags.map((tag, idx) => (
-									<Fragment key={idx}>
-										<Link to='/'>{_.capitalize(tag)}</Link>
-									</Fragment>
-								))}
-						</li>
-						<li>
-							<b>Share: </b>
-							<Link to='/'>
+						<div className='details__btn'>
+							{!exist.cart && (
+								<button
+									className='btn btn--wishlist'
+									onClick={() => addWishlist(data)}
+								>
+									<span>
+										<i className='far fa-heart'></i>
+									</span>
+									Add to Wishlist
+								</button>
+							)}
+							<button className='btn btn--wishlist'>
 								<span>
-									<i className='fab fa-facebook'></i>
+									<i className='fas fa-random'></i>
 								</span>
-							</Link>{' '}
-							<Link to='/'>
-								<span>
-									<i className='fab fa-twitter'></i>
-								</span>
-							</Link>{' '}
-							<Link to='/'>
-								<span>
-									<i className='fab fa-pinterest'></i>
-								</span>
-							</Link>
-						</li>
-					</ul>
+								Compare Product
+							</button>
+						</div>
+
+						<ul className='details__others'>
+							<li>
+								<b>SKU: </b>
+								<Link to='/'>{data.sku && data.sku}</Link>
+							</li>
+							<li>
+								<b>Category: </b>
+								<Link to='/'>
+									{data.category && _.capitalize(data.category)}
+								</Link>
+								<Link to='/'>
+									{data.subcategory && _.capitalize(data.subcategory)}
+								</Link>
+							</li>
+							<li>
+								<b>Tags: </b>
+								{data.tags &&
+									data.tags.map((tag, idx) => (
+										<Fragment key={idx}>
+											<Link to='/'>{_.capitalize(tag)}</Link>
+										</Fragment>
+									))}
+							</li>
+							<li>
+								<b>Share: </b>
+								<Link to='/'>
+									<span>
+										<i className='fab fa-facebook'></i>
+									</span>
+								</Link>{' '}
+								<Link to='/'>
+									<span>
+										<i className='fab fa-twitter'></i>
+									</span>
+								</Link>{' '}
+								<Link to='/'>
+									<span>
+										<i className='fab fa-pinterest'></i>
+									</span>
+								</Link>
+							</li>
+						</ul>
+					</div>
+				)}
+			</div>
+			{!loader && (
+				<div className='details__tab'>
+					<ProductTab description={data.description} />
 				</div>
-			</div>
-			<div className='details__tab'>
-				<ProductTab description={data.description} />
-			</div>
+			)}
 		</div>
 	);
 };
 
 const mapStateToProps = state => ({
-	product: state.product
+	product: state.product,
+	frontend: state.frontend
 });
 export default connect(mapStateToProps, {
 	searchProduct,

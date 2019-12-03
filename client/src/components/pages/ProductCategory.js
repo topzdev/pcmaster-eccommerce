@@ -15,13 +15,9 @@ const Collections = ({
 	const [view, setView] = useState(true);
 	const { category } = useParams();
 	let { brand, variety, subcategory } = qs.parse(location.search);
-	useEffect(() => {
-		console.log(subcategory);
-		getProducts({ category, subcategory });
-	}, []);
 
 	useEffect(() => {
-		console.log(products);
+		if (!products) getProducts({ category, subcategory });
 	}, [products]);
 
 	return (
@@ -46,7 +42,7 @@ const Collections = ({
 								key={product.barcode}
 								className={`${
 									view ? 'col-lg-3 col-md-4 col-12' : 'col-12'
-								} mb-3`}
+								} mb-2`}
 							>
 								<CardProduct
 									size={view ? '' : 'card--big__cart'}

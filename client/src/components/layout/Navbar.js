@@ -4,7 +4,7 @@ import logo from '../../resources/images/pc-master-logo.png';
 import MenuBar from './menu/MenuBar';
 
 import { connect } from 'react-redux';
-const Navbar = ({ frontend: { cart } }) => {
+const Navbar = ({ frontend: { cart, wishlist } }) => {
 	return (
 		<Fragment>
 			<nav className={`navbar`}>
@@ -24,7 +24,9 @@ const Navbar = ({ frontend: { cart } }) => {
 
 					<li className='navbar__list'>
 						<NavLink className='btn btn--icon mr-2' to='/wishlist'>
-							<span className='badge badge--primary'>1</span>
+							<span className='badge badge--primary'>
+								{wishlist && wishlist.length}
+							</span>
 							<i className='far fa-heart'></i>
 						</NavLink>
 						<NavLink className='btn btn--icon' to='/cart'>

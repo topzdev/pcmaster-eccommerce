@@ -1,7 +1,8 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import ReactImageMagnify from 'react-image-magnify';
+import ImagesLoader from '../utils/loader/ImagesLoader';
 
-const ImageListView = ({ img }) => {
+const ImageListView = ({ img, loading }) => {
 	const curImg = {
 		path: '',
 		altImg: ''
@@ -15,13 +16,17 @@ const ImageListView = ({ img }) => {
 	const { path, altImg } = curImage;
 	return (
 		<div className='details__img-viewer'>
-			<div className='details__img-main'>
-				<img
-					className='image'
-					src={img ? img[0].url : ''}
-					alt={img ? img[0].public_id : ''}
-				/>
-				{/* <ReactImageMagnify
+			{loading ? (
+				<ImagesLoader />
+			) : (
+				<Fragment>
+					<div className='details__img-main'>
+						<img
+							className='image'
+							src={img ? img[0].url : ''}
+							alt={img ? img[0].public_id : ''}
+						/>
+						{/* <ReactImageMagnify
           className="image"
           {...{
             smallImage: {
@@ -36,15 +41,22 @@ const ImageListView = ({ img }) => {
             }
           }}
         /> */}
-			</div>
-			<ul className='details__img-item'>
-				{img &&
-					img.map(image => (
-						<li className='details__img-list' key={image.public_id}>
-							<img className='image' src={image.url} alt='' draggable='false' />
-						</li>
-					))}
-			</ul>
+					</div>
+					<ul className='details__img-item'>
+						{img &&
+							img.map(image => (
+								<li className='details__img-list' key={image.public_id}>
+									<img
+										className='image'
+										src={image.url}
+										alt=''
+										draggable='false'
+									/>
+								</li>
+							))}
+					</ul>
+				</Fragment>
+			)}
 		</div>
 	);
 };

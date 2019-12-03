@@ -16,7 +16,7 @@ const config = {
 
 export const addToCart = (data, quantity) => async dispatch => {
 	let cart = {
-		id: data._id,
+		_id: data._id,
 		name: data.name,
 		quantity,
 		price: data.price,
@@ -55,13 +55,13 @@ export const updateCart = (id, value) => dispatch => {
 };
 
 export const addWishlist = data => dispatch => {
-	const { name, price, img, id } = data;
+	const { name, price, img, _id } = data;
 	let wishlist = {
 		name,
 		price,
 		img,
 		price,
-		id
+		_id
 	};
 	dispatch({
 		type: ADD_WISHLIST,

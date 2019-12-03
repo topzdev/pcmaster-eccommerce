@@ -26,10 +26,6 @@
 			@include transition;
 		}
 
-		&__disable-transition {
-			transition: none;
-		}
-
 		&__b-img {
 			position: absolute;
 			left: 50%;
@@ -99,21 +95,25 @@
 			height: 0;
 			bottom: -80px;
 			@include transition;
+
+			& > *:not(:last-child) {
+				margin-right: 10px;
+			}
 		}
 
 		&__link {
 			display: block;
-			// width: 100%;
+			height: 36px;
 			text-align: center;
+			font-size: 14px;
 			padding: 8px 10px;
 			color: var(--prim-col);
 			border: 2px solid var(--prim-col);
 			border-radius: 4px;
+			text-decoration: none;
 			cursor: pointer;
 			@include transition;
-			&:not(:last-child) {
-				margin-right: 10px;
-			}
+
 			p {
 				font-weight: 500;
 				display: inline;
@@ -123,7 +123,26 @@
 			&:hover {
 				background-color: var(--sec-col);
 				border: 2px solid var(--sec-col);
-				color: rgb(0, 0, 0);
+			}
+		}
+
+		&__added {
+			background-color: var(--sec-col);
+			border: 2px solid var(--sec-col);
+		}
+
+		&__disabled {
+			&:hover {
+				.card--primary__img {
+					transition: none !important;
+					transform: scale(1) translateX(-50%) !important;
+					opacity: 1 !important;
+				}
+
+				.card--primary__b-img {
+					display: none !important;
+					transform: scale(0) translateX(150%) !important;
+				}
 			}
 		}
 
@@ -217,11 +236,12 @@
 	&--cart {
 		position: relative;
 		display: flex;
-		padding: 15px 20px;
+		padding: 15px 30px 15px 20px;
 		align-items: center;
 		height: 100px;
 		width: 100%;
 		box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+		border: 1px solid #ebebeb;
 		border-radius: 10px;
 
 		&:not(:last-child) {
@@ -255,17 +275,19 @@
 		&__title {
 			display: block;
 			font-family: 'montserrat';
-			font-size: 18px;
+			font-size: 16px;
 			text-decoration: none;
 			color: var(--prim-text-col);
 			font-weight: 700;
-			width: 300px;
+			width: 320px;
+			overflow-wrap: break-word;
 		}
 
 		&__price {
-			font-size: 1.2px;
-			font-weight: 600;
-			color: #8b8b8b;
+			font-size: 15px;
+			font-weight: 400;
+			margin-top: 2px;
+			color: #616161;
 		}
 
 		&__remove {
@@ -291,8 +313,7 @@
 			font-family: 'montserrat';
 			font-size: 25px;
 			font-weight: 700;
-			margin-left: 40px;
-
+			margin-left: auto;
 			span {
 				position: relative;
 				top: -8px;
@@ -310,6 +331,7 @@
 		width: 100%;
 		box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 		border-radius: 10px;
+		border: 1px solid #ebebeb;
 
 		&:not(:last-child) {
 			margin-bottom: 20px;
@@ -325,7 +347,7 @@
 		&__img {
 			position: relative;
 			height: 100%;
-			width: 80px;
+			width: 150px;
 			overflow: hidden;
 			user-select: none;
 			margin-right: 15px;

@@ -17,8 +17,10 @@ import ScrollUpButton from './components/utils/ScrollUpButton';
 import SetRedirect from './components/utils/SetRedirect';
 import './resources/css/bootstrap-grid.min.css';
 import './resources/css/main.min.css';
+
 //Admin
-// import Admin from './components/admin/Admin';
+import Admin from './components/admin/Admin';
+
 const App = () => {
 	const [admin, setAdmin] = useState(false);
 	useEffect(() => {
@@ -29,7 +31,9 @@ const App = () => {
 			<CloudinaryContext cloudName='deiecmpac'>
 				<Router>
 					{admin ? (
-						<Fragment>{/* {<Admin />} */}</Fragment>
+						<Fragment>
+							<Admin />
+						</Fragment>
 					) : (
 						<Fragment>
 							<Navbar />

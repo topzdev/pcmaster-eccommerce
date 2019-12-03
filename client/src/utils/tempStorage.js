@@ -1,34 +1,27 @@
-const storageName = 'pcmaster-cart';
+export const addStorage = (value, storageName) => {
+	let data = getStorage(storageName);
 
-export const addCart = cart => {
-	let data = JSON.parse(sessionStorage.getItem(storageName));
-
-	if (!data) {
-		data = [];
-		data.push(cart);
-	} else {
-		data.push(cart);
-	}
+	data.push(value);
 
 	sessionStorage.setItem(storageName, JSON.stringify(data));
 };
 
-export const removeCart = id => {
-	let data = JSON.parse(sessionStorage.getItem(storageName));
+export const removeStorage = (id, storageName) => {
+	let data = getStorage(storageName);
 
-	data = data.filter(item => item.id != id);
-
-	sessionStorage.setItem(storageName, JSON.stringify(data));
-};
-
-export const updateCart = value => {
-	let data = JSON.parse(sessionStorage.getItem(storageName));
-
-	data = data.map(item => (item.id === value.id ? value : item));
+	data = data.filter(item => item._id != id);
 
 	sessionStorage.setItem(storageName, JSON.stringify(data));
 };
 
-export const getCart = () => {
+export const updateStorage = (value, storageName) => {
+	let data = getStorage(storageName);
+
+	data = data.map(item => (item._id === value.id ? value : item));
+
+	sessionStorage.setItem(storageName, JSON.stringify(data));
+};
+
+export const getStorage = storageName => {
 	return JSON.parse(sessionStorage.getItem(storageName)) || [];
 };

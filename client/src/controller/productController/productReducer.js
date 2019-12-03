@@ -46,6 +46,7 @@ export default (state = initialState, action) => {
 				...state,
 				error: null,
 				current: null,
+				loading: false,
 				success: action.payload.data,
 				products: state.products.filter(item => item._id != action.payload.id)
 			};
@@ -71,6 +72,7 @@ export default (state = initialState, action) => {
 		case SEARCH_PRODUCT:
 			return {
 				...state,
+				loading: false,
 				current: action.payload
 			};
 

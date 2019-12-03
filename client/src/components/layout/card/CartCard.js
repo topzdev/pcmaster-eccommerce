@@ -11,15 +11,12 @@ import {
 } from '../../../controller/frontendController/frontendActions';
 
 const CartCard = ({ data, updateCart, removeCart }) => {
-	const { id, img, name, price } = data;
+	const { _id, img, name, price } = data;
 	const [quantity, setQuantity] = useState(data.quantity);
+
 	const quantityValue = value => {
 		data.quantity = value;
-		updateCart(id, data);
-	};
-
-	const onRemoveCart = () => {
-		removeCart(id);
+		updateCart(_id, data);
 	};
 
 	return (
@@ -29,7 +26,7 @@ const CartCard = ({ data, updateCart, removeCart }) => {
 			</div>
 			<div className='card--cart__description'>
 				<Link to={`/overview/${name}`} className='card--cart__title'>
-					{truncate(name, 50, { position: 'end' })}
+					{truncate(name, 55, { position: 'end' })}
 				</Link>
 
 				<p className='card--cart__price'>₱{price}</p>
@@ -41,7 +38,7 @@ const CartCard = ({ data, updateCart, removeCart }) => {
 				<span>₱</span> {numeral(price * data.quantity).format('0,0.00')}
 			</p>
 
-			<button className='card--cart__remove' onClick={onRemoveCart}>
+			<button className='card--cart__remove' onClick={() => removeCart(_id)}>
 				<i className='fas fa-times'></i>
 			</button>
 		</div>
