@@ -1,114 +1,121 @@
 .navbar {
-	background-color: var(--white-col);
-	color: #fff;
+    background-color: var(--white-col);
+    color: #fff;
+    transition: all 300ms ease;
 
-	&__nav {
-		position: relative;
-		display: flex;
-		height: 80px;
-		align-items: center;
-		justify-content: space-between;
-		padding: 10px 30px;
+    &__nav {
+        position: relative;
+        display: flex;
+        height: 80px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 30px;
 
-		@include respond(laptop) {
-			height: 70px;
-		}
+        @include respond(laptop) {
+            height: 70px;
+        }
 
-		@include respond(tab-land) {
-			padding: 10px 20px;
-		}
-	}
+        @include respond(tab-land) {
+            padding: 10px 20px;
+        }
+    }
 
-	&__search {
-		display: block;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		z-index: 15;
-		width: 600px;
-		height: auto;
+    &__search {
+        display: block;
+        position: absolute;
+        top: 15%;
+        left: 30%;
 
-		@include respond(desktop) {
-			width: 550px;
-			height: 50px;
-		}
+        z-index: 15;
+        width: 600px;
+        height: auto;
 
-		@include respond(laptop) {
-			width: 480px;
-			height: 48px;
-		}
+        @include respond(desktop) {
+            width: 550px;
+            height: 50px;
+        }
 
-		@include respond(tab-land) {
-			display: none;
-		}
-	}
-	&__brand {
-		display: block;
-		height: 50px;
+        @include respond(laptop) {
+            width: 480px;
+            height: 48px;
+        }
 
-		@include respond(desktop) {
-			height: 45px;
-		}
+        @include respond(tab-land) {
+            display: none;
+        }
+    }
+    &__brand {
+        display: block;
+        height: 50px;
 
-		@include respond(laptop) {
-			height: 40px;
-		}
+        @include respond(desktop) {
+            height: 45px;
+        }
 
-		@include respond(tab-land) {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-		}
-	}
+        @include respond(tab-land) {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
 
-	&__logo {
-		height: 100%;
-	}
+    &__logo {
+        height: 100%;
+    }
 
-	&__button {
-		display: none;
-		align-items: center;
-		justify-content: center;
-		height: 50px;
-		width: 45px;
-		cursor: pointer;
+    &__button {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+        width: 45px;
+        cursor: pointer;
 
-		@include respond(tab-land) {
-			display: flex;
-		}
+        @include respond(tab-land) {
+            display: flex;
+        }
 
-		span {
-			position: relative;
-			height: 3px;
-			width: 80%;
-			background: var(--prim-col);
-			&::after,
-			&::before {
-				content: '';
-				display: block;
-				position: absolute;
-				height: inherit;
+        span {
+            position: relative;
+            height: 3px;
+            width: 80%;
+            background: var(--prim-col);
+            &::after,
+            &::before {
+                content: "";
+                display: block;
+                position: absolute;
+                height: inherit;
 
-				background: inherit;
-				left: 0;
-				height: inherit;
-				z-index: 10;
-			}
+                background: inherit;
+                left: 0;
+                height: inherit;
+                z-index: 10;
+            }
 
-			&::after {
-				bottom: 10px;
-				width: 110%;
-			}
-			&::before {
-				width: 80%;
-				top: 10px;
-			}
-		}
-	}
+            &::after {
+                bottom: 10px;
+                width: 110%;
+            }
+            &::before {
+                width: 80%;
+                top: 10px;
+            }
+        }
+    }
 }
 
 .navbar-fixed {
-	margin-top: -80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 90;
+
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-hidden {
+    margin-top: -80px;
 }

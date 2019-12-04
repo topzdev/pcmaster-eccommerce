@@ -17,7 +17,7 @@ import ScrollUpButton from "./components/utils/ScrollUpButton";
 import SetRedirect from "./components/utils/SetRedirect";
 import "./resources/css/bootstrap-grid.min.css";
 import "./resources/css/main.min.css";
-
+import "animate.css";
 //Admin
 import Admin from "./components/admin/Admin";
 
@@ -56,7 +56,7 @@ const App = () => {
                                     component={Overview}
                                 />
                                 <Route
-                                    path="/products/:category"
+                                    path="/products/"
                                     component={ProductCategory}
                                 />
                             </Switch>
