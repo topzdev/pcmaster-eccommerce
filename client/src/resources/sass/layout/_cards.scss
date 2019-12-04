@@ -481,4 +481,43 @@
 			}
 		}
 	}
+
+	&--search {
+		display: flex;
+		height: 80px;
+		min-height: 75px;
+		width: 100%;
+		padding: 10px 15px;
+		text-decoration: none;
+		@include transition;
+
+		&:hover {
+			background-color: #f0f0f0;
+		}
+
+		&__body {
+			flex: 1 1;
+			padding-left: 10px;
+			color: var(--prim-col);
+			padding: 0 10px;
+			h1 {
+				font-size: 15px;
+			}
+			p {
+				font-size: 13px;
+				margin-top: 3px;
+			}
+		}
+
+		&__images {
+			height: 100%;
+			width: 100px;
+			overflow: hidden;
+			background: #fff;
+		}
+
+		&:not(:last-child) {
+			margin-bottom: 10px;
+		}
+	}
 }

@@ -76,7 +76,6 @@ const ProductForm = ({
 	const [modal, setModal] = useState(false);
 
 	useEffect(() => {
-		getProducts();
 		if (window.location.pathname.includes('edit'))
 			setData(current ? current : initialState);
 	}, []);
@@ -325,15 +324,10 @@ const ProductForm = ({
 									variant='contained'
 									color='secondary'
 									size='large'
+									onClick={() => setData(initialState)}
 									className={classes.button}
-									startIcon={<Delete />}
-									style={{
-										backgroundColor: '#e67e22',
-										color: '#000',
-										marginRight: '20px'
-									}}
 								>
-									Update
+									Back
 								</Button>
 							</Grid>
 							<Grid item>

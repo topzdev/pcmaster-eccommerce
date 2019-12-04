@@ -9,7 +9,10 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import TableToolbar from './TableToolBar';
 import TableItem from './TableItem';
 import TableHeader from './TableHeader';
-import { getProducts } from '../../../../controller/productController/productActions';
+import {
+	getProducts,
+	searchProduct
+} from '../../../../controller/productController/productActions';
 
 import { connect } from 'react-redux';
 

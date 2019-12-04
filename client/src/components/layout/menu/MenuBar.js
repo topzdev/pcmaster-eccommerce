@@ -15,7 +15,7 @@ const MenuBar = () => {
 		<div className='menu'>
 			<ul className='menu__list'>
 				<li className='menu__item'>
-					<Link to='/computers' className='menu__link'>
+					<Link to='/products/computers' className='menu__link'>
 						Computers &nbsp;
 						<span>
 							<i className='fas fa-angle-down'></i>
@@ -24,17 +24,17 @@ const MenuBar = () => {
 					<ComputerDropdown />
 				</li>
 				<li className='menu__item'>
-					<Link to='/component' className='menu__link'>
+					<Link to='/products/component' className='menu__link'>
 						Components &nbsp;
 						<span>
 							<i className='fas fa-angle-down'></i>
 						</span>
 					</Link>
-					<ComponentDropdown />
+					<ComponentDropdown category={'/products/component/'} />
 				</li>
 
 				<li className='menu__item'>
-					<Link to='/peripheral' className='menu__link'>
+					<Link to='/products/peripheral' className='menu__link'>
 						Peripherals &nbsp;
 						<span>
 							<i className='fas fa-angle-down'></i>
@@ -43,7 +43,7 @@ const MenuBar = () => {
 					<PeripheralsDropdown />
 				</li>
 				<li className='menu__item'>
-					<Link to='/' className='menu__link'>
+					<Link to='/products/net devices' className='menu__link'>
 						Net Devices &nbsp;
 						<span>
 							<i className='fas fa-angle-down'></i>
@@ -52,7 +52,7 @@ const MenuBar = () => {
 					<NetDeviceDropdown />
 				</li>
 				<li className='menu__item'>
-					<Link to='/' className='menu__link'>
+					<Link to='/products/accessories' className='menu__link'>
 						Accessories &nbsp;
 						<span>
 							<i className='fas fa-angle-down'></i>
@@ -61,7 +61,7 @@ const MenuBar = () => {
 					<AcessoriesDropdown />
 				</li>
 				<li className='menu__item'>
-					<Link to='/' className='menu__link'>
+					<Link to='/products/gadgets' className='menu__link'>
 						Gadgets &nbsp;
 						<span>
 							<i className='fas fa-angle-down'></i>

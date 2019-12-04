@@ -1,67 +1,67 @@
 .inp {
-    font: inherit;
-    outline: none;
-    border: none;
-    &--search {
-        position: relative;
-        display: flex;
-        height: 100%;
-        width: 100%;
-        input {
-            font-size: 14px;
-            width: inherit;
-            padding: 18px;
-            background-color: #f3f3f3;
-        }
-        button {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
+	font: inherit;
+	outline: none;
+	border: none;
+	&--search {
+		position: relative;
+		display: flex;
+		height: 100%;
+		width: 100%;
+		input {
+			font-size: 16px;
+			width: inherit;
+			padding: 18px;
+			background-color: #f3f3f3;
+		}
+		button {
+			position: absolute;
+			right: 20px;
+			top: 50%;
+			transform: translateY(-50%);
+			font-size: 22px;
+			svg {
+				height: 22px;
+			}
+		}
 
-            svg {
-                height: 22px;
-            }
-        }
+		&:focus-within {
+			input {
+				// background: #000;
+			}
+		}
+	}
 
-        &:focus-within {
-            input {
-                // background: #000;
-            }
-        }
-    }
+	&--subcribe {
+		padding: 10px 20px;
+		font-size: 20px;
+		width: 500px;
+		border-radius: 5px;
+		box-shadow: 0 4px 0 var(--sec-col);
+		height: 45px;
+		@include transition;
+	}
 
-    &--subcribe {
-        padding: 10px 20px;
-        font-size: 20px;
-        width: 500px;
-        border-radius: 5px;
-        box-shadow: 0 4px 0 var(--sec-col);
-        height: 45px;
-        @include transition;
-    }
+	&--quantity {
+		display: flex;
+		align-items: center;
+		input {
+			font: inherit;
+			font-weight: 600;
+			font-size: 16px;
+			text-align: center;
+			padding: 10px;
+			width: 70px;
+			border-radius: 3px;
+			border: 1px solid #7a7a7a;
+		}
 
-    &--quantity {
-        display: flex;
-        align-items: center;
-        input {
-            font: inherit;
-            font-weight: 600;
-            font-size: 16px;
-            text-align: center;
-            padding: 10px;
-            width: 70px;
-            border-radius: 3px;
-            border: 1px solid #7a7a7a;
-        }
-
-        button {
-            font: inherit;
-            font-size: 20px;
-            font-weight: 700;
-            padding: 10px;
-            cursor: pointer;
-            color: var(--sec-text-col);
-        }
-    }
+		button {
+			font: inherit;
+			font-size: 20px;
+			font-weight: 700;
+			padding: 10px;
+			cursor: pointer;
+			color: var(--sec-text-col);
+		}
+	}
 }

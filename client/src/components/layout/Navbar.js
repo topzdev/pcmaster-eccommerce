@@ -2,7 +2,7 @@ import React, { useEffect, useState, Fragment } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../resources/images/pc-master-logo.png';
 import MenuBar from './menu/MenuBar';
-
+import SearchBar from './search/SearchBar';
 import { connect } from 'react-redux';
 const Navbar = ({ frontend: { cart, wishlist } }) => {
 	return (
@@ -12,16 +12,7 @@ const Navbar = ({ frontend: { cart, wishlist } }) => {
 					<Link to='/' className='navbar__brand'>
 						<img src={logo} alt='PCMR' className='navbar__logo' />
 					</Link>
-
-					<div className='navbar__search'>
-						<div className='inp--search'>
-							<input className='inp' type='text' placeholder='Search product' />
-							<button>
-								<i className='fas fa-search'></i>
-							</button>
-						</div>
-					</div>
-
+					<SearchBar />
 					<li className='navbar__list'>
 						<NavLink className='btn btn--icon mr-2' to='/wishlist'>
 							<span className='badge badge--primary'>

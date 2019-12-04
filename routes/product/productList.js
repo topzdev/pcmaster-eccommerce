@@ -15,7 +15,8 @@ router.post('/', async (request, response) => {
 		brand,
 		sku,
 		tags,
-		barcode
+		barcode,
+		logical = 'or'
 	} = request.body;
 
 	let query = [];
@@ -31,7 +32,13 @@ router.post('/', async (request, response) => {
 
 	try {
 		console.log(query, request.body);
-		let products = await Product.find(query.length > 0 ? { $or: query } : {});
+		let products = await Product.find(
+			query.length > 0
+				? logical === 'or'
+					? { $or: query }
+					: { $and: query }
+				: {}
+		);
 
 		if (!products)
 			return response

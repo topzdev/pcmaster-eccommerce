@@ -8,10 +8,10 @@ const Product = require('../../model/Product');
 //@desc     view single product
 //@access   public
 router.post('/single/', async (req, res) => {
-	const { id, name, barcode, sku } = req.body;
+	const { _id, name, barcode, sku } = req.body;
 
 	let query = {};
-	if (id) query._id = id;
+	if (_id) query._id = _id;
 	if (name) query.name = name;
 	if (barcode) query.barcode = barcode;
 	if (sku) query.sku = sku;

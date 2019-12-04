@@ -28,7 +28,6 @@ const Card = ({
 	useEffect(() => setWishExist(validateDuplicate(_id, wishlist)), [wishlist]);
 
 	const renderWishlist = added => {
-		console.log(added);
 		if (!added)
 			return (
 				<button

@@ -19,7 +19,7 @@ import './resources/css/bootstrap-grid.min.css';
 import './resources/css/main.min.css';
 
 //Admin
-import Admin from './components/admin/Admin';
+// import Admin from './components/admin/Admin';
 
 const App = () => {
 	const [admin, setAdmin] = useState(false);
@@ -31,9 +31,7 @@ const App = () => {
 			<CloudinaryContext cloudName='deiecmpac'>
 				<Router>
 					{admin ? (
-						<Fragment>
-							<Admin />
-						</Fragment>
+						<Fragment>{/* <Admin /> */}</Fragment>
 					) : (
 						<Fragment>
 							<Navbar />
@@ -43,11 +41,7 @@ const App = () => {
 								<Route exact path='/search' component={Search} />
 								<Route exact path='/wishlist' component={Wishlist} />
 								<Route exact path='/overview/:name' component={Overview} />
-								<Route
-									exact
-									path='/products/:category'
-									component={ProductCategory}
-								/>
+								<Route path='/products/:category' component={ProductCategory} />
 							</Switch>
 							<ScrollUpButton />
 							<Footer />

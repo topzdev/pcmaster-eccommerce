@@ -121,7 +121,7 @@ export const updateProduct = data => async dispatch => {
 	}
 };
 export const searchProduct = query => async dispatch => {
-	if (typeof query != 'object') query = { query };
+	console.log(query);
 	try {
 		setLoading(dispatch);
 		const res = await axios.post('/api/product/single/', query, config);

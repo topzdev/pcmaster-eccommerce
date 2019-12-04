@@ -111,6 +111,83 @@
   width: 250px;
 }
 
+.rc-pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 auto;
+  font-family: inherit;
+}
+
+.rc-pagination-small {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.rc-pagination-small .rc-pagination-prev,
+.rc-pagination-small .rc-pagination-next,
+.rc-pagination-small .rc-pagination-item {
+  height: 35px;
+  width: 35px;
+  font-size: 16px;
+}
+
+.rc-pagination-prev,
+.rc-pagination-next,
+.rc-pagination-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 45px;
+  width: 45px;
+  font-size: 18px;
+  border-width: 2px;
+  outline: none;
+  font-weight: 700;
+}
+
+.rc-pagination-prev:hover,
+.rc-pagination-next:hover,
+.rc-pagination-item:hover {
+  border-color: var(--prim-col);
+  color: var(--prim-col) !important;
+}
+
+.rc-pagination-prev:hover a,
+.rc-pagination-next:hover a,
+.rc-pagination-item:hover a {
+  color: var(--prim-col) !important;
+}
+
+.rc-pagination-item-link {
+  display: inline-block;
+}
+
+.rc-pagination-item-link::after {
+  height: 40px;
+  width: 40px;
+}
+
+.rc-pagination-item-active {
+  background-color: var(--sec-col);
+  color: var(--prim-col) !important;
+  border: 2px solid var(--prim-col);
+}
+
+.rc-pagination-item-active a {
+  color: var(--prim-col) !important;
+}
+
 .navbar {
   height: 80px;
   background-color: var(--white-col);
@@ -137,11 +214,6 @@
 
 .navbar__logo {
   height: 100%;
-}
-
-.navbar__search {
-  display: block;
-  width: 600px;
 }
 
 .navbar-fixed {
@@ -692,6 +764,107 @@
   margin-top: 0;
 }
 
+.card--search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 80px;
+  min-height: 75px;
+  width: 100%;
+  padding: 10px 15px;
+  text-decoration: none;
+  -webkit-transition: all ease 300ms;
+  transition: all ease 300ms;
+}
+
+.card--search:hover {
+  background-color: #f0f0f0;
+}
+
+.card--search__body {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
+  padding-left: 10px;
+  color: var(--prim-col);
+  padding: 0 10px;
+}
+
+.card--search__body h1 {
+  font-size: 15px;
+}
+
+.card--search__body p {
+  font-size: 13px;
+  margin-top: 3px;
+}
+
+.card--search__images {
+  height: 100%;
+  width: 100px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.card--search:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.search-field {
+  position: relative;
+  display: block;
+  width: 600px;
+  height: 150px;
+  height: auto;
+}
+
+.search-field .inp--search {
+  position: relative;
+  z-index: 25;
+}
+
+.search-field__dropdown {
+  display: block;
+  position: absolute;
+  left: 0;
+  z-index: 20;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  background: #fff;
+  color: var(--prim-col);
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  -webkit-transition: all ease 300ms;
+  transition: all ease 300ms;
+}
+
+.search-field__label {
+  font-weight: 700;
+  padding: 10px 10px;
+}
+
+.search-field__label span {
+  color: var(--sec-col);
+}
+
+.search-field-expand {
+  height: auto;
+}
+
+.search-field__view {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 10px;
+  color: var(--prim-col);
+}
+
+.search-field__view span {
+  color: var(--sec-col);
+}
+
 .showcase {
   padding: 20px 0 0 0;
 }
@@ -749,6 +922,15 @@
   padding: 15px;
 }
 
+.menu__drp-sub {
+  position: absolute;
+  z-index: 20;
+  width: 100%;
+  left: 0;
+  background: #929292;
+  height: 100px;
+}
+
 .menu__result {
   padding: 0 20px;
 }
@@ -768,7 +950,6 @@
   visibility: hidden;
   width: 1200px;
   left: 0;
-  margin-top: 100px;
 }
 
 .menu__img-preview {
@@ -809,7 +990,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  font-family: "Montserrat";
+  font-family: 'Montserrat';
   font-weight: 600;
   font-size: 16px;
   width: 100%;
@@ -848,6 +1029,54 @@
 
 .section--primary {
   padding: 30px 50px;
+}
+
+.banner {
+  --height: 200px;
+  position: relative;
+  height: var(--height);
+  width: 100%;
+  overflow: hidden;
+}
+
+.banner__image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 102%;
+}
+
+.banner__cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.banner__body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #fff;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  height: var(--height);
+}
+
+.banner__body h1 {
+  font-size: 50px;
 }
 
 * {
@@ -905,6 +1134,16 @@ input[type='number']::-webkit-outer-spin-button {
 .bdr--secondary {
   color: var(--sec-col);
   border-color: var(--sec-col);
+}
+
+.backdrop {
+  position: fixed;
+  display: block;
+  height: 100vh;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .badge {
@@ -1093,12 +1332,12 @@ input[type='number']::-webkit-outer-spin-button {
   margin-top: -5px;
 }
 
-.banner {
+.carousel {
   width: 100%;
   overflow: hidden;
 }
 
-.banner__list {
+.carousel__list {
   display: block;
   float: left;
   list-style: none;
@@ -1106,12 +1345,12 @@ input[type='number']::-webkit-outer-spin-button {
   width: 100%;
 }
 
-.banner__item {
+.carousel__item {
   width: 100%;
   overflow: hidden;
 }
 
-.banner__item img {
+.carousel__item img {
   width: 100%;
   height: auto;
 }
@@ -1149,7 +1388,7 @@ input[type='number']::-webkit-outer-spin-button {
 .nav-carousel::before, .nav-carousel::after {
   position: absolute;
   display: block;
-  content: "";
+  content: '';
   height: 2px;
   width: 15px;
   background-color: #000;
@@ -1195,7 +1434,7 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .inp--search input {
-  font-size: 14px;
+  font-size: 16px;
   width: inherit;
   padding: 18px;
   background-color: #f3f3f3;
@@ -1207,6 +1446,7 @@ input[type='number']::-webkit-outer-spin-button {
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
+  font-size: 22px;
 }
 
 .inp--search button svg {

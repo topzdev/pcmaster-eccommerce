@@ -63,15 +63,19 @@ const ProductDetails = ({
 	return (
 		<div className='container'>
 			<div className='details'>
-				<ImageListView
-					img={!_.isEmpty(data.img) && data.img}
-					loading={loader}
-				/>
+				{!loader && (
+					<ImageListView
+						img={!_.isEmpty(data.img) && data.img}
+						loading={loader}
+					/>
+				)}
 
 				{loader ? (
-					<div className='details__description' style={{ width: '100%' }}>
-						<DescriptionLoader />
-					</div>
+					<Fragment>
+						<div className='details__description' style={{ width: '100%' }}>
+							<DescriptionLoader />
+						</div>
+					</Fragment>
 				) : (
 					<div className='details__description'>
 						<h1 className='details__title'>{name && name}</h1>
@@ -90,7 +94,7 @@ const ProductDetails = ({
 								className='btn btn--primary btn--primary__added mt-2'
 							>
 								<span>
-									<i class='fas fa-cart-arrow-down'></i>
+									<i className='fas fa-cart-arrow-down'></i>
 								</span>
 								Cart Added
 							</Link>

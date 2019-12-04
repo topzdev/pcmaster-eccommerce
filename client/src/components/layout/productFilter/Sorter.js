@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 
-const Sorter = ({ setView, view }) => {
+const Sorter = ({ setView, view, setShow, show, setSort, sort }) => {
 	let sortBy = [
 		{ value: 'plf', label: 'Price: Lowest First' },
 		{ value: 'phf', label: 'Price: Highest First' },
@@ -12,10 +12,10 @@ const Sorter = ({ setView, view }) => {
 		{ value: 'rhf', label: 'Reference: Highest First' }
 	];
 
-	let show = [
-		{ value: '24', label: '24' },
-		{ value: '48', label: '48' },
-		{ value: '120', label: '120' }
+	let showBy = [
+		{ value: 24, label: 24 },
+		{ value: 48, label: 48 },
+		{ value: 120, label: 120 }
 	];
 
 	const customStyles = {
@@ -32,13 +32,25 @@ const Sorter = ({ setView, view }) => {
 			<div className='form-control'>
 				<label htmlFor=''>Sort by</label>
 				<div className='form-select'>
-					<Select styles={customStyles} options={sortBy} isSearchable={false} />
+					<Select
+						styles={customStyles}
+						options={sortBy}
+						value={sort}
+						isSearchable={false}
+						onChange={selected => setSort(selected.value)}
+					/>
 				</div>
 			</div>
 			<div className='form-control'>
 				<label htmlFor=''>Show</label>
 				<div className='form-select'>
-					<Select styles={customStyles} options={show} isSearchable={false} />
+					<Select
+						styles={customStyles}
+						options={showBy}
+						value={show}
+						isSearchable={false}
+						onChange={selected => setShow(selected.value)}
+					/>
 				</div>
 			</div>
 			<div className='form-control ml-auto'>

@@ -10,7 +10,7 @@ const TableItem = ({ product: { current }, data, searchProduct }) => {
 	const [redirect, setRedirect] = useState(false);
 	const previewProduct = id => {
 		console.log(id);
-		if (id != null) searchProduct(id);
+		if (id != null) searchProduct({ _id: id });
 	};
 
 	useEffect(() => {

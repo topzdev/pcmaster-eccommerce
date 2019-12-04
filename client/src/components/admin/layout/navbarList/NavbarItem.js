@@ -55,7 +55,7 @@ const NavbarItem = () => {
 					<ListItem
 						button
 						component={Link}
-						to='/admin/product'
+						to='/admin/product/'
 						className={classes.nested}
 					>
 						<ListItemIcon>

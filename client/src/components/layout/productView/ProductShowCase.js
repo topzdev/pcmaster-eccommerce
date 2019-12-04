@@ -16,14 +16,7 @@ const ProductShowCase = ({ title, items }) => {
 					navclassName={['nav-carousel nav-left', 'nav-carousel nav-right']}
 					items={4}
 					margin={20}
-				>
-					<CardProduct />
-					<CardProduct />
-					<CardProduct />
-					<CardProduct />
-					<CardProduct />
-					<CardProduct />
-				</OwlCarousel>
+				></OwlCarousel>
 			</section>
 		</div>
 	);

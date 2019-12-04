@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-const ComponentDropdown = () => {
+const ComponentDropdown = ({ category }) => {
 	return (
 		<div className='menu__dropdown'>
 			<div className='menu__img-preview'>
@@ -8,7 +8,10 @@ const ComponentDropdown = () => {
 			</div>
 			<ul className='menu__drp-group'>
 				<li className='menu__drp-item'>
-					<Link to='/processor' className='menu__drp-link'>
+					<Link
+						to={`${category}?subcategory=${'processor'}`}
+						className='menu__drp-link'
+					>
 						<span>
 							<i className='fas fa-chevron-right'></i>
 						</span>{' '}
@@ -16,7 +19,10 @@ const ComponentDropdown = () => {
 					</Link>
 				</li>
 				<li className='menu__drp-item'>
-					<Link to='/motherboard' className='menu__drp-link'>
+					<Link
+						to={`${category}?subcategory=${'motherboard'}`}
+						className='menu__drp-link'
+					>
 						<span>
 							<i className='fas fa-chevron-right'></i>
 						</span>{' '}
@@ -24,7 +30,10 @@ const ComponentDropdown = () => {
 					</Link>
 				</li>
 				<li className='menu__drp-item'>
-					<Link to='/' className='menu__drp-link'>
+					<Link
+						to={`${category}?subcategory=${'graphic cards'}`}
+						className='menu__drp-link'
+					>
 						<span>
 							<i className='fas fa-chevron-right'></i>
 						</span>{' '}
@@ -32,7 +41,10 @@ const ComponentDropdown = () => {
 					</Link>
 				</li>
 				<li className='menu__drp-item'>
-					<Link to='/' className='menu__drp-link'>
+					<Link
+						to={`${category}?subcategory=${'memory'}`}
+						className='menu__drp-link'
+					>
 						<span>
 							<i className='fas fa-chevron-right'></i>
 						</span>{' '}
@@ -40,7 +52,10 @@ const ComponentDropdown = () => {
 					</Link>
 				</li>
 				<li className='menu__drp-item'>
-					<Link to='/' className='menu__drp-link'>
+					<Link
+						to={`${category}?subcategory=${'power supply'}`}
+						className='menu__drp-link'
+					>
 						<span>
 							<i className='fas fa-chevron-right'></i>
 						</span>{' '}
@@ -48,7 +63,10 @@ const ComponentDropdown = () => {
 					</Link>
 				</li>
 				<li className='menu__drp-item'>
-					<Link to='/' className='menu__drp-link'>
+					<Link
+						to={`${category}?subcategory=${'hard drive'}`}
+						className='menu__drp-link'
+					>
 						<span>
 							<i className='fas fa-chevron-right'></i>
 						</span>{' '}
@@ -56,15 +74,21 @@ const ComponentDropdown = () => {
 					</Link>
 				</li>
 				<li className='menu__drp-item'>
-					<Link to='/' className='menu__drp-link'>
+					<Link
+						to={`${category}?subcategory=${'casing'}`}
+						className='menu__drp-link'
+					>
 						<span>
 							<i className='fas fa-chevron-right'></i>
 						</span>{' '}
-						<p>Chasis</p>
+						<p>Casing</p>
 					</Link>
 				</li>
 				<li className='menu__drp-item'>
-					<Link to='/' className='menu__drp-link'>
+					<Link
+						to={`${category}?subcategory=${'sound card'}`}
+						className='menu__drp-link'
+					>
 						<span>
 							<i className='fas fa-chevron-right'></i>
 						</span>{' '}
@@ -72,7 +96,10 @@ const ComponentDropdown = () => {
 					</Link>
 				</li>
 				<li className='menu__drp-item'>
-					<Link to='/' className='menu__drp-link'>
+					<Link
+						to={`${category}?subcategory=${'lan card'}`}
+						className='menu__drp-link'
+					>
 						<span>
 							<i className='fas fa-chevron-right'></i>
 						</span>{' '}
@@ -80,7 +107,10 @@ const ComponentDropdown = () => {
 					</Link>
 				</li>
 				<li className='menu__drp-item'>
-					<Link to='/' className='menu__drp-link'>
+					<Link
+						to={`${category}?subcategory=${'optical drive'}`}
+						className='menu__drp-link'
+					>
 						<span>
 							<i className='fas fa-chevron-right'></i>
 						</span>{' '}

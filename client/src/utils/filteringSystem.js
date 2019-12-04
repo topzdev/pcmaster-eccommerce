@@ -1,0 +1,1 @@
+export default filteringSyste = query => {};

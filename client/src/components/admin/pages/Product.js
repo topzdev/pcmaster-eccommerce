@@ -32,14 +32,15 @@ const Product = ({ product: { current }, setRedirect }) => {
 	});
 	const toRenderComponent = path => {
 		switch (path) {
-			case '/admin/product':
+			case '/admin/product/':
 				return <ProductDashboard />;
 			case '/admin/product/add':
 				return <ProductForm />;
 			case '/admin/product/edit':
-				if (current != null) {
-					return <ProductForm />;
-				} else setRedirect({ open: true, url: '/admin/product' });
+				return <ProductForm />;
+			// if (current != null) {
+			// 	return <ProductForm />;
+			// } else setRedirect({ open: true, url: '/admin/product' });
 			case '/admin/product/category':
 				return <ProductCategory />;
 			case '/admin/product/sub-category':
