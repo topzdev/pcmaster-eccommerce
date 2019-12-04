@@ -1,8 +1,6 @@
 .search-field {
-	position: relative;
 	display: block;
-	width: 600px;
-	height: 150px;
+	width: 100%;
 	height: auto;
 
 	.inp--search {
@@ -22,11 +20,17 @@
 		color: var(--prim-col);
 		box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 		@include transition;
+
+		@include respond(tab-land) {
+			position: relative;
+		}
 	}
 
 	&__label {
+		font-size: 16px;
 		font-weight: 700;
 		padding: 10px 10px;
+		@include transition;
 
 		span {
 			color: var(--sec-col);
@@ -41,12 +45,20 @@
 		display: block;
 		text-align: center;
 		text-decoration: none;
-		font-weight: 700;
+		font-weight: 600;
+		font-size: 14px;
 		padding: 10px;
 		color: var(--prim-col);
+		background-color: #e9e9e9;
+		border-top: 1px solid rgba(0, 0, 0, 0.1);
+		@include transition;
 
 		span {
 			color: var(--sec-col);
+		}
+
+		&:hover {
+			background-color: #cfcfcf;
 		}
 	}
 }

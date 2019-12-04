@@ -78,7 +78,7 @@ const Collections = ({
 								<div
 									key={product.barcode}
 									className={`${
-										view ? 'col-lg-3 col-md-4 col-12' : 'col-12'
+										view ? 'col-lg-3 col-lg-4 col-md-6 col-12' : 'col-12'
 									} mb-2`}
 								>
 									<CardProduct

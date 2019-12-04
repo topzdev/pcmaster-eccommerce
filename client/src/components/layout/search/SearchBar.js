@@ -59,12 +59,13 @@ const SearchBar = ({ product: { products }, getProducts }) => {
 							to={`/products?name=${search}?category=${search}?subcategory=${search}`}
 							className='search-field__view'
 						>
-							View {searchProduct.length} more related on <span> {search}</span>
+							View {searchProduct.length} more related on{' '}
+							<span>"{search}"</span>
 						</Link>
 					</div>
 				</Fragment>
 			)}
-			<Backdrop show={!_.isEmpty(searchProduct)} zIndex='10' />
+			{/* <Backdrop show={!_.isEmpty(searchProduct)} zIndex='10' /> */}
 		</div>
 	);
 };

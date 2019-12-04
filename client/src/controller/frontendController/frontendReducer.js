@@ -11,14 +11,16 @@ import {
 	UPDATE_CART,
 	ADD_WISHLIST,
 	REMOVE_WISHLIST,
-	SET_ERROR
+	SET_ERROR,
+	TOGGLE_NAV
 } from '../types';
 
 const initialState = {
 	cart: getStorage('pcmaster-cart'),
 	wishlist: getStorage('pcmaster-wishlist'),
 	success: null,
-	error: null
+	error: null,
+	sidebar: false
 };
 
 export default (state = initialState, action) => {
@@ -78,6 +80,12 @@ export default (state = initialState, action) => {
 				...state,
 				success: null,
 				error: action.payload
+			};
+
+		case TOGGLE_NAV:
+			return {
+				...state,
+				sidebar: !state.sidebar
 			};
 		default:
 			return state;

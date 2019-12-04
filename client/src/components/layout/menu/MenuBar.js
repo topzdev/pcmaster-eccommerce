@@ -1,77 +1,112 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-
+import { connect } from 'react-redux';
 //Dropdowns
+import SearchBar from '../search/SearchBar';
+import MenuList from './MenuList';
+import BackDrop from '../../utils/Backdrop';
+import { Scrollbars } from 'react-custom-scrollbars';
+import { toggleNav } from '../../../controller/frontendController/frontendActions';
+const MenuBar = ({ frontend: { sidebar }, toggleNav }) => {
+	const menu = [
+		{
+			title: 'Computer',
+			item: ['Desktop PC', 'Notebooks', 'Mini PC', 'Diskless PC', 'Software']
+		},
+		{
+			title: 'Components',
+			item: [
+				'Processor',
+				'Motherboard',
+				'Graphics Card',
+				'Memory',
+				'Power Supply',
+				'Hard Drive',
+				'Casing',
+				'Sound Card',
+				'Lan Card',
+				'Optical Drive'
+			]
+		},
+		{
+			title: 'Peripherals',
+			item: [
+				'Displays',
+				'Audio',
+				'Keyboard/Mouse',
+				'Office Furniture',
+				'Printer/Scanner/Inks',
+				'Surveillance/CCTV',
+				'UPS/AVR',
+				'Webcam'
+			]
+		},
+		{
+			title: 'Net Devices',
+			item: [
+				'Access Point/Range Extender',
+				'Adaptor',
+				'Router',
+				'Switch',
+				'UTP Cable',
+				'Network Attached Storage'
+			]
+		},
+		{
+			title: 'Accessories',
+			item: [
+				'Batteries and Chargers',
+				'Cables',
+				'Cooling Solutions',
+				'Cleaning Solutions',
+				'HDD Dock / Enclosure / Caddy',
+				'Lightings',
+				'Memory Devices',
+				'Sleeves / Bags',
+				'USB Hub / Card Reader'
+			]
+		},
+		{
+			title: 'Gadgets',
+			item: [
+				'Digital Camera',
+				'Media Player',
+				'Mobile',
+				'Mobile Accessories',
+				'Mining',
+				'Wellness'
+			]
+		}
+	];
 
-import ComponentDropdown from './menu-dropdown/ComponentDropdown';
-import PeripheralsDropdown from './menu-dropdown/PeripheralsDropdown';
-import NetDeviceDropdown from './menu-dropdown/NetDeviceDropdown';
-import AcessoriesDropdown from './menu-dropdown/AcessoriesDropdown';
-import GadgetsDropdown from './menu-dropdown/GadgetsDropdown';
-import ComputerDropdown from './menu-dropdown/ComputerDropdown';
+	const closeNav = () => {
+		toggleNav();
+	};
 
-const MenuBar = () => {
 	return (
-		<div className='menu'>
-			<ul className='menu__list'>
-				<li className='menu__item'>
-					<Link to='/products/computers' className='menu__link'>
-						Computers &nbsp;
-						<span>
-							<i className='fas fa-angle-down'></i>
-						</span>
-					</Link>
-					<ComputerDropdown />
-				</li>
-				<li className='menu__item'>
-					<Link to='/products/component' className='menu__link'>
-						Components &nbsp;
-						<span>
-							<i className='fas fa-angle-down'></i>
-						</span>
-					</Link>
-					<ComponentDropdown category={'/products/component/'} />
-				</li>
-
-				<li className='menu__item'>
-					<Link to='/products/peripheral' className='menu__link'>
-						Peripherals &nbsp;
-						<span>
-							<i className='fas fa-angle-down'></i>
-						</span>
-					</Link>
-					<PeripheralsDropdown />
-				</li>
-				<li className='menu__item'>
-					<Link to='/products/net devices' className='menu__link'>
-						Net Devices &nbsp;
-						<span>
-							<i className='fas fa-angle-down'></i>
-						</span>
-					</Link>
-					<NetDeviceDropdown />
-				</li>
-				<li className='menu__item'>
-					<Link to='/products/accessories' className='menu__link'>
-						Accessories &nbsp;
-						<span>
-							<i className='fas fa-angle-down'></i>
-						</span>
-					</Link>
-					<AcessoriesDropdown />
-				</li>
-				<li className='menu__item'>
-					<Link to='/products/gadgets' className='menu__link'>
-						Gadgets &nbsp;
-						<span>
-							<i className='fas fa-angle-down'></i>
-						</span>
-					</Link>
-					<GadgetsDropdown />
-				</li>
-			</ul>
-		</div>
+		<Fragment>
+			<div className={`menu ${sidebar ? 'menu-show' : ''}`}>
+				<div className='menu__search'>
+					<SearchBar />
+				</div>
+				<ul className='menu__list'>
+					{menu.map(item => (
+						<MenuList key={item.title} list={item} />
+					))}
+				</ul>
+			</div>
+			<BackDrop
+				zIndex={10}
+				show={sidebar}
+				className={'menu-backdrop'}
+				onHide={closeNav}
+			/>
+		</Fragment>
 	);
 };
 
-export default MenuBar;
+const mapStateToProps = state => ({
+	frontend: state.frontend
+});
+
+export default connect(mapStateToProps, { toggleNav })(MenuBar);

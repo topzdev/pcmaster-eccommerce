@@ -69,3 +69,4 @@ export const UPDATE_CART = 'UPDATE_CART';
 export const ADD_WISHLIST = 'ADD_WISHLIST';
 export const REMOVE_WISHLIST = 'REMOVE_WISHLIST';
 export const UPDATE_WISHLIST = 'UPDATE_WISHLIST';
+export const TOGGLE_NAV = 'TOGGLE_NAV';

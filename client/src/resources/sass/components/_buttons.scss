@@ -42,6 +42,10 @@
 			height: 30px;
 			width: 30px;
 		}
+
+		@include respond(laptop) {
+			font-size: 25px;
+		}
 	}
 
 	&--wishlist {

@@ -495,6 +495,12 @@
 			background-color: #f0f0f0;
 		}
 
+		@include respond(tab-land) {
+			padding: 10px 10px;
+			height: auto;
+			border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+		}
+
 		&__body {
 			flex: 1 1;
 			padding-left: 10px;
@@ -502,6 +508,12 @@
 			padding: 0 10px;
 			h1 {
 				font-size: 15px;
+				overflow-wrap: break-word;
+
+				@include respond(tab-land) {
+					font-size: 12px;
+					word-break: break-all;
+				}
 			}
 			p {
 				font-size: 13px;
@@ -514,6 +526,11 @@
 			width: 100px;
 			overflow: hidden;
 			background: #fff;
+
+			@include respond(tab-land) {
+				width: 60px;
+				height: 60px;
+			}
 		}
 
 		&:not(:last-child) {

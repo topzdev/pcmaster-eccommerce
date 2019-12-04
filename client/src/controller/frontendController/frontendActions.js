@@ -1,18 +1,11 @@
-import axios from 'axios';
 import {
 	ADD_CART,
 	REMOVE_CART,
 	UPDATE_CART,
 	ADD_WISHLIST,
 	REMOVE_WISHLIST,
-	SET_ERROR
+	TOGGLE_NAV
 } from '../types';
-
-const config = {
-	header: {
-		'Content-type': 'Application/json'
-	}
-};
 
 export const addToCart = (data, quantity) => async dispatch => {
 	let cart = {
@@ -79,5 +72,11 @@ export const removeWishlist = id => dispatch => {
 			data: id,
 			msg: { type: 'success', msg: 'Wishlist Removed' }
 		}
+	});
+};
+
+export const toggleNav = () => dispatch => {
+	dispatch({
+		type: TOGGLE_NAV
 	});
 };

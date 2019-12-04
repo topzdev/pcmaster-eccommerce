@@ -1,28 +1,111 @@
 .navbar {
-	height: 80px;
 	background-color: var(--white-col);
 	color: #fff;
 
 	&__nav {
+		position: relative;
 		display: flex;
+		height: 80px;
 		align-items: center;
 		justify-content: space-between;
 		padding: 10px 30px;
+
+		@include respond(laptop) {
+			height: 70px;
+		}
+
+		@include respond(tab-land) {
+			padding: 10px 20px;
+		}
+	}
+
+	&__search {
+		display: block;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 15;
+		width: 600px;
+		height: auto;
+
+		@include respond(desktop) {
+			width: 550px;
+			height: 50px;
+		}
+
+		@include respond(laptop) {
+			width: 480px;
+			height: 48px;
+		}
+
+		@include respond(tab-land) {
+			display: none;
+		}
 	}
 	&__brand {
 		display: block;
 		height: 50px;
+
+		@include respond(desktop) {
+			height: 45px;
+		}
+
+		@include respond(laptop) {
+			height: 40px;
+		}
+
+		@include respond(tab-land) {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
 	}
+
 	&__logo {
 		height: 100%;
 	}
-	&__title {
-	}
-	&__list {
-	}
-	&__link {
-	}
-	&__list {
+
+	&__button {
+		display: none;
+		align-items: center;
+		justify-content: center;
+		height: 50px;
+		width: 45px;
+		cursor: pointer;
+
+		@include respond(tab-land) {
+			display: flex;
+		}
+
+		span {
+			position: relative;
+			height: 3px;
+			width: 80%;
+			background: var(--prim-col);
+			&::after,
+			&::before {
+				content: '';
+				display: block;
+				position: absolute;
+				height: inherit;
+
+				background: inherit;
+				left: 0;
+				height: inherit;
+				z-index: 10;
+			}
+
+			&::after {
+				bottom: 10px;
+				width: 110%;
+			}
+			&::before {
+				width: 80%;
+				top: 10px;
+			}
+		}
 	}
 }
 
