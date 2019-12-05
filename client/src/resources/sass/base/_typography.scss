@@ -1,5 +1,18 @@
 .heading {
     &--primary {
+        display: inline-block;
         font-size: 30px;
+        @include respond(tab-port) {
+            font-size: 25px;
+        }
+        @include respond(mobile-lg) {
+            font-size: 23px;
+        }
+        @include respond(mobile-m) {
+            font-size: 20px;
+        }
+        @include respond(mobile-m) {
+            font-size: 18px;
+        }
     }
 }

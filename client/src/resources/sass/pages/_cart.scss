@@ -1,57 +1,104 @@
 .cart {
-	display: flex;
-	padding: 50px 0;
-	align-items: flex-start;
-	&__main {
-		flex: 1;
-	}
+    display: flex;
+    padding: 20px 0;
+    align-items: flex-start;
 
-	&__count {
-		font-size: 18px;
-		color: var(--sec-text-col);
-	}
+    @include respond(laptop) {
+        flex-direction: column;
+    }
+    &__main {
+        flex: 1 1;
+        width: 100%;
+        padding-right: 10px;
 
-	&__list {
-		display: flex;
-		flex: 1;
-		flex-direction: column;
-		padding-top: 20px;
-		padding-right: 40px;
-		margin-bottom: 20px;
+        @include respond(laptop) {
+            padding-right: 0;
+        }
+    }
 
-		&:not(:last-child) {
-			margin-bottom: 15px;
-		}
-	}
-	&__summarry {
-		width: 380px;
-		padding: 30px 20px;
-		background-color: #1d1d1d;
-		color: #fff;
-		border-radius: 10px;
-		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    &__count {
+        font-size: 18px;
+        color: var(--sec-text-col);
 
-		& .cart__title {
-			font-size: 14px;
-			color: #a8a8a8;
-		}
+        @include respond(tab-port) {
+            font-size: 17px;
+        }
+        @include respond(mobile-lg) {
+            font-size: 15px;
+        }
+    }
 
-		& .cart__total {
-			text-align: right;
-			margin-left: 0 !important;
-			margin-right: 20px !important;
-		}
-	}
-	&__total {
-		font-family: 'montserrat';
-		font-size: 25px;
-		font-weight: 700;
-		margin-left: 40px;
+    &__list {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        padding-top: 20px;
+        padding-right: 40px;
+        margin-bottom: 20px;
 
-		span {
-			position: relative;
-			top: -8px;
-			font-size: 14px;
-		}
-	}
+        &:not(:last-child) {
+            margin-bottom: 15px;
+        }
+
+        @include respond(laptop) {
+            padding-right: 0;
+        }
+    }
+    &__summarry {
+        width: 380px;
+        padding: 30px 20px;
+        background-color: #1d1d1d;
+        color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
+        .heading--primary {
+            @include respond(mobile-lg) {
+                font-size: 18px !important;
+            }
+        }
+
+        @include respond(laptop) {
+            width: 100%;
+        }
+        @include respond(mobile-lg) {
+            padding: 25px 20px;
+        }
+        & .cart__title {
+            font-size: 14px;
+            color: #a8a8a8;
+
+            @include respond(mobile-lg) {
+                font-size: 12px;
+            }
+        }
+
+        & .cart__total {
+            text-align: right;
+            margin-left: 0 !important;
+            margin-right: 20px !important;
+
+            @include respond(tab-land) {
+                font-size: 18px;
+            }
+            @include respond(mobile-lg) {
+                font-size: 16px;
+            }
+            @include respond(mobile-s) {
+                font-size: 16px;
+            }
+        }
+    }
+    &__total {
+        font-family: "montserrat";
+        font-size: 25px;
+        font-weight: 700;
+        margin-left: 40px;
+
+        span {
+            position: relative;
+            top: -8px;
+            font-size: 14px;
+        }
+    }
 }

@@ -37,6 +37,27 @@ const ShowCaseLoader = () => {
                     items={4}
                     loop={true}
                     margin={20}
+                    responsive={{
+                        0: {
+                            items: 1,
+                            loop: false,
+                            stagePadding: 30,
+                            dots: false,
+                            center: true
+                        },
+                        600: {
+                            items: 2,
+                            dots: false,
+                            margin: 25
+                        },
+                        1024: {
+                            items: 3
+                        },
+
+                        1140: {
+                            items: 4
+                        }
+                    }}
                 >
                     <CardLoader />
                     <CardLoader />

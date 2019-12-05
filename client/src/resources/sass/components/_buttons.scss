@@ -33,6 +33,16 @@
             background-color: var(--prim-col);
             color: #df9e08;
         }
+
+        @include respond(tab-land) {
+            font-size: 18px;
+            padding: 12px 45px;
+
+            span {
+                margin-right: 10px;
+                font-size: 22px;
+            }
+        }
     }
     &--icon {
         position: relative;
@@ -45,6 +55,10 @@
 
         @include respond(laptop) {
             font-size: 25px;
+        }
+
+        @include respond(mobile-lg) {
+            font-size: 22px;
         }
     }
 
@@ -63,6 +77,15 @@
         &:hover {
             border-color: #2d7aed;
             color: #2d7aed;
+        }
+
+        @include respond(mobile-lg) {
+            padding: 8px 15px;
+            font-size: 14px;
+        }
+        @include respond(mobile-s) {
+            padding: 8px 10px;
+            font-size: 12px;
         }
     }
 
@@ -84,9 +107,25 @@
         &:hover {
             background-color: rgb(207, 145, 0);
         }
+
+        @include respond(tab-land) {
+            height: 47px;
+        }
+
+        @include respond(mobile-m) {
+            display: block;
+            margin-top: 10px;
+            height: 35px;
+            margin-left: 0;
+            font-size: 15px;
+            margin-left: auto;
+            margin-right: 35px;
+            width: 95%;
+        }
     }
 
     &--summarry {
+        display: block;
         font-weight: 700;
         font-size: 16px;
         background-color: var(--sec-col);
@@ -95,6 +134,21 @@
         width: 100%;
         cursor: pointer;
         @include transition;
+
+        @include respond(laptop) {
+            width: 300px;
+            margin-left: auto;
+        }
+
+        @include respond(tab-land) {
+            width: 400px;
+        }
+
+        @include respond(mobile-lg) {
+            padding: 10px 15px;
+            font-size: 14px;
+            width: 100%;
+        }
 
         &:hover {
             background-color: rgb(255, 189, 35);

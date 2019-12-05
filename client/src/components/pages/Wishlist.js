@@ -14,7 +14,7 @@ const Wishlist = ({ frontend: { wishlist } }) => {
             />
             <div className="wishlist">
                 <h1 className="heading--primary mb-2">Wishlist</h1>
-                <div className="row">
+                <div className="row pr-1">
                     <div className="col-12">
                         {wishlist &&
                             wishlist.map(item => (

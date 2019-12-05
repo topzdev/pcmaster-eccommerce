@@ -51,7 +51,7 @@ const Navbar = ({ frontend: { cart, wishlist }, toggleNav }) => {
                         <SearchBar />
                     </div>
                     <li className="navbar__list">
-                        <NavLink className="btn btn--icon mr-2" to="/wishlist">
+                        <NavLink className="btn btn--icon" to="/wishlist">
                             <span className="badge badge--primary">
                                 {wishlist && wishlist.length}
                             </span>

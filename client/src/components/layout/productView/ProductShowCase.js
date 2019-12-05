@@ -5,9 +5,10 @@ import { Link } from "react-router-dom";
 import CardProduct from "../card/CardProduct";
 import ShowCaseLoader from "../../utils/loader/ShowCaseLoader";
 import { connect } from "react-redux";
+import CardLoading from "../../utils/loader/CardLoader";
 
 const ProductShowCase = ({
-    frontend: { wishlist, cart },
+    // frontend: { wishlist, cart },
     query,
     title,
     exclude
@@ -15,6 +16,7 @@ const ProductShowCase = ({
     const [product, setData] = useState([]);
     const [loading, setLoading] = useState([true]);
     const { category, subcategory } = query;
+
     useEffect(() => {
         const getsProducts = async () => {
             try {
@@ -29,7 +31,7 @@ const ProductShowCase = ({
             }
         };
         getsProducts();
-    }, [wishlist, cart]);
+    }, []);
 
     if (loading) return <ShowCaseLoader />;
 
@@ -55,7 +57,29 @@ const ProductShowCase = ({
                     items={4}
                     loop={true}
                     margin={20}
+                    responsive={{
+                        0: {
+                            items: 1,
+                            loop: false,
+                            stagePadding: 30,
+                            dots: false,
+                            center: true
+                        },
+                        600: {
+                            items: 2,
+                            dots: false,
+                            margin: 25
+                        },
+                        1024: {
+                            items: 3
+                        },
+
+                        1140: {
+                            items: 4
+                        }
+                    }}
                 >
+                    {/* <CardLoading /> */}
                     {product &&
                         product
                             .splice(0, 15)
@@ -72,6 +96,6 @@ const ProductShowCase = ({
     );
 };
 const mapStateToProps = state => ({
-    frontend: state.frontend
+    // frontend: state.frontend
 });
-export default connect(mapStateToProps)(ProductShowCase);
+export default ProductShowCase;

@@ -58,7 +58,7 @@ const Cart = ({ frontend: { cart } }) => {
                 </div>
 
                 <div className="cart__summarry">
-                    <h1 className="heading--primary mb-3">Summarry</h1>
+                    <h1 className="heading--primary mb-2 mb-lg-3">Summarry</h1>
                     <div className="row mb-1">
                         <div className="col-4">
                             <h3 className="cart__title">Total Quantity</h3>
@@ -104,7 +104,7 @@ const Cart = ({ frontend: { cart } }) => {
                         </div>
                     </div>
 
-                    <button className="btn btn--summarry mt-4">
+                    <button className="btn btn--summarry mt-2 mt-md-3 mt-lg-4">
                         Proceed Checkout
                     </button>
                 </div>

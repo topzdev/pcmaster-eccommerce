@@ -1,57 +1,67 @@
 .rc-pagination {
-	display: flex;
-	justify-content: center;
-	margin: 0 auto;
-	font-family: inherit;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    font-family: inherit;
 }
 
 .rc-pagination-small {
-	justify-content: flex-end;
+    justify-content: flex-end;
 
-	.rc-pagination-prev,
-	.rc-pagination-next,
-	.rc-pagination-item {
-		height: 35px;
-		width: 35px;
-		font-size: 16px;
-	}
+    .rc-pagination-prev,
+    .rc-pagination-next,
+    .rc-pagination-item {
+        height: 35px;
+        width: 35px;
+        font-size: 16px;
+    }
 }
 
 .rc-pagination-prev,
 .rc-pagination-next,
 .rc-pagination-item {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 45px;
-	width: 45px;
-	font-size: 18px;
-	border-width: 2px;
-	outline: none;
-	font-weight: 700;
-	&:hover {
-		border-color: var(--prim-col);
-		color: var(--prim-col) !important;
-		a {
-			color: var(--prim-col) !important;
-		}
-	}
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    width: 45px;
+    font-size: 18px;
+    border-width: 2px;
+    outline: none;
+    font-weight: 700;
+    &:hover {
+        border-color: var(--prim-col);
+        color: var(--prim-col) !important;
+        a {
+            color: var(--prim-col) !important;
+        }
+    }
+
+    @include respond(mobile-lg) {
+        height: 43px;
+        width: 43px;
+    }
+
+    @include respond(mobile-m) {
+        height: 38px;
+        width: 38px;
+    }
 }
 
 .rc-pagination-item-link {
-	display: inline-block;
-	&::after {
-		height: 40px;
-		width: 40px;
-	}
+    display: inline-block;
+    &::after {
+        height: 40px;
+        width: 40px;
+    }
 }
 
 .rc-pagination-item-active {
-	background-color: var(--sec-col);
-	color: var(--prim-col) !important;
-	border: 2px solid var(--prim-col);
+    background-color: var(--sec-col);
+    color: var(--prim-col) !important;
+    border: 2px solid var(--prim-col);
 
-	a {
-		color: var(--prim-col) !important;
-	}
+    a {
+        color: var(--prim-col) !important;
+    }
 }

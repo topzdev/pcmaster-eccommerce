@@ -68,37 +68,35 @@ const Collections = ({
                 }
             />
             <div className="container pt-2 pb-5">
-                <div className="row">
-                    <div className="col-12">
-                        <Sort
-                            setView={setView}
-                            view={view}
-                            show={show}
-                            setShow={setShow}
-                            sort={sort}
-                            setSort={setSort}
-                        />
-                    </div>
-                    <div className="col-12 mb-2">
-                        <Paginate
-                            length={products && products.length}
-                            currentPage={currentPage}
-                            setCurPage={setCurrentPage}
-                            small={true}
-                        />
-                    </div>
+                <div className="col-12">
+                    <Sort
+                        setView={setView}
+                        view={view}
+                        show={show}
+                        setShow={setShow}
+                        sort={sort}
+                        setSort={setSort}
+                    />
+                </div>
+                <div className="col-12 mb-2">
+                    <Paginate
+                        length={products && products.length}
+                        currentPage={currentPage}
+                        setCurPage={setCurrentPage}
+                        small={true}
+                    />
                 </div>
                 {loading ? (
                     <ProductCategoryLoader view={view} />
                 ) : (
-                    <div className="row">
+                    <div className="row mr-0">
                         {productShow &&
                             productShow.map(product => (
                                 <div
                                     key={product.barcode}
                                     className={`${
                                         view
-                                            ? "col-lg-3 col-md-6 col-12"
+                                            ? "col-xl-3 col-lg-4 col-md-6 col-12"
                                             : "col-12"
                                     } mb-2`}
                                 >

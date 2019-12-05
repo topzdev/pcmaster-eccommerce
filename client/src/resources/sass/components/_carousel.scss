@@ -1,5 +1,4 @@
 .carousel {
-    height: 500px;
     width: 100%;
     overflow: hidden;
     &__list {
@@ -59,6 +58,14 @@
     border-radius: 100%;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     cursor: pointer;
+
+    @include respond(tab-port) {
+        opacity: 0.5;
+
+        &:focus {
+            opacity: 1;
+        }
+    }
     &::before,
     &::after {
         position: absolute;
@@ -83,13 +90,19 @@
 }
 .nav-left {
     left: -30px;
-    &::before {
+
+    @include respond(tab-port) {
+        left: -10px;
     }
 }
 
 .nav-right {
     right: -30px;
     transform: translateY(-50%) rotate(180deg);
+
+    @include respond(tab-port) {
+        right: -10px;
+    }
 }
 
 .nav-banner-left {

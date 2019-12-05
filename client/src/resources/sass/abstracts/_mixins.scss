@@ -1,67 +1,52 @@
-@mixin transition() {
-	transition: all ease 300ms;
-}
-/*
-    -mobile-s= 0 - 320px
-    -mobile-m = 320 - 375px
-    -mobile-l = 375 - 425px  
-    -tab-port= 425 to 768px
-    -tab-land= 768px to 900px
-    -laptop= 900px - 1024px
-    -desktop= 1024px to 1440px
-    -big-desktop= 1800px to -- 
-*/
-
-/* @include respond(tab-port){
-/     -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
-/     clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
- }*/
-
 @mixin respond($screen-size) {
-	@if $screen-size == mobile-s {
-		@media (max-width: 20em) {
-			@content;
-		}
-	}
-	@if $screen-size == mobile-m {
-		@media (max-width: 23.4375em) {
-			@content;
-		}
-	}
+    @if $screen-size == mobile-s {
+        @media (max-width: 20em) {
+            @content;
+        }
+    }
+    @if $screen-size == mobile-m {
+        @media (max-width: 23.4375em) {
+            @content;
+        }
+    }
 
-	@if $screen-size == mobile-l {
-		@media (max-width: 26.5625em) {
-			@content;
-		}
-	}
+    @if $screen-size == mobile-lg {
+        @media (max-width: 27.5625em) {
+            @content;
+        }
+    }
 
-	@if $screen-size == tab-port {
-		@media (max-width: 48em) {
-			@content;
-		}
-	}
+    @if $screen-size == tab-port {
+        @media (max-width: 48em) {
+            @content;
+        }
+    }
 
-	@if $screen-size == tab-land {
-		@media (max-width: 56.25em) {
-			@content;
-		}
-	}
+    @if $screen-size == tab-land {
+        @media (max-width: 56.25em) {
+            @content;
+        }
+    }
 
-	@if $screen-size == laptop {
-		@media (max-width: 64em) {
-			@content;
-		}
-	}
+    @if $screen-size == laptop {
+        @media (max-width: 64em) {
+            @content;
+        }
+    }
 
-	@if $screen-size == desktop {
-		@media (max-width: 90em) {
-			@content;
-		}
-	}
+    @if $screen-size == desktop {
+        @media (max-width: 90em) {
+            @content;
+        }
+    }
 
-	@if $screen-size == big-desktop {
-		@media (min-width: 112.5em) {
-			@content;
-		}
-	}
+    @if $screen-size == big-desktop {
+        @media (min-width: 112.5em) {
+            @content;
+        }
+    }
+}
+
+@mixin transition() {
+    transition: all ease 300ms;
 }

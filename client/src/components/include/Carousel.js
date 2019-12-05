@@ -15,7 +15,7 @@ const Banner = () => {
         <div className="carousel">
             <OwlCarousel
                 className="carousel__list"
-                loop
+                loop={true}
                 margin={0}
                 nav
                 items={1}
@@ -23,16 +23,14 @@ const Banner = () => {
                 dot={"true"}
                 animateOut={"fadeOut"}
                 animateIn={"fadeIn"}
+                autoplayTimeout={5000}
+                mouseDrag={true}
                 navClass={[
                     "nav-carousel nav-banner-left",
                     "nav-carousel nav-banner-right"
                 ]}
-                autoplayTimeout={5000}
-                mouseDrag={false}
+                autoHeightClass={true}
             >
-                <li className="carousel__item">
-                    <img src={ban_1} alt="carousel" draggable={false} />
-                </li>
                 <li className="carousel__item">
                     <img src={ban_2} alt="carousel" draggable={false} />
                 </li>

@@ -6,6 +6,7 @@ import NumericField from "../layout/input/NumericField";
 import Scroll from "react-scroll";
 import numeral from "numeral";
 import _ from "lodash";
+import truncate from "cli-truncate";
 import { connect } from "react-redux";
 import validateDuplicate from "../../utils/validators";
 import { searchProduct } from "../../controller/productController/productActions";
@@ -89,7 +90,10 @@ const ProductDetails = ({
                             {data.price && numeral(data.price).format("0,0.00")}
                         </p>
                         <p className="details__overview mb-2">
-                            {data.overview && data.overview}
+                            {data.overview &&
+                                truncate(data.overview, 400, {
+                                    position: "end"
+                                })}
                         </p>
                         <div className="details__main-btn">
                             <NumericField
@@ -139,7 +143,7 @@ const ProductDetails = ({
                             </button>
                         </div>
 
-                        <ul className="details__others">
+                        <ul className="details__others mb-2">
                             <li>
                                 <b>SKU: </b>
                                 <Link to="/">{data.sku && data.sku}</Link>
@@ -193,20 +197,17 @@ const ProductDetails = ({
                     <ProductTab description={data.description} />
                 </div>
             )}
-
-            <div className="row mb-2">
-                <div className="col-12">
-                    <ProductShowCase
-                        query={{
-                            category: data.category,
-                            subcategory: data.subcategory,
-                            variety: data.variety,
-                            brand: data.brand
-                        }}
-                        exclude={data._id}
-                        title={"Related"}
-                    />
-                </div>
+            <div className="container">
+                <ProductShowCase
+                    query={{
+                        category: data.category,
+                        subcategory: data.subcategory,
+                        variety: data.variety,
+                        brand: data.brand
+                    }}
+                    exclude={data._id}
+                    title={"Related"}
+                />
             </div>
         </div>
     );

@@ -1,19 +1,41 @@
 .footer {
-    padding: 0 0 50px 0;
+    padding: 0 0 20px 0;
     background-color: var(--prim-col);
     color: #fff;
 
     &__subscribe {
         background-color: #1d1d1d;
         padding: 30px 0;
+
+        @include respond(mobile-l) {
+            padding: 30px 15px;
+        }
+
         h1 {
             font-size: 30px;
             color: var(--sec-col);
+
+            @include respond(tab-land) {
+                font-size: 28px;
+            }
+            @include respond(mobile-l) {
+                font-size: 25px;
+            }
+            @include respond(mobile-m) {
+                font-size: 22px;
+            }
         }
         p {
             font-family: "roboto";
             font-size: 16px;
             font-weight: 300;
+
+            @include respond(tab-land) {
+                font-size: 14px;
+            }
+            @include respond(mobile-m) {
+                font-size: 13px;
+            }
         }
     }
 
@@ -35,6 +57,9 @@
         }
     }
     &__info {
+        @include respond(tab-land) {
+            padding: 0 10px;
+        }
         li {
             display: flex;
 
@@ -48,10 +73,22 @@
                 font-size: 17px;
                 width: 80%;
                 color: #d3d3d3;
+
+                @include respond(mobile-lg) {
+                    font-size: 16px;
+                }
             }
         }
     }
     &__list {
+        @include respond(tab-land) {
+            padding: 0 10px;
+        }
+        h3 {
+            @include respond(mobile-lg) {
+                font-size: 18px;
+            }
+        }
         li {
             a {
                 color: #d3d3d3;
@@ -61,7 +98,20 @@
                 &:hover {
                     color: var(--sec-col);
                 }
+                @include respond(mobile-lg) {
+                    font-size: 17px;
+                }
             }
+        }
+    }
+
+    &__copyright {
+        padding-top: 20px;
+        border-top: 1px solid #414141;
+        a {
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--sec-col);
         }
     }
 }
