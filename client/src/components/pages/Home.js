@@ -40,7 +40,11 @@ const Home = () => {
             {/* <ProductShowCase title={"Popular"} /> */}
             <div className="container pt-2 pb-3">
                 {toLoad.map(item => (
-                    <ProductShowCase query={item.query} title={item.title} />
+                    <ProductShowCase
+                        key={item.title}
+                        query={item.query}
+                        title={item.title}
+                    />
                 ))}
             </div>
         </div>

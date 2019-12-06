@@ -10,7 +10,8 @@ import _ from "lodash";
 import { addShowcase } from "../../../controller/frontendController/frontendActions";
 
 const ProductShowCase = ({
-    frontend: { wishlist, cart, showcase },
+    frontend,
+    frontend: { wishlist, cart, sidebar },
     query,
     title,
     exclude,
@@ -20,37 +21,25 @@ const ProductShowCase = ({
     const [loading, setLoading] = useState([true]);
     const { category, subcategory } = query;
 
-    const getsProducts = async () => {
-        try {
-            setLoading(true);
-            const res = await axios.post("/api/product/list/", query, {
-                headers: { "Content-type": "application/json" }
-            });
-            setData(res.data);
-            console.log(title + "" + res.data);
-            if (product) addShowcase(title, res.data);
-
-            setLoading(false);
-        } catch (error) {
-            console.log(error.response.data);
-        }
-    };
-
     useEffect(() => {
+        const getsProducts = async () => {
+            try {
+                setLoading(true);
+                const res = await axios.post("/api/product/list/", query, {
+                    headers: { "Content-type": "application/json" }
+                });
+                // console.log(title + "" + res.data);
+                // addShowcase(title, res.data);
+                setData(res.data);
+
+                setLoading(false);
+            } catch (error) {
+                console.log(error.response.data);
+            }
+        };
+
         getsProducts();
-    }, []);
-
-    useEffect(() => {
-        if (!_.isEmpty(showcase)) {
-            console.log("hellloo");
-            setLoading(true);
-            showcase.map(item =>
-                item.name === title ? setData(item.data) : null
-            );
-            setLoading(false);
-            console.log(showcase);
-        }
-    }, [cart, wishlist]);
+    }, [frontend]);
 
     const renderCarousel = data => (
         <OwlCarousel
