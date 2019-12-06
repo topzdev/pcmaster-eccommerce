@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const MenuDropdown = ({ link, subcategory, show }) => {
+const MenuDropdown = ({ link, subcategory, img, show }) => {
     return (
         <div className={`menu__dropdown ${show ? "menu-drp-show" : ""}`}>
             <div className="menu__img-preview">
-                <img src="" alt="" className="image" />
+                <img src={img} alt="" className="image" />
             </div>
             <ul className="menu__drp-group">
                 {subcategory.map((item, idx) => (

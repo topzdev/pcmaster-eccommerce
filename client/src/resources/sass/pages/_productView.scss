@@ -65,13 +65,24 @@
         height: 100px;
         width: 100%;
         cursor: pointer;
-        border: 2px solid transparent;
+        border: 3px solid transparent;
         @include transition;
         &:hover {
-            border: 2px solid var(--sec-col);
+            border: 3px solid var(--sec-col);
             img {
                 transform: translateX(-50%) scale(1.1);
             }
+        }
+
+        &:not(:last-child) {
+            margin-right: 2px;
+        }
+    }
+
+    &--img-active {
+        border: 3px solid var(--sec-col);
+        img {
+            transform: translateX(-50%) scale(1.1);
         }
     }
 

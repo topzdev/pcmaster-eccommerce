@@ -19,7 +19,12 @@ const MenuList = ({ list }) => {
                     <i className="fas fa-angle-down"></i>
                 )}
             </button>
-            <MenuDropdown link={link} subcategory={list.item} show={drop} />
+            <MenuDropdown
+                link={link}
+                subcategory={list.item}
+                img={list.img}
+                show={drop}
+            />
         </li>
     );
 };

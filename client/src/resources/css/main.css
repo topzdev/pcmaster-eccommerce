@@ -3066,16 +3066,29 @@ input[type='number']::-webkit-outer-spin-button {
   height: 100px;
   width: 100%;
   cursor: pointer;
-  border: 2px solid transparent;
+  border: 3px solid transparent;
   -webkit-transition: all ease 300ms;
   transition: all ease 300ms;
 }
 
 .details__img-list:hover {
-  border: 2px solid var(--sec-col);
+  border: 3px solid var(--sec-col);
 }
 
 .details__img-list:hover img {
+  -webkit-transform: translateX(-50%) scale(1.1);
+          transform: translateX(-50%) scale(1.1);
+}
+
+.details__img-list:not(:last-child) {
+  margin-right: 2px;
+}
+
+.details--img-active {
+  border: 3px solid var(--sec-col);
+}
+
+.details--img-active img {
   -webkit-transform: translateX(-50%) scale(1.1);
           transform: translateX(-50%) scale(1.1);
 }
