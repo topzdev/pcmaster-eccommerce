@@ -28,7 +28,8 @@ PC Master uses a number of open source projects to work properly:
 * [Express](https://expressjs.com/) - fast node.js network app framework
 * [MongoDB](https://www.mongodb.com/) - Non-relational database
 * [Cloudinary](https://cloudinary.com/) - My saviour for saving unlimited images without limatation (lol just joking its only support 20,000 request per hours hehehe)
-*[BEM](http://getbem.com/) Block Element Modifier is a methodology that helps you to create reusable components and code sharing in front-end development
+
+* [BEM](http://getbem.com/) Block Element Modifier is a methodology that helps you to create reusable components and code sharing in front-end development
 * [Github](github.com) Repoooooooooositoryyy 
 
 
