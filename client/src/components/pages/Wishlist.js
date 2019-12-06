@@ -5,14 +5,14 @@ import { connect } from "react-redux";
 import HeaderChanger from "../utils/HeaderChanger";
 const Wishlist = ({ frontend: { wishlist } }) => {
     return (
-        <div className="container">
+        <div className="container pb-3">
             <HeaderChanger
                 name={`Wishlist (${wishlist.length}) `}
                 description={
                     "When you want to get product soon, add it to wishlist."
                 }
             />
-            <div className="wishlist">
+            <div className="wishlist ">
                 <h1 className="heading--primary mb-2">Wishlist</h1>
                 <div className="row pr-1">
                     <div className="col-12">

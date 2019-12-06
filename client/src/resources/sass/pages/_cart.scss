@@ -18,7 +18,7 @@
 
     &__count {
         font-size: 18px;
-        color: var(--sec-text-col);
+        color: #383838;
 
         @include respond(tab-port) {
             font-size: 17px;

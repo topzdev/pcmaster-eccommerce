@@ -11,7 +11,7 @@ import Paginate from "../layout/productFilter/Pagination";
 import CardProduct from "../layout/card/CardProduct";
 import ProductCategoryLoader from "../utils/loader/ProductCategoryLoader";
 import BannerPage from "../include/BannerPage";
-
+import HeaderChanger from "../utils/HeaderChanger";
 //Actions
 import { getProducts } from "../../controller/productController/productActions";
 
@@ -90,6 +90,10 @@ const Collections = ({
                     <ProductCategoryLoader view={view} />
                 ) : (
                     <div className="row mr-0">
+                        <HeaderChanger
+                            name={"Product "}
+                            description={"Search products in PC Master Shop"}
+                        />
                         {productShow &&
                             productShow.map(product => (
                                 <div

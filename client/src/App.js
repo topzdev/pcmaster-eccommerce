@@ -31,7 +31,7 @@ const App = () => {
             <CloudinaryContext cloudName="deiecmpac">
                 <Router>
                     {admin ? (
-                        <Fragment>{/* <Admin /> */}</Fragment>
+                        <Fragment>{/* <Admin /> */} </Fragment>
                     ) : (
                         <Fragment>
                             <Navbar />

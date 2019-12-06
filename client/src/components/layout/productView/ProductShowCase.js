@@ -6,32 +6,95 @@ import CardProduct from "../card/CardProduct";
 import ShowCaseLoader from "../../utils/loader/ShowCaseLoader";
 import { connect } from "react-redux";
 import CardLoading from "../../utils/loader/CardLoader";
+import _ from "lodash";
+import { addShowcase } from "../../../controller/frontendController/frontendActions";
 
 const ProductShowCase = ({
-    // frontend: { wishlist, cart },
+    frontend: { wishlist, cart, showcase },
     query,
     title,
-    exclude
+    exclude,
+    addShowcase
 }) => {
-    const [product, setData] = useState([]);
+    const [product, setData] = useState(null);
     const [loading, setLoading] = useState([true]);
     const { category, subcategory } = query;
 
+    const getsProducts = async () => {
+        try {
+            setLoading(true);
+            const res = await axios.post("/api/product/list/", query, {
+                headers: { "Content-type": "application/json" }
+            });
+            setData(res.data);
+            console.log(title + "" + res.data);
+            if (product) addShowcase(title, res.data);
+
+            setLoading(false);
+        } catch (error) {
+            console.log(error.response.data);
+        }
+    };
+
     useEffect(() => {
-        const getsProducts = async () => {
-            try {
-                setLoading(true);
-                const res = await axios.post("/api/product/list/", query, {
-                    headers: { "Content-type": "application/json" }
-                });
-                setData(res.data);
-                setLoading(false);
-            } catch (error) {
-                console.log(error.response.data);
-            }
-        };
         getsProducts();
     }, []);
+
+    useEffect(() => {
+        if (!_.isEmpty(showcase)) {
+            console.log("hellloo");
+            setLoading(true);
+            showcase.map(item =>
+                item.name === title ? setData(item.data) : null
+            );
+            setLoading(false);
+            console.log(showcase);
+        }
+    }, [cart, wishlist]);
+
+    const renderCarousel = data => (
+        <OwlCarousel
+            className="owl-theme"
+            nav
+            navClass={["nav-carousel nav-left", "nav-carousel nav-right"]}
+            items={4}
+            loop={true}
+            margin={20}
+            responsive={{
+                0: {
+                    items: 1,
+                    loop: false,
+                    stagePadding: 30,
+                    dots: false,
+                    center: true
+                },
+                600: {
+                    items: 2,
+                    dots: false,
+                    margin: 25
+                },
+                1024: {
+                    items: 3
+                },
+
+                1140: {
+                    items: 4
+                }
+            }}
+        >
+            {/* <CardLoading /> */}
+            {data &&
+                data
+                    .splice(0, 15)
+                    .map(item =>
+                        exclude && exclude != item._id ? (
+                            <CardProduct key={item._id} data={item} />
+                        ) : (
+                            <CardProduct key={item._id} data={item} />
+                        )
+                    )}
+        </OwlCarousel>
+    );
 
     if (loading) return <ShowCaseLoader />;
 
@@ -44,58 +107,11 @@ const ProductShowCase = ({
             >
                 <h1 className="heading--primary mb-2">{title}</h1>
             </Link>
-            {loading ? (
-                <Fragment>Loading</Fragment>
-            ) : (
-                <OwlCarousel
-                    className="owl-theme"
-                    nav
-                    navClass={[
-                        "nav-carousel nav-left",
-                        "nav-carousel nav-right"
-                    ]}
-                    items={4}
-                    loop={true}
-                    margin={20}
-                    responsive={{
-                        0: {
-                            items: 1,
-                            loop: false,
-                            stagePadding: 30,
-                            dots: false,
-                            center: true
-                        },
-                        600: {
-                            items: 2,
-                            dots: false,
-                            margin: 25
-                        },
-                        1024: {
-                            items: 3
-                        },
-
-                        1140: {
-                            items: 4
-                        }
-                    }}
-                >
-                    {/* <CardLoading /> */}
-                    {product &&
-                        product
-                            .splice(0, 15)
-                            .map(item =>
-                                exclude && exclude != item._id ? (
-                                    <CardProduct key={item._id} data={item} />
-                                ) : (
-                                    <CardProduct key={item._id} data={item} />
-                                )
-                            )}
-                </OwlCarousel>
-            )}
+            {renderCarousel(product)}
         </section>
     );
 };
 const mapStateToProps = state => ({
-    // frontend: state.frontend
+    frontend: state.frontend
 });
-export default ProductShowCase;
+export default connect(mapStateToProps, { addShowcase })(ProductShowCase);

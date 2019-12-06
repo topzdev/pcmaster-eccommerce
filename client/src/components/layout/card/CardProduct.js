@@ -19,11 +19,6 @@ const CardProduct = ({
     const [show, setShow] = useState(false);
     const [cartExist, setCartExist] = useState(false);
     const [wishExist, setWishExist] = useState(false);
-
-    useEffect(() => {
-        console.log(data);
-    }, [data]);
-
     const { _id, name, overview, price, img } = data;
 
     useEffect(() => setCartExist(validateDuplicate(_id, cart)), [cart]);
@@ -51,7 +46,7 @@ const CardProduct = ({
                     className="card--primary__link card--primary__added"
                 >
                     <span>
-                        <i class="fas fa-heart"></i>
+                        <i className="fas fa-heart"></i>
                     </span>
                 </Link>
             );
@@ -64,7 +59,6 @@ const CardProduct = ({
             }`}
             onMouseEnter={() => setShow(true)}
         >
-            {console.log(data)}
             <div className="card--primary__main">
                 <Image
                     className="card--primary__img"

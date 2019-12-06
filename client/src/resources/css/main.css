@@ -549,6 +549,12 @@
   }
 }
 
+@media (max-width: 20em) {
+  .card--primary__b-img {
+    display: none;
+  }
+}
+
 .card--primary__body {
   position: relative;
   z-index: 2;
@@ -745,6 +751,12 @@
   -webkit-transform: scale(1) translateX(-50%);
           transform: scale(1) translateX(-50%);
   opacity: 1;
+}
+
+@media (max-width: 48em) {
+  .card--primary:hover .card--primary__b-img {
+    display: none;
+  }
 }
 
 .card--comment {
@@ -1074,6 +1086,20 @@
     -webkit-transform: scale(1.1);
             transform: scale(1.1);
     background-color: red;
+  }
+}
+
+@media (max-width: 27.5625em) {
+  .card--cart__remove {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+  }
+}
+
+@media (max-width: 20em) {
+  .card--cart__remove {
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7);
   }
 }
 
@@ -2300,6 +2326,7 @@ input[type='number']::-webkit-outer-spin-button {
   border: 1px solid var(--prim-col);
   font-size: 15px;
   padding: 8px 18px;
+  text-decoration: none;
   cursor: pointer;
   -webkit-transition: all ease 300ms;
   transition: all ease 300ms;
@@ -2330,6 +2357,11 @@ input[type='number']::-webkit-outer-spin-button {
     padding: 8px 10px;
     font-size: 12px;
   }
+}
+
+.btn--wishlist--added {
+  background: var(--prim-col);
+  color: var(--sec-col);
 }
 
 .btn--subcribe {
@@ -2796,7 +2828,7 @@ input[type='number']::-webkit-outer-spin-button {
 
 .cart__count {
   font-size: 18px;
-  color: var(--sec-text-col);
+  color: #383838;
 }
 
 @media (max-width: 48em) {

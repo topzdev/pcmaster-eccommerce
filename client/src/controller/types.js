@@ -71,3 +71,4 @@ export const REMOVE_WISHLIST = "REMOVE_WISHLIST";
 export const UPDATE_WISHLIST = "UPDATE_WISHLIST";
 export const TOGGLE_NAV = "TOGGLE_NAV";
 export const SET_BACKDROP = "SET_BACKDROP";
+export const SET_SHOWCASE = "SET_SHOWCASE";

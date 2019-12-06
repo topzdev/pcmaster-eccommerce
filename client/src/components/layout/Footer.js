@@ -112,7 +112,7 @@ const Footer = () => {
                                         <Link to="">Buyer</Link>
                                     </li>
                                     <li>
-                                        <Link to="">Suplier</Link>
+                                        <Link to="">Supplier</Link>
                                     </li>
                                 </ul>
                             </div>

@@ -12,15 +12,18 @@ import {
     ADD_WISHLIST,
     REMOVE_WISHLIST,
     SET_ERROR,
-    TOGGLE_NAV
+    TOGGLE_NAV,
+    SET_SHOWCASE
 } from "../types";
+import { stat } from "fs";
 
 const initialState = {
     cart: getStorage("pcmaster-cart"),
     wishlist: getStorage("pcmaster-wishlist"),
     success: null,
     error: null,
-    sidebar: false
+    sidebar: false,
+    showcase: []
 };
 
 export default (state = initialState, action) => {
@@ -88,6 +91,12 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 sidebar: !state.sidebar
+            };
+
+        case SET_SHOWCASE:
+            return {
+                ...state,
+                showcase: [...state.showcase, action.payload]
             };
         default:
             return state;

@@ -36,14 +36,14 @@ const Cart = ({ frontend: { cart } }) => {
     const { quantity, amount, shipping, subtotal } = summary;
 
     return (
-        <div className="container">
+        <div className="container pb-3">
             <HeaderChanger
                 name={`Cart (${cart.length}) `}
                 description={"Add products to cart"}
             />
             <div className="cart">
                 <div className="cart__main">
-                    <h1 className="heading--primary">Shopping Cart</h1>
+                    <h1 className="heading--primary mt-1">Shopping Cart</h1>
 
                     {!_.isEmpty(cart) && (
                         <p className="cart__count">{cart.length + " items"} </p>
@@ -52,13 +52,13 @@ const Cart = ({ frontend: { cart } }) => {
                     <div className="cart__list">
                         {cart &&
                             cart.map(item => (
-                                <CartCard key={item.id} data={item} />
+                                <CartCard key={item._id} data={item} />
                             ))}
                     </div>
                 </div>
 
                 <div className="cart__summarry">
-                    <h1 className="heading--primary mb-2 mb-lg-3">Summarry</h1>
+                    <h1 className="heading--primary mb-2 mb-lg-3">Summary</h1>
                     <div className="row mb-1">
                         <div className="col-4">
                             <h3 className="cart__title">Total Quantity</h3>

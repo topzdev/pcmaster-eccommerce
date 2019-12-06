@@ -6,6 +6,27 @@ import { connect } from "react-redux";
 import HeaderChanger from "../utils/HeaderChanger";
 // import '../../resources/css/home.css';
 const Home = () => {
+    const toLoad = [
+        { title: "Components", query: { category: "components" } },
+        {
+            title: "Motherboard",
+            query: {
+                subcategory: "motherboard"
+            }
+        },
+        {
+            title: "Processor",
+            query: {
+                subcategory: "processor"
+            }
+        },
+        {
+            title: "Graphics Card",
+            query: {
+                subcategory: "graphics card"
+            }
+        }
+    ];
     return (
         <div>
             <HeaderChanger
@@ -15,30 +36,12 @@ const Home = () => {
                 }
             />
             <Carousel />
+
             {/* <ProductShowCase title={"Popular"} /> */}
             <div className="container pt-2 pb-3">
-                <ProductShowCase
-                    query={{ category: "components" }}
-                    title={"Components"}
-                />
-                <ProductShowCase
-                    query={{
-                        subcategory: "motherboard"
-                    }}
-                    title={"Motherboard"}
-                />
-                <ProductShowCase
-                    query={{
-                        subcategory: "processor"
-                    }}
-                    title={"Processor"}
-                />
-                <ProductShowCase
-                    query={{
-                        subcategory: "graphics card"
-                    }}
-                    title={"Graphics Card"}
-                />
+                {toLoad.map(item => (
+                    <ProductShowCase query={item.query} title={item.title} />
+                ))}
             </div>
         </div>
     );

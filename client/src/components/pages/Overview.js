@@ -60,6 +60,27 @@ const ProductDetails = ({
             });
     }, [cart, current]);
 
+    const isWishlist = added => {
+        return added ? (
+            <button
+                className="btn btn--wishlist"
+                onClick={() => addWishlist(data)}
+            >
+                <span>
+                    <i className="far fa-heart"></i>
+                </span>
+                Add to Wishlist
+            </button>
+        ) : (
+            <Link className="btn btn--wishlist btn--wishlist--added">
+                <span>
+                    <i class="fas fa-heart"></i>
+                </span>
+                Added as Wishlist
+            </Link>
+        );
+    };
+
     return (
         <div className="container">
             <div className="details">
@@ -124,17 +145,7 @@ const ProductDetails = ({
                         )}
 
                         <div className="details__btn">
-                            {!exist.cart && (
-                                <button
-                                    className="btn btn--wishlist"
-                                    onClick={() => addWishlist(data)}
-                                >
-                                    <span>
-                                        <i className="far fa-heart"></i>
-                                    </span>
-                                    Add to Wishlist
-                                </button>
-                            )}
+                            {!exist.cart && isWishlist(exist.wishlist)}
                             <button className="btn btn--wishlist">
                                 <span>
                                     <i className="fas fa-random"></i>

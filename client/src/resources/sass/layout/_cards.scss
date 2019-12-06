@@ -52,6 +52,10 @@
             @include respond(tab-port) {
                 display: none;
             }
+
+            @include respond(mobile-s) {
+                display: none;
+            }
         }
         &__body {
             position: relative;
@@ -219,6 +223,10 @@
             .card--primary__b-img {
                 transform: scale(1) translateX(-50%);
                 opacity: 1;
+
+                @include respond(tab-port) {
+                    display: none;
+                }
             }
         }
     }
@@ -472,6 +480,14 @@
             @include respond(tab-land) {
                 transform: scale(1.1);
                 background-color: red;
+            }
+
+            @include respond(mobile-lg) {
+                transform: scale(0.8);
+            }
+
+            @include respond(mobile-s) {
+                transform: scale(0.7);
             }
 
             &:hover {

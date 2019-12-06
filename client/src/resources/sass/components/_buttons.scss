@@ -66,6 +66,7 @@
         border: 1px solid var(--prim-col);
         font-size: 15px;
         padding: 8px 18px;
+        text-decoration: none;
         cursor: pointer;
         @include transition;
         span {
@@ -86,6 +87,11 @@
         @include respond(mobile-s) {
             padding: 8px 10px;
             font-size: 12px;
+        }
+
+        &--added {
+            background: var(--prim-col);
+            color: var(--sec-col);
         }
     }
 

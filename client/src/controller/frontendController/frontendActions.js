@@ -4,7 +4,8 @@ import {
     UPDATE_CART,
     ADD_WISHLIST,
     REMOVE_WISHLIST,
-    TOGGLE_NAV
+    TOGGLE_NAV,
+    SET_SHOWCASE
 } from "../types";
 
 export const addToCart = (data, quantity) => async dispatch => {
@@ -15,8 +16,6 @@ export const addToCart = (data, quantity) => async dispatch => {
         price: data.price,
         img: data.img
     };
-
-    console.log(cart);
     dispatch({
         type: ADD_CART,
         payload: {
@@ -84,5 +83,15 @@ export const removeWishlist = id => dispatch => {
 export const toggleNav = () => dispatch => {
     dispatch({
         type: TOGGLE_NAV
+    });
+};
+
+export const addShowcase = (name, data) => dispatch => {
+    dispatch({
+        type: SET_SHOWCASE,
+        payload: {
+            title: name,
+            data
+        }
     });
 };
