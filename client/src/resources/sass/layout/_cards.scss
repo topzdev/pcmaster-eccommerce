@@ -169,6 +169,10 @@
                 background-color: var(--sec-col);
                 border: 2px solid var(--sec-col);
             }
+
+            @include respond(mobile-m){
+                font-size: 12px;
+            }
         }
 
         &__added {

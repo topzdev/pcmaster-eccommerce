@@ -43,6 +43,11 @@
 				font-size: 22px;
 			}
 		}
+
+		@include respond(mobile-lg) {
+			font-size: 16px;
+			padding: 8px 40px;
+		}
 	}
 	&--icon {
 		position: relative;
@@ -171,8 +176,8 @@
 		font-family: 'montserrat';
 		font-size: 20px;
 		font-weight: 700;
-        text-decoration: none;
-        cursor: pointer;
+		text-decoration: none;
+		cursor: pointer;
 		color: #2d7aed;
 		@include transition;
 
@@ -184,6 +189,13 @@
 			span {
 				margin-left: -10px;
 			}
+		}
+
+		@include respond(mobile-lg) {
+			font-size: 16px;
+		}
+		@include respond(mobile-m) {
+			font-size: 14px;
 		}
 	}
 
@@ -207,7 +219,7 @@
 	position: fixed;
 	bottom: 20px;
 	right: 20px;
-	z-index: 100;
+	z-index: 20;
 	background-color: var(--sec-col);
 	border: 3px solid var(--prim-col);
 	height: 63px;
@@ -215,6 +227,14 @@
 	font-size: 35px;
 	border-radius: 100%;
 	cursor: pointer;
+
+	@include respond(mobile-lg) {
+		height: 50px;
+		width: 50px;
+		font-size: 30px;
+		bottom: 15px;
+		right: 15px;
+	}
 
 	span {
 		@include transition;

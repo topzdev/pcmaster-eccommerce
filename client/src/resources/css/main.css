@@ -695,6 +695,12 @@
   border: 2px solid var(--sec-col);
 }
 
+@media (max-width: 23.4375em) {
+  .card--primary__link {
+    font-size: 12px;
+  }
+}
+
 .card--primary__added {
   background-color: var(--sec-col);
   border: 2px solid var(--sec-col);
@@ -1923,7 +1929,6 @@
   -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
           box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   font-size: 16px;
-  padding-top: 10px;
   opacity: 0;
   visibility: hidden;
   width: 1000px;
@@ -2332,6 +2337,13 @@ input[type='number']::-webkit-outer-spin-button {
   }
 }
 
+@media (max-width: 27.5625em) {
+  .btn--primary {
+    font-size: 16px;
+    padding: 8px 40px;
+  }
+}
+
 .btn--icon {
   position: relative;
   font-size: 30px;
@@ -2502,6 +2514,18 @@ input[type='number']::-webkit-outer-spin-button {
   margin-left: -10px;
 }
 
+@media (max-width: 27.5625em) {
+  .btn--more {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 23.4375em) {
+  .btn--more {
+    font-size: 14px;
+  }
+}
+
 .btn--view {
   border: 1px solid #ccc;
   padding: 10px 12px;
@@ -2523,7 +2547,7 @@ input[type='number']::-webkit-outer-spin-button {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 100;
+  z-index: 20;
   background-color: var(--sec-col);
   border: 3px solid var(--prim-col);
   height: 63px;
@@ -2531,6 +2555,16 @@ input[type='number']::-webkit-outer-spin-button {
   font-size: 35px;
   border-radius: 100%;
   cursor: pointer;
+}
+
+@media (max-width: 27.5625em) {
+  .scrollToTop {
+    height: 50px;
+    width: 50px;
+    font-size: 30px;
+    bottom: 15px;
+    right: 15px;
+  }
 }
 
 .scrollToTop span {
@@ -2564,6 +2598,26 @@ input[type='number']::-webkit-outer-spin-button {
 
 .carousel__item img {
   width: 100%;
+}
+
+.carousel__mobile {
+  display: none;
+}
+
+@media (max-width: 27.5625em) {
+  .carousel__mobile {
+    width: 100%;
+    display: block;
+  }
+  .carousel__mobile img {
+    width: 100%;
+  }
+}
+
+@media (max-width: 27.5625em) {
+  .carousel {
+    display: none;
+  }
 }
 
 .owl-carousel .disabled {
@@ -2616,7 +2670,7 @@ input[type='number']::-webkit-outer-spin-button {
 .nav-carousel::before, .nav-carousel::after {
   position: absolute;
   display: block;
-  content: "";
+  content: '';
   height: 2px;
   width: 15px;
   background-color: #000;
@@ -3016,6 +3070,7 @@ input[type='number']::-webkit-outer-spin-button {
           flex-direction: column;
   margin-bottom: 20px;
   padding-right: 20px;
+  overflow: hidden;
 }
 
 @media (max-width: 64em) {

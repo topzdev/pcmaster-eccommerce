@@ -1,119 +1,135 @@
 .carousel {
-    width: 100%;
-    overflow: hidden;
-    &__list {
-        display: block;
-        float: left;
-        list-style: none;
-        overflow: hidden;
-        width: 100%;
-        height: 100%;
-    }
-    &__item {
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        img {
-            width: 100%;
-            // height: auto;
-        }
-    }
+	width: 100%;
+	overflow: hidden;
+	&__list {
+		display: block;
+		float: left;
+		list-style: none;
+		overflow: hidden;
+		width: 100%;
+		height: 100%;
+	}
+	&__item {
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		img {
+			width: 100%;
+			// height: auto;
+		}
+	}
+
+	&__mobile {
+		display: none;
+		@include respond(mobile-lg) {
+			width: 100%;
+			display: block;
+
+			img {
+				width: 100%;
+			}
+		}
+	}
+
+	@include respond(mobile-lg) {
+		display: none;
+	}
 }
 
 .owl-carousel {
-    .disabled {
-        // opacity: 0 !important;
-        // visibility: hidden !important;
-        @include transition;
-    }
+	.disabled {
+		// opacity: 0 !important;
+		// visibility: hidden !important;
+		@include transition;
+	}
 
-    .owl-stage-outer {
-        padding-bottom: 30px;
-    }
+	.owl-stage-outer {
+		padding-bottom: 30px;
+	}
 
-    .owl-dots {
-        position: relative;
-        margin-top: -25px;
-        z-index: 50;
-    }
+	.owl-dots {
+		position: relative;
+		margin-top: -25px;
+		z-index: 50;
+	}
 }
 
 .nav-loading {
-    background-color: #f3f3f3 !important;
+	background-color: #f3f3f3 !important;
 
-    &::before,
-    &::after {
-        background-color: #f8f8f8 !important;
-    }
+	&::before,
+	&::after {
+		background-color: #f8f8f8 !important;
+	}
 }
 
 .nav-carousel {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 50px;
-    width: 50px;
-    background-color: var(--sec-col);
-    font-size: 0;
-    border-radius: 100%;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	height: 50px;
+	width: 50px;
+	background-color: var(--sec-col);
+	font-size: 0;
+	border-radius: 100%;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+	cursor: pointer;
 
-    @include respond(tab-port) {
-        opacity: 0.5;
+	@include respond(tab-port) {
+		opacity: 0.5;
 
-        &:focus {
-            opacity: 1;
-        }
-    }
-    &::before,
-    &::after {
-        position: absolute;
-        display: block;
-        content: "";
-        height: 2px;
-        width: 15px;
-        background-color: #000;
-    }
+		&:focus {
+			opacity: 1;
+		}
+	}
+	&::before,
+	&::after {
+		position: absolute;
+		display: block;
+		content: '';
+		height: 2px;
+		width: 15px;
+		background-color: #000;
+	}
 
-    &::before {
-        top: 20px;
-        left: 30%;
-        transform: rotate(-45deg);
-    }
+	&::before {
+		top: 20px;
+		left: 30%;
+		transform: rotate(-45deg);
+	}
 
-    &::after {
-        left: 30%;
-        top: 30px;
-        transform: rotate(45deg);
-    }
+	&::after {
+		left: 30%;
+		top: 30px;
+		transform: rotate(45deg);
+	}
 }
 .nav-left {
-    left: -30px;
+	left: -30px;
 
-    @include respond(tab-port) {
-        left: -10px;
-    }
+	@include respond(tab-port) {
+		left: -10px;
+	}
 }
 
 .nav-right {
-    right: -30px;
-    transform: translateY(-50%) rotate(180deg);
+	right: -30px;
+	transform: translateY(-50%) rotate(180deg);
 
-    @include respond(tab-port) {
-        right: -10px;
-    }
+	@include respond(tab-port) {
+		right: -10px;
+	}
 }
 
 .nav-banner-left {
-    left: 30px !important;
+	left: 30px !important;
 }
 
 .nav-banner-right {
-    right: 30px !important;
-    transform: translateY(-50%) rotate(180deg);
+	right: 30px !important;
+	transform: translateY(-50%) rotate(180deg);
 }
 
 .owl-carousel .owl-item img {
-    width: auto !important;
+	width: auto !important;
 }

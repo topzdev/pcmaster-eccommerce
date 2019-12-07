@@ -43,6 +43,11 @@ const ProductDetails = ({
         img: []
     });
 
+    const [cartExist, setCartExist] = useState(false);
+    const [wishExist, setWishExist] = useState(false);
+    useEffect(() => setCartExist(validateDuplicate(data._id, cart)), [cart]);
+    useEffect(() => setWishExist(validateDuplicate(data._id, wishlist)), [wishlist]);
+
     useEffect(() => {
         searchProduct({ name });
         Scroll.animateScroll.scrollToTop();
@@ -60,25 +65,26 @@ const ProductDetails = ({
             });
     }, [cart, current]);
 
-    const isWishlist = added => {
-        return added ? (
-            <button
-                className="btn btn--wishlist"
-                onClick={() => addWishlist(data)}
+    const isWishlist = () => {
+        if(wishExist){
+            return ( <Link to='/cart' className="btn btn--wishlist btn--wishlist--added mb-1">
+            <span>
+                <i className="fas fa-heart"></i>
+            </span>
+            Added as Wishlist
+        </Link>)
+        }else{
+            return ( <button
+                className="btn btn--wishlist mb-1"
+                 onClick={() => addWishlist(data)}
             >
                 <span>
                     <i className="far fa-heart"></i>
                 </span>
                 Add to Wishlist
-            </button>
-        ) : (
-            <Link to='/cart' className="btn btn--wishlist btn--wishlist--added">
-                <span>
-                    <i className="fas fa-heart"></i>
-                </span>
-                Added as Wishlist
-            </Link>
-        );
+            </button>)
+        }
+       
     };
 
     return (
@@ -145,7 +151,7 @@ const ProductDetails = ({
                         )}
 
                         <div className="details__btn">
-                            {!exist.cart && isWishlist(exist.wishlist)}
+                            {!cartExist && isWishlist()}
                             <button className="btn btn--wishlist">
                                 <span>
                                     <i className="fas fa-random"></i>
