@@ -75,7 +75,7 @@ const ProductTable = ({ product: { products, loading }, getProducts }) => {
 					>
 						<TableHeader />
 						{loading && (
-							<Grid align={'center'} xs={12}>
+							<Grid align={'center'}>
 								{' '}
 								<CircularProgress />
 							</Grid>

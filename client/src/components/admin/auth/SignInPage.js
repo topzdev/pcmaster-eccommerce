@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import SignInCopyright from './SignInCopyright';
+import HeaderChanger from '../../utils/HeaderChanger';
 import { connect } from 'react-redux';
 
 import {
@@ -52,7 +53,7 @@ const AdminSignInPage = ({
 	};
 
 	useEffect(() => {
-		if (isAuthenticated) history.push('/admin/');
+		if (isAuthenticated) history.push('/admin/product/');
 	}, [isAuthenticated, history]);
 
 	const [credentials, setCredentials] = useState(initialState);
@@ -68,6 +69,10 @@ const AdminSignInPage = ({
 	return (
 		<Container component='main' maxWidth='xs'>
 			<CssBaseline />
+			<HeaderChanger
+				name={'Sign in '}
+				description={'Welcome to! Admin Sign In Page'}
+			/>
 			<div className={classes.paper}>
 				<Avatar className={classes.avatar}>
 					<LockOutlinedIcon />

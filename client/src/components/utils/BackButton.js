@@ -1,11 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
-const BackButton = () => {
-    return (
-        <Link to={`/overview/${cart.name}`} className="btn btn--more">
-            <span>&#8636; </span> Continue Shopping
-        </Link>
-    );
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+const BackButton = props => {
+	const history = useHistory();
+
+	return (
+		<button className='btn btn--more' onClick={() => history.goBack()}>
+			<span>&#8636; </span> Continue Shopping
+		</button>
+	);
 };
 
 export default BackButton;

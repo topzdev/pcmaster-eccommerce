@@ -9,7 +9,7 @@ import ProductVariety from '../Product/ProductVariety';
 import ProductTag from '../Product/ProductTag';
 import ProductBrand from '../Product/ProductBrand';
 import SpeedDialButtons from '../include/SpeedDialButtons';
-
+import HeaderChanger from '../../utils/HeaderChanger';
 import { connect } from 'react-redux';
 
 import { setRedirect } from '../../../controller/utitlityController/utilityActions';
@@ -58,6 +58,10 @@ const Product = ({ product: { current }, setRedirect }) => {
 
 	return (
 		<div className={classes.root}>
+			<HeaderChanger
+				name={'Admin '}
+				description={'Admin Manage your products'}
+			/>
 			<SpeedDialButtons setPage={setPage} />
 			<Container className={classes.container}>
 				{toRenderComponent(page)}

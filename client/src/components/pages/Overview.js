@@ -72,9 +72,9 @@ const ProductDetails = ({
                 Add to Wishlist
             </button>
         ) : (
-            <Link className="btn btn--wishlist btn--wishlist--added">
+            <Link to='/cart' className="btn btn--wishlist btn--wishlist--added">
                 <span>
-                    <i class="fas fa-heart"></i>
+                    <i className="fas fa-heart"></i>
                 </span>
                 Added as Wishlist
             </Link>
@@ -124,7 +124,7 @@ const ProductDetails = ({
                         </div>
                         {exist.cart ? (
                             <Link
-                                to="/cart"
+                                to="/wishlist"
                                 className="btn btn--primary btn--primary__added mt-2"
                             >
                                 <span>

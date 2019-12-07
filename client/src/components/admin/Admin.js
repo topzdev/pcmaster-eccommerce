@@ -2,7 +2,6 @@ import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './layout/Navbar';
 import Product from './pages/Product';
-import Home from './pages/Home';
 import SignInPage from './auth/SignInPage';
 import { SnackbarProvider } from 'notistack';
 import ToastNotif from './toast-notif/ToastNotif';
@@ -10,6 +9,7 @@ import setAuthToken from '../../utils/setAuthToken';
 import { connect } from 'react-redux';
 import { checkAdmin } from '../../controller/authController/admin/authActions';
 import PrivateRoute from './routing/AdminRoute';
+import HeaderChanger from '../utils/HeaderChanger';
 if (localStorage.token) setAuthToken(localStorage.token);
 
 const Admin = ({ adminAuth: { isAuthenticated }, checkAdmin, history }) => {
@@ -23,7 +23,6 @@ const Admin = ({ adminAuth: { isAuthenticated }, checkAdmin, history }) => {
 				<Switch>
 					<Route path='/admin/sign-in' component={SignInPage} />
 					<PrivateRoute path='/admin/product' component={Product} />
-					<PrivateRoute path='/admin/' component={Home} />
 				</Switch>
 				<ToastNotif />
 			</SnackbarProvider>

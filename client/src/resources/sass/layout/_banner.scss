@@ -4,12 +4,21 @@
 	height: var(--height);
 	width: 100%;
 	overflow: hidden;
+
+	@include respond(mobile-lg) {
+		--height: 150px;
+	}
 	&__image {
 		position: absolute;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
 		width: 102%;
+
+		@include respond(mobile-lg) {
+			height: 100%;
+			width: auto;
+		}
 	}
 
 	&__cover {
@@ -31,6 +40,14 @@
 		height: var(--height);
 		h1 {
 			font-size: 50px;
+
+			@include respond(tab-port) {
+				font-size: 40px;
+			}
+
+			@include respond(mobile-lg) {
+				font-size: 25px;
+			}
 		}
 	}
 }
