@@ -31,24 +31,22 @@ const App = () => {
 			<CloudinaryContext cloudName='deiecmpac'>
 				<Router>
 					{admin ? (
-						<Fragment>
-							<Admin />
-						</Fragment>
+						<Fragment><Admin /></Fragment>
 					) : (
-						<Fragment>
-							<Navbar />
-							<Switch>
-								<Route exact path='/' component={Home} />
-								<Route exact path='/cart' component={Cart} />
-								<Route exact path='/wishlist' component={Wishlist} />
-								<Route exact path='/overview/:name' component={Overview} />
-								<Route path='/products/' component={ProductCategory} />
-								<Route component={Page404} />
-							</Switch>
-							<ScrollUpButton />
-							<Footer />
-						</Fragment>
-					)}
+							<Fragment>
+								<Navbar />
+								<Switch>
+									<Route exact path='/' component={Home} />
+									<Route exact path='/cart' component={Cart} />
+									<Route exact path='/wishlist' component={Wishlist} />
+									<Route exact path='/overview/:name' component={Overview} />
+									<Route path='/products/' component={ProductCategory} />
+									<Route component={Page404} />
+								</Switch>
+								<ScrollUpButton />
+								<Footer />
+							</Fragment>
+						)}
 					<SetRedirect />
 				</Router>
 			</CloudinaryContext>

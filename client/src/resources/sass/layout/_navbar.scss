@@ -2,8 +2,11 @@
     background-color: var(--white-col);
     color: #fff;
     transition: all 300ms ease;
+    @include transition;
 
     &__list {
+        display: flex;
+        height: 30px;
         & > *:not(:last-child) {
             margin-right: 20px;
         }
@@ -16,6 +19,7 @@
         align-items: center;
         justify-content: space-between;
         padding: 10px 30px;
+        @include transition;
 
         @include respond(laptop) {
             height: 70px;
@@ -58,7 +62,7 @@
     &__brand {
         display: block;
         height: 50px;
-
+        @include transition;
         @include respond(desktop) {
             height: 45px;
         }
@@ -150,8 +154,38 @@
     z-index: 90;
 
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+
+    & .navbar__nav{
+        padding-top: 8px;
+        height: 60px;
+    }
+
+    & .navbar__search{
+        height: 40px;
+
+        
+    }
+    & .inp--search input{
+        padding: 11px;
+    }
+
+    & .menu__button{
+        height: 40px;
+    }
+
+    & .menu__link{
+        padding: 12px 15px;
+    }
+
+    & .navbar__brand{
+        height: 40px;
+        @include respond(mobile-lg){
+            height: 35px;
+        }
+    }
 }
 
 .navbar-hidden {
     margin-top: -80px;
+
 }

@@ -43,9 +43,16 @@
 		top: 0;
 		width: 50px;
 		height: 47px;
-		font-size: 16px;
+		
 		z-index: 50;
 		border-left: 1px solid #e9e9e9;
+		@include transition;
+
+		svg{
+			fill: var(--prim-col);
+			height: 16px;
+			width: 16px;
+		}
 
 		@include respond(tab-land) {
 			display: flex;
@@ -87,7 +94,7 @@
 		width: 100%;
 		list-style: none;
 		position: relative;
-
+		@include transition;
 		@include respond(tab-land) {
 			flex-direction: column;
 			z-index: 100;
@@ -111,13 +118,24 @@
 				@include respond(tab-land) {
 					color: var(--prim-col);
 				}
+
+				span{
+					&::after, &::before{
+						width: 6px;
+						background: var(--sec-col);
+					}
+					&::after{
+						left: 3px;
+						transform: rotate(0);
+					}
+		
+					&::before{
+						right: -3px;	
+						transform: rotate(0);
+					}
+				}
 			}
 
-			.menu__dropdown {
-				margin-top: 0;
-				opacity: 1;
-				visibility: visible;
-			}
 
 			.menu__drp-link {
 				margin-top: 0;
@@ -126,9 +144,10 @@
 	}
 
 	&__link {
-		display: block;
+		display: flex;
 		font-weight: 600;
 		font-size: 16px;
+		align-items: center;
 		text-decoration: none;
 		color: var(--prim-col);
 		padding: 15px;
@@ -144,7 +163,33 @@
 				display: none;
 			}
 		}
+		span{
+			margin-left: 3px;
+			position: relative;
+			margin-right: 5px;
+			&::after, &::before{
+				position: absolute;
+				display: block;
+				content: '';
+				background: var(--prim-col);
+				height: 2px;
+				width: 8px;
+				@include transition;
+		
+			}
 
+			&::after{
+				left: 2px;
+				transform: rotate(-225deg);
+			}
+
+			&::before{
+				right: -4px;
+				transform: rotate(225deg);	
+			}
+		}
+
+	
 		@include respond(mobile-m) {
 			font-size: 15px;
 			padding: 12px;
@@ -184,13 +229,14 @@
 
 		@include respond(tab-land) {
 			position: relative;
-			opacity: 0;
+			opacity: 1;
 			visibility: visible;
 			width: 100%;
 			box-shadow: none;
 			padding: 0;
 			height: 0;
 			overflow: hidden;
+			animation: none !important;
 		}
 	}
 
@@ -305,5 +351,28 @@
 				display: none;
 			}
 		}
+	}
+}
+
+.in{
+	.menu__dropdown {
+		animation: dropdownShow 300ms forwards;
+	}
+	
+	@include respond(tab-land){
+		animation: none !important;
+		animation-direction: none !important;
+	}
+}
+
+.out{
+	.menu__dropdown {
+		animation: dropdownShow 300ms forwards;
+		animation-direction: reverse;
+	}
+
+	@include respond(tab-land){
+		animation: none !important;
+		animation-direction: none !important;
 	}
 }

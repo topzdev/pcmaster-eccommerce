@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { toggleNav } from '../../../controller/frontendController/frontendActions';
-const MenuDropdown = ({ link, subcategory, img, show, toggleNav }) => {
+const MenuDropdown = ({ link, subcategory, img, show, closeNav }) => {
 	return (
 		<div className={`menu__dropdown ${show ? 'menu-drp-show' : ''}`}>
 			<div className='menu__img-preview'>
@@ -14,7 +14,7 @@ const MenuDropdown = ({ link, subcategory, img, show, toggleNav }) => {
 						<Link
 							to={`${link}subcategory=${item}`.toLowerCase()}
 							className='menu__drp-link'
-							onClick={() => toggleNav()}
+							onClick={() => closeNav()}
 						>
 							<span>
 								<i className='fas fa-chevron-right'></i>

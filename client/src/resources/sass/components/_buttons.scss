@@ -50,6 +50,9 @@
 		}
 	}
 	&--icon {
+		display: flex;
+		align-items: center;
+		
 		position: relative;
 		font-size: 30px;
 		color: var(--prim-col);
@@ -64,6 +67,11 @@
 
 		@include respond(mobile-lg) {
 			font-size: 22px;
+
+			svg {
+				height: 22px;
+				width: 22px;
+			}
 		}
 	}
 

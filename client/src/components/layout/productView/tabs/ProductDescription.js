@@ -13,7 +13,7 @@ const ProductDescription = ({ description }) => {
 					description.map((desc, idx) => (
 						<Fragment key={idx}>
 							<div className='row mt-1 mt-lg-0'>
-								<div className='col-12 col-lg-4 mb-1 mb-lg-0'>
+								<div className='col-12 col-lg-4 mb-2 mb-lg-0'>
 									<h3>{desc.title}</h3>
 								</div>
 								<div className='col-12 col-lg-8'>

@@ -1,13 +1,12 @@
 import React from 'react';
-import image_404 from '../../resources/images/404.png';
 import { Link } from 'react-router-dom';
 import HeaderChanger from '../utils/HeaderChanger';
 const Page404 = () => {
 	return (
 		<div className='page404'>
-			<HeaderChanger name={'404 Page not found '} description={'Your are not in the coverage area of PC Master'}/>
+			<HeaderChanger name={'404 Page not found '} description={'Your are not in the coverage area of PC Master'} />
 			<div className='page404__image'>
-				<img src={image_404} alt='Ow snap!' draggable />
+				<img src='https://res.cloudinary.com/deiecmpac/image/upload/v1575744588/logo/404_v5v4eq.png' alt='Ow snap!' draggable />
 			</div>
 
 			<h1>Page not found</h1>

@@ -13,6 +13,7 @@ import { searchProduct } from "../../controller/productController/productActions
 import ProductShowCase from "../layout/productView/ProductShowCase";
 import DescriptionLoader from "../utils/loader/DescriptionLoader";
 import HeaderChanger from "../utils/HeaderChanger";
+import { FacebookShareButton } from 'react-share'
 import {
     addToCart,
     addWishlist
@@ -66,17 +67,17 @@ const ProductDetails = ({
     }, [cart, current]);
 
     const isWishlist = () => {
-        if(wishExist){
-            return ( <Link to='/cart' className="btn btn--wishlist btn--wishlist--added mb-1">
-            <span>
-                <i className="fas fa-heart"></i>
-            </span>
-            Added as Wishlist
+        if (wishExist) {
+            return (<Link to='/cart' className="btn btn--wishlist btn--wishlist--added mb-1">
+                <span>
+                    <i className="fas fa-heart"></i>
+                </span>
+                Added as Wishlist
         </Link>)
-        }else{
-            return ( <button
+        } else {
+            return (<button
                 className="btn btn--wishlist mb-1"
-                 onClick={() => addWishlist(data)}
+                onClick={() => addWishlist(data)}
             >
                 <span>
                     <i className="far fa-heart"></i>
@@ -84,11 +85,11 @@ const ProductDetails = ({
                 Add to Wishlist
             </button>)
         }
-       
+
     };
 
     return (
-        <div className="container">
+        <div className="container pb-3">
             <div className="details">
                 <ImageListView
                     img={!_.isEmpty(data.img) && data.img}
@@ -105,109 +106,106 @@ const ProductDetails = ({
                         </div>
                     </Fragment>
                 ) : (
-                    <div className="details__description">
-                        <HeaderChanger
-                            name={name}
-                            description={data.overview}
-                            img={!_.isEmpty(data.img) && data.img.url}
-                        />
-                        <h1 className="details__title">{name && name}</h1>
-                        <p className="details__price">
-                            ₱
-                            {data.price && numeral(data.price).format("0,0.00")}
-                        </p>
-                        <p className="details__overview mb-2">
-                            {data.overview &&
-                                truncate(data.overview, 400, {
-                                    position: "end"
-                                })}
-                        </p>
-                        <div className="details__main-btn">
-                            <NumericField
-                                initValue={quantity}
-                                quantityValue={setQuantity}
+                        <div className="details__description">
+                            <HeaderChanger
+                                name={name}
+                                description={data.overview}
+                                img={!_.isEmpty(data.img) && data.img[0].url}
                             />
-                        </div>
-                        {exist.cart ? (
-                            <Link
-                                to="/wishlist"
-                                className="btn btn--primary btn--primary__added mt-2"
-                            >
-                                <span>
-                                    <i className="fas fa-cart-arrow-down"></i>
-                                </span>
-                                Cart Added
+                            <h1 className="details__title">{name && name}</h1>
+                            <p className="details__price">
+                                ₱
+                            {data.price && numeral(data.price).format("0,0.00")}
+                            </p>
+                            <p className="details__overview mb-2">
+                                {data.overview &&
+                                    truncate(data.overview, 400, {
+                                        position: "end"
+                                    })}
+                            </p>
+                            <div className="details__main-btn">
+                                <NumericField
+                                    initValue={quantity}
+                                    quantityValue={setQuantity}
+                                />
+                            </div>
+                            {exist.cart ? (
+                                <Link
+                                    to="/wishlist"
+                                    className="btn btn--primary btn--primary__added mt-2"
+                                >
+                                    <span>
+                                        <i className="fas fa-cart-arrow-down"></i>
+                                    </span>
+                                    Cart Added
                             </Link>
-                        ) : (
-                            <button
-                                className="btn btn--primary mt-2"
-                                onClick={() => addToCart(data, quantity)}
-                            >
-                                <span>
-                                    <i className="fas fa-shopping-cart"></i>
-                                </span>
-                                Add to Cart
+                            ) : (
+                                    <button
+                                        className="btn btn--primary mt-2"
+                                        onClick={() => addToCart(data, quantity)}
+                                    >
+                                        <span>
+                                            <i className="fas fa-shopping-cart"></i>
+                                        </span>
+                                        Add to Cart
                             </button>
-                        )}
+                                )}
 
-                        <div className="details__btn">
-                            {!cartExist && isWishlist()}
-                            <button className="btn btn--wishlist">
-                                <span>
-                                    <i className="fas fa-random"></i>
-                                </span>
-                                Compare Product
+                            <div className="details__btn">
+                                {!cartExist && isWishlist()}
+                                <button className="btn btn--wishlist">
+                                    <span>
+                                        <i className="fas fa-random"></i>
+                                    </span>
+                                    Compare Product
                             </button>
+                            </div>
+
+                            <ul className="details__others mb-2">
+                                <li>
+                                    <b>SKU: </b>
+                                    <Link to="/">{data.sku && data.sku}</Link>
+                                </li>
+                                <li>
+                                    <b>Category: </b>
+                                    <Link to="/">
+                                        {data.category &&
+                                            _.capitalize(data.category)}
+                                    </Link>
+                                    <Link to="/">
+                                        {data.subcategory &&
+                                            _.capitalize(data.subcategory)}
+                                    </Link>
+                                </li>
+                                <li>
+                                    <b>Tags: </b>
+                                    {data.tags &&
+                                        data.tags.map((tag, idx) => (
+                                            <Fragment key={idx}>
+                                                <Link to="/">
+                                                    {_.capitalize(tag)}
+                                                </Link>
+                                            </Fragment>
+                                        ))}
+                                </li>
+                                <FacebookShareButton url={window.location.href} />
+                                <li>
+                                    <b>Share: </b>
+                                    <a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`} class="fb-xfbml-parse-ignore">
+                                        <span>
+                                            <i className="fab fa-facebook"></i>
+                                        </span>
+                                    </a>
+
+                                    <a target="_blank"
+                                        href={`https://twitter.com/intent/tweet?text=${name + ' |buy now at PC Master | Home of the Glorious PC Builder and Gamers'}`}>
+                                        <span>
+                                            <i className="fab fa-twitter"></i>
+                                        </span></a>
+                                </li>
+                            </ul>
                         </div>
-
-                        <ul className="details__others mb-2">
-                            <li>
-                                <b>SKU: </b>
-                                <Link to="/">{data.sku && data.sku}</Link>
-                            </li>
-                            <li>
-                                <b>Category: </b>
-                                <Link to="/">
-                                    {data.category &&
-                                        _.capitalize(data.category)}
-                                </Link>
-                                <Link to="/">
-                                    {data.subcategory &&
-                                        _.capitalize(data.subcategory)}
-                                </Link>
-                            </li>
-                            <li>
-                                <b>Tags: </b>
-                                {data.tags &&
-                                    data.tags.map((tag, idx) => (
-                                        <Fragment key={idx}>
-                                            <Link to="/">
-                                                {_.capitalize(tag)}
-                                            </Link>
-                                        </Fragment>
-                                    ))}
-                            </li>
-                            <li>
-                                <b>Share: </b>
-                                <Link to="/">
-                                    <span>
-                                        <i className="fab fa-facebook"></i>
-                                    </span>
-                                </Link>{" "}
-                                <Link to="/">
-                                    <span>
-                                        <i className="fab fa-twitter"></i>
-                                    </span>
-                                </Link>{" "}
-                                <Link to="/">
-                                    <span>
-                                        <i className="fab fa-pinterest"></i>
-                                    </span>
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
-                )}
+                    )}
             </div>
             {!loading && (
                 <div className="details__tab">

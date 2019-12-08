@@ -3,23 +3,24 @@ import { Link } from 'react-router-dom';
 import MenuDropdown from './MenuDropdown';
 import { toggleNav } from '../../../controller/frontendController/frontendActions';
 import { connect } from 'react-redux';
+
 const MenuList = ({ list, toggleNav }) => {
 	const link = `/products/?category=${list.title}&`.toLowerCase();
 	const [drop, setDrop] = useState(false);
+	const [hover, setHover] = useState(null);
 	return (
-		<li className='menu__item'>
+		<li className={`menu__item ${hover === true && 'in'} ${hover === false && 'out'}`} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
 			<Link to={link} className='menu__link' onClick={() => toggleNav()}>
 				{list.title} &nbsp;
 				<span>
-					<i className='fas fa-angle-down'></i>
 				</span>
 			</Link>
 			<button className='menu__button' onClick={() => setDrop(!drop)}>
 				{drop ? (
 					<i className='fas fa-minus'></i>
 				) : (
-					<i className='fas fa-angle-down'></i>
-				)}
+						<i className='fas fa-angle-down'></i>
+					)}
 			</button>
 			<MenuDropdown
 				link={link}

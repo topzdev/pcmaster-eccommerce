@@ -26,6 +26,7 @@
         "react-helmet": "^5.2.1",
         "react-image-gallery": "^0.9.1",
         "react-image-magnify": "^2.7.4",
+        "react-loading": "^2.0.3",
         "react-number-format": "^4.3.1",
         "react-owl-carousel": "^2.3.1",
         "react-redux": "^7.1.3",

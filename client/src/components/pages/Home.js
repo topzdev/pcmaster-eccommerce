@@ -38,7 +38,7 @@ const Home = () => {
 			<Carousel />
 
 			{/* <ProductShowCase title={"Popular"} /> */}
-			<div className='container pt-2 pb-3'>
+			<div className='container pb-3'>
 				{toLoad.map(item => (
 					<ProductShowCase
 						key={item.title}

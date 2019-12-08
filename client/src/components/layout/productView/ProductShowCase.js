@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import CardProduct from "../card/CardProduct";
 import ShowCaseLoader from "../../utils/loader/ShowCaseLoader";
 import { connect } from "react-redux";
-import CardLoading from "../../utils/loader/CardLoader";
 import _ from "lodash";
 import { addShowcase } from "../../../controller/frontendController/frontendActions";
 
@@ -39,7 +38,7 @@ const ProductShowCase = ({
         };
 
         getsProducts();
-    }, [frontend]);
+    }, [cart, wishlist]);
 
     const renderCarousel = data => (
         <OwlCarousel
@@ -74,13 +73,13 @@ const ProductShowCase = ({
             {/* <CardLoading /> */}
             {data &&
                 data
-                    .splice(0, 15)
+                    .splice(0, 10)
                     .map(item =>
                         exclude && exclude != item._id ? (
                             <CardProduct key={item._id} data={item} />
                         ) : (
-                            <CardProduct key={item._id} data={item} />
-                        )
+                                <CardProduct key={item._id} data={item} />
+                            )
                     )}
         </OwlCarousel>
     );
@@ -92,7 +91,7 @@ const ProductShowCase = ({
             <Link
                 to={`/products/${category ? "?category=" + category : ""}${
                     subcategory ? "?subcategory=" + subcategory : ""
-                }`.toLowerCase()}
+                    }`.toLowerCase()}
             >
                 <h1 className="heading--primary mb-2">{title}</h1>
             </Link>

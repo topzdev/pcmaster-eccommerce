@@ -9,6 +9,12 @@ import {
     addWishlist
 } from "../../../controller/frontendController/frontendActions";
 import { connect } from "react-redux";
+
+//Icons
+import HeartIcon from '../../include/icons/HeartIcon'
+import EyeIcon from '../../include/icons/EyeIcon'
+import CartIcon from '../../include/icons/CartIcon'
+
 const CardProduct = ({
     frontend: { cart, wishlist },
     size,
@@ -56,7 +62,7 @@ const CardProduct = ({
         <div
             className={`card--primary ${size} ${
                 img[1] ? "" : "card--primary__disabled"
-            }`}
+                }`}
             onMouseEnter={() => setShow(true)}
         >
             <div className="card--primary__main">
@@ -102,16 +108,16 @@ const CardProduct = ({
                             <p>Cart Added</p>
                         </Link>
                     ) : (
-                        <button
-                            className="card--primary__link"
-                            onClick={() => onAddCart()}
-                        >
-                            <span>
-                                <i className="fas fa-shopping-cart"></i>
-                            </span>
-                            <p>Add to cart</p>
-                        </button>
-                    )}
+                            <button
+                                className="card--primary__link"
+                                onClick={() => onAddCart()}
+                            >
+                                <span>
+                                    <i className="fas fa-shopping-cart"></i>
+                                </span>
+                                <p>Add to cart</p>
+                            </button>
+                        )}
 
                     {!cartExist && renderWishlist(wishExist)}
                     <button className="card--primary__link">
