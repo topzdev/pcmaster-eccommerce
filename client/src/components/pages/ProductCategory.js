@@ -45,6 +45,7 @@ const Collections = ({
 	}, [products, show, currentPage]);
 
 	useEffect(() => {
+		logical = 'and'
 		if (search) {
 			category = subcategory = name = variety = brand = search;
 			logical = 'or'
