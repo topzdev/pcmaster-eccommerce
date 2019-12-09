@@ -89,7 +89,7 @@ const MenuBar = ({ show, setShow }) => {
 	];
 
 	const closeNav = () => {
-		setShow(!show);
+		setShow(false);
 	};
 
 	return (

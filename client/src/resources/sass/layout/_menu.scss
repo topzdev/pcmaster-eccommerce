@@ -73,7 +73,7 @@
 	}
 
 	&-backdrop {
-		display: none;
+		display: none !important;
 
 		@include respond(tab-land) {
 			position: fixed;

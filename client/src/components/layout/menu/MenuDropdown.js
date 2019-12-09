@@ -8,21 +8,22 @@ const MenuDropdown = ({ link, subcategory, img, show, closeNav }) => {
 			<div className='menu__img-preview'>
 				<img src={img} alt='' className='image' draggable={false} />
 			</div>
-			<ul className='menu__drp-group'>
-				{subcategory.map((item, idx) => (
-					<li className='menu__drp-item' key={idx}>
-						<Link
-							to={`${link}subcategory=${item}`.toLowerCase()}
-							className='menu__drp-link'
-							onClick={() => closeNav()}
-						>
-							<span>
-								<i className='fas fa-chevron-right'></i>
-							</span>{' '}
-							<p>{item}</p>
-						</Link>
-					</li>
-				))}
+			<ul className='menu__drp-group' onClick={() => closeNav()}>
+				{
+					subcategory.map((item, idx) => (
+						<li className='menu__drp-item' key={idx}>
+							<Link
+								to={`${link}subcategory=${item}`.toLowerCase()}
+								className='menu__drp-link'
+							>
+								<span>
+									<i className='fas fa-chevron-right'></i>
+								</span>{' '}
+								<p>{item}</p>
+							</Link>
+						</li>
+					))
+				}
 			</ul>
 		</div>
 	);

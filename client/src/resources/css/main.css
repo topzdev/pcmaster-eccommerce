@@ -1854,7 +1854,7 @@
 }
 
 .menu-backdrop {
-  display: none;
+  display: none !important;
 }
 
 @media (max-width: 56.25em) {
