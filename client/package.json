@@ -7,7 +7,7 @@
         "@material-ui/icons": "^4.5.1",
         "@material-ui/lab": "^4.0.0-alpha.33",
         "animate.css": "^3.7.2",
-        "axios": "^0.19.0",
+        "axios": "^0.21.1",
         "cli-truncate": "^2.0.0",
         "cloudinary-react": "^1.2.1",
         "express-fileupload": "^1.1.6",
