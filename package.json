@@ -13,7 +13,7 @@
 		"express-fileupload": "^1.1.6",
 		"express-validator": "^6.2.0",
 		"jsonwebtoken": "^8.5.1",
-		"lodash": "^4.17.20",
+		"lodash": "^4.17.21",
 		"mongoose": "^5.7.11"
 	},
 	"devDependencies": {
