@@ -6,7 +6,7 @@
 	"dependencies": {
 		"bcryptjs": "^2.4.3",
 		"cloudinary": "^1.17.0",
-		"config": "^3.2.4",
+		"config": "^3.3.8",
 		"cors": "^2.8.5",
 		"dotenv": "^8.2.0",
 		"express": "^4.17.1",
