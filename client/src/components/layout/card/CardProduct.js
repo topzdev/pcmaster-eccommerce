@@ -60,8 +60,7 @@ const CardProduct = ({
 
     return (
         <div
-            className={`card--primary ${size} ${
-                img[1] ? "" : "card--primary__disabled"
+            className={`card--primary ${size} ${img[1] ? "" : "card--primary__disabled"
                 }`}
             onMouseEnter={() => setShow(true)}
         >
@@ -108,18 +107,18 @@ const CardProduct = ({
                             <p>Cart Added</p>
                         </Link>
                     ) : (
-                            <button
-                                className="card--primary__link"
-                                onClick={() => onAddCart()}
-                            >
-                                <span>
-                                    <i className="fas fa-shopping-cart"></i>
-                                </span>
-                                <p>Add to cart</p>
-                            </button>
-                        )}
+                        <button
+                            className="card--primary__link"
+                            onClick={() => onAddCart()}
+                        >
+                            <span>
+                                <i className="fas fa-shopping-cart"></i>
+                            </span>
+                            <p>Add to cart</p>
+                        </button>
+                    )}
 
-                    {!cartExist && renderWishlist(wishExist)}
+                    {renderWishlist(wishExist)}
                     <button className="card--primary__link">
                         <span>
                             <i className="far fa-eye"></i>
