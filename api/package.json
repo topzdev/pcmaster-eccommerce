@@ -29,7 +29,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/TopzTheDev/pcmaster-eccommerce.git"
+		"url": "git+https://github.com/topzdev/pcmaster-eccommerce.git"
 	},
 	"keywords": [
 		"E-commerce",
@@ -39,7 +39,7 @@
 	"author": "Christopher Lugod",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/TopzTheDev/pcmaster-eccommerce/issues"
+		"url": "https://github.com/topzdev/pcmaster-eccommerce/issues"
 	},
-	"homepage": "https://github.com/TopzTheDev/pcmaster-eccommerce#readme"
+	"homepage": "https://github.com/topzdev/pcmaster-eccommerce#readme"
 }

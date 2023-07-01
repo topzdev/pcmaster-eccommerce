@@ -26,6 +26,7 @@ app.use(
 app.use(express.json({ extended: true }));
 
 //Defining the routes
+app.get('/', function (req, res) { return res.status(400).json({ msg: 'Welcome to PCMasterace API' }) })
 app.use('/api/product/', require('./routes/product'));
 app.use('/api/user/', require('./routes/users'));
 app.use('/api/auth/', require('./routes/auth'));
