@@ -66,5 +66,8 @@
             "last 1 safari version"
         ]
     },
-    "proxy": "https://pcmaster-eccommerce-api.onrender.com"
+    "proxy": "https://pcmaster-eccommerce-api.onrender.com",
+    "engines": {
+        "node": ">=14.20.1"
+    }
 }
