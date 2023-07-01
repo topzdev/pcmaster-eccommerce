@@ -15,6 +15,7 @@
         "materialize-css": "^1.0.0",
         "notistack": "^0.9.6",
         "numeral": "^2.0.6",
+        "pcmaster-ecommerce": "file:..",
         "query-string": "^6.9.0",
         "rc-pagination": "^1.20.11",
         "react": "^16.14.0",
